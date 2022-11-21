@@ -1,0 +1,28 @@
+.favourites-container {
+  font-family: "Raleway", sans-serif;
+  margin-left: 270px;
+
+  @media screen and (max-width: 1100px) {
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 500px) {
+    margin-left: 0px;
+  }
+  .favourites-header {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    @media screen and (max-width: 500px) {
+      width: 80vw;
+    }
+    h2 {
+      font-family: "Roboto", sans-serif;
+      font-weight: 945;
+      font-size: 24px;
+      margin-top: 20px;
+      color: rgb(40, 40, 40);
+    }
+  }
+}

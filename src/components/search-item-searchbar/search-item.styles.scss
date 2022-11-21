@@ -1,0 +1,47 @@
+.search-item {
+  padding: 0px 10px 0px 10px;
+  background-color: white;
+  border-bottom: 2px solid gainsboro;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  &:hover {
+    color: rgba(237, 28, 36, 255);
+  }
+
+  .item-image {
+    width: 90px;
+    height: 89px;
+    margin-right: 10px;
+    @media screen and (max-width: 410px) {
+      width: 55px;
+      height: 55px;
+      margin-right: 15px;
+    }
+  }
+  .search-text {
+    display: flex;
+    flex-direction: column;
+    .search-name {
+      font-size: 17px;
+      font-family: "Roboto", sans-serif;
+      font-weight: 625;
+
+      
+      @media screen and (max-width: 410px) {
+        font-size: 14px;
+      }
+    }
+    .search-detail {
+      font-size: 15px;
+      font-weight: 645;
+      color: gray;
+      @media screen and (max-width: 410px) {
+        font-size: 11px;
+      }
+    }
+  }
+}

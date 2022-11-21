@@ -1,0 +1,9 @@
+.fs-mob-container {
+  display: none;
+}
+@media screen and (max-width: 850px) {
+  .fs-mob-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

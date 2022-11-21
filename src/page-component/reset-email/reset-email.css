@@ -1,0 +1,46 @@
+.reset_main {
+  /* align-items: center; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.reset_text {
+  align-items: center;
+  text-align: center !important;
+  display: table;
+  margin: auto;
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 400px) {
+  .reset_text {
+    width: 89%;
+  }
+}
+
+.resetPasswordImage {
+  height: 300px;
+}
+
+.reset_img {
+  display: table;
+  align-items: center;
+  margin: auto;
+}
+
+.reset_btn {
+  display: table;
+  margin: auto;
+  border-radius: 2px;
+}
+
+.buttonEm {
+  width: 200px;
+  height: 45px;
+  background-color: #ed1c24;
+  border-radius: 4px;
+  color: #fff;
+}

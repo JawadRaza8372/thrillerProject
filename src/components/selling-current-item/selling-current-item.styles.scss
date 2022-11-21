@@ -1,0 +1,66 @@
+.selling-current-item-container {
+  height: auto;
+  margin: 3px;
+  display: flex;
+  position: relative;
+  @media screen and (max-width: 481px) {
+    height: 100%;
+  }
+  .item-container {
+    width: 40%;
+    @media screen and (max-width: 1000px) {
+      width: 60%;
+    }
+    @media screen and (max-width: 481px) {
+      width: 75%;
+      height: fit-content;
+    }
+  }
+  .heading-container {
+    //font-family: "Raleway", sans-serif;
+    margin-top: 12px;
+    font-weight: 500;
+    width: 30%;
+    padding-left: 10px;
+    border-bottom: 2px solid gainsboro;
+    height: auto;
+    @media screen and (max-width: 1000px) {
+      width: 40%;
+    }
+    @media screen and (max-width: 481px) {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0;
+      position: absolute;
+      font-size: 14px;
+      width: 25%;
+      height: 100%;
+      left: 75%;
+    }
+    .editIcon {
+      height: 30px;
+      i {
+        position: relative;
+        left: 35%;
+      }
+    }
+  }
+  .tier-two {
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+  }
+  i {
+    position: absolute;
+    left: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(237, 28, 36, 255);
+    }
+    @media screen and (max-width: 1000px) {
+      margin-top: 15px;
+    }
+  }
+}

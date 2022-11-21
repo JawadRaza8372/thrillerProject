@@ -1,0 +1,22 @@
+.shoe-details {
+  padding: 5px 20px;
+  margin: 10px;
+  background-color: white;
+  text-align: center;
+  border: 1px solid rgba(181, 181, 181, 255);
+  font-family: "Raleway", sans-serif;
+  border-radius: 5%;
+  width: 120px;
+  &:hover {
+    background-color: #fcedec;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 645;
+    margin: 0px;
+  }
+  .price {
+    font-size: 17px;
+    color: red;
+  }
+}

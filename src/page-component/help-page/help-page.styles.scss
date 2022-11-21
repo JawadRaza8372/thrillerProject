@@ -1,0 +1,110 @@
+.helpContainer {
+  margin-top: 5vh;
+  // height: 85vh;
+  // height: 95vh;
+  // margin-bottom: 15vh;
+  // padding: 0px 20px;
+  min-height: fit-content;
+  @media screen and (max-width: 481px) {
+    margin-top: 10px;
+    height: 100%;
+    margin-top: 10px;
+    padding: 0px;
+  }
+}
+
+.sectionOne {
+  height: 69vh;
+  //text-align: center;
+  // margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 30px;
+  padding-left: 10vh;
+
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  background-color: black;
+  color: white;
+  // justify-content: space-between;
+  // min-height: fit-content;
+  .gif-container {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 40vw;
+    height: auto;
+    min-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    img {
+      min-width: 100%;
+      height: 100%;
+    }
+  }
+  .img-container {
+    // margin: 20px;
+    margin-top: 5px;
+    margin-left: 3px;
+    padding-top: 10vh;
+    width: 12vw;
+    height: 300px;
+    min-height: fit-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    img {
+      height: auto;
+      width: 125%;
+    }
+    @media screen and (max-width: 481px) {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .empty-space {
+    width: 20vw;
+  }
+  .text-container {
+    width: 30vw;
+    // height: 100%;
+    // min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    // align-items: center;
+
+    text-align: center;
+    // font-weight: 700;
+    font-size: 1rem;
+    // text-transform: uppercase;
+    padding-top: 20px;
+
+    img {
+      min-width: 28vw;
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 481px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.outer {
+  // margin-top: 10vh;
+  // padding-bottom: 6vh;
+  height: 80vh;
+  align-items: center;
+  @media screen and (max-width: 481px) {
+    height: fit-content;
+    margin-top: 0px;
+  }
+}
+.red {
+  margin-top: 40px;
+  font-family: Ringside Wide Med, sans-serif;
+  text-align: center;
+}

@@ -1,0 +1,43 @@
+.shpbnr {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .bnrImg {
+        align-self: center;
+        align-items: center;
+        max-width: fit-content;
+        height: fit-content;
+    }
+    img {
+        width: 8%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: auto;
+        align-self: center;
+    }
+    .bnrtxt {
+        text-align: center;
+        font-size: 30px;
+        font-family: "proxima-nova", sans-serif !important;
+        font-weight: 100 !important;
+    }
+    .prdTxt {
+        text-align: center;
+        width: 60%;
+        align-self: center;
+        margin-top: 20px;
+        // font-family: "Montserrat";
+        // font-weight: 300;
+        font-family: "proxima-nova", sans-serif !important;
+        font-weight: 100 !important;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .shpbnr {
+        height: 30vh;
+        // background: red;
+    }
+}

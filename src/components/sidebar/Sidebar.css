@@ -1,0 +1,142 @@
+.nav-menu {
+  background-color: white !important;
+  width: 22.5vw;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  height: 100vh;
+  position: fixed;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.clear {
+  height: 100vh;
+  position: fixed;
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+.clear:hover {
+  /* cursor: url('../assets/cross.ico') !important; */
+}
+.nav-menu.active {
+  right: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30px !important;
+  font-size: 15px !important;
+  font-weight: 649;
+  color: black !important;
+  border-style: solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: thin;
+  border-color: lightgray;
+}
+
+.nav-menu .nav-menu-items .nav-text {
+  padding: 20px !important;
+}
+
+.li {
+  height: fit-content;
+}
+
+.hover {
+  display: inline-block;
+  position: relative;
+}
+
+.hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scale(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  margin-top: 5px;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover:hover::before {
+  transform: scale(1);
+  transform-origin: bottom left;
+}
+
+.cbtn {
+  height: fit-content;
+  width: fit-content;
+  border: 0;
+  background-color: whitesmoke;
+  margin: 10px;
+  margin-left: 15px;
+}
+
+.nav-text :hover {
+  color: black;
+}
+
+.lbe {
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  font-size: 14px;
+  text-align: justify;
+  margin: 5px;
+  padding-top: 0px;
+  padding-left: 25px;
+  padding-right: 2px;
+  color: grey;
+}
+
+.logos {
+  color: grey;
+}
+
+i:hover {
+  color: black;
+}
+
+/* @media screen and (max-width: 760px) {
+  .nav-menu {
+    width: 50vw !important;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .nav-menu {
+    width: 60vw !important;
+  }
+} */
+
+@media screen and (max-width: 830px) {
+  .nav-menu {
+    left: -100%;
+    width: 65vw;
+  }
+
+  .nav-menu.active {
+    left: 0;
+    transition: 350ms;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  border: 1px soid green;
+}

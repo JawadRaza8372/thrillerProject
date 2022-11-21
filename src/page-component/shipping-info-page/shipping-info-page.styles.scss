@@ -1,0 +1,112 @@
+.shipping-info-container {
+  background-color: rgb(246, 246, 246);
+  padding-top: 120px;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  .shipping-box {
+    width: 550px;
+    padding: 10px;
+    .header-text {
+      margin-bottom: 30px;
+      h1 {
+        font-weight: 700;
+        font-size: 50px;
+        margin-bottom: 2px;
+      }
+      span {
+        font-size: 18px;
+        font-weight: 525;
+        color: grey;
+      }
+    }
+    .shipping-forms {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      span {
+        font-size: 18px;
+        font-weight: 525;
+        color: grey;
+        margin-bottom: 10px;
+      }
+      .form-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin-bottom: 10px;
+        label {
+          font-family: "Raleway", sans-serif;
+          font-size: 15px;
+          font-weight: 520;
+          color: grey;
+          position: absolute;
+          z-index: 1;
+          top: 25px;
+          left: 12px;
+          transition: 150ms ease all;
+          cursor: text;
+        }
+        .float-label {
+          font-size: 10px;
+          top: 15px;
+        }
+        input {
+          margin: 7px 0px;
+          width: 100%;
+          border: 1px solid gainsboro;
+          padding: 20px 0px 15px 10px;
+          border-radius: 3px;
+          outline: none;
+          &:focus {
+            border: 1px solid rgba(237, 28, 36, 255);
+          }
+        }
+      }
+      .dual-form {
+        display: flex;
+        .form-container {
+          display: flex;
+          justify-content: center;
+          input {
+            width: 98%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bold-placeholder {
+  input::placeholder {
+    font-weight: 700;
+  }
+}
+
+.shipping-info-footer {
+  background-color: white;
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  border-top: 2px solid gainsboro;
+  display: flex;
+  justify-content: center;
+  .button-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    @media screen and (max-width: 800px) {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .shipping-info-container {
+    padding-top: 10px;
+  }
+}

@@ -1,0 +1,143 @@
+.centerr {
+  text-align: center;
+}
+
+.footer {
+  /* position: absolute; */
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 900;
+  height: 50px;
+}
+
+.footerMain {
+  margin-top: auto;
+  height: 50px;
+  /* background-color: black;
+    color: gray; */
+  /* position: absolute;
+    top: 100%; */
+}
+
+/* .footerMain {
+  height: 100px;
+} */
+
+/* .bd {
+  border: 1px solid red;
+} */
+
+.copy_write_main {
+  padding-bottom: 20px;
+  overflow-y: scroll;
+}
+
+.copy-write {
+  color: black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+}
+
+.logo {
+  margin-left: 230px;
+  color: black;
+}
+
+.logos {
+  color: black !important;
+  font-size: xx-large;
+}
+
+.footerLogos {
+  bottom: 0;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 820px) {
+  footer {
+    margin-top: auto;
+    flex-direction: column;
+  }
+  .copy-write {
+    align-self: center;
+    padding-top: 10px;
+    margin: 5px;
+  }
+  .logo {
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .footerLogos {
+    padding-left: 350px;
+    color: white;
+  }
+}
+
+@media screen and (min-width: 3840px) {
+  .footerLogos {
+    padding-left: 350px;
+    color: black;
+  }
+}
+
+/* 
+.footerMain {
+  background-color: white;
+  color: gray;
+} */
+
+@media screen and (max-width: 481px) {
+  .copy-write {
+    color: gray;
+    position: inherit;
+  }
+  .logos {
+    color: gray !important;
+    font-size: x-large;
+    padding-top: 10px;
+  }
+  .footerMain {
+    margin-top: auto;
+    background-color: black;
+    color: gray;
+    height: 60px;
+    z-index: 950;
+    /* position: absolute;
+    top: 100%; */
+  }
+  .footer {
+    background-color: black;
+    left: 0;
+    right: 0;
+    height: fit-content;
+  }
+  .zzz {
+    z-index: 950 !important;
+    background-color: black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .copy_write_main {
+    background-color: white;
+  }
+  .footerLogos {
+    bottom: 0;
+    margin-top: 0px;
+  }
+}

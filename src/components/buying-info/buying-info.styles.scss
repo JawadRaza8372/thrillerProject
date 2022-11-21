@@ -1,0 +1,14 @@
+.buying-info-section {
+  max-width: 60vw;
+  margin-top: 70px;
+  @media screen and (max-width: 481px) {
+    margin-top: 10px;
+  }
+  .buying-info-content {
+    p {
+      font-size: 15px;
+      font-weight: 575;
+      color: black;
+    }
+  }
+}

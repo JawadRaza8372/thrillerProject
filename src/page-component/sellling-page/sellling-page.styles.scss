@@ -1,0 +1,120 @@
+.selling-page-container {
+  font-family: "Raleway", sans-serif;
+  //margin-top: 9vh;
+  position: relative;
+  top: 10%;
+  @media screen and (max-width: 830px) {
+    margin-top: 0vh;
+  }
+  .selling-content-container {
+    margin-top: 11vh;
+    font-family: "Raleway", sans-serif;
+    width: 100vw;
+    padding: 35px 70px;
+
+    margin-left: 210px;
+    @media screen and (max-width: 1100px) {
+      margin-top: 0vh;
+      margin-left: 0px;
+      padding: 35px 20px;
+    }
+
+    hr {
+      color: grey;
+      height: 0.5px;
+    }
+    .selling-section-header {
+      font-family: "Raleway", sans-serif;
+      h2 {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: rgb(40, 40, 40);
+        i {
+          font-size: 24px;
+          color: rgba(237, 28, 36, 255);
+          margin-right: 5px;
+        }
+      }
+    }
+    .selling-section-content {
+      width: 72vw;
+      position: relative;
+
+      @media screen and (max-width: 1100px) {
+        width: 82vw;
+      }
+
+      .header-line {
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 65%;
+        @media screen and (max-width: 1100px) {
+          display: none;
+        }
+      }
+      .button-container {
+        width: 50%;
+        @media screen and (max-width: 1100px) {
+          width: 100%;
+        }
+        .in-active {
+          width: 32%;
+          min-width: fit-content;
+          height: 50px;
+          background-color: white;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid gainsboro;
+          b {
+            font-family: "Raleway", sans-serif;
+            font-weight: 900;
+            font-size: 17px;
+            letter-spacing: 1px;
+          }
+        }
+        .active {
+          width: 32%;
+          min-width: fit-content;
+          height: 50px;
+          background-color: white;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid rgba(237, 28, 36, 255);
+          b {
+            font-family: "Raleway", sans-serif;
+            font-weight: 900;
+            font-size: 17px;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+    .selling-table-container {
+      width: 72vw;
+      min-height: 80vh;
+      @media screen and (max-width: 1100px) {
+        width: 82vw;
+      }
+    }
+  }
+  .menu-button {
+    display: none;
+    z-index: 100;
+
+    @media screen and (max-width: 1100px) {
+      display: block;
+      position: fixed;
+      top: 65%;
+      left: 45%;
+    }
+    @media screen and (max-width: 800px) {
+      top: 65%;
+      left: 45%;
+    }
+    @media screen and (max-width: 500px) {
+      left: 37%;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.profile-info-section {
+  min-width: 60vw;
+  max-width: 60vw;
+  margin-top: 30px;
+  @media screen and (max-width: 481) {
+    min-width: 90vw;
+    max-width: 90vw;
+  }
+  .profile-info-content {
+    display: flex;
+    @media screen and (max-width: 1100px) {
+      max-width: 70vw;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+    }
+    .user-profile-column {
+      width: 23vw;
+      @media screen and (max-width: 1100px) {
+        margin-bottom: 20px;
+        width: 50%;
+      }
+      @media screen and (max-width: 481px) {
+        margin-bottom: 20px;
+        width: 75vw;
+        margin-bottom: 0px;
+      }
+
+      .profile-content {
+        margin: 0px;
+        font-family: "Raleway", sans-serif;
+
+        h6 {
+          margin-bottom: 2px;
+          font-weight: 745;
+        }
+        i {
+          position: relative;
+          font-weight: 575;
+
+          .profile-tooltip {
+            opacity: 1 !important;
+          }
+        }
+        p {
+          font-size: 15px;
+          font-weight: 545;
+          color: grey;
+        }
+      }
+    }
+  }
+}

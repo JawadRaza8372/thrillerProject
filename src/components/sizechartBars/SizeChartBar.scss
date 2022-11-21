@@ -1,0 +1,19 @@
+.whiteBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: black;
+  background-color: white;
+}
+
+.grayBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.boldSize {
+  font-weight: 500;
+}

@@ -1,0 +1,39 @@
+.tool-tip-container {
+  min-height: fit-content;
+  min-width: fit-content;
+  text-align: center;
+  width: 290px;
+  padding: 10px 20px;
+  background-color: rgba(51, 51, 51, 255);
+  opacity: 0.9;
+  color: white;
+  font-weight: 505;
+  font-size: 12px;
+  bottom: 180%;
+  left: -35%;
+  border-radius: 4px;
+  position: absolute;
+  line-height: 1.2;
+  @media screen and (max-width: 1250px) {
+    left: 0px;
+  }
+  @media screen and (max-width: 481px) {
+    width: 200px;
+  }
+  &:after {
+    position: absolute;
+    bottom: -10%;
+    left: 0.5%;
+    width: 0;
+    border-top: 5px solid #0000;
+    border-top: 10px solid rgba(51, 51, 51, 255);
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+    @media screen and (max-width: 481px) {
+      bottom: -6%;
+    }
+  }
+}

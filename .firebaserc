@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "thriillerr",
+    "staging": "thrillerbeta",
+    "y": "thriller-demo",
+    "s": "thrillerbeta",
+    "tb": "thrillerbeta"
+  },
+  "targets": {}
+}

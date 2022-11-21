@@ -1,0 +1,21 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-mob {
+  display: none;
+}
+
+@media screen and (max-width: 830px) {
+  .home {
+    display: none;
+    overflow-y: hidden;
+  }
+  .home-mob {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+  }
+}

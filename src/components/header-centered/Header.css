@@ -1,0 +1,25 @@
+.logoCentered {
+  margin-left: 0px !important;
+}
+
+@media screen and (max-width: 830px) {
+  .navs {
+    display: none;
+  }
+  .navbrand {
+    margin-left: 0;
+  }
+  .navbar-brand {
+    width: fit-content;
+    align-items: flex-start;
+  }
+
+  .navbar-brand img {
+    margin-left: 0;
+  }
+}
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}

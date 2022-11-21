@@ -1,0 +1,49 @@
+.login-signup-container {
+    width: 97vw;
+    // height: 70vh;
+    height: 100%;
+    padding-left: 10px;
+    margin-left: 1.5vw;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    // @media screen and (max-height: 560px) {
+    //     height: 90vh
+    // }
+    .box-container {
+        width: 25% !important;
+        height: 90%;
+        min-width: 370px;
+        border: 1px solid gainsboro;
+        border-radius: 4px;
+        padding: 10px 20px;
+        margin: 10px 0;
+        @media screen and (max-width: 800px) {
+            width: 50%;
+            min-width: 300px;
+        }
+        @media screen and (max-width: 400px) {
+            width: 100%;
+            //border-bottom: none;
+        }
+        button {}
+        .in-active {
+            width: 50%;
+            height: 50px;
+            background-color: white;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid gainsboro;
+        }
+        .active {
+            width: 50%;
+            height: 50px;
+            background-color: white;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid rgba(237, 28, 36, 255);
+        }
+    }
+}

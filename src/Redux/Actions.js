@@ -1,0 +1,10 @@
+export const SAVE_USER = "SAVE_USER";
+export const SAVE_SHOE_SIZE = "SAVE_SHOE_SIZE";
+export const SAVE_DAYS = "SAVE_DAYS";
+export const SAVE_RETURNABLE = "SAVE_RETURNABLE";
+export const SAVE_CHARGES = "SAVE_CHARGES";
+export const SET_SIZE = "SET_SIZE";
+export const SET_SHOE_ID = "SET_SHOE_ID";
+export const SET_SHOE_AMMOUNT_DETAILS = "SET_SHOE_AMMOUNT_DETAILS";
+export const SET_OFFER_ORDER = "SET_OFFER_ORDER";
+export const SET_OFFER_AMMOUNT = "SET_OFFER_AMMOUNT";

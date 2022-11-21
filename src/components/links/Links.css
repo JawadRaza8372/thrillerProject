@@ -1,0 +1,36 @@
+.top-container {
+  width: 100%;
+  /* height: 260px; */
+  background-color: black;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  z-index: 950;
+}
+
+.list-container {
+  width: 100px;
+  height: 80%;
+  margin: 25px;
+}
+
+@media only screen and (max-width: 481px) {
+  .top-container {
+    z-index: 950;
+    width: 100vw;
+    height: 1230px;
+    background-color: black;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .list-container {
+    width: 100px;
+    height: 200px;
+    margin: 10px;
+  }
+}

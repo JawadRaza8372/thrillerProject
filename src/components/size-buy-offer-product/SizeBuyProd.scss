@@ -1,0 +1,13 @@
+.size-buy-prod-container {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: fit-content;
+  .divider {
+    min-height: 55px;
+    min-width: 2px;
+    align-self: center;
+    background-color: gray;
+    opacity: 0.5;
+  }
+}

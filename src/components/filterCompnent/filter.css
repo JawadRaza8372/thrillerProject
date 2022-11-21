@@ -1,0 +1,52 @@
+.filterComponent_ComponentContainer {
+}
+
+.filterComponent_ComponentHeader {
+  position: relative;
+  margin: 10px 0 20px 0;
+}
+
+.filterComponent_closeBtn {
+  position: absolute;
+  left: 30px;
+  top: 10px;
+}
+
+.filterComponent_resetBtn {
+  position: absolute;
+  color: black !important;
+  right: 30px;
+  top: 10px;
+}
+
+.filterComponent_headerDevider {
+  width: 100%;
+  height: 1px;
+  background: lightgrey;
+  /* margin: 0 10px 0 10px    ; */
+}
+
+.filterComponent_catogriesEachButton {
+  width: 44.5%;
+  height: 70px;
+  border-radius: 5px;
+  margin: 10px 10px;
+  background: #fff;
+  font-weight: 400;
+  outline: none;
+}
+
+.filterComponent_categoriesBtns {
+  padding: 20px;
+}
+
+.filterComponent_body {
+  padding: 20px;
+}
+
+/* 
+.filterComponent_StartTwoBtn {
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+} */

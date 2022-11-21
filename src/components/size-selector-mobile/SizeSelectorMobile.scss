@@ -1,0 +1,23 @@
+.size-selector-mob {
+  position: absolute;
+  top: 15%;
+  display: flex;
+  flex-direction: column;
+  width: 310px;
+  height: 360px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-width: 1.75px;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 2;
+  background-color: white;
+  .sizeboxes-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+  @media screen and (min-width: 481px) {
+    width: 330px;
+  }
+}

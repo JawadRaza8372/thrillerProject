@@ -1,0 +1,31 @@
+.custum_Map {
+    width: 32vw;
+    height: 50vh;
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 600px) {
+    .custum_Map {
+        width: 95vw;
+        height: 50vh;
+        margin-bottom: 25px;
+    }
+}
+
+
+/* 
+@media screen and (max-width: 768px) {
+    .custum_Map {
+        width: 68vw;
+        height: 40vh;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .custum_Map {
+        width: 51.5vw;
+        height: 40vh;
+        margin-bottom: 25px;
+    }
+} */

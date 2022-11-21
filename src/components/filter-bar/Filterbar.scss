@@ -1,0 +1,25 @@
+.fb-container {
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: fit-content;
+  .sec-heading {
+    font-size: 12px;
+    font-weight: 600;
+    font-size: large;
+    opacity: 0.8;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    margin-right: 10px;
+  }
+  .sec-text {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    span {
+      color: black;
+      opacity: 0.8;
+    }
+  }
+}

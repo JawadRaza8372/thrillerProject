@@ -1,0 +1,36 @@
+.setting-header-wrapper {
+  
+  hr {
+    height: 0.7px !important;
+    color: black !important;
+    opacity: 100 !important;
+  }
+  
+  @media screen and (max-width: 1100px) {
+    width: 75vw;
+  }
+  
+  .setting-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @media screen and (max-width: 1100px) {
+      width: 75vw;
+    }
+    p {
+      margin-top: 30px;
+      font-family: "Raleway", sans-serif;
+      font-weight: 545;
+      font-size: 17px;
+      color: rgb(80, 80, 80);
+      margin-bottom: 0px;
+      i {
+        margin-left: 5px;
+        position: relative;
+        font-weight: 575;
+      }
+    }
+  }
+  
+}

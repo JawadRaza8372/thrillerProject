@@ -1,0 +1,147 @@
+.px-container {
+  width: fit-content;
+  // height: fit-content;
+  // height: 28rem;
+  height: auto;
+  border-style: solid;
+  border-width: 2px;
+  border-color: whitesmoke;
+  // border-color: red;
+  // border-right: 2px solid red;
+  // border-top: 2px solid red;
+  // border-left: 4px solid red;
+  // border-bottom: 2px solid red;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  .card-btn-container {
+    width: 18rem;
+  }
+  .dtTxt {
+    font-size: small;
+  }
+  .btnWnt {
+    font-size: small;
+    border-width: 2px;
+    background-color: #ec1d25 !important;
+    border-color: #ec1d25 !important;
+    color: white !important;
+    padding: 0 !important;
+    height: 25px;
+    width: 60px;
+    text-align: center;
+  }
+  .btnWnt:active {
+    background-color: #ec1d25 !important;
+    border-color: #ec1d25 !important;
+    color: white !important;
+  }
+  .card {
+    height: auto;
+    width: 18rem;
+    // width: 38rem;
+    border: none;
+    align-items: center;
+    margin: 0px;
+    .card-title {
+      font-size: small;
+    }
+    .card-text {
+      font-size: small;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      .oldTxt {
+        text-decoration-line: line-through;
+      }
+      .newTxt {
+        color: red;
+      }
+    }
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+  .card:hover {
+    cursor: pointer;
+  }
+}
+
+.px-container:hover {
+  border-color: darkgrey;
+  // border: 2px solid darkgrey;
+}
+
+.large {
+  padding-top: 20px;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-bottom: 30px;
+}
+
+@media screen and (min-width: 600px) and (max-width: 710px) {
+  .large {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 495px) and (max-width: 600px) {
+  .large {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+  .px-container {
+    width: 15rem;
+    height: auto;
+    .card-btn-container {
+      width: 15rem;
+    }
+    .card {
+      height: auto;
+      width: 13rem;
+      border: none;
+      align-items: center;
+      margin-left: 15px;
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 495px) {
+  .large {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+  .px-container {
+    width: 50%;
+    // width: 100%;
+    height: auto;
+    // background: green;
+    .card-btn-container {
+      width: 9.5rem;
+    }
+    .card {
+      height: auto;
+      width: 9.5rem;
+      border: none;
+      align-items: center;
+      margin-left: 12px;
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+}

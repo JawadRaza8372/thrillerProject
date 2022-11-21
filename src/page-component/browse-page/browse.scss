@@ -1,0 +1,41 @@
+.primary-container {
+  display: flex;
+  flex-direction: column;
+  // padding-bottom: 20px;
+  .filterOff {
+    max-width: 75rem;
+    margin-right: 80px;
+  }
+  .filterOn {
+    margin-right: 64px;
+  }
+}
+
+.menu-button {
+  display: none;
+  z-index: 100;
+  @media screen and (max-width: 830px) {
+    display: block;
+    position: fixed;
+    top: 85%;
+    left: 45%;
+  }
+  @media screen and (max-width: 800px) {
+    top: 85%;
+    left: 45%;
+  }
+  @media screen and (max-width: 500px) {
+    left: 37%;
+  }
+}
+
+.browse_FilterBtn {
+  // position: relative;
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .browse_FilterBtn {
+    display: block;
+  }
+}

@@ -1,0 +1,71 @@
+.security-page-container {
+  height: fit-content;
+  //margin-top: 9vh;
+  position: relative;
+  top: 10%;
+  min-height: 100vh;
+  @media screen and (max-width: 830px) {
+    margin-top: 0vh;
+  }
+  @media screen and (max-width: 500px) {
+    margin-top: 0vh;
+  }
+  .security-content-container {
+    margin-top: 11vh;
+    margin-left: 270px;
+    padding: 35px 70px;
+
+    font-family: "Raleway", sans-serif;
+
+    @media screen and (max-width: 1100px) {
+      margin-left: 10px;
+      padding: 0px 35px;
+    }
+    @media screen and (max-width: 500px) {
+      margin-left: 0px;
+      padding: 0px 15px;
+    }
+    h2 {
+      font-weight: 945;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .security-page-text {
+      max-width: 750px;
+      margin-bottom: 7px;
+      p {
+        font-family: "Raleway", sans-serif;
+        font-weight: 745;
+        font-size: 15px;
+        margin-bottom: 2px;
+      }
+      span {
+        color: rgba(131, 131, 131, 255);
+        font-size: 14px;
+        font-weight: 575;
+      }
+    }
+  }
+
+  .menu-button {
+    display: none;
+    z-index: 100;
+
+    @media screen and (max-width: 1100px) {
+      display: block;
+      position: fixed;
+      top: 70%;
+      left: 45%;
+    }
+    @media screen and (max-width: 800px) {
+      top: 65%;
+      left: 45%;
+    }
+    @media screen and (max-width: 500px) {
+      left: 37%;
+    }
+    @media screen and (max-width: 350px) {
+      top: 75%;
+    }
+  }
+}

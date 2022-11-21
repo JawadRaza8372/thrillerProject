@@ -1,0 +1,119 @@
+.shoe-page {
+  width: 100vw;
+  height: 100%;
+  //background-color: black;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  .shoe-content {
+    display: flex;
+    width: 100%;
+    height: 78vh;
+    margin-top: 10px;
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      height: 80%;
+    }
+
+    .shoe-image {
+      padding: 30px;
+      height: 100%;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      //background-color: yellow;
+      @media screen and (max-width: 800px) {
+        width: 100%;
+      }
+      img {
+        margin-left: 30px;
+        max-width: 90%;
+        max-height: 80%;
+        height: auto;
+        width: auto;
+        @media screen and (max-width: 800px) {
+          margin-left: 5px;
+        }
+      }
+    }
+    .shoe-info {
+      text-align: center;
+      font-family: "Raleway", sans-serif;
+      h1 {
+        margin: 0px;
+        font-size: 29px;
+        font-weight: 700;
+      }
+      p {
+        margin-bottom: 30px;
+        font-size: 17px;
+        font-weight: 400;
+      }
+    }
+    .shoe-size {
+      background-color: #fafafa;
+      height: 100%;
+      width: 50%;
+      padding: 25px;
+      @media screen and (max-width: 800px) {
+        width: 100%;
+      }
+    }
+  }
+  hr {
+    margin: 0px;
+    color: #fafafa;
+    height: 0.5px;
+    @media screen and (max-width: 800px) {
+      height: 0px;
+    }
+  }
+  .button-parent {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    position: fixed;
+    bottom: 2px;
+    //background-color: blue;
+    @media screen and (max-width: 800px) {
+      position: relative;
+    }
+    .void-div {
+      width: 60%;
+      @media screen and (max-width: 800px) {
+        width: 0%;
+        position: relative;
+      }
+    }
+    .control-buttons {
+      width: 40%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      //padding-left: 50px;
+      margin-left: 50px;
+      CustomButton {
+        margin: 10px 20px 10px 20px;
+      }
+      @media screen and (max-width: 800px) {
+        width: 100%;
+        margin-left: 0px;
+        justify-content: space-evenly;
+      }
+      @media screen and (max-width: 350px) {
+        margin-left: 0px;
+        justify-content: space-evenly;
+      }
+    }
+  }
+
+  .bottomFAQ {
+    margin-left: 20px;
+    a {
+      color: black !important;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.billing-setting-container {
+  background-color: rgb(241, 241, 241);
+  padding-top: 120px;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  .billing-box {
+    width: 550px;
+    padding: 10px;
+    .header-text {
+      margin-bottom: 50px;
+      h1 {
+        font-weight: 700;
+        font-size: 50px;
+        margin-bottom: 2px;
+        @media screen and (max-width: 800px) {
+          font-weight: 700;
+          font-size: 20px;
+        }
+      }
+      span {
+        font-size: 18px;
+        font-weight: 575;
+        color: grey;
+        @media screen and (max-width: 800px) {
+          font-size: 16px;
+        }
+      }
+    }
+    .billing-forms {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      button {
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+        font-weight: 525;
+        img {
+          width: 80px;
+          height: 80px;
+          margin-right: 20px;
+        }
+        .smaller-logo {
+          width: 50px;
+          height: 50px;
+        }
+        height: 70px;
+        width: 400px;
+        background-color: white;
+        outline: none;
+        border: 1px solid gainsboro;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        @media screen and (max-width: 480px) {
+          width: 90%;
+          padding: 0 10vw;
+        }
+      }
+    }
+    .form-container {
+      width: 77%;
+      height: 100%;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      padding-left: 10px;
+      margin-bottom: 20px;
+      label {
+        font-family: "Raleway", sans-serif;
+        font-size: 15px;
+        font-weight: 520;
+        color: grey;
+        position: absolute;
+        z-index: 1;
+        top: 20px;
+        left: 17px;
+        transition: 150ms ease all;
+        cursor: text;
+      }
+      .float-label {
+        font-size: 10px;
+        top: 12px;
+      }
+      input {
+        width: 100%;
+        border: 1px solid gainsboro;
+        padding: 25px 0px 12px 10px;
+        border-radius: 3px;
+        outline: none;
+        &:focus {
+          border: 1px solid rgba(237, 28, 36, 255);
+        }
+        @media screen and (max-width: 481px) {
+          padding-top: 25px;
+        }
+      }
+      @media screen and (max-width: 481px) {
+        margin-left: 9px;
+        margin-bottom: 20px;
+        width: 90%;
+      }
+    }
+  }
+}
+
+.billing-setting-footer {
+  background-color: white;
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  border-top: 2px solid gainsboro;
+  display: flex;
+  justify-content: center;
+  .button-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    @media screen and (max-width: 800px) {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .payOutMobileView {
+    // text-align: center;
+    padding: 0 0 0 8vw;
+  }
+  .billing-setting-container {
+    padding-top: 10px;
+  }
+}

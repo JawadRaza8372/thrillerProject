@@ -1,0 +1,50 @@
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+.pending-selling-container {
+  margin-top: 10px;
+  width: 100%;
+  .search-container {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    input {
+      font-family: "Raleway", sans-serif;
+
+      width: 100%;
+      padding: 6px;
+      border: 1px solid gainsboro;
+      padding: 10px 0px 10px 45px;
+      border-radius: 3px;
+      outline: none;
+      @include placeholder {
+        font-size: 15px;
+        font-weight: 520;
+        color: grey;
+        opacity: 0.8;
+        @media screen and (max-width: 500px) {
+          font-size: 13px;
+        }
+      }
+    }
+    i {
+      position: absolute;
+      z-index: 1;
+      top: 16px;
+      left: 10px;
+      color: #3a4b3c;
+    }
+  }
+}

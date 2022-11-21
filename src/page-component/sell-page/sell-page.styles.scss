@@ -1,0 +1,118 @@
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+.container {
+  height: 70vh;
+  width: 850px;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 130px;
+  flex-direction: column;
+  overflow-x: hidden;
+
+  @media screen and (max-width: 481px) {
+    margin-top: 80px;
+    height: 68vh;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 400px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 390px;
+  }
+  @media screen and (max-width: 410px) {
+    width: 290px;
+  }
+  .secondary-container {
+    width: 100%;
+    .text-container {
+      margin-bottom: 30px;
+      h3 {
+        font-size: 25px;
+        font-weight: 760;
+        text-align: center;
+        margin: 0px;
+        font-family: "Raleway", sans-serif;
+      }
+      span {
+        font-size: 14px;
+        font-weight: 645;
+        color: gray;
+        letter-spacing: 0.25px;
+        @media screen and (max-width: 500px) {
+          font-size: 13px;
+        }
+        @media screen and (max-width: 410px) {
+          font-size: 11px;
+        }
+      }
+    }
+    hr {
+      color: grey;
+      height: 0.5px;
+    }
+  }
+  .search-container-sell {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    z-index: 950;
+
+    input {
+      font-family: "Raleway", sans-serif;
+      width: 100%;
+      padding: 6px;
+      border: 1px solid gainsboro;
+      padding: 10px 0px 10px 45px;
+      border-radius: 3px;
+      outline: none;
+      font-size: 15px;
+
+      @include placeholder {
+        font-size: 15px;
+        font-weight: 520;
+        color: grey;
+        opacity: 0.8;
+        @media screen and (max-width: 500px) {
+          font-size: 13px;
+        }
+      }
+    }
+    i {
+      position: absolute;
+      z-index: 1;
+      top: 16px;
+      left: 10px;
+      color: #3a4b3c;
+    }
+  }
+}
+
+@media screen and (min-width: 481) and (max-width: 1024px) {
+  .container {
+    margin-top: 200px;
+  }
+}
+
+.bottomx {
+  height: 3vh;
+  bottom: 0;
+  left: 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  @media screen and (min-width: 481) {
+  }
+}

@@ -1,0 +1,21 @@
+.payout-info-section {
+  max-width: 60vw;
+  min-width: 60vw;
+  margin-top: 70px;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 481px) {
+    max-width: 70vw;
+    min-width: 70vw;
+    margin-top: 10px;
+  }
+  .payout-info-content {
+    display: flex;
+    flex-direction: column;
+    p {
+      font-size: 15px;
+      font-weight: 575;
+      color: black;
+    }
+  }
+}

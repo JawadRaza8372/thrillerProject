@@ -1,0 +1,72 @@
+.favourite-table-container {
+  .table-header {
+    display: flex;
+    @media screen and (max-width: 481px) {
+      width: 100%;
+    }
+    .heading-title {
+      //font-family: "Raleway", sans-serif;
+      font-family: "Roboto", sans-serif;
+      width: 20%;
+      padding-left: 10px;
+      border-bottom: 2px solid gainsboro;
+      border-right: 1px solid gainsboro;
+      font-weight: 600;
+      font-size: 15.5px;
+
+      @media screen and (max-width: 1000px) {
+        padding-left: 10px;
+        width: 40%;
+      }
+      @media screen and (max-width: 481px) {
+        width: 25%;
+        margin-bottom: 0;
+      }
+
+      &:first-child {
+        width: 40%;
+        @media screen and (max-width: 1000px) {
+          width: 60%;
+        }
+        @media screen and (max-width: 500px) {
+          width: 75%;
+        }
+      }
+    }
+
+    .heading-titlex {
+      //font-family: "Raleway", sans-serif;
+      font-family: "Roboto", sans-serif;
+      width: 100%;
+      padding-left: 10px;
+      border-bottom: 2px solid gainsboro;
+      font-weight: 600;
+      font-size: 15.5px;
+
+      @media screen and (max-width: 1000px) {
+        padding-left: 10px;
+        width: 40%;
+      }
+      @media screen and (max-width: 481px) {
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      &:first-child {
+        width: 40%;
+        @media screen and (max-width: 1000px) {
+          width: 60%;
+        }
+        @media screen and (max-width: 481px) {
+          width: 100%;
+        }
+      }
+    }
+
+    .tier-two {
+      @media screen and (max-width: 1000px) {
+        display: none;
+      }
+    }
+  }
+}

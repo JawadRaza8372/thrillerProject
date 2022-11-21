@@ -1,0 +1,49 @@
+.buy-order-container {
+  height: 75px;
+  width: 175px;
+  border-radius: 15px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  .link-edit {
+    padding: 0;
+    margin: 0;
+    color: black;
+    .buy-offer-part {
+      // opacity: 0.55;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      padding-right: 10px;
+      font-weight: 600;
+      .buy-part {
+        font-size: 25px;
+        align-self: flex-start;
+      }
+    }
+  }
+  .price-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 12px;
+    font-weight: 600;
+    // opacity: 0.75;
+  }
+  .divider {
+    min-height: 55px;
+    min-width: 2px;
+    align-self: center;
+    background-color: gray;
+    opacity: 0.9;
+  }
+}

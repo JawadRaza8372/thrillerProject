@@ -1,0 +1,22 @@
+.filterBtn_buttonContainer {
+  position: relative;
+  /* top: 220px; */
+  width: 100%;
+  top: 79vh;
+  /* background: red; */
+  /* margin: 0 auto; */
+  z-index: 900;
+  padding: 0 38%;
+  /* text-align: center; */
+}
+
+.filterBtn_buttonContainerBtn_item {
+  z-index: 900;
+  position: fixed;
+  padding: 10px 30px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  background: black;
+  color: aliceblue;
+}

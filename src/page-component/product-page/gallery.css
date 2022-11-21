@@ -1,0 +1,18 @@
+@media screen and (max-width: 481px) {
+  .mobile-gallery-popup {
+    margin: 30px auto;
+    padding: 0 !important;
+  }
+  .mb-inner {
+    width: 75px !important;
+    margin: 0 auto;
+  }
+}
+
+.inner-my {
+  display: block !important;
+}
+
+.inner-my img {
+  margin: 0 !important;
+}

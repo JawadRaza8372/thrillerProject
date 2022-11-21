@@ -1,0 +1,75 @@
+.main-container {
+  width: 100%;
+  height: 75vh;
+  margin-top: 30px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  /* border: 2px solid red; */
+}
+
+.shopbtn {
+  position: absolute;
+  border-radius: 40px;
+  border-color: white;
+  background: whitesmoke;
+  border-width: 2px;
+  width: 200px;
+  height: 55px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: medium;
+  font-weight: bold;
+  top: 58%;
+  left: 7%;
+}
+
+.shoetxt {
+  position: absolute;
+  top: 43%;
+  left: 7%;
+  color: grey;
+  font-size: 3rem;
+  font-family: "proxima-nova", sans-serif !important;
+  font-weight: 100 !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .shoetxt {
+    top: 10%;
+    font-size: 2rem;
+    margin-right: 10px;
+  }
+  .shopbtn {
+    top: 30%;
+    width: 150px;
+    height: 45px;
+  }
+  .main-container {
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .shoetxt {
+    display: none;
+  }
+  .shopbtn {
+    display: none;
+  }
+  .main-container {
+    height: 50vh;
+    margin-top: 0px;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    background-image: url("https://thrillerme.com/cdn/j1.png") !important;
+    background-position: right center !important;
+  }
+}

@@ -1,0 +1,37 @@
+.selling-pending-table-container {
+  .table-header {
+    display: flex;
+    .heading-title {
+      font-family: "Raleway", sans-serif;
+      width: 20%;
+      padding-left: 10px;
+      border-bottom: 2px solid gainsboro;
+      border-right: 1px solid gainsboro;
+      font-weight: 600;
+      font-size: 15.5px;
+
+      @media screen and (max-width: 1000px) {
+        padding-left: 10px;
+        width: 40%;
+      }
+      @media screen and (max-width: 500px) {
+        width: 25%;
+      }
+
+      &:first-child {
+        width: 40%;
+        @media screen and (max-width: 1000px) {
+          width: 60%;
+        }
+        @media screen and (max-width: 500px) {
+          width: 75%;
+        }
+      }
+    }
+    .tier-two {
+      @media screen and (max-width: 1000px) {
+        display: none;
+      }
+    }
+  }
+}
