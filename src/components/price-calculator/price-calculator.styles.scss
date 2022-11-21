@@ -103,8 +103,8 @@
 }
 .returnable-container {
   display: flex;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: 5px 0px;
   .check-button {
     margin-left: 14px;
