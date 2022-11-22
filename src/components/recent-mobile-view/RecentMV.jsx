@@ -54,12 +54,12 @@ const RecentMV = ({ name, tag }) => {
 
   return (
     <div className="recent-mv-con" style={{ marginBottom: "20px" }}>
-      <div class="d-flex flex-row justify-content-space-between">
+      <div className="d-flex flex-row justify-content-space-between">
         <div className="txt">{tag}</div>
         <div>
           <i
             onClick={() => setLocalStorage(name)}
-            class="fas fa-arrow-right mr-4"
+            className="fas fa-arrow-right mr-4"
           ></i>
         </div>
       </div>

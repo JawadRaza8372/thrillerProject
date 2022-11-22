@@ -10,13 +10,13 @@ const Footer = () => {
       <Row justify="center" align="middle" className="centerr footer">
         <Col xs={12} sm={12} md={12} lg={12} xl={10} className="footerLogos">
           <a href="https://www.facebook.com/ThrillerMiddleEast/?__tn__=-UC*F">
-            <i class="fab fa-facebook-square fa-2x mx-3 logos"></i>
+            <i className="fab fa-facebook-square fa-2x mx-3 logos"></i>
           </a>
           <a href="https://twitter.com/THRILLER_ME">
-            <i class="fab fa-twitter fa-2x mx-3 logos"></i>
+            <i className="fab fa-twitter fa-2x mx-3 logos"></i>
           </a>
           <a href="https://www.instagram.com/thrillerme/?hl=en">
-            <i class="fab fa-instagram-square fa-2x mx-3 logos"></i>
+            <i className="fab fa-instagram-square fa-2x mx-3 logos"></i>
           </a>
         </Col>
         <Col className="copy_write_main" xs={12} sm={12} md={12} lg={12} xl={2}>

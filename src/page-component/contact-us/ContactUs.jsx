@@ -573,7 +573,7 @@ const ContactUs = () => {
               {data.files.map((file, index) => (
                 <div className={classes.documentsViewer} key="index">
                   <div>
-                    <i class="fa fa-paperclip" aria-hidden="true"></i>{" "}
+                    <i className="fa fa-paperclip" aria-hidden="true"></i>{" "}
                     <span>
                       {file.name.length > 25
                         ? `${file.name.slice(0, 25)}...`

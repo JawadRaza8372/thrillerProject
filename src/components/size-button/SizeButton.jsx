@@ -55,7 +55,7 @@ const SizeButton = ({
     browse: (
       <Fragment>
         <div
-          class="btn btn-primary szBtnPro"
+          className="btn btn-primary szBtnPro"
           onClick={() => {
             sortBySize(size);
             // history.push("buy");
@@ -68,7 +68,7 @@ const SizeButton = ({
     product: (
       <Fragment>
         <div
-          class="btn btn-primary szBtn"
+          className="btn btn-primary szBtn"
           style={{
             textAlign: "center",
           }}

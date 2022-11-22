@@ -337,7 +337,7 @@ export const SettingItem = ({
             className="editIcon"
             onClick={() => setEditModal(!showEditModal)}
           >
-            <i class="fas fa-edit"></i>
+            <i className="fas fa-edit"></i>
           </div>
           {showEditModal ? (
             <EditOffering
@@ -360,7 +360,7 @@ export const SettingItem = ({
             style={{ display: "flex", flexDirection: "column" }}
           >
             <div
-              class="fas fa-edit"
+              className="fas fa-edit"
               style={{ height: "30px", alignSelf: "center" }}
               onClick={() => setEditModal(!showEditModal)}
             ></div>

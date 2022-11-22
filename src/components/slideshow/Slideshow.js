@@ -34,9 +34,9 @@ const Slideshow = () => {
       }}
       // style={{ backgroundImage: { banner } }}
     >
-      <div class="h1 shoetxt"> {banner.title}</div>
+      <div className="h1 shoetxt"> {banner.title}</div>
       <Link to={`/browse/0`}>
-        <button type="button" class="btn btn-light btn-lg shopbtn">
+        <button type="button" className="btn btn-light btn-lg shopbtn">
           {banner.buttonText}
         </button>
       </Link>

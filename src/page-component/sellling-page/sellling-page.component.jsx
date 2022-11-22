@@ -86,7 +86,7 @@ export const SellingPage = () => {
       <div className="selling-content-container">
         <div className="selling-section-header">
           <h2>
-            <i class="fas fa-chart-bar"></i>
+            <i className="fas fa-chart-bar"></i>
             {"  "} SALES
           </h2>
         </div>

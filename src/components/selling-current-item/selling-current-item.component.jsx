@@ -177,7 +177,7 @@ export const SellingCurrentItem = ({
             className="editIcon"
             onClick={() => setEditModal(!showEditModal)}
           >
-            <i class="fas fa-edit"></i>
+            <i className="fas fa-edit"></i>
           </div>
         ) : null}
         {/* {widthScreen <= 481 && showEditModal ? (
@@ -202,7 +202,7 @@ export const SellingCurrentItem = ({
 
       {widthScreen > 481 ? (
         <div className="editIcon" onClick={() => setEditModal(!showEditModal)}>
-          <i class="fas fa-edit"></i>
+          <i className="fas fa-edit"></i>
         </div>
       ) : null}
       {widthScreen > 481 && showEditModal ? (

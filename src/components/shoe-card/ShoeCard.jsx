@@ -24,7 +24,7 @@ const ShoeCard = ({
       style={showCount == 1 ? { width: "100%" } : null}
       className={filter ? "px-container  " : "px-container large"}
     >
-      <div class="d-flex flex-row justify-content-between card-btn-container">
+      <div className="d-flex flex-row justify-content-between card-btn-container">
         <div style={{ paddingLeft: "15px", paddingTop: "3px" }}>
           {date !== null && date !== undefined ? (
             <span className="dtTxt">{date.split("-")[0]}</span>
@@ -36,7 +36,7 @@ const ShoeCard = ({
         </div>
         {tag.indexOf("New") > -1 && (
           <div style={{ paddingRight: "10px", paddingTop: "5px" }}>
-            <div class="btn btn-primary btnWnt">New</div>
+            <div className="btn btn-primary btnWnt">New</div>
           </div>
         )}
       </div>

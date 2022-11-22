@@ -79,20 +79,20 @@ const SizeChart = ({
         >
           {!showSizes ? (
             <div
-              class="align-self-start pl-1"
+              className="align-self-start pl-1"
               onClick={() => setSizes(!showSizes)}
               style={{ cursor: "pointer" }}
             >
               <span>Size Chart</span>
-              <i class="fas fa-chevron-right fa-xs"></i>
+              <i className="fas fa-chevron-right fa-xs"></i>
             </div>
           ) : (
             <div
-              class="align-self-start pl-1"
+              className="align-self-start pl-1"
               onClick={() => setSizes(!showSizes)}
               style={{ cursor: "pointer" }}
             >
-              <i class="fas fa-chevron-left fa-xs"></i>
+              <i className="fas fa-chevron-left fa-xs"></i>
               <span>Back</span>
             </div>
           )}

@@ -7,29 +7,28 @@ import { HistorySelling } from "../history-selling/history-selling.component";
 
 import SHOE_DATA from "../../temporary-data/shoe-data";
 
-
 export const SellingSection = () => {
   const [selectedSection, toggleSelectedSection] = useState("Current");
   const [pendingShoeData, appendPendingData] = useState([]);
-  const [currentShoeData, popShoeData]=useState(SHOE_DATA);
+  const [currentShoeData, popShoeData] = useState(SHOE_DATA);
 
-  const appendPendingShoeData=(shoeData)=>{
-    appendPendingData([...pendingShoeData,shoeData])
-    popShoeData(currentShoeData.filter(currentShoe=>{
-      if(currentShoe && currentShoe.id==shoeData.id){
-        
-      }
-      else{
-        return currentShoe;
-      }
-    }));
-  }
+  const appendPendingShoeData = (shoeData) => {
+    appendPendingData([...pendingShoeData, shoeData]);
+    popShoeData(
+      currentShoeData.filter((currentShoe) => {
+        if (currentShoe && currentShoe.id == shoeData.id) {
+        } else {
+          return currentShoe;
+        }
+      })
+    );
+  };
 
   return (
     <div className="selling-container">
       <div className="selling-section-header">
         <h2>
-          <i class="fas fa-chart-bar"></i>
+          <i className="fas fa-chart-bar"></i>
           {"  "} SALES
         </h2>
       </div>
@@ -77,7 +76,12 @@ export const SellingSection = () => {
       <div className="selling-table-container">
         {
           {
-            Current: <CurrentSelling currentShoeData={currentShoeData} appendPendingShoeData={appendPendingShoeData} />,
+            Current: (
+              <CurrentSelling
+                currentShoeData={currentShoeData}
+                appendPendingShoeData={appendPendingShoeData}
+              />
+            ),
             Pending: <PendingSelling pendingShoeData={pendingShoeData} />,
             History: <HistorySelling />,
           }[selectedSection]

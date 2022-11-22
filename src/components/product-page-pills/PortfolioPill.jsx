@@ -50,10 +50,10 @@ const PortfolioPill = (props) => {
       <button
         data-tip="We will inform you <br> when the price changes"
         type="button"
-        class="btn rounded-pill shrbtn shrbtn2"
+        className="btn rounded-pill shrbtn shrbtn2"
         onClick={() => saveFav(props.shoe_id, props.favSize)}
       >
-        <i class="fas fa-heart"></i>
+        <i className="fas fa-heart"></i>
         &nbsp; <span>{props.text}</span>
         <ReactTooltip
           place="bottom"

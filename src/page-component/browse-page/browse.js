@@ -422,7 +422,7 @@ const Browse = (props) => {
                   setFilterComponent={setFilterComponent}
                 />
               </div>
-              <div class="d-flex flex-row justify-content-center">
+              <div className="d-flex flex-row justify-content-center">
                 {filter ? (
                   <FilterSection
                     setProducts={setProducts}
@@ -430,7 +430,7 @@ const Browse = (props) => {
                   />
                 ) : null}
                 <div
-                  class="d-flex flex-row justify-content-center flex-wrap mb-4 "
+                  className="d-flex flex-row justify-content-center flex-wrap mb-4 "
                   // style={{ border: "1px solid red" }}
                   // style={{ paddingRight: "13px" }}
                 >

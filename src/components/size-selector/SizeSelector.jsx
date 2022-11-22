@@ -10,18 +10,18 @@ const SizeSelector = ({ setProducts, setFilterComponent, filterComponent }) => {
   const [chart, setChart] = useState(false);
 
   return (
-    <div class="d-flex flex-column justify-content-start">
+    <div className="d-flex flex-column justify-content-start">
       <div>
-        <div class="f-container">
+        <div className="f-container">
           <Link
             onClick={() => setChart(!chart)}
             style={{ color: "black", fontSize: "17px", opacity: "0.8" }}
           >
             <span>US Sizes </span>
             {chart ? (
-              <i class="fas fa-chevron-down fa-xs"></i>
+              <i className="fas fa-chevron-down fa-xs"></i>
             ) : (
-              <i class="fas fa-chevron-right fa-xs"></i>
+              <i className="fas fa-chevron-right fa-xs"></i>
             )}
           </Link>
         </div>

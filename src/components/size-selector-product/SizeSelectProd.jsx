@@ -25,7 +25,7 @@ const SizeSelectProd = ({ size, minimal, parentCallBack, setFavSize }) => {
             {sizeNo}
           </div>
           <div onClick={() => showChart(!chart)}>
-            <i class="fas fa-chevron-down fa-xs pl-1"></i>
+            <i className="fas fa-chevron-down fa-xs pl-1"></i>
           </div>
         </div>
       </div>

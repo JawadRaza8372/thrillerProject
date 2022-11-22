@@ -70,18 +70,18 @@ export const HelpPage = () => {
             <img src={shoe} alt="logo"></img>
           </div>
 
-          <div class="empty-space"></div>
+          <div className="empty-space"></div>
 
           <div className="text-container">
-            <p class="d-flex flex-column justify-content-center">
+            <p className="d-flex flex-column justify-content-center">
               <strong>Visibility</strong>
               <span>Understand true market price</span>
             </p>
-            <p class="d-flex flex-column justify-content-center">
+            <p className="d-flex flex-column justify-content-center">
               <strong>Transparency</strong>
               <span>Buy and Sell smarter than ever</span>
             </p>
-            <p class="d-flex flex-column justify-content-center">
+            <p className="d-flex flex-column justify-content-center">
               <strong>Power</strong>
               <span>Bid or Buy, easily and efficiently</span>
             </p>

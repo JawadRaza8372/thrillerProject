@@ -16,8 +16,7 @@ import ReactPixel from "react-facebook-pixel";
 
 import shoe from "../../temporary-data/shoeee.jpg";
 import { Helmet } from "react-helmet";
-import ReactGA from 'react-ga';
-
+import ReactGA from "react-ga";
 
 import SwiperCore, {
   Navigation,
@@ -134,7 +133,7 @@ const Product = (props) => {
         autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
         debug: true, // enable logs
       };
-     
+
       ReactPixel.init("3098857153686189", advancedMatching, options);
 
       ReactPixel.pageView(); // For tracking page view
@@ -154,26 +153,22 @@ const Product = (props) => {
         contents: [{ id: data.shoe_id, quantity: 1 }],
       });
 
-     
-
       setProduct(data);
       GetLowsetAsk(defaultSize);
       localStorage.setItem("favSize", defaultSize);
 
-      try{
-        ReactGA.initialize('UA-198989119-1', {
-          debug: true
+      try {
+        ReactGA.initialize("UA-198989119-1", {
+          debug: true,
         });
         ReactGA.event({
           category: "Add to cart",
           action: "Add to cart",
           label: data.sku_number,
-        })
-      }
-      catch(ex){
+        });
+      } catch (ex) {
         console.log("$$$$error", ex);
       }
-    
 
       //gtag("event", "add_to_cart", data);
     });
@@ -187,13 +182,11 @@ const Product = (props) => {
       .catch((err) => {
         console.error("imgs error", err);
       });
-      
   }
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-
-    ReactGA.initialize('UA-198989119-1');
+    ReactGA.initialize("UA-198989119-1");
     Load();
     axios
       .get(`https://api.thrillerme.com/styles/galleryselected/${id}`)
@@ -301,7 +294,7 @@ const Product = (props) => {
         </div>
       </div>
 
-      <div class="prod-top-contain">
+      <div className="prod-top-contain">
         <div className="conText blink">
           <span>CONDITION:</span>
           <span style={{ color: "#ec1d25" }}> NEW</span>
@@ -345,7 +338,7 @@ const Product = (props) => {
           )}
         </div>
         <div className="prod-img-container">
-          <div class="d-flex flex-column align-self-center prod-img-text-container">
+          <div className="d-flex flex-column align-self-center prod-img-text-container">
             <span>{product.name}</span>
           </div>
           <div
@@ -391,7 +384,7 @@ const Product = (props) => {
         </div>
       </div>
       <div className="mob-prod-container">
-        <div class="mob-prod-top-contain">
+        <div className="mob-prod-top-contain">
           <div className="conText blink">
             <span>CONDITION:</span>
             <span style={{ color: "#ec1d25" }}> NEW</span>
@@ -438,7 +431,7 @@ const Product = (props) => {
           )}
         </div>
         <div className="prod-img-container">
-          {/* <div class="d-flex flex-column align-self-center prod-img-text-container">
+          {/* <div className="d-flex flex-column align-self-center prod-img-text-container">
             <span>{product.name}</span>
           </div> */}
           <div
@@ -471,7 +464,7 @@ const Product = (props) => {
           </div>
         </div>
 
-        <div class="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center">
           <div>
             <span>{product.name}</span>
           </div>
@@ -479,11 +472,11 @@ const Product = (props) => {
             <span>{product.colorway}</span>
           </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
           <PillContainer shoe_id={id} />
         </div>
         {showSizeChart ? (
-          <div class="d-flex justify-content-center align-item-center">
+          <div className="d-flex justify-content-center align-item-center">
             <SizeSelectorMobile
               showSizeChart={showSizeChart}
               setSizeChart={setSizeChart}

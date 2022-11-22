@@ -39,13 +39,13 @@ const SizeSelectorMobile = ({
 
   return (
     <div className="size-selector-mob">
-      <div class="d-flex flex-row justify-content-between">
+      <div className="d-flex flex-row justify-content-between">
         <span style={{ fontSize: "19px", margin: "7px", fontWeight: "600" }}>
           Select A US Men's Size
         </span>
         <i
           onClick={() => setSizeChart(false)}
-          class="fas fa-times fa-2x"
+          className="fas fa-times fa-2x"
           style={{ margin: "10px", marginBottom: "0px", marginTop: "5px" }}
         ></i>
       </div>

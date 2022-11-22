@@ -69,20 +69,20 @@ const SharePill = ({ text }) => {
     <div>
       <button
         type="button"
-        class="btn rounded-pill shrbtn "
+        className="btn rounded-pill shrbtn "
         onClick={onOpenModal}
       >
-        <i class="fas fa-arrow-up"></i>
+        <i className="fas fa-arrow-up"></i>
         &nbsp;{text}
       </button>
       <Modal open={open} onClose={onCloseModal} center>
         <h2 className="mt-5"></h2>
         <div className="d-flex justify-content-center">
           <div className="sharePill_modalIcon mx-3">
-            <i onClick={openTabFB} class="fab fa-facebook-f"></i>
+            <i onClick={openTabFB} className="fab fa-facebook-f"></i>
           </div>
           <div className="sharePill_modalIcon mx-3">
-            <i onClick={onSecondOpenModal} class="fab fa-whatsapp"></i>
+            <i onClick={onSecondOpenModal} className="fab fa-whatsapp"></i>
             {
               <Modal open={secondOpen} onClose={onSecondCloseModal} center>
                 <div className="sharePillInputText my-3 mx-3">
@@ -108,7 +108,7 @@ const SharePill = ({ text }) => {
             }
           </div>
           <div onClick={openTabTwt} className="sharePill_modalIcon mx-3">
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </div>
           {/* <div
             onClick={() => {
@@ -117,7 +117,7 @@ const SharePill = ({ text }) => {
             }}
             className="sharePill_modalIcon mx-3"
           >
-            <i class="far fa-copy"></i>
+            <i className="far fa-copy"></i>
           </div> */}
         </div>
       </Modal>
