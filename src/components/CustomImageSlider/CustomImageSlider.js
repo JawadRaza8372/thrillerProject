@@ -3,7 +3,9 @@ import "./CustomImageSlider.scss";
 function CustomImageSlider({ currentimg, allimgs, onClickFunction }) {
   return (
     <div className="customesSliderContainer">
-      <img className="mainImage" src={currentimg} alt={currentimg} />
+      <div className="mainImageContainer">
+        <img className="mainImage" src={currentimg} alt={currentimg} />
+      </div>
       <div className="imagesThumbnailContainer">
         {allimgs &&
           allimgs.map((image, index) => {

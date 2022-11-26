@@ -6,14 +6,19 @@
   justify-content: space-evenly;
   flex-direction: column;
   padding-left: 10px;
+  background-color: red;
   padding-right: 10px;
-  .mainImage {
-    width: 95%;
+  .mainImageContainer {
     height: auto;
-    max-width: none !important;
-    max-height: none !important;
-    margin-bottom: 20px;
-    object-fit: contain;
+    width: 95%;
+    .mainImage {
+      width: 100%;
+      height: auto;
+      max-width: none !important;
+      max-height: none !important;
+      margin-bottom: 20px;
+      object-fit: contain;
+    }
   }
   .imagesThumbnailContainer {
     width: 95%;
