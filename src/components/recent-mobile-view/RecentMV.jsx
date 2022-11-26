@@ -77,8 +77,8 @@ const RecentMV = ({ name, tag }) => {
       >
         {slider.map((elem, index) => {
           const newname = makingValidName(elem.name);
-          const newskunumb = makingValidName(elem.sku_number);
-          const newshoeid = makingValidName(elem.shoe_id);
+          const newskunumb = makingValidName(`${elem.sku_number}`);
+          const newshoeid = makingValidName(`${elem.shoe_id}`);
 
           return (
             <SwiperSlide key={index}>

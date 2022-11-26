@@ -110,8 +110,8 @@ const Suggestion = (props) => {
         >
           {similarProducts.map((elem, index) => {
             const newname = makingValidName(elem.name);
-            const newskunumb = makingValidName(elem.sku_number);
-            const newshoeid = makingValidName(elem.shoe_id);
+            const newskunumb = makingValidName(`${elem.sku_number}`);
+            const newshoeid = makingValidName(`${elem.shoe_id}`);
 
             return (
               //  to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}

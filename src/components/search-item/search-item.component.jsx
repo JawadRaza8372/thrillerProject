@@ -100,8 +100,8 @@ export const SearchItem = ({
 
   var widthScreen = getWindowDimensions();
   const newname = makingValidName(shoe.name);
-  const newskunumb = makingValidName(shoe.sku_number);
-  const newshoeid = makingValidName(shoe.shoe_id);
+  const newskunumb = makingValidName(`${shoe.sku_number}`);
+  const newshoeid = makingValidName(`${shoe.shoe_id}`);
   return (
     <Link
       to={{

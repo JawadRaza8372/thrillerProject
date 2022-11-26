@@ -23,8 +23,8 @@ const ShoeCard = ({
   // }
   // //console.log(showCount);
   const newname = makingValidName(fulldata.name);
-  const newskunumb = makingValidName(fulldata.sku_number);
-  const newshoeid = makingValidName(fulldata.shoe_id);
+  const newskunumb = makingValidName(`${fulldata.sku_number}`);
+  const newshoeid = makingValidName(`${fulldata.shoe_id}`);
 
   return (
     <div

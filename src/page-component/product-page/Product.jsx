@@ -240,9 +240,8 @@ const Product = (props) => {
     });
   }
   const newname = makingValidName(product.name);
-  const newskunumb = makingValidName(product.sku_number);
-  const newshoeid = makingValidName(product.shoe_id);
-
+  const newskunumb = makingValidName(`${product.sku_number}`);
+  const newshoeid = makingValidName(`${product.shoe_id}`);
   window.scrollTo(0, 0);
   return (
     <div className="product-page-container">

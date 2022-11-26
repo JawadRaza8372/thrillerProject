@@ -74,7 +74,7 @@ export const validateUserInfo = (userInfo) => {
   return /^[a-zA-Z0-9\s,'-/]*$/.test(userInfo);
 };
 export const makingValidName = (name) => {
-  const strname = name.toString().replace(/[^a-z\d\s]+/gi, "");
+  const strname = name.replace(/[^a-z\d\s]+/gi, "");
   if (/\s$/.test(strname)) {
     return strname.slice(0, -1).replace(/\s+/g, "-").toLowerCase();
   } else {

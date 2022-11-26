@@ -5,12 +5,16 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import axios from "axios";
+import { makingValidName } from "../../Constants/Functions";
 
 export const ImagePopup = (props) => {
   console.log("imagepopup wali file", props);
+  const newname = makingValidName(props.fulldata.name);
+  const newskunumb = makingValidName(`${props.fulldata.sku_number}`);
+  const newshoeid = makingValidName(`${props.fulldata.shoe_id}`);
   return (
     <Link
-      to={`/product/${props.shoeId}`}
+      to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
       style={{ fontSize: 18, fontWeight: "600", color: "#000" }}
     >
       {props.image && (
@@ -79,14 +83,12 @@ const ImageGalleryModal = ({ isOpen, onClose, images, count, setCount }) => {
 
         <div className="image-gallery">
           <img src={images[count].url} alt="Bed" />
-          {showUrlPopup && (
-            <ImagePopup
-              image={popupData.cover_image}
-              title={popupData.name}
-              shoeId={popupData.shoe_id}
-              fulldata={popupData}
-            />
-          )}
+          <ImagePopup
+            image={popupData.cover_image}
+            title={popupData.name}
+            shoeId={popupData.shoe_id}
+            fulldata={popupData}
+          />
           <div className="marker-container">
             <img
               src={arrow}
