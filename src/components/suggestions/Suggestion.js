@@ -14,6 +14,7 @@ import arrowright from "../../temporary-data/arrow-right.png";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
+import { makingValidName } from "../../Constants/Functions";
 
 const responsive = {
   superLargeDesktop: {
@@ -109,23 +110,31 @@ const Suggestion = (props) => {
           customRightArrow={<CustomLeftArrow />}
           customLeftArrow={<CustomRightArrow />}
         >
-          {similarProducts.map((elem, index) => (
-            //  to={`/product/${elem.shoe_id}`}
-            <Link key={index}>
-              <Card>
-                <Card.Img
-                  style={{ height: "300px", width: "300px" }}
-                  class="m-0 p-0"
-                  variant="top"
-                  src={elem.cover_image}
-                  onClick={() => redirect(elem.shoe_id)}
-                />
-                <Card.Body className="cBody" class="m-0">
-                  <Card.Title className="cTxt">{elem.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            </Link>
-          ))}
+          {similarProducts.map((elem, index) => {
+            const newname = makingValidName(elem.name);
+            const newskunumb = makingValidName(elem.sku_number);
+            const newshoeid = makingValidName(elem.shoe_id);
+
+            return (
+              //  to={`/product/${elem.shoe_id}`}
+              <Link key={index}>
+                <Card>
+                  <Card.Img
+                    style={{ height: "300px", width: "300px" }}
+                    class="m-0 p-0"
+                    variant="top"
+                    src={elem.cover_image}
+                    onClick={() =>
+                      redirect(`${newname}_sku_${newskunumb}_id_${newshoeid}`)
+                    }
+                  />
+                  <Card.Body className="cBody" class="m-0">
+                    <Card.Title className="cTxt">{elem.name}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </Link>
+            );
+          })}
 
           {/* <Card>
             <Card.Img class="m-0 p-0" variant="top" src={cardImg2} />
