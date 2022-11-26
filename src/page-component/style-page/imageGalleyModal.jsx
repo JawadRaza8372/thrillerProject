@@ -9,7 +9,7 @@ import { makingValidName } from "../../Constants/Functions";
 
 export const ImagePopup = (props) => {
   console.log("imagepopup wali file", props);
-  const newname = makingValidName(props.fulldata.name);
+  const newname = makingValidName(`${props.fulldata.name}`);
   const newskunumb = makingValidName(`${props.fulldata.sku_number}`);
   const newshoeid = makingValidName(`${props.fulldata.shoe_id}`);
   return (

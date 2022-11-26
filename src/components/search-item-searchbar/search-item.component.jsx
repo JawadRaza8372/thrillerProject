@@ -14,7 +14,7 @@ export const SearchItem = ({
   const { sku_number, name, detail, colorway } = shoe;
   const history = useHistory();
   const location = useLocation();
-  const newname = makingValidName(shoe.name);
+  const newname = makingValidName(`${shoe.name}`);
   const newskunumb = makingValidName(`${shoe.sku_number}`);
   const newshoeid = makingValidName(`${shoe.shoe_id}`);
 

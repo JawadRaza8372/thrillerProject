@@ -99,7 +99,7 @@ export const SearchItem = ({
   }
 
   var widthScreen = getWindowDimensions();
-  const newname = makingValidName(shoe.name);
+  const newname = makingValidName(`${shoe.name}`);
   const newskunumb = makingValidName(`${shoe.sku_number}`);
   const newshoeid = makingValidName(`${shoe.shoe_id}`);
   return (

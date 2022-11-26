@@ -106,7 +106,7 @@ const Recentcs = ({ name, tag }) => {
           customRightArrow={<CustomRightArrow />}
         >
           {slider.map((elem, index) => {
-            const newname = makingValidName(elem.name);
+            const newname = makingValidName(`${elem.name}`);
             const newskunumb = makingValidName(`${elem.sku_number}`);
             const newshoeid = makingValidName(`${elem.shoe_id}`);
             return (

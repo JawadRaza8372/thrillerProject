@@ -239,7 +239,7 @@ const Product = (props) => {
       }
     });
   }
-  const newname = makingValidName(product.name);
+  const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
   window.scrollTo(0, 0);

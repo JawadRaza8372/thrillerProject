@@ -22,7 +22,7 @@ const ShoeCard = ({
   //   console.log("shoecard ma checking k liy rakha hy", fulldata);
   // }
   // //console.log(showCount);
-  const newname = makingValidName(fulldata.name);
+  const newname = makingValidName(`${fulldata.name}`);
   const newskunumb = makingValidName(`${fulldata.sku_number}`);
   const newshoeid = makingValidName(`${fulldata.shoe_id}`);
 

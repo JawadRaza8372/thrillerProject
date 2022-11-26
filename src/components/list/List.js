@@ -27,7 +27,7 @@ const List = ({ title, collection_id }) => {
       <div className="h6">{title}</div>
       <ul className="listULs">
         {items.map((item, index) => {
-          const newname = makingValidName(item.name);
+          const newname = makingValidName(`${item.name}`);
           const newskunumb = makingValidName(`${item.sku_number}`);
           const newshoeid = makingValidName(`${item.shoe_id}`);
 
