@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { Fragment } from "react";
 import SizeSelectorMobile from "../size-selector-mobile/SizeSelectorMobile";
-
+import { makingValidName } from "../../Constants/Functions";
 export const SearchItem = ({
   refreshComponent,
   setRefreshCompenent,
@@ -19,10 +19,8 @@ export const SearchItem = ({
   linkCheck,
   history,
 }) => {
-  const { sku_number, name, detail, colorway } = shoe;
-  if (shoe) {
-    console.log("searchitem wala simple wala", shoe);
-  }
+  const { sku_number, name, detail, colorway, shoe_id } = shoe;
+
   const History = useHistory();
   const location = useLocation();
   const [sizechart, setSizechartFav] = useState(false);
@@ -101,14 +99,21 @@ export const SearchItem = ({
   }
 
   var widthScreen = getWindowDimensions();
-
+  const newname = makingValidName(shoe.name);
+  const newskunumb = makingValidName(shoe.sku_number);
+  const newshoeid = makingValidName(shoe.shoe_id);
   return (
     <Link
       to={{
         pathname: "",
         state: { shoe: { shoe } },
       }}
-      onClick={() => saveFav(shoe.shoe_id, refreshComponent)}
+      onClick={() =>
+        saveFav(
+          `${newname}_sku_${newskunumb}_id_${newshoeid}`,
+          refreshComponent
+        )
+      }
     >
       <div className="search-item">
         <img src={shoe.cover_image} className="item-image" alt="item-img" />
