@@ -107,9 +107,11 @@ const Recentcs = ({ name, tag }) => {
         >
           {slider.map((elem, index) => {
             const newname = makingValidName(elem.name);
+            const newskunumb = makingValidName(elem.sku_number);
+            const newshoeid = makingValidName(elem.shoe_id);
             return (
               <Link
-                to={`/product/${newname}_sku_${elem.sku_number}_id_${elem.shoe_id}`}
+                to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
                 key={index}
               >
                 <Card>

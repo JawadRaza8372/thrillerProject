@@ -77,11 +77,13 @@ const RecentMV = ({ name, tag }) => {
       >
         {slider.map((elem, index) => {
           const newname = makingValidName(elem.name);
+          const newskunumb = makingValidName(elem.sku_number);
+          const newshoeid = makingValidName(elem.shoe_id);
 
           return (
             <SwiperSlide key={index}>
               <Link
-                to={`/product/${newname}_sku_${elem.sku_number}_id_${elem.shoe_id}`}
+                to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
               >
                 <Card style={{ marginBottom: "35px" }}>
                   <Card.Img
