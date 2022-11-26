@@ -48,6 +48,7 @@ import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 import ImagePopup from "./gallery-popup";
 import { makingValidName } from "../../Constants/Functions";
+import CustomImageSlider from "../../components/CustomImageSlider/CustomImageSlider";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -67,13 +68,20 @@ const Product = (props) => {
   if (usr !== null && usr !== undefined) sz = usr.defaultSize;
   const [product, setProduct] = useState({});
   const [images, setImages] = useState([]);
+  const [pimagesTotal, setpimagesTotal] = useState([]);
+  const [currentimg, setcurrentimg] = useState(pimagesTotal[0]);
+
   const [defaultSize, setDefaultSize] = useState(sz);
   const [lowestAsk, setLowestAsk] = useState(0);
   const [priceMobile, setPriceMobile] = useState(0);
   const [showSizeChart, setSizeChart] = useState(false);
   const [favSize, setFavSize] = useState(sz);
-  const [coverImage, setCoverImage] = useState(null);
-  const [galleryImages, setGalleryImages] = useState(null);
+  const [coverImage, setCoverImage] = useState("https://picsum.photos/200/300");
+  const [galleryImages, setGalleryImages] = useState([
+    "https://picsum.photos/200/300",
+    "https://picsum.photos/200/300",
+  ]);
+
   if (product.length > 0) {
     console.log("product wali file ma first index", product[0]);
   }
@@ -187,6 +195,9 @@ const Product = (props) => {
       .get(`https://api.thrillerme.com/shoesImages/${id}`)
       .then((res) => {
         console.log("img", res.data);
+        res.data.map((dat) =>
+          setpimagesTotal((preval) => [...preval, dat.imgURL])
+        );
         setImages(res.data);
       })
       .catch((err) => {
@@ -314,7 +325,14 @@ const Product = (props) => {
         <PillContainer shoe_id={id} favSize={favSize} />
       </div>
       <div className="prod-container">
-        <div className="gallery-div" style={{ position: "absolute" }}>
+        <div
+          className="gallery-div"
+          style={{
+            position: "absolute",
+            background: "red",
+            border: "3px solid red",
+          }}
+        >
           {coverImage && galleryImages && (
             <ImagePopup
               image={coverImage}
@@ -354,6 +372,11 @@ const Product = (props) => {
           <div className="d-flex flex-column align-self-center prod-img-text-container">
             <span>{product.name}</span>
           </div>
+          <CustomImageSlider
+            currentimg={currentimg}
+            allimgs={pimagesTotal}
+            onClickFunction={(newimg) => setcurrentimg(newimg)}
+          />
           <div
             className="shoeImg"
             style={{
