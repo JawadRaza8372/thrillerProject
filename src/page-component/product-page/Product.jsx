@@ -312,12 +312,13 @@ const Product = (props) => {
       </div>
       <div className="prod-container">
         <div className="gallery-div" style={{ position: "absolute" }}>
-          {coverImage && galleryImages && (
+          {coverImage && (
             <ImagePopup
               image={coverImage}
               shoe_id={product.shoe_id}
               title={product.name}
               galleryImages={galleryImages}
+              fulldata={product}
             />
           )}
         </div>
@@ -424,18 +425,13 @@ const Product = (props) => {
           }}
         ></div> */}
         <div className="gallery-div">
-          {/* <ImagePopup
-            image={coverImage}
-            shoe_id={product.shoe_id}
-            title={product.name}
-            galleryImages={galleryImages}
-          /> */}
           {coverImage && galleryImages && (
             <ImagePopup
               image={coverImage}
               shoe_id={product.shoe_id}
               title={product.name}
               galleryImages={galleryImages}
+              fulldata={product}
             />
           )}
         </div>

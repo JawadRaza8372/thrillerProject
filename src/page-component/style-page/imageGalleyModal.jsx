@@ -84,6 +84,7 @@ const ImageGalleryModal = ({ isOpen, onClose, images, count, setCount }) => {
               image={popupData.cover_image}
               title={popupData.name}
               shoeId={popupData.shoe_id}
+              fulldata={popupData}
             />
           )}
           <div className="marker-container">

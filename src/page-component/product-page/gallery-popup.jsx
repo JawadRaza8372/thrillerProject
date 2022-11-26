@@ -64,7 +64,7 @@ const ImagePopup = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [galleryImages, setGalleryImages] = useState([]);
   const [count, setCount] = useState(0);
-
+  console.log("gallery popup", props);
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
 
