@@ -105,7 +105,7 @@ const Recentcs = ({ name, tag }) => {
           customRightArrow={<CustomRightArrow />}
         >
           {slider.map((elem, index) => {
-            const newname = elem.endsWith(" ")
+            const newname = /\s$/.test(elem)
               ? elem.slice(0, -1).replace(/\s+/g, "-").toLowerCase()
               : elem.replace(/\s+/g, "-").toLowerCase();
             return (
