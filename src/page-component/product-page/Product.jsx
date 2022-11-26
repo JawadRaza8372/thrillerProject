@@ -47,6 +47,7 @@ import SizeSelectorMobile from "../../components/size-selector-mobile/SizeSelect
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 import ImagePopup from "./gallery-popup";
+import { makingValidName } from "../../Constants/Functions";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -238,6 +239,9 @@ const Product = (props) => {
       }
     });
   }
+  const newname = makingValidName(product.name);
+  const newskunumb = makingValidName(product.sku_number);
+  const newshoeid = makingValidName(product.shoe_id);
 
   window.scrollTo(0, 0);
   return (
@@ -251,7 +255,7 @@ const Product = (props) => {
           <meta property="og:image" content={product.cover_image} />
           <meta
             property="og:url"
-            content={`https://thrillerme.com/product/${product.shoe_id}`}
+            content={`https://thrillerme.com/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
           />
           <meta
             property="product:retailer_item_id"
@@ -312,7 +316,7 @@ const Product = (props) => {
       </div>
       <div className="prod-container">
         <div className="gallery-div" style={{ position: "absolute" }}>
-          {coverImage && (
+          {coverImage && galleryImages && (
             <ImagePopup
               image={coverImage}
               shoe_id={product.shoe_id}

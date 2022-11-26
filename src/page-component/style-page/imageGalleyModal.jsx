@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import axios from "axios";
 
 export const ImagePopup = (props) => {
-  console.log("image popup wali file ma props", props);
+  console.log("imagepopup wali file", props);
   return (
     <Link
       to={`/product/${props.shoeId}`}
