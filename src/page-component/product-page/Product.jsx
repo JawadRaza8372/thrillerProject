@@ -431,7 +431,7 @@ const Product = (props) => {
             />
           )}
         </div> */}
-        {/* <div className="prod-img-container">
+        <div className="prod-img-container">
           {/* <div className="d-flex flex-column align-self-center prod-img-text-container">
             <span>{product.name}</span>
           </div> 
@@ -462,8 +462,15 @@ const Product = (props) => {
                 );
               })}
             </Swiper>
-          </div>
-        </div> */}
+          </div>*/}
+          <CustomImageSlider
+            currentimg={currentimg}
+            allimgs={pimagesTotal}
+            onClickFunction={(newimg) => {
+              setcurrentimg(newimg);
+            }}
+          />
+        </div>
 
         <div className="d-flex flex-column align-items-center">
           <div>
