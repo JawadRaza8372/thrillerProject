@@ -95,9 +95,7 @@ const Suggestion = (props) => {
   useEffect(() => {
     Load();
   }, [Load]);
-  if (similarProducts.length > 0) {
-    console.log("suggestion wali file ma array ka index", similarProducts[0]);
-  }
+
   return (
     <div style={{ marginBottom: "20px" }} className="suggestions">
       <div className="sug-txt customFont">You may also like</div>
@@ -129,9 +127,7 @@ const Suggestion = (props) => {
                     src={elem.cover_image}
                   />
                   <Card.Body className="cBody" class="m-0">
-                    <Card.Title className="cTxt">
-                      checking {elem.name}
-                    </Card.Title>
+                    <Card.Title className="cTxt">{elem.name}</Card.Title>
                   </Card.Body>
                 </Card>
               </Link>
