@@ -375,6 +375,7 @@ const Product = (props) => {
               setcurrentimg(newimg);
             }}
           />
+          <div className="prod-text">{product.summary}</div>
         </div>
         <div className="prod-size-container">
           {/* <span>AED 1400 |</span>
@@ -505,7 +506,6 @@ const Product = (props) => {
         </div>
       </div>
 
-      <div className="prod-text">{product.summary}</div>
       <div className="prod-page-suggest">
         <Suggestion
           collection_id={id}
