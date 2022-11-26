@@ -105,7 +105,12 @@ const Recentcs = ({ name, tag }) => {
           customRightArrow={<CustomRightArrow />}
         >
           {slider.map((elem, index) => (
-            <Link to={`/product/${elem.shoe_id}`} key={index}>
+            <Link
+              to={`/product/${elem.name
+                .replace(/\s+/g, "-")
+                .toLowerCase()}_sku_${elem.shoe_id}_id_${elem.shoe_id}`}
+              key={index}
+            >
               <Card>
                 <Card.Img
                   class="m-0 p-0"
