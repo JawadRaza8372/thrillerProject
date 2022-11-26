@@ -505,9 +505,7 @@ const Product = (props) => {
         </div>
       </div>
 
-      <div className="prod-text" style={{ border: "2px solid blue" }}>
-        {product.summary}
-      </div>
+      <div className="prod-text">{product.summary}</div>
       <div className="prod-page-suggest">
         <Suggestion
           collection_id={id}
