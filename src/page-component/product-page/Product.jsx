@@ -51,8 +51,10 @@ import ImagePopup from "./gallery-popup";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Product = (props) => {
-  var id = useParams().id;
-  var pid = useParams().id;
+  var rawid = useParams().id;
+  var findid = rawid.newid.split("_");
+  const index = findid.length - 1;
+  var id = findid[index].replace("-", " ");
   console.log("==========================");
   console.log("checking id", id);
   console.log("==========================");

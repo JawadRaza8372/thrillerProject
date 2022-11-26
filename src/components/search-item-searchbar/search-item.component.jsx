@@ -3,6 +3,7 @@ import "./search-item.styles.scss";
 import axios from "axios";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
+import { makingValidName } from "../../Constants/Functions";
 
 export const SearchItem = ({
   searchOpen,
@@ -13,9 +14,10 @@ export const SearchItem = ({
   const { sku_number, name, detail, colorway } = shoe;
   const history = useHistory();
   const location = useLocation();
-  if (shoe) {
-    console.log("searchitem wala searchbar wala", shoe);
-  }
+  const newname = makingValidName(shoe.name);
+  const newskunumb = makingValidName(shoe.sku_number);
+  const newshoeid = makingValidName(shoe.shoe_id);
+
   useEffect(() => {}, []);
 
   function saveFav(val, refreshComponent) {
@@ -55,7 +57,12 @@ export const SearchItem = ({
         pathname: "",
         state: { shoe: { shoe } },
       }}
-      onClick={() => saveFav(shoe.shoe_id, refreshComponent)}
+      onClick={() =>
+        saveFav(
+          `${newname}_sku_${newskunumb}_id_${newshoeid}`,
+          refreshComponent
+        )
+      }
     >
       <div className="search-item">
         <img

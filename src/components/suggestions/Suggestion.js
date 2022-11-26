@@ -114,7 +114,7 @@ const Suggestion = (props) => {
             const newshoeid = makingValidName(elem.shoe_id);
 
             return (
-              //  to={`/product/${elem.shoe_id}`}
+              //  to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
               <Link
                 to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
                 key={index}
