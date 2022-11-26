@@ -117,19 +117,21 @@ const Suggestion = (props) => {
 
             return (
               //  to={`/product/${elem.shoe_id}`}
-              <Link key={index}>
+              <Link
+                to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
+                key={index}
+              >
                 <Card>
                   <Card.Img
                     style={{ height: "300px", width: "300px" }}
                     class="m-0 p-0"
                     variant="top"
                     src={elem.cover_image}
-                    onClick={() =>
-                      redirect(`${newname}_sku_${newskunumb}_id_${newshoeid}`)
-                    }
                   />
                   <Card.Body className="cBody" class="m-0">
-                    <Card.Title className="cTxt">{elem.name}</Card.Title>
+                    <Card.Title className="cTxt">
+                      checking {elem.name}
+                    </Card.Title>
                   </Card.Body>
                 </Card>
               </Link>
