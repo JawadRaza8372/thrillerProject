@@ -106,9 +106,11 @@ const Recentcs = ({ name, tag }) => {
         >
           {slider.map((elem, index) => (
             <Link
-              to={`/product/${elem.name
-                .replace(/\s+/g, "-")
-                .toLowerCase()}_sku_${elem.shoe_id}_id_${elem.shoe_id}`}
+              to={`/product/${
+                elem.endsWith(" ")
+                  ? elem.slice(0, -1).replace(/\s+/g, "-").toLowerCase()
+                  : elem.replace(/\s+/g, "-").toLowerCase()
+              }_sku_${elem.shoe_id}_id_${elem.shoe_id}`}
               key={index}
             >
               <Card>
