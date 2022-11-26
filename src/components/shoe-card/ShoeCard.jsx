@@ -3,6 +3,7 @@ import { Row, Card } from "react-bootstrap";
 import "./ShoeCard.scss";
 import { useHistory, withRouter } from "react-router-dom";
 import { Grid } from "@material-ui/core";
+import { makingValidName } from "../../Constants/Functions";
 
 const ShoeCard = ({
   id,
@@ -17,10 +18,13 @@ const ShoeCard = ({
   fulldata,
 }) => {
   const history = useHistory();
-  if (fulldata) {
-    console.log("shoecard ma checking k liy rakha hy", fulldata);
-  }
+  // if (fulldata) {
+  //   console.log("shoecard ma checking k liy rakha hy", fulldata);
+  // }
   // //console.log(showCount);
+  const newname = makingValidName(fulldata.name);
+  const newskunumb = makingValidName(fulldata.sku_number);
+  const newshoeid = makingValidName(fulldata.shoe_id);
 
   return (
     <div
@@ -46,7 +50,9 @@ const ShoeCard = ({
       <div style={{ width: "fit-content" }}>
         <Card
           onClick={() => {
-            history.push(`/product/${id}`);
+            history.push(
+              `/product/${newname}_sku_${newskunumb}_id_${newshoeid}`
+            );
           }}
         >
           <Card.Img variant="top" src={img} />
