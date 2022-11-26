@@ -104,27 +104,28 @@ const Recentcs = ({ name, tag }) => {
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
         >
-          {slider.map((elem, index) => (
-            <Link
-              to={`/product/${
-                elem.endsWith(" ")
-                  ? elem.slice(0, -1).replace(/\s+/g, "-").toLowerCase()
-                  : elem.replace(/\s+/g, "-").toLowerCase()
-              }_sku_${elem.shoe_id}_id_${elem.shoe_id}`}
-              key={index}
-            >
-              <Card>
-                <Card.Img
-                  class="m-0 p-0"
-                  variant="top"
-                  src={elem.cover_image}
-                />
-                <Card.Body className="cBody" class="m-0">
-                  <Card.Title className="cTxt">{elem.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            </Link>
-          ))}
+          {slider.map((elem, index) => {
+            const newname = elem.endsWith(" ")
+              ? elem.slice(0, -1).replace(/\s+/g, "-").toLowerCase()
+              : elem.replace(/\s+/g, "-").toLowerCase();
+            return (
+              <Link
+                to={`/product/${newname}_sku_${elem.shoe_id}_id_${elem.shoe_id}`}
+                key={index}
+              >
+                <Card>
+                  <Card.Img
+                    class="m-0 p-0"
+                    variant="top"
+                    src={elem.cover_image}
+                  />
+                  <Card.Body className="cBody" class="m-0">
+                    <Card.Title className="cTxt">{elem.name}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </Link>
+            );
+          })}
         </Carousel>
       </div>
     </div>
