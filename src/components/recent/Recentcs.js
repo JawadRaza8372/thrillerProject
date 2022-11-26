@@ -90,9 +90,9 @@ const Recentcs = ({ name, tag }) => {
       ////console.log(name, slider);
     });
   }
-  if (slider.length > 0) {
-    console.log("recentcs wala first index name slider hy arry ka", slider[0]);
-  }
+  // if (slider.length > 0) {
+  //   console.log("recentcs wala first index name slider hy arry ka", slider[0]);
+  // }
   return (
     <div style={{ marginBottom: "20px" }}>
       <div className="txt">{tag}</div>
@@ -109,7 +109,7 @@ const Recentcs = ({ name, tag }) => {
             const newname = makingValidName(elem.name);
             return (
               <Link
-                to={`/product/${newname}_sku_${elem.shoe_id}_id_${elem.shoe_id}`}
+                to={`/product/${newname}_sku_${elem.sku_number}_id_${elem.shoe_id}`}
                 key={index}
               >
                 <Card>

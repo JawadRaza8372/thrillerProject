@@ -24,6 +24,7 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import { Link, useHistory } from "react-router-dom";
+import { makingValidName } from "../../Constants/Functions";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
@@ -51,9 +52,9 @@ const RecentMV = ({ name, tag }) => {
     localStorage.setItem("selectedSection", JSON.stringify(name));
     history.push("/browse/0");
   };
-  if (slider.length > 0) {
-    console.log("recentMv wala first index name slider hy arry ka", slider[0]);
-  }
+  // if (slider.length > 0) {
+  //   console.log("recentMv wala first index name slider hy arry ka", slider[0]);
+  // }
   return (
     <div className="recent-mv-con" style={{ marginBottom: "20px" }}>
       <div className="d-flex flex-row justify-content-space-between">
@@ -74,22 +75,28 @@ const RecentMV = ({ name, tag }) => {
         onSwiper={(swiper) => {}}
         mousewheel={true}
       >
-        {slider.map((elem, index) => (
-          <SwiperSlide key={index}>
-            <Link to={`/product/${elem.shoe_id}`}>
-              <Card style={{ marginBottom: "35px" }}>
-                <Card.Img
-                  class="m-0 p-0"
-                  variant="top"
-                  src={elem.cover_image}
-                />
-                <Card.Body className="cBody" class="m-0">
-                  <Card.Title className="cTxt">{elem.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            </Link>
-          </SwiperSlide>
-        ))}
+        {slider.map((elem, index) => {
+          const newname = makingValidName(elem.name);
+
+          return (
+            <SwiperSlide key={index}>
+              <Link
+                to={`/product/${newname}_sku_${elem.sku_number}_id_${elem.shoe_id}`}
+              >
+                <Card style={{ marginBottom: "35px" }}>
+                  <Card.Img
+                    class="m-0 p-0"
+                    variant="top"
+                    src={elem.cover_image}
+                  />
+                  <Card.Body className="cBody" class="m-0">
+                    <Card.Title className="cTxt">{elem.name}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
