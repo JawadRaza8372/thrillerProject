@@ -76,11 +76,8 @@ const Product = (props) => {
   const [priceMobile, setPriceMobile] = useState(0);
   const [showSizeChart, setSizeChart] = useState(false);
   const [favSize, setFavSize] = useState(sz);
-  const [coverImage, setCoverImage] = useState("https://picsum.photos/200/300");
-  const [galleryImages, setGalleryImages] = useState([
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/200/300",
-  ]);
+  const [coverImage, setCoverImage] = useState(null);
+  const [galleryImages, setGalleryImages] = useState(null);
 
   if (product.length > 0) {
     console.log("product wali file ma first index", product[0]);
@@ -195,9 +192,10 @@ const Product = (props) => {
       .get(`https://api.thrillerme.com/shoesImages/${id}`)
       .then((res) => {
         console.log("img", res.data);
-        res.data.map((dat) =>
-          setpimagesTotal((preval) => [...preval, dat.imgURL])
-        );
+        setcurrentimg(res.data[0].imgURL);
+        res.data.map((dat) => {
+          setpimagesTotal((preval) => [...preval, dat.imgURL]);
+        });
         setImages(res.data);
       })
       .catch((err) => {
@@ -329,8 +327,6 @@ const Product = (props) => {
           className="gallery-div"
           style={{
             position: "absolute",
-            background: "red",
-            border: "3px solid red",
           }}
         >
           {coverImage && galleryImages && (
@@ -375,36 +371,10 @@ const Product = (props) => {
           <CustomImageSlider
             currentimg={currentimg}
             allimgs={pimagesTotal}
-            onClickFunction={(newimg) => setcurrentimg(newimg)}
-          />
-          <div
-            className="shoeImg"
-            style={{
-              height: "100%",
-              width: "100%",
-              // backgroundImage: `url(${shoe})`,
+            onClickFunction={(newimg) => {
+              setcurrentimg(newimg);
             }}
-          >
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={1}
-              scrollbar={{ draggable: true }}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
-              // mousewheel={true}
-            >
-              <SwiperSlide>
-                <img src={product.cover_image} alt={product.sku_number}></img>
-              </SwiperSlide>
-              {images.map(function (name, index) {
-                return (
-                  <SwiperSlide key={index}>
-                    <img src={name.imgURL} alt={name.imgURL}></img>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
+          />
         </div>
         <div className="prod-size-container">
           {/* <span>AED 1400 |</span>
@@ -450,7 +420,7 @@ const Product = (props) => {
             backgroundImage: `url(${product.cover_image})`,
           }}
         ></div> */}
-        <div className="gallery-div">
+        {/* <div className="gallery-div">
           {coverImage && galleryImages && (
             <ImagePopup
               image={coverImage}
@@ -460,11 +430,11 @@ const Product = (props) => {
               fulldata={product}
             />
           )}
-        </div>
-        <div className="prod-img-container">
+        </div> */}
+        {/* <div className="prod-img-container">
           {/* <div className="d-flex flex-column align-self-center prod-img-text-container">
             <span>{product.name}</span>
-          </div> */}
+          </div> 
           <div
             className="shoeImg"
             style={{
@@ -493,7 +463,7 @@ const Product = (props) => {
               })}
             </Swiper>
           </div>
-        </div>
+        </div> */}
 
         <div className="d-flex flex-column align-items-center">
           <div>
