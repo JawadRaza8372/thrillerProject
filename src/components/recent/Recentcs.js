@@ -89,7 +89,9 @@ const Recentcs = ({ name, tag }) => {
       ////console.log(name, slider);
     });
   }
-
+  if (slider.length > 0) {
+    console.log("recentcs wala first index name slider hy arry ka", slider[0]);
+  }
   return (
     <div style={{ marginBottom: "20px" }}>
       <div className="txt">{tag}</div>

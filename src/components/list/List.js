@@ -18,6 +18,9 @@ const List = ({ title, collection_id }) => {
         console.error(error);
       });
   }, [collection_id]);
+  if (items.length > 0) {
+    console.log("list.js wali file ma items array", items[0]);
+  }
 
   return (
     <div>

@@ -20,6 +20,9 @@ export const SearchItem = ({
   history,
 }) => {
   const { sku_number, name, detail, colorway } = shoe;
+  if (shoe) {
+    console.log("searchitem wala simple wala", shoe);
+  }
   const History = useHistory();
   const location = useLocation();
   const [sizechart, setSizechartFav] = useState(false);

@@ -13,7 +13,9 @@ export const SearchItem = ({
   const { sku_number, name, detail, colorway } = shoe;
   const history = useHistory();
   const location = useLocation();
-
+  if (shoe) {
+    console.log("searchitem wala searchbar wala", shoe);
+  }
   useEffect(() => {}, []);
 
   function saveFav(val, refreshComponent) {

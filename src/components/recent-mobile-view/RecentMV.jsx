@@ -51,7 +51,9 @@ const RecentMV = ({ name, tag }) => {
     localStorage.setItem("selectedSection", JSON.stringify(name));
     history.push("/browse/0");
   };
-
+  if (slider.length > 0) {
+    console.log("recentMv wala first index name slider hy arry ka", slider[0]);
+  }
   return (
     <div className="recent-mv-con" style={{ marginBottom: "20px" }}>
       <div className="d-flex flex-row justify-content-space-between">

@@ -448,6 +448,7 @@ const Browse = (props) => {
                         tag={elem.tag}
                         showCount={products.length}
                         key={index}
+                        fulldata={elem}
                       />
                     ))}
 

@@ -14,9 +14,12 @@ const ShoeCard = ({
   filter,
   tag,
   showCount,
+  fulldata,
 }) => {
   const history = useHistory();
-
+  if (fulldata) {
+    console.log("shoecard ma checking k liy rakha hy", fulldata);
+  }
   // //console.log(showCount);
 
   return (

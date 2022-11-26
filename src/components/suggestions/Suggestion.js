@@ -94,7 +94,9 @@ const Suggestion = (props) => {
   useEffect(() => {
     Load();
   }, [Load]);
-
+  if (similarProducts.length > 0) {
+    console.log("suggestion wali file ma array ka index", similarProducts[0]);
+  }
   return (
     <div style={{ marginBottom: "20px" }} className="suggestions">
       <div className="sug-txt customFont">You may also like</div>

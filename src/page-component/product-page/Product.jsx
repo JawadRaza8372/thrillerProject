@@ -52,6 +52,11 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Product = (props) => {
   var id = useParams().id;
+  var pid = useParams().id;
+  console.log("==========================");
+  console.log("checking id", id);
+  console.log("==========================");
+
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
   var usr = JSON.parse(localStorage.getItem("user"));
@@ -66,7 +71,9 @@ const Product = (props) => {
   const [favSize, setFavSize] = useState(sz);
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
-
+  if (product.length > 0) {
+    console.log("product wali file ma first index", product[0]);
+  }
   function Load() {
     console.log("Loading....");
     //props.setID(id);
