@@ -52,7 +52,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Product = (props) => {
   var rawid = useParams().id;
-  var findid = rawid.newid.split("_");
+  var findid = rawid.split("_");
   const index = findid.length - 1;
   var id = findid[index].replace("-", " ");
   console.log("==========================");
