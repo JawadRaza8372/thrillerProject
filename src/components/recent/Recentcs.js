@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { makingValidName } from "../../Constants/Functions";
 
 const responsive = {
   superLargeDesktop: {
@@ -105,9 +106,7 @@ const Recentcs = ({ name, tag }) => {
           customRightArrow={<CustomRightArrow />}
         >
           {slider.map((elem, index) => {
-            const newname = /\s$/.test(elem)
-              ? elem.slice(0, -1).replace(/\s+/g, "-").toLowerCase()
-              : elem.replace(/\s+/g, "-").toLowerCase();
+            const newname = makingValidName(elem.name);
             return (
               <Link
                 to={`/product/${newname}_sku_${elem.shoe_id}_id_${elem.shoe_id}`}

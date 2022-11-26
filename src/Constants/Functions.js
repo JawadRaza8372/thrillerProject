@@ -73,3 +73,10 @@ export const validateDate = (date) => {
 export const validateUserInfo = (userInfo) => {
   return /^[a-zA-Z0-9\s,'-/]*$/.test(userInfo);
 };
+export const makingValidName = (name) => {
+  if (/\s$/.test(name)) {
+    return name.slice(0, -1).replace(/\s+/g, "-").toLowerCase();
+  } else {
+    return name.replace(/\s+/g, "-").toLowerCase();
+  }
+};
