@@ -7,9 +7,19 @@ function CustomToast({ imgurl, text, show, hide }) {
   };
   return (
     <>
-      <div className={`toaster ${show ? "" : "hide"}`}>
+      <div
+        className={`toaster ${
+          show === "close" ? "hide" : show === "" ? "dnone" : ""
+        }`}
+      >
         <div
-          className={`toasterContent ${show ? "inAnimation" : "outAnimation"}`}
+          className={`toasterContent ${
+            show === "open"
+              ? "inAnimation"
+              : show === "close"
+              ? "outAnimation"
+              : ""
+          }`}
         >
           <img src={imgurl} alt={text} />
           <div className="toastmsg">

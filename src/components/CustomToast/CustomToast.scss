@@ -6,9 +6,14 @@
   overflow: hidden;
   border-radius: 5px;
   width: 100%;
+  margin: 0px 20px;
+  &.dnone {
+    display: none !important;
+    opacity: 0;
+  }
   &.hide {
-    animation: fullhide 0.1s 0.6s ease-in-out forwards;
-    animation-delay: 1s;
+    animation: fullhide 0.1s ease-in-out forwards;
+    animation-delay: 2s;
   }
 
   .toasterContent {
@@ -20,10 +25,10 @@
     flex-direction: row;
     background-color: rgb(232, 232, 232);
     &.inAnimation {
-      animation: inKeyfame 2s 0.6s ease-in-out forwards;
+      animation: inKeyfame 2s ease-in-out forwards;
     }
     &.outAnimation {
-      animation: outKeyfame 1s 0.6s ease-in-out forwards;
+      animation: outKeyfame 1s ease-in-out forwards;
     }
     img {
       width: 75px;
@@ -31,6 +36,8 @@
       object-fit: cover;
       border-radius: 90px;
       overflow: hidden;
+      margin-left: 5px;
+      border: 1px solid black;
     }
     .toastmsg {
       width: calc(100% - 120px);
@@ -40,6 +47,10 @@
       justify-content: center;
       flex-direction: column;
       padding: 0px 10px;
+      span {
+        font-weight: bold;
+        font-size: 14px;
+      }
     }
     .toasterDismiss {
       width: 40px;
@@ -58,16 +69,20 @@
 @keyframes inKeyfame {
   0% {
     width: 0%;
+    opacity: 0;
   }
   100% {
     width: 100%;
+    opacity: 1;
   }
 }
 @keyframes outKeyfame {
   0% {
     width: 100%;
+    opacity: 1;
   }
   100% {
+    opacity: 0;
     width: 0%;
   }
 }

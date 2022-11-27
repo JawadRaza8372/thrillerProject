@@ -67,7 +67,7 @@ const Product = (props) => {
   var sz = "4";
   if (usr !== null && usr !== undefined) sz = usr.defaultSize;
   const [product, setProduct] = useState({});
-  const [showToast, setshowToast] = useState(false);
+  const [showToast, setshowToast] = useState("");
   const [images, setImages] = useState([]);
   const [pimagesTotal, setpimagesTotal] = useState([]);
   const [currentimg, setcurrentimg] = useState(pimagesTotal[0]);
@@ -111,15 +111,22 @@ const Product = (props) => {
   const [customernumber, setcustomernumber] = useState(0);
   useEffect(() => {
     setcustomernumber(Math.floor(Math.random() * 600));
-    setshowToast(true);
+    setTimeout(() => {
+      setshowToast("open");
+    }, 5000);
   }, []);
   const closetoast = () => {
-    setshowToast(false);
+    setshowToast("close");
   };
   useEffect(() => {
-    setTimeout(() => {
-      closetoast();
-    }, 9000);
+    if (showToast !== "" && showToast !== "close") {
+      setTimeout(() => {
+        closetoast();
+        setTimeout(() => {
+          setshowToast("");
+        }, 2000);
+      }, 9000);
+    }
   }, [showToast]);
 
   function getPriceMobile() {
