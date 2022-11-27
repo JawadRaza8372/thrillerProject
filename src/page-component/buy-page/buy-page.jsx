@@ -19,11 +19,11 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
   } catch (error) {}
 
   var user_data = JSON.parse(localStorage.getItem("user"));
-  if (
-    localStorage.getItem("user") === null ||
-    localStorage.getItem("user") === undefined
-  )
-    history.push("/login");
+  // if (
+  //   localStorage.getItem("user") === null ||
+  //   localStorage.getItem("user") === undefined
+  // )
+  //   history.push("/login");
   //console.log("uData", localStorage.getItem("user"));
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
@@ -178,44 +178,50 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                 alert(
                   "You cannot place an offer that is higher than the asking price"
                 );
-              } else if (user_data === null) {
-                ////console.log(3);
-                localStorage.setItem(
-                  "coming",
-                  JSON.stringify({
-                    path: "buy",
-                    id: null,
-                  })
-                );
-                history.push("/login");
-              } else if (
-                JSON.parse(localStorage.getItem("user")).isAuthentic === 0
-              ) {
-                ////console.log(4);
-                history.push("/twoFactorAuth/" + id + "-" + size + "-0");
-              } else if (
-                offerAmount === "" ||
-                (offerAmount <= 0 && selectedButton)
-              ) {
-                alert("Please Enter the offer amount");
-              } else if (parseFloat(offerAmount) < 25 && selectedButton) {
-                alert("Minimum offer must be 25");
-              } else {
+              }
+              // else if (user_data === null) {
+              //   ////console.log(3);
+              //   localStorage.setItem(
+              //     "coming",
+              //     JSON.stringify({
+              //       path: "buy",
+              //       id: null,
+              //     })
+              //   );
+              //   history.push("/login");
+              // } else if (
+              //   JSON.parse(localStorage.getItem("user")).isAuthentic === 0
+              // ) {
+              //   ////console.log(4);
+              //   history.push("/twoFactorAuth/" + id + "-" + size + "-0");
+              // }
+              // just for now
+              // else if (
+              //   offerAmount === "" ||
+              //   (offerAmount <= 0 && selectedButton)
+              // ) {
+              //   alert("Please Enter the offer amount");
+              // } else if (parseFloat(offerAmount) < 25 && selectedButton) {
+              //   alert("Minimum offer must be 25");
+              // }
+              else {
                 ////console.log(6);
-                if (!selectedButton && parseFloat(lowestAsk) === 0) {
-                  alert(
-                    "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
-                  );
-                  return;
-                }
+                //just for now
+                // if (!selectedButton && parseFloat(lowestAsk) === 0) {
+                //   alert(
+                //     "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
+                //   );
+                //   return;
+                // }
 
                 //offers.post
+                console.log("this wala run");
                 axios.get(`https://api.thrillerme.com/settings`).then((res) => {
                   var settings = res.data.result[0];
                   settings.marketplaceShare = 0; //marketplace share 0
-
+                  const rawuserid = localStorage.getItem("user");
                   var data = {
-                    buyer_id: JSON.parse(localStorage.getItem("user")).user_id,
+                    buyer_id: rawuserid ? JSON.parse(rawuserid).user_id : "",
                     shoe_id: id,
                     size: size,
                     offerAmount: offerAmount,
@@ -254,16 +260,18 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                   } else {
                     localStorage.setItem("buy", "0");
                   }
-                  if (!isAuthenticated) {
-                    history.push({
-                      pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
-                      state: {
-                        hasShippingBuy: hasShipping,
-                        id: id,
-                        historyBuy: true,
-                      },
-                    });
-                  } else if (!hasShipping) {
+                  //just for now
+                  // if (!isAuthenticated) {
+                  //   history.push({
+                  //     pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+                  //     state: {
+                  //       hasShippingBuy: hasShipping,
+                  //       id: id,
+                  //       historyBuy: true,
+                  //     },
+                  //   });
+                  // } else
+                  if (!hasShipping) {
                     history.push({
                       pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
                       state: {
