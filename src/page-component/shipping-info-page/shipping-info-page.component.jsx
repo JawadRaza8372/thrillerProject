@@ -32,8 +32,8 @@ export const ShippingInfoPage = withRouter(({ history }) => {
     //console.log("#### uType ###", uType);
   } catch (error) {}
 
-  var userObj = JSON.parse(localStorage.getItem("user"));
-  var userID = JSON.parse(localStorage.getItem("user")).user_id;
+  var userObj = localStorage.getItem("user");
+  var userID = userObj ? JSON.parse(userObj).user_id : "";
 
   const [lati, setLatitude] = useState(25.1882891);
   const [lngi, setLongitude] = useState(55.2695004);
