@@ -9,15 +9,22 @@ import { connect } from "react-redux";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
-
 const BuyPage = ({ history, match, userDetails }) => {
   const params = useParams();
-
+  const newhistory = useHistory();
+  console.log("checking history in buypage", history);
   const id = useParams().id;
   var mainURL = "https://appick.io/u/thriller/imgs/";
   var off = JSON.parse(localStorage.getItem("offer"));
-
-  userDetails = JSON.parse(localStorage.getItem("user"));
+  console.log("offer check in product-review file", off);
+  const rawuserid = localStorage.getItem("user");
+  if (rawuserid) {
+    userDetails = JSON.parse(rawuserid);
+  } else {
+    // newhistory.push("/login");
+    alert("go to login page first");
+  }
+  userDetails = JSON.parse(rawuserid);
   const [product, setProduct] = useState({});
   const [highest, setHighest] = useState(null);
   const [lowest, setLowest] = useState(null);

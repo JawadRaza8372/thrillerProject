@@ -95,13 +95,16 @@ const App = ({ location }) => {
         <Route
           exact
           path="/login"
-          render={(props) => (
-            <LoginSignupPage
-              {...props}
-              signedIn={signedIn}
-              setSignIn={setSignIn}
-            />
-          )}
+          render={(props) => {
+            console.log("app file ma login wali props", props);
+            return (
+              <LoginSignupPage
+                {...props}
+                signedIn={signedIn}
+                setSignIn={setSignIn}
+              />
+            );
+          }}
         />
 
         <Route
