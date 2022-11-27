@@ -1,0 +1,81 @@
+.toaster {
+  position: sticky;
+  top: 100px;
+  left: 5px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 100%;
+  &.hide {
+    animation: fullhide 0.1s 0.6s ease-in-out forwards;
+    animation-delay: 1s;
+  }
+
+  .toasterContent {
+    height: 100%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    background-color: rgb(232, 232, 232);
+    &.inAnimation {
+      animation: inKeyfame 2s 0.6s ease-in-out forwards;
+    }
+    &.outAnimation {
+      animation: outKeyfame 1s 0.6s ease-in-out forwards;
+    }
+    img {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 90px;
+      overflow: hidden;
+    }
+    .toastmsg {
+      width: calc(100% - 120px);
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0px 10px;
+    }
+    .toasterDismiss {
+      width: 40px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      font-size: 30px;
+      outline: none !important;
+      border: 0px !important;
+      background-color: transparent;
+    }
+  }
+}
+@keyframes inKeyfame {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes outKeyfame {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+@keyframes fullhide {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0px;
+  }
+}

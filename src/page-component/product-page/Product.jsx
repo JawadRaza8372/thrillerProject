@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import ReactPixel from "react-facebook-pixel";
-
+import CustomToast from "../../components/CustomToast/CustomToast.js";
 import shoe from "../../temporary-data/shoeee.jpg";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
@@ -67,6 +67,7 @@ const Product = (props) => {
   var sz = "4";
   if (usr !== null && usr !== undefined) sz = usr.defaultSize;
   const [product, setProduct] = useState({});
+  const [showToast, setshowToast] = useState(false);
   const [images, setImages] = useState([]);
   const [pimagesTotal, setpimagesTotal] = useState([]);
   const [currentimg, setcurrentimg] = useState(pimagesTotal[0]);
@@ -79,9 +80,6 @@ const Product = (props) => {
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
 
-  if (product.length > 0) {
-    console.log("product wali file ma first index", product[0]);
-  }
   function Load() {
     console.log("Loading....");
     //props.setID(id);
@@ -109,6 +107,20 @@ const Product = (props) => {
     GetLowsetAsk(defaultSize);
     getPriceMobile();
   }
+
+  const [customernumber, setcustomernumber] = useState(0);
+  useEffect(() => {
+    setcustomernumber(Math.floor(Math.random() * 600));
+    setshowToast(true);
+  }, []);
+  const closetoast = () => {
+    setshowToast(false);
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      closetoast();
+    }, 9000);
+  }, [showToast]);
 
   function getPriceMobile() {
     var user = localStorage.getItem("user");
@@ -251,9 +263,15 @@ const Product = (props) => {
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
-  window.scrollTo(0, 0);
+
   return (
     <div className="product-page-container">
+      <CustomToast
+        imgurl={`${pimagesTotal[0]}`}
+        text={`${customernumber} customers bought ${product.name}. `}
+        show={showToast}
+        hide={() => closetoast()}
+      />
       <div className="wrapper">
         <Helmet>
           <meta charSet="utf-8" />
