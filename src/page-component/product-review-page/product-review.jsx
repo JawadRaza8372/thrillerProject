@@ -10,25 +10,71 @@ import axios from "axios";
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 const BuyPage = ({ history, match, userDetails }) => {
+  const [hasShipping, setShipping] = useState(false);
+  const rawuserid = localStorage.getItem("user");
+  var off = JSON.parse(localStorage.getItem("offer"));
+  const [offer, setOffer] = useState(off);
   const params = useParams();
   const newhistory = useHistory();
-  console.log("checking history in buypage", history);
-  const id = useParams().id;
-  var mainURL = "https://appick.io/u/thriller/imgs/";
-  var off = JSON.parse(localStorage.getItem("offer"));
-  console.log("offer check in product-review file", off);
-  const rawuserid = localStorage.getItem("user");
-  if (rawuserid) {
-    userDetails = JSON.parse(rawuserid);
-  } else {
-    // newhistory.push("/login");
-    alert("go to login page first");
+  const rawid = useParams().id;
+  const dataarry = `${rawid}`.split("_");
+  const id = dataarry[0];
+  const size = dataarry[2];
+  const [isAuthenticated, setAuthenticated] = useState(false);
+  var userDetails = JSON.parse(rawuserid);
+  if (!rawuserid && !userDetails) {
+    newhistory.push("/login");
   }
-  userDetails = JSON.parse(rawuserid);
+  useEffect(async () => {
+    if (rawuserid && userDetails) {
+      if (userDetails && userDetails.isAuthenticated === 1) {
+        setAuthenticated(true);
+      }
+      try {
+        setOffer({ ...off, buyer_id: userDetails.user_id });
+        localStorage.setItem("offer", JSON.stringify(offer));
+        await axios
+          .get(`https://api.thrillerme.com/shippings/${userDetails.user_id}`)
+          .then((res) => {
+            if (res.data !== "") {
+              setShipping(true);
+            }
+          })
+          .catch((res) => {
+            console.error(res);
+          });
+      } catch (error) {}
+    }
+  }, [userDetails]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      newhistory.push({
+        pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+        state: {
+          hasShippingBuy: hasShipping,
+          id: id,
+          historyBuy: true,
+        },
+      });
+    } else if (!hasShipping) {
+      newhistory.push({
+        pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+        state: {
+          id: id,
+          historyBuy: true,
+        },
+      });
+    }
+  }, []);
+
+  var mainURL = "https://appick.io/u/thriller/imgs/";
+
+  console.log("offer check in product-review file", off);
+
   const [product, setProduct] = useState({});
   const [highest, setHighest] = useState(null);
   const [lowest, setLowest] = useState(null);
-  const [offer, setOffer] = useState(off);
   const [text, setText] = useState("Place offer");
   const [chk, setChk] = useState("0");
 

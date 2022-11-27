@@ -468,7 +468,9 @@ export const ShippingInfoPage = withRouter(({ history }) => {
             if (uData === undefined) {
               history.goBack();
             } else {
-              history.push("/buy/" + uType);
+              history.goBack();
+
+              // history.push("/buy/" + uType);
             }
           } else if (
             (history.location.state.historyShoe !== null ||

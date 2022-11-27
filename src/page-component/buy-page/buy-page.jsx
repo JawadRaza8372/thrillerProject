@@ -28,8 +28,8 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
-  const [isAuthenticated, setAuthenticated] = useState(false);
-  const [hasShipping, setShipping] = useState(false);
+  // const [isAuthenticated, setAuthenticated] = useState(false);
+  // const [hasShipping, setShipping] = useState(false);
   const [product, setProduct] = useState({});
   const [lowestAsk, setLowestAsk] = useState(_lowestAsk);
   const [highestOffer, setHighestOffer] = useState(0);
@@ -64,31 +64,31 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
   }, [id, product.sku_number]);
 
   // Similar to componentDidMount and componentDidUpdate:
-  try {
-    useEffect(() => {
-      if (user_data.isAuthenticated === 1) {
-        setAuthenticated(true);
-      }
-      axios
-        .get(`https://api.thrillerme.com/shippings/${user_data.user_id}`)
-        .then((res) => {
-          if (res.data !== "") {
-            setShipping(true);
-          }
-        })
-        .catch((res) => {
-          console.error(res);
-        });
+  // try {
+  //   useEffect(() => {
+  //     if (user_data.isAuthenticated === 1) {
+  //       setAuthenticated(true);
+  //     }
+  //     axios
+  //       .get(`https://api.thrillerme.com/shippings/${user_data.user_id}`)
+  //       .then((res) => {
+  //         if (res.data !== "") {
+  //           setShipping(true);
+  //         }
+  //       })
+  //       .catch((res) => {
+  //         console.error(res);
+  //       });
 
-      Load();
-    }, [
-      Load,
-      product,
-      user_data.isAuthenticated,
-      user_data.user_id,
-      highestOffer,
-    ]);
-  } catch (error) {}
+  //     Load();
+  //   }, [
+  //     Load,
+  //     product,
+  //     user_data.isAuthenticated,
+  //     user_data.user_id,
+  //     highestOffer,
+  //   ]);
+  // } catch (error) {}
 
   // //Transfered props using React Router Dom
   // const {
@@ -179,43 +179,25 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                   "You cannot place an offer that is higher than the asking price"
                 );
               }
-              // else if (user_data === null) {
-              //   ////console.log(3);
-              //   localStorage.setItem(
-              //     "coming",
-              //     JSON.stringify({
-              //       path: "buy",
-              //       id: null,
-              //     })
-              //   );
-              //   history.push("/login");
-              // } else if (
-              //   JSON.parse(localStorage.getItem("user")).isAuthentic === 0
-              // ) {
-              //   ////console.log(4);
-              //   history.push("/twoFactorAuth/" + id + "-" + size + "-0");
-              // }
+
               // just for now
-              // else if (
-              //   offerAmount === "" ||
-              //   (offerAmount <= 0 && selectedButton)
-              // ) {
-              //   alert("Please Enter the offer amount");
-              // } else if (parseFloat(offerAmount) < 25 && selectedButton) {
-              //   alert("Minimum offer must be 25");
-              // }
-              else {
-                ////console.log(6);
+              else if (
+                offerAmount === "" ||
+                (offerAmount <= 0 && selectedButton)
+              ) {
+                alert("Please Enter the offer amount");
+              } else if (parseFloat(offerAmount) < 25 && selectedButton) {
+                alert("Minimum offer must be 25");
+              } else {
                 //just for now
-                // if (!selectedButton && parseFloat(lowestAsk) === 0) {
-                //   alert(
-                //     "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
-                //   );
-                //   return;
-                // }
+                if (!selectedButton && parseFloat(lowestAsk) === 0) {
+                  alert(
+                    "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
+                  );
+                  return;
+                }
 
                 //offers.post
-                console.log("this wala run");
                 axios.get(`https://api.thrillerme.com/settings`).then((res) => {
                   var settings = res.data.result[0];
                   settings.marketplaceShare = 0; //marketplace share 0
@@ -271,17 +253,19 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                   //     },
                   //   });
                   // } else
-                  if (!hasShipping) {
-                    history.push({
-                      pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
-                      state: {
-                        id: id,
-                        historyBuy: true,
-                      },
-                    });
-                  } else {
-                    history.push(`/product-review/${id}/${selectedButton}`);
-                  }
+                  // if (!hasShipping) {
+                  //   history.push({
+                  //     pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+                  //     state: {
+                  //       id: id,
+                  //       historyBuy: true,
+                  //     },
+                  //   });}
+                  // else {
+                  history.push(
+                    `/product-review/${id}_size_${size}/${selectedButton}`
+                  );
+                  // }
                 });
               }
             }}
