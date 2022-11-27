@@ -14,8 +14,7 @@
       width: 100%;
       height: auto;
       max-width: none !important;
-      max-height: 400px !important;
-      margin-bottom: 20px;
+      max-height: 380px !important;
       object-fit: contain;
     }
   }
@@ -25,7 +24,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-
+    margin-top: 10px;
     .thumbContainer {
       height: 50px;
       border-radius: 7px;
