@@ -34,7 +34,7 @@ const BuyOrderButton = (props) => {
 
         <div className="link-edit">
           <div className="buy-offer-part" onClick={GoToBuy}>
-            <div className="buy-part">Buy hy</div>
+            <div className="buy-part">Buy</div>
             <div>or Offer</div>
           </div>
         </div>
