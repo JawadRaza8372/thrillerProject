@@ -211,11 +211,16 @@ const Product = (props) => {
       .get(`https://api.thrillerme.com/shoesImages/${id}`)
       .then((res) => {
         console.log("img", res.data);
-        setcurrentimg(res.data[0].imgURL);
-        res.data.map((dat) => {
-          setpimagesTotal((preval) => [...preval, dat.imgURL]);
-        });
-        setImages(res.data);
+        if (res.data.length > 0) {
+          setcurrentimg(res.data[0].imgURL);
+          res.data.map((dat) => {
+            setpimagesTotal((preval) => [...preval, dat.imgURL]);
+          });
+        } else {
+          setcurrentimg(product.cover_image);
+
+          setpimagesTotal([product.cover_image]);
+        }
       })
       .catch((err) => {
         console.error("imgs error", err);
@@ -348,23 +353,6 @@ const Product = (props) => {
         <PillContainer shoe_id={id} favSize={favSize} />
       </div>
       <div className="prod-container">
-        <div
-          className="gallery-div"
-          style={{
-            position: "absolute",
-          }}
-        >
-          {coverImage && galleryImages && (
-            <ImagePopup
-              image={coverImage}
-              shoe_id={product.shoe_id}
-              title={product.name}
-              galleryImages={galleryImages}
-              fulldata={product}
-            />
-          )}
-        </div>
-
         <div className="prod-info-container">
           <span style={{ color: "gray" }}>
             <span style={{ fontWeight: "500", margin: "0px", color: "black" }}>
