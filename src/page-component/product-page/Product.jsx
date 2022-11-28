@@ -57,9 +57,6 @@ const Product = (props) => {
   var findid = rawid.split("_");
   const index = findid.length - 1;
   var id = findid[index].replace("-", " ");
-  console.log("==========================");
-  console.log("checking id", id);
-  console.log("==========================");
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
@@ -210,19 +207,10 @@ const Product = (props) => {
     axios
       .get(`https://api.thrillerme.com/shoesImages/${id}`)
       .then((res) => {
-        console.log("img", res.data);
-        if (res.data.length > 0) {
-          setcurrentimg(res.data[0].imgURL);
-          res.data.map((dat) => {
-            setpimagesTotal((preval) => [...preval, dat.imgURL]);
-          });
-        } else {
-          console.log("arrya length zero and image", product.cover_image);
-          console.log(product);
-          setcurrentimg(product.cover_image);
-
-          setpimagesTotal([product.cover_image]);
-        }
+        setcurrentimg(res.data[0].imgURL);
+        res.data.map((dat) => {
+          setpimagesTotal((preval) => [...preval, dat.imgURL]);
+        });
       })
       .catch((err) => {
         console.error("imgs error", err);
@@ -236,7 +224,6 @@ const Product = (props) => {
     axios
       .get(`https://api.thrillerme.com/styles/galleryselected/${id}`)
       .then((resp) => {
-        console.log(resp.data);
         try {
           setCoverImage(resp.data[0].cover);
 
@@ -264,7 +251,6 @@ const Product = (props) => {
 
   function GetLowsetAsk(sizz) {
     var urlL = `https://api.thrillerme.com/listing/lowest/${id}/${sizz}`;
-    console.log(urlL);
     var encodedURLL = encodeURI(urlL);
     axios.get(encodedURLL).then((res) => {
       if (res.data.lowest !== null) {
@@ -277,11 +263,10 @@ const Product = (props) => {
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
-  console.log("line 280", product);
   return (
     <div className="product-page-container">
       <CustomToast
-        imgurl={`${pimagesTotal[0]}`}
+        imgurl={`${pimagesTotal[0] ? pimagesTotal[0] : product.cover_image}`}
         text={`${customernumber} customers bought ${product.name}. `}
         show={showToast}
         hide={() => closetoast()}
@@ -384,8 +369,8 @@ const Product = (props) => {
             <span>{product.name}</span>
           </div>
           <CustomImageSlider
-            currentimg={currentimg}
-            allimgs={pimagesTotal}
+            currentimg={currentimg ? currentimg : product.cover_image}
+            allimgs={pimagesTotal[0] ? pimagesTotal : [product.cover_image]}
             onClickFunction={(newimg) => {
               setcurrentimg(newimg);
             }}
