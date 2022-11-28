@@ -464,8 +464,8 @@ const Product = (props) => {
             </Swiper>
           </div>*/}
           <CustomImageSlider
-            currentimg={currentimg}
-            allimgs={pimagesTotal}
+            currentimg={currentimg ? currentimg : product.cover_image}
+            allimgs={pimagesTotal[0] ? pimagesTotal : [product.cover_image]}
             onClickFunction={(newimg) => {
               setcurrentimg(newimg);
             }}
