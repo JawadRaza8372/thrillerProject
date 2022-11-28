@@ -83,13 +83,13 @@ const Product = (props) => {
   function Load() {
     console.log("Loading....");
     //props.setID(id);
-    // if (product.sku_number === undefined) {
-    //   var url = `https://api.thrillerme.com/shoes/${id}`;
-    //   var encodedURL = encodeURI(url);
-    //   axios.get(encodedURL).then((res) => {
-    //     setProduct(res.data);
-    //   });
-    // }
+    if (product.sku_number === undefined) {
+      var url = `https://api.thrillerme.com/shoes/${id}`;
+      var encodedURL = encodeURI(url);
+      axios.get(encodedURL).then((res) => {
+        setProduct(res.data);
+      });
+    }
 
     var user = localStorage.getItem("user");
     if (user !== null) {
@@ -151,12 +151,13 @@ const Product = (props) => {
     }
   }
 
-  function LoadDetails() {
+  const LoadDetails = async () => {
     var url = `https://api.thrillerme.com/shoes/${id}`;
     var encodedURL = encodeURI(url);
-    axios.get(encodedURL).then((res) => {
+    await axios.get(encodedURL).then((res) => {
       var date = res.data.release_date;
       var data = res.data;
+      setProduct(data);
       if (date !== null && date !== undefined) {
         date = date.split("T")[0];
         data.release_date = date;
@@ -187,7 +188,6 @@ const Product = (props) => {
         contents: [{ id: data.shoe_id, quantity: 1 }],
       });
 
-      setProduct(data);
       GetLowsetAsk(defaultSize);
       localStorage.setItem("favSize", defaultSize);
 
@@ -227,7 +227,7 @@ const Product = (props) => {
       .catch((err) => {
         console.error("imgs error", err);
       });
-  }
+  };
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
