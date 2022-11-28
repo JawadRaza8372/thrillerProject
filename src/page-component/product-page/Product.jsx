@@ -217,6 +217,8 @@ const Product = (props) => {
             setpimagesTotal((preval) => [...preval, dat.imgURL]);
           });
         } else {
+          console.log("arrya length zero and image", product.cover_image);
+          console.log(product);
           setcurrentimg(product.cover_image);
 
           setpimagesTotal([product.cover_image]);
