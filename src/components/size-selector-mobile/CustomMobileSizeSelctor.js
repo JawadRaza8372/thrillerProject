@@ -30,29 +30,21 @@ function CustomMobileSizeSelctor({ id, fav, closeSizeChart, parentCallBack }) {
           ></i>
         </div>
         <div className="sizeboxes-container">
-          {fav
-            ? shoeSizes.map((size, index) => {
-                return (
-                  <SizeBox
-                    key={index}
-                    size={size.size}
-                    price={size.cost}
-                    closeSizeChart={closeSizeChart}
-                    parentCallBack={parentCallBack}
-                  />
-                );
-              })
-            : shoeSizes.map((size, index) => {
-                return (
-                  <SizeBox
-                    key={index}
-                    size={size.size}
-                    price={size.cost}
-                    closeSizeChart={closeSizeChart}
-                    parentCallBack={parentCallBack}
-                  />
-                );
-              })}
+          {shoeSizes.length > 0 ? (
+            shoeSizes.map((size, index) => {
+              return (
+                <SizeBox
+                  key={index}
+                  size={size.size}
+                  price={size.cost}
+                  closeSizeChart={closeSizeChart}
+                  parentCallBack={parentCallBack}
+                />
+              );
+            })
+          ) : (
+            <span>Loading....</span>
+          )}
         </div>
       </div>
     </>
