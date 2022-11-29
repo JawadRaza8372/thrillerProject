@@ -37,10 +37,21 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
 
   try {
     var url = `https://api.thrillerme.com/listing/highest/${id}/${size}`;
+    var urlL = `https://api.thrillerme.com/listing/lowest/${id}/${size}`;
+
     var encodedURL = encodeURI(url);
+    var encodedURLL = encodeURI(urlL);
+
     axios.get(encodedURL).then((res) => {
       if (res.data.highest !== null) {
         setHighestOffer(res.data.highest);
+      }
+    });
+    axios.get(encodedURLL).then((resk) => {
+      if (resk.data.lowest !== null) {
+        setLowestAsk(resk.data.lowest);
+      } else {
+        setLowestAsk(0);
       }
     });
     //console.log(highestOffer);
