@@ -1,4 +1,3 @@
-import React from "react";
 import "./SizeSelectorMobile.scss";
 import React, { useState, useEffect } from "react";
 import SizeBox from "../size-box-mobile/CustomSizeBox";

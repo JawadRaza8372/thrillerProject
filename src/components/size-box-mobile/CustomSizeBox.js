@@ -1,5 +1,4 @@
 import React from "react";
-import React from "react";
 import "./SizeBox.scss";
 
 function CustomSizeBox({ size, price, closeSizeChart, parentCallBack }) {
