@@ -1,3 +1,12 @@
+@mixin butnStyle($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  border: 1px solid $color;
+  &:hover {
+    background-color: $color;
+    color: $bg;
+  }
+}
 .product-page-container {
   // position: absolute;
   // top: 12vh;
@@ -224,10 +233,34 @@
         width: 100vw;
         padding-left: 15px;
         padding-right: 15px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: space-between;
+        //for now
+        .sizeSlctbtn {
+          width: 100%;
+          height: 40px;
+          background-color: red;
+          margin: 10px auto;
+        }
+        .btnContainers {
+          width: 100%;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+          .customBtnn {
+            height: 100%;
+            width: 48%;
+            &.cstoffer {
+              @include butnStyle(white, red);
+            }
+            &.buynow {
+              @include butnStyle(white, black);
+            }
+          }
+        }
         .conText {
           font-family: "Montserrat";
           font-size: small;

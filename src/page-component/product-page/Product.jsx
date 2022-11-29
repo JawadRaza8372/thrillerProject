@@ -49,6 +49,7 @@ import Links from "../../components/links/Links";
 import ImagePopup from "./gallery-popup";
 import { makingValidName } from "../../Constants/Functions";
 import CustomImageSlider from "../../components/CustomImageSlider/CustomImageSlider";
+import CustomMobileSizeSelctor from "../../components/size-selector-mobile/CustomMobileSizeSelctor";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -76,7 +77,9 @@ const Product = (props) => {
   const [favSize, setFavSize] = useState(sz);
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
-
+  const closeMobileChart = () => {
+    setSizeChart(false);
+  };
   function Load() {
     console.log("Loading....");
     //props.setID(id);
@@ -395,9 +398,15 @@ const Product = (props) => {
             <span>CONDITION:</span>
             <span style={{ color: "#ec1d25" }}> NEW</span>
           </div>
+          <button className="sizeSlctbtn" onClick={() => setSizeChart(true)}>
+            Size
+          </button>
 
-          <div>
-            <Button
+          <div className="btnContainers">
+            <button className="customBtnn cstoffer">Place Offer</button>
+            <button className="customBtnn buynow">Buy Now</button>
+
+            {/* <Button
               style={{
                 height: "35px",
                 width: "85px",
@@ -411,7 +420,7 @@ const Product = (props) => {
               onClick={() => setSizeChart(true)}
             >
               <span className="p-0 m-0 selltxt">Buy Now</span>
-            </Button>
+            </Button> */}
           </div>
         </div>
         {/* <div
@@ -485,13 +494,20 @@ const Product = (props) => {
         </div>
         {showSizeChart ? (
           <div className="d-flex justify-content-center align-item-center">
-            <SizeSelectorMobile
+            <CustomMobileSizeSelctor
+              id={id}
+              closeSizeChart={closeMobileChart}
+              parentCallBack={(dat) =>
+                console.log("here is mobile size selectore result", dat)
+              }
+            />
+            {/* <SizeSelectorMobile
               showSizeChart={showSizeChart}
               setSizeChart={setSizeChart}
               lowestAsk={lowestAsk}
               id={id}
               shoe={product}
-            />
+            /> */}
           </div>
         ) : null}
 
