@@ -50,6 +50,8 @@ import ImagePopup from "./gallery-popup";
 import { makingValidName } from "../../Constants/Functions";
 import CustomImageSlider from "../../components/CustomImageSlider/CustomImageSlider";
 import CustomMobileSizeSelctor from "../../components/size-selector-mobile/CustomMobileSizeSelctor";
+import { useHistory } from "react-router-dom";
+import { ArrowDownward, KeyboardArrowDown } from "@material-ui/icons";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -58,7 +60,7 @@ const Product = (props) => {
   var findid = rawid.split("_");
   const index = findid.length - 1;
   var id = findid[index].replace("-", " ");
-
+  const history = useHistory();
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
   var usr = JSON.parse(localStorage.getItem("user"));
@@ -251,7 +253,10 @@ const Product = (props) => {
     GetLowsetAsk(val);
     // setFavSize(val);
   }
-
+  function GoToBuy() {
+    history.push(`/buy/${id}/${defaultSize}/0`);
+    localStorage.setItem("price", props.lowestAsk);
+  }
   function GetLowsetAsk(sizz) {
     var urlL = `https://api.thrillerme.com/listing/lowest/${id}/${sizz}`;
     var encodedURLL = encodeURI(urlL);
@@ -399,12 +404,22 @@ const Product = (props) => {
             <span style={{ color: "#ec1d25" }}> NEW</span>
           </div>
           <button className="sizeSlctbtn" onClick={() => setSizeChart(true)}>
-            Size
+            <div className="fill_size">
+              Size:
+              <span>
+                US M {defaultSize}{" "}
+                <KeyboardArrowDown style={{ fontSize: "22px" }} />
+              </span>
+            </div>
           </button>
 
           <div className="btnContainers">
-            <button className="customBtnn cstoffer">Place Offer</button>
-            <button className="customBtnn buynow">Buy Now</button>
+            <button className="customBtnn buynow" onClick={GoToBuy}>
+              Place Offer
+            </button>
+            <button className="customBtnn cstoffer" onClick={GoToBuy}>
+              Buy Now
+            </button>
 
             {/* <Button
               style={{
@@ -497,17 +512,8 @@ const Product = (props) => {
             <CustomMobileSizeSelctor
               id={id}
               closeSizeChart={closeMobileChart}
-              parentCallBack={(dat) =>
-                console.log("here is mobile size selectore result", dat)
-              }
+              parentCallBack={updateSizeValue}
             />
-            {/* <SizeSelectorMobile
-              showSizeChart={showSizeChart}
-              setSizeChart={setSizeChart}
-              lowestAsk={lowestAsk}
-              id={id}
-              shoe={product}
-            /> */}
           </div>
         ) : null}
 
