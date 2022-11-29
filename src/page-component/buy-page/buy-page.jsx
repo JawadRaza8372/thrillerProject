@@ -64,31 +64,9 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
   }, [id, product.sku_number]);
 
   // Similar to componentDidMount and componentDidUpdate:
-  // try {
-  //   useEffect(() => {
-  //     if (user_data.isAuthenticated === 1) {
-  //       setAuthenticated(true);
-  //     }
-  //     axios
-  //       .get(`https://api.thrillerme.com/shippings/${user_data.user_id}`)
-  //       .then((res) => {
-  //         if (res.data !== "") {
-  //           setShipping(true);
-  //         }
-  //       })
-  //       .catch((res) => {
-  //         console.error(res);
-  //       });
-
-  //     Load();
-  //   }, [
-  //     Load,
-  //     product,
-  //     user_data.isAuthenticated,
-  //     user_data.user_id,
-  //     highestOffer,
-  //   ]);
-  // } catch (error) {}
+  useEffect(() => {
+    Load();
+  }, [Load, product, highestOffer]);
 
   // //Transfered props using React Router Dom
   // const {
