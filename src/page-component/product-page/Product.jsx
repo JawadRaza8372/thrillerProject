@@ -399,10 +399,10 @@ const Product = (props) => {
       </div>
       <div className="mob-prod-container">
         <div className="mob-prod-top-contain">
-          <div className="conText blink">
+          {/* <div className="conText blink">
             <span>CONDITION:</span>
             <span style={{ color: "#ec1d25" }}> NEW</span>
-          </div>
+          </div> */}
           <button className="sizeSlctbtn" onClick={() => setSizeChart(true)}>
             <div className="fill_size">
               Size:
@@ -494,6 +494,10 @@ const Product = (props) => {
               setcurrentimg(newimg);
             }}
           />
+          <div className="conText blink">
+            <span>CONDITION:</span>
+            <span style={{ color: "#ec1d25" }}> NEW</span>
+          </div>
         </div>
 
         <div className="d-flex flex-column align-items-center">

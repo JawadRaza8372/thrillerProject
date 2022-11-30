@@ -185,6 +185,22 @@
         width: 100%;
         height: 45vh;
         margin-bottom: 13px;
+        .conText {
+          font-family: "Montserrat";
+          font-size: small;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        .blink {
+          animation: blinker 1.5s linear infinite;
+          @keyframes blinker {
+            50% {
+              opacity: 0;
+            }
+          }
+        }
         .prod-img-text-container {
           font-family: proxima-nova, sans-serif;
           letter-spacing: 0;
@@ -231,10 +247,11 @@
 
       .mob-prod-top-contain {
         width: 100vw;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 15px;
         position: fixed;
         top: 70px;
+        background-color: white;
+        z-index: 1;
         // display: flex;
         // flex-direction: row;
         // justify-content: space-between;
@@ -274,22 +291,6 @@
             }
             &.buynow {
               @include butnStyle(white, black);
-            }
-          }
-        }
-        .conText {
-          font-family: "Montserrat";
-          font-size: small;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-        }
-        .blink {
-          animation: blinker 1.5s linear infinite;
-          @keyframes blinker {
-            50% {
-              opacity: 0;
             }
           }
         }
