@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CustomToast.scss";
 import Close from "@material-ui/icons/Close";
-function CustomToast({ imgurl, text, show, hide }) {
+function CustomToast({ imgurl, text, time, show, hide }) {
   const onClickClose = () => {
     hide();
   };
@@ -23,7 +23,9 @@ function CustomToast({ imgurl, text, show, hide }) {
         >
           <img src={imgurl} alt={text} />
           <div className="toastmsg">
-            <span>{text}</span>
+            <span>
+              Someone bought <b>{text}</b> {time}
+            </span>
           </div>
           <button className="toasterDismiss" onClick={onClickClose}>
             <Close />

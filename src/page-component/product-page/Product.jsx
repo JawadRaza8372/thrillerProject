@@ -286,11 +286,12 @@ const Product = (props) => {
             ? toasterData[customernumber].cover_image
             : product.cover_image
         }`}
-        text={`Someone bought ${
+        text={`${
           toasterData.length > 0
             ? toasterData[customernumber].name
             : product.name
-        } a second ago.`}
+        }`}
+        time="a second ago."
         show={showToast}
         hide={() => closetoast()}
       />
