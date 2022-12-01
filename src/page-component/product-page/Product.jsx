@@ -79,12 +79,18 @@ const Product = (props) => {
   const [favSize, setFavSize] = useState(sz);
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
+  const [toasterData, settoasterData] = useState([]);
   const closeMobileChart = () => {
     setSizeChart(false);
   };
   function Load() {
     console.log("Loading....");
     //props.setID(id);
+    var urlProductstest = `https://api.thrillerme.com/shoes/`;
+    var encodedURLProductstest = encodeURI(urlProductstest);
+    axios.get(encodedURLProductstest).then((res) => {
+      settoasterData(res.data);
+    });
     if (product.sku_number === undefined) {
       var url = `https://api.thrillerme.com/shoes/${id}`;
       var encodedURL = encodeURI(url);
@@ -112,7 +118,7 @@ const Product = (props) => {
 
   const [customernumber, setcustomernumber] = useState(0);
   useEffect(() => {
-    setcustomernumber(Math.floor(Math.random() * 600));
+    setcustomernumber(Math.floor(Math.random() * 500) + 1);
     setTimeout(() => {
       setshowToast("open");
     }, 5000);
@@ -268,19 +274,23 @@ const Product = (props) => {
       }
     });
   }
-  var urlProductstest = `https://api.thrillerme.com/shoes/`;
-  var encodedURLProductstest = encodeURI(urlProductstest);
-  axios.get(encodedURLProductstest).then((res) => {
-    console.log("checking the route", res.data);
-  });
+
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
   return (
     <div className="product-page-container">
       <CustomToast
-        imgurl={`${pimagesTotal[0] ? pimagesTotal[0] : product.cover_image}`}
-        text={`Someone bought ${product.name} a second ago.`}
+        imgurl={`${
+          toasterData.length > 0
+            ? toasterData[customernumber].cover_image
+            : product.cover_image
+        }`}
+        text={`Someone bought ${
+          toasterData.length > 0
+            ? toasterData[customernumber].name
+            : product.name
+        } a second ago.`}
         show={showToast}
         hide={() => closetoast()}
       />
