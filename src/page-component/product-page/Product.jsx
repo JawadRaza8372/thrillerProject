@@ -268,6 +268,7 @@ const Product = (props) => {
       }
     });
   }
+  console.log(product);
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
@@ -275,7 +276,7 @@ const Product = (props) => {
     <div className="product-page-container">
       <CustomToast
         imgurl={`${pimagesTotal[0] ? pimagesTotal[0] : product.cover_image}`}
-        text={`${customernumber} customers bought ${product.name}. `}
+        text={`Someone bought ${product.name} a second ago.`}
         show={showToast}
         hide={() => closetoast()}
       />
