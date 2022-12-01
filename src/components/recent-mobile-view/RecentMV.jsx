@@ -82,9 +82,7 @@ const RecentMV = ({ name, tag }) => {
 
           return (
             <SwiperSlide key={index}>
-              <Link
-                to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
-              >
+              <Link to={`/product/${newname}_id_${newshoeid}`}>
                 <Card style={{ marginBottom: "35px" }}>
                   <Card.Img
                     class="m-0 p-0"

@@ -20,7 +20,7 @@
 @media only screen and (max-width: 481px) {
   .top-container {
     z-index: 950;
-    width: 100vw;
+    width: 100%;
     height: 1230px;
     background-color: black;
     color: white;

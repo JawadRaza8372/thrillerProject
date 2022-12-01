@@ -50,9 +50,7 @@ const ShoeCard = ({
       <div style={{ width: "fit-content" }}>
         <Card
           onClick={() => {
-            history.push(
-              `/product/${newname}_sku_${newskunumb}_id_${newshoeid}`
-            );
+            history.push(`/product/${newname}_id_${newshoeid}`);
           }}
         >
           <Card.Img variant="top" src={img} />

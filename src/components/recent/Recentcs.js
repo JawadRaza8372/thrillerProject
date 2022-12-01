@@ -110,10 +110,7 @@ const Recentcs = ({ name, tag }) => {
             const newskunumb = makingValidName(`${elem.sku_number}`);
             const newshoeid = makingValidName(`${elem.shoe_id}`);
             return (
-              <Link
-                to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
-                key={index}
-              >
+              <Link to={`/product/${newname}_id_${newshoeid}`} key={index}>
                 <Card>
                   <Card.Img
                     class="m-0 p-0"

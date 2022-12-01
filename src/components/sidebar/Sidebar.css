@@ -15,7 +15,7 @@
 .clear {
   height: 100vh;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
 

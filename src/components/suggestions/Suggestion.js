@@ -114,11 +114,8 @@ const Suggestion = (props) => {
             const newshoeid = makingValidName(`${elem.shoe_id}`);
 
             return (
-              //  to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
-              <Link
-                to={`/product/${newname}_sku_${newskunumb}_id_${newshoeid}`}
-                key={index}
-              >
+              //  to={`/product/${newname}_id_${newshoeid}`}
+              <Link to={`/product/${newname}_id_${newshoeid}`} key={index}>
                 <Card>
                   <Card.Img
                     style={{ height: "300px", width: "300px" }}
