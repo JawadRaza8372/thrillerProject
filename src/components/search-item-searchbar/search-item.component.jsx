@@ -21,7 +21,7 @@ export const SearchItem = ({
   useEffect(() => {}, []);
 
   function saveFav(val, refreshComponent) {
-    history.push(`/product/${val}`);
+    history.push(`/${val}`);
 
     // if (location.pathname == "/favourites-section") {
     //   var user = localStorage.getItem("user");

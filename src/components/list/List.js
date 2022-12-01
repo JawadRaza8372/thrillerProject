@@ -33,10 +33,8 @@ const List = ({ title, collection_id }) => {
 
           return (
             <li key={index}>
-              <Link to={`/product/${newname}_id_${newshoeid}`}>
-                {item.name}
-              </Link>
-              {/* <a href={"/product/" + item.shoe_id}>{item.name}</a> */}
+              <Link to={`/${newname}_id_${newshoeid}`}>{item.name}</Link>
+              {/* <a href={"/" + item.shoe_id}>{item.name}</a> */}
             </li>
           );
         })}

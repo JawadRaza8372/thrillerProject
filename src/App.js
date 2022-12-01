@@ -185,7 +185,7 @@ const App = ({ location }) => {
           <SellerInfoPage title="Billing" />
         </Route>
         <Route exact path="/payoutInfo" component={BillingSettingPage} />
-        <Route exact path="/product/:id" component={Product} />
+        <Route exact path="/:id" component={Product} />
         <Route exact path="/help" component={HelpPage} />
         <Route exact path="/buy/:id" component={BuyPage} />
         <Route exact path="/buy/:id/:size/:lowestAsk" component={BuyPage} />

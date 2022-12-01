@@ -76,7 +76,7 @@ const Suggestion = (props) => {
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
   const redirect = (id) => {
-    window.open(`https://thrillerme.com/product/${id}`, "_self");
+    window.open(`https://thrillerme.com/${id}`, "_self");
   };
 
   const Load = useCallback(() => {
@@ -114,8 +114,8 @@ const Suggestion = (props) => {
             const newshoeid = makingValidName(`${elem.shoe_id}`);
 
             return (
-              //  to={`/product/${newname}_id_${newshoeid}`}
-              <Link to={`/product/${newname}_id_${newshoeid}`} key={index}>
+              //  to={`/${newname}_id_${newshoeid}`}
+              <Link to={`/${newname}_id_${newshoeid}`} key={index}>
                 <Card>
                   <Card.Img
                     style={{ height: "300px", width: "300px" }}

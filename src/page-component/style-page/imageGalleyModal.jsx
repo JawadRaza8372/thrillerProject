@@ -14,7 +14,7 @@ export const ImagePopup = (props) => {
   const newshoeid = makingValidName(`${props.fulldata.shoe_id}`);
   return (
     <Link
-      to={`/product/${newname}_id_${newshoeid}`}
+      to={`/${newname}_id_${newshoeid}`}
       style={{ fontSize: 18, fontWeight: "600", color: "#000" }}
     >
       {props.image && (

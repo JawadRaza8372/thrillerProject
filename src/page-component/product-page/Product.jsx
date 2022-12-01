@@ -304,7 +304,7 @@ const Product = (props) => {
           <meta property="og:image" content={product.cover_image} />
           <meta
             property="og:url"
-            content={`https://thrillerme.com/product/${newname}_id_${newshoeid}`}
+            content={`https://thrillerme.com/${newname}_id_${newshoeid}`}
           />
           <meta
             property="product:retailer_item_id"

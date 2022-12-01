@@ -61,18 +61,18 @@ export const SearchItem = ({
       location.pathname === "/favourites-section" &&
       linkCheck === true
     ) {
-      History.push(`/product/${val}`);
+      History.push(`/${val}`);
     } else if (location.pathname === "/sell") {
       localStorage.setItem("sellShoe", JSON.stringify(shoe));
       History.push("/shoe");
     } else if (location.pathname === "/buying-section") {
-      History.push(`/product/${val}`);
+      History.push(`/${val}`);
     } else if (location.pathname === "/selling-section") {
-      History.push(`/product/${val}`);
+      History.push(`/${val}`);
     } else {
       setInputValue("");
       setSearchbar(!searchbar);
-      History.push(`/product/${val}`);
+      History.push(`/${val}`);
     }
   }
 
