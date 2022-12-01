@@ -268,7 +268,11 @@ const Product = (props) => {
       }
     });
   }
-  console.log(product);
+  var urlProductstest = `https://api.thrillerme.com/shoes/`;
+  var encodedURLProductstest = encodeURI(urlProductstest);
+  axios.get(encodedURLProductstest).then((res) => {
+    console.log("checking the route", res.data);
+  });
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
