@@ -40,10 +40,10 @@ const BuyPage = ({ history, match, userDetails }) => {
       });
     }
     try {
-      setOffer({ ...off, buyer_id: userDetails.user_id });
+      setOffer({ ...off, buyer_id: newuserdata.user_id });
       localStorage.setItem("offer", JSON.stringify(offer));
-      await axios
-        .get(`https://api.thrillerme.com/shippings/${userDetails.user_id}`)
+      axios
+        .get(`https://api.thrillerme.com/shippings/${newuserdata.user_id}`)
         .then((res) => {
           console.log("shipping info product-review", res.data);
           if (res.data !== "") {
@@ -65,8 +65,6 @@ const BuyPage = ({ history, match, userDetails }) => {
   }, [userDetails]);
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
-
-  console.log("offer check in product-review file", off);
 
   const [product, setProduct] = useState({});
   const [highest, setHighest] = useState(null);
