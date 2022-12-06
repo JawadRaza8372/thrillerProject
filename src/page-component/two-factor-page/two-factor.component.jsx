@@ -283,7 +283,7 @@ export const TwoFactorPage = withRouter(({ history }) => {
   const [state, setState] = useState({
     selectedOption: null,
   });
-  const History = useHistory();
+  const newHistory = useHistory();
   const SShandleChange = (selectedOption) => {
     setState({ selectedOption });
     setPhoneCode(selectedOption.value);
@@ -567,6 +567,11 @@ export const TwoFactorPage = withRouter(({ history }) => {
     } else {
       alert("Please enter your phone number with country code.");
     }
+  }
+  const rawuserid = localStorage.getItem("user");
+  var userDetails = JSON.parse(rawuserid);
+  if (userDetails && userDetails.isAuthenticated === 1) {
+    newHistory.goBack();
   }
   return (
     <div className="page-container">

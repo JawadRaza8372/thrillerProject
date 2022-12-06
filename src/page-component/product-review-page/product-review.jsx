@@ -27,6 +27,8 @@ const BuyPage = ({ history, match, userDetails }) => {
     newhistory.push("/login");
   }
   useEffect(async () => {
+    userDetails = await JSON.parse(rawuserid);
+
     if (userDetails && userDetails.isAuthenticated === 1) {
       setAuthenticated(true);
     }
