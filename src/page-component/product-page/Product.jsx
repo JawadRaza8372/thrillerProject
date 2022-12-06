@@ -261,7 +261,7 @@ const Product = (props) => {
   }
   function GoToBuy() {
     history.push(`/buy/${id}/${defaultSize}/0`);
-    localStorage.setItem("price", props.lowestAsk);
+    localStorage.setItem("price", lowestAsk);
   }
   function GetLowsetAsk(sizz) {
     var urlL = `https://api.thrillerme.com/listing/lowest/${id}/${sizz}`;
