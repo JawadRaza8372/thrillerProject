@@ -48,6 +48,14 @@ const BuyPage = ({ history, match, userDetails }) => {
           console.log("shipping info product-review", res.data);
           if (res.data !== "") {
             setShipping(true);
+          } else {
+            newhistory.push({
+              pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+              state: {
+                id: id,
+                historyBuy: true,
+              },
+            });
           }
         })
         .catch((res) => {
@@ -55,19 +63,6 @@ const BuyPage = ({ history, match, userDetails }) => {
         });
     } catch (error) {}
   }, [userDetails]);
-
-  useEffect(() => {
-    if (!hasShipping) {
-      newhistory.push({
-        pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
-        state: {
-          id: id,
-          historyBuy: true,
-        },
-      });
-      console.log("does not have shipping");
-    }
-  }, []);
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
