@@ -27,10 +27,17 @@ const BuyPage = ({ history, match, userDetails }) => {
     newhistory.push("/login");
   }
   useEffect(async () => {
-    userDetails = await JSON.parse(rawuserid);
+    var newuserdata = await JSON.parse(rawuserid);
 
-    if (userDetails && userDetails.isAuthenticated === 1) {
-      setAuthenticated(true);
+    if (newuserdata?.isAuthenticated !== 1) {
+      newhistory.push({
+        pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+        state: {
+          hasShippingBuy: hasShipping,
+          id: id,
+          historyBuy: true,
+        },
+      });
     }
     try {
       setOffer({ ...off, buyer_id: userDetails.user_id });
@@ -50,17 +57,7 @@ const BuyPage = ({ history, match, userDetails }) => {
   }, [userDetails]);
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      newhistory.push({
-        pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
-        state: {
-          hasShippingBuy: hasShipping,
-          id: id,
-          historyBuy: true,
-        },
-      });
-      console.log("not authenticated");
-    } else if (!hasShipping) {
+    if (!hasShipping) {
       newhistory.push({
         pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
         state: {
