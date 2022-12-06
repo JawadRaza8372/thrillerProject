@@ -22,52 +22,50 @@ const BuyPage = ({ history, match, userDetails }) => {
   const size = dataarry[2];
   const [isAuthenticated, setAuthenticated] = useState(false);
   var userDetails = JSON.parse(rawuserid);
-  console.log("product-review user", user);
-  console.log("product-review userDetails", userDetails);
+
   if (!rawuserid && !userDetails) {
     newhistory.push("/login");
   }
   useEffect(async () => {
-    if (rawuserid && userDetails) {
-      if (userDetails && userDetails.isAuthenticated === 1) {
-        setAuthenticated(true);
-      }
-      try {
-        setOffer({ ...off, buyer_id: userDetails.user_id });
-        localStorage.setItem("offer", JSON.stringify(offer));
-        await axios
-          .get(`https://api.thrillerme.com/shippings/${userDetails.user_id}`)
-          .then((res) => {
-            if (res.data !== "") {
-              setShipping(true);
-            }
-          })
-          .catch((res) => {
-            console.error(res);
-          });
-      } catch (error) {}
+    if (userDetails && userDetails.isAuthenticated === 1) {
+      setAuthenticated(true);
     }
+    try {
+      setOffer({ ...off, buyer_id: userDetails.user_id });
+      localStorage.setItem("offer", JSON.stringify(offer));
+      await axios
+        .get(`https://api.thrillerme.com/shippings/${userDetails.user_id}`)
+        .then((res) => {
+          console.log("shipping info product-review", res.data);
+          if (res.data !== "") {
+            setShipping(true);
+          }
+        })
+        .catch((res) => {
+          console.error(res);
+        });
+    } catch (error) {}
   }, [userDetails]);
 
   useEffect(() => {
     if (!isAuthenticated) {
-      // newhistory.push({
-      //   pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
-      //   state: {
-      //     hasShippingBuy: hasShipping,
-      //     id: id,
-      //     historyBuy: true,
-      //   },
-      // });
+      newhistory.push({
+        pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+        state: {
+          hasShippingBuy: hasShipping,
+          id: id,
+          historyBuy: true,
+        },
+      });
       console.log("not authenticated");
     } else if (!hasShipping) {
-      // newhistory.push({
-      //   pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
-      //   state: {
-      //     id: id,
-      //     historyBuy: true,
-      //   },
-      // });
+      newhistory.push({
+        pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+        state: {
+          id: id,
+          historyBuy: true,
+        },
+      });
       console.log("does not have shipping");
     }
   }, []);

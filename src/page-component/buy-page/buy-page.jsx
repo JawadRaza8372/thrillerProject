@@ -15,7 +15,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
   const size = useParams().size;
   var _lowestAsk = 0;
   try {
-    _lowestAsk = localStorage.getItem("price");
+    _lowestAsk = JSON.parse(localStorage.getItem("price"));
   } catch (error) {}
 
   var user_data = JSON.parse(localStorage.getItem("user"));
@@ -149,7 +149,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
             onClick={() => {
               var _lowestAsk = 0;
               try {
-                _lowestAsk = localStorage.getItem("price");
+                _lowestAsk = JSON.parse(localStorage.getItem("price"));
               } catch (error) {}
               if (!selectedButton) {
                 setOfferAmount(_lowestAsk);

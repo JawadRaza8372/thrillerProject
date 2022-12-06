@@ -51,7 +51,7 @@ const PriceCalculatorBuy = ({
 
   var _lowestAsk = 0;
   try {
-    _lowestAsk = localStorage.getItem("price");
+    _lowestAsk = JSON.parse(localStorage.getItem("price"));
   } catch (error) {}
 
   const [displayToolTip, toggleToolTip] = useState(false);
