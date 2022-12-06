@@ -22,6 +22,8 @@ const BuyPage = ({ history, match, userDetails }) => {
   const size = dataarry[2];
   const [isAuthenticated, setAuthenticated] = useState(false);
   var userDetails = JSON.parse(rawuserid);
+  console.log("product-review user", user);
+  console.log("product-review userDetails", userDetails);
   if (!rawuserid && !userDetails) {
     newhistory.push("/login");
   }
@@ -49,22 +51,24 @@ const BuyPage = ({ history, match, userDetails }) => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      newhistory.push({
-        pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
-        state: {
-          hasShippingBuy: hasShipping,
-          id: id,
-          historyBuy: true,
-        },
-      });
+      // newhistory.push({
+      //   pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+      //   state: {
+      //     hasShippingBuy: hasShipping,
+      //     id: id,
+      //     historyBuy: true,
+      //   },
+      // });
+      console.log("not authenticated");
     } else if (!hasShipping) {
-      newhistory.push({
-        pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
-        state: {
-          id: id,
-          historyBuy: true,
-        },
-      });
+      // newhistory.push({
+      //   pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+      //   state: {
+      //     id: id,
+      //     historyBuy: true,
+      //   },
+      // });
+      console.log("does not have shipping");
     }
   }, []);
 

@@ -312,9 +312,9 @@ const Header = ({
         className={dropShadow ? "drop-shadow nav-priconmob" : "nav-priconmob"}
         bg="white"
         fixed={!(sidebar || searchbar || catbar) ? "top" : null}
-        style={{
-          height: "10vh",
-        }}
+        // style={{
+        //   height: "10vh",
+        // }}
       >
         <Nav className="sldbtn">
           <div onClick={() => setSidebar(!sidebar)}>
