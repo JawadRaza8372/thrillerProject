@@ -20,16 +20,19 @@ const BuyPage = ({ history, match, userDetails }) => {
   const dataarry = `${rawid}`.split("_");
   const id = dataarry[0];
   const size = dataarry[2];
-  const [isAuthenticated, setAuthenticated] = useState(false);
-  var userDetails = JSON.parse(rawuserid);
+  const [product, setProduct] = useState({});
+  const [highest, setHighest] = useState(null);
+  const [lowest, setLowest] = useState(null);
+  const [text, setText] = useState("Place offer");
+  const [chk, setChk] = useState("0");
 
-  if (!rawuserid && !userDetails) {
-    newhistory.push("/login");
-  }
+  // const [isAuthenticated, setAuthenticated] = useState(false);
+
   useEffect(async () => {
     var newuserdata = await JSON.parse(rawuserid);
-
-    if (newuserdata?.isAuthenticated !== 1) {
+    if (!newuserdata) {
+      newhistory.push("/login");
+    } else if (newuserdata?.isAuthenticated !== 1) {
       newhistory.push({
         pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
         state: {
@@ -38,17 +41,14 @@ const BuyPage = ({ history, match, userDetails }) => {
           historyBuy: true,
         },
       });
-    }
-    try {
       setOffer({ ...off, buyer_id: newuserdata.user_id });
       localStorage.setItem("offer", JSON.stringify(offer));
-      axios
+      await axios
         .get(`https://api.thrillerme.com/shippings/${newuserdata.user_id}`)
         .then((res) => {
           console.log("shipping info product-review", res.data);
-          if (res.data !== "") {
+          if (res.data) {
             setShipping(true);
-          } else {
             newhistory.push({
               pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
               state: {
@@ -61,30 +61,8 @@ const BuyPage = ({ history, match, userDetails }) => {
         .catch((res) => {
           console.error(res);
         });
-    } catch (error) {}
-  }, [userDetails]);
-
-  var mainURL = "https://appick.io/u/thriller/imgs/";
-
-  const [product, setProduct] = useState({});
-  const [highest, setHighest] = useState(null);
-  const [lowest, setLowest] = useState(null);
-  const [text, setText] = useState("Place offer");
-  const [chk, setChk] = useState("0");
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    Load();
-    var chk = localStorage.getItem("buy");
-    setChk(chk);
-    if (chk === "1") {
-      setText("Buy Now");
-    } else {
-      setText("Place offer");
     }
-  }, [product]);
-
-  useEffect(() => {}, [text]);
+  }, []);
 
   function Load() {
     if (product.sku_number === undefined) {
@@ -118,21 +96,29 @@ const BuyPage = ({ history, match, userDetails }) => {
     }
   }
 
-  function save() {
-    localStorage.setItem("proID", id);
-    userDetails === null
-      ? history.push({
-          pathname: "/login",
-          state: "buy",
-        })
-      : SaveOffer();
-  }
+  var mainURL = "https://appick.io/u/thriller/imgs/";
 
-  const [user, setUser] = useState(null);
-
+  // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    setUser(userDetails);
-  }, []);
+    Load();
+    var chk = localStorage.getItem("buy");
+    setChk(chk);
+    if (chk === "1") {
+      setText("Buy Now");
+    } else {
+      setText("Place offer");
+    }
+  }, [product]);
+
+  // function save() {
+  //   localStorage.setItem("proID", id);
+  //   userDetails === null
+  //     ? history.push({
+  //         pathname: "/login",
+  //         state: "buy",
+  //       })
+  //     : SaveOffer();
+  // }
 
   var shoe = {
     shoe: null,
@@ -169,7 +155,6 @@ const BuyPage = ({ history, match, userDetails }) => {
     }
   }
 
-  ////console.log('Product Aya', product);
   return (
     <div className="shoex-page">
       <div className="shoe-content">
