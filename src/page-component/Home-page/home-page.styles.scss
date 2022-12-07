@@ -1,10 +1,59 @@
+@mixin responsiveCont {
+  .customHomeBanner {
+    width: 100%;
+    height: 60vh;
+    background-color: #4f4a9e;
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    .textCont {
+      height: 100%;
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h1 {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 20px;
+        width: 70%;
+        font-size: calc(3em + 1vw);
+      }
+      .customBtnCont {
+        width: 70%;
+        button {
+          background-color: black;
+          border: none !important;
+          outline: none !important;
+          font-size: calc(1em + 0.5vh);
+          color: white;
+          padding: 10px 20px;
+        }
+      }
+    }
+    .imageCont {
+      background-image: url("../../assets/homebg.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 40%;
+    }
+  }
+}
+
 .home {
   display: flex;
   flex-direction: column;
+  @include responsiveCont();
 }
 
 .home-mob {
   display: none;
+  @include responsiveCont();
 }
 
 @media screen and (max-width: 830px) {
@@ -17,5 +66,22 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    .customHomeBanner {
+      flex-direction: column;
+      .imageCont {
+        width: 100%;
+      }
+      .textCont {
+        width: 100%;
+        h1 {
+          font-size: 2em;
+        }
+        .customBtnCont {
+          button {
+            font-size: 1em;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./home-page.styles.scss";
 import Links from "../../components/links/Links";
 import RecentMV from "../../components/recent-mobile-view/RecentMV";
@@ -10,6 +10,19 @@ import HomeBanner from "../../components/home-banner/Banner";
 import axios from "axios";
 
 export const HomePage = () => {
+  const [brands, setBrands] = useState([]);
+  useEffect(() => {
+    var url = `https://api.thrillerme.com/collections`;
+    axios
+      .get(url)
+      .then((res) => {
+        setBrands(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  console.log("CHECKING BRANDS", brands);
   // useEffect(() => {
   //   localStorage.removeItem("selectedSection");
 
@@ -31,7 +44,16 @@ export const HomePage = () => {
   return (
     <div>
       <div className="home">
-        <Slideshow />
+        {/* <Slideshow /> */}
+        <div className="customHomeBanner">
+          <div className="textCont">
+            <h1>Air Jordan 11 Cherry</h1>
+            <div className="customBtnCont">
+              <button>Buy & Sell Now</button>
+            </div>
+          </div>
+          <div className="imageCont"></div>
+        </div>
         {/* <HomeBanner /> */}
         <Recentcs class="x" name={"Just Dropped"} tag={"Just Dropped"} />
         <Recentcs name={"Most Popular"} tag={"Most Popular"} />
@@ -46,7 +68,17 @@ export const HomePage = () => {
       </div>
 
       <div className="home-mob">
-        <Slideshow />
+        {/* <Slideshow /> */}
+        <div className="customHomeBanner">
+          <div className="imageCont"></div>
+
+          <div className="textCont">
+            <h1>Air Jordan 11 Cherry</h1>
+            <div className="customBtnCont">
+              <button>Buy & Sell Now</button>
+            </div>
+          </div>
+        </div>
         {/* <HomeBanner /> */}
 
         <RecentMV class="x" name={"Just Dropped"} tag={"Just Dropped"} />
