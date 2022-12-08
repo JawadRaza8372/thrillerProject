@@ -71,44 +71,7 @@ const CustomRightArrow = ({ onClick }) => {
   );
 };
 const Recentcs = ({ name, tag }) => {
-  const [slider, setSlider] = useState([
-    {
-      name: "item 1",
-      sku_number: "12345",
-      shoe_id: "123",
-      cover_image: cardImg1,
-    },
-    {
-      name: "item 2",
-      sku_number: "23456",
-      shoe_id: "56",
-      cover_image: cardImg2,
-    },
-    {
-      name: "item 3",
-      sku_number: "4356",
-      shoe_id: "987",
-      cover_image: cardImg3,
-    },
-    {
-      name: "item 4",
-      sku_number: "43356",
-      shoe_id: "9875",
-      cover_image: cardImg3,
-    },
-    {
-      name: "item 5",
-      sku_number: "45356",
-      shoe_id: "9874",
-      cover_image: cardImg3,
-    },
-    {
-      name: "item 6",
-      sku_number: "48356",
-      shoe_id: "9817",
-      cover_image: cardImg3,
-    },
-  ]);
+  const [slider, setSlider] = useState([]);
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {

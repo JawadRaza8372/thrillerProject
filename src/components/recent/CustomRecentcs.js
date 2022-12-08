@@ -55,7 +55,11 @@ function CustomRecentcs({ tag, brands }) {
               <>
                 <Link key={index} to={`/browse/${elem.collection_id}/`}>
                   <div className="cardDiv">
-                    <img className="cardImg" src={`${elem.imageURL}`} />
+                    <img
+                      className="cardImg"
+                      src={`${elem.imageURL ? elem.imageURL : cardImg6}`}
+                      style={{ height: "200px" }}
+                    />
                     <div className="textCont">
                       <h5>{elem.title}</h5>
                     </div>
