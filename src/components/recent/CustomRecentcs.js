@@ -53,29 +53,13 @@ function CustomRecentcs({ tag, brands }) {
           // customRightArrow={<CustomRightArrow />}
         >
           {slider.map((elem, index) => {
-            const newname = makingValidName(`${elem.name}`);
-            const newskunumb = makingValidName(`${elem.sku_number}`);
-            const newshoeid = makingValidName(`${elem.shoe_id}`);
             return (
               <>
-                <Link to={`/${newname}_id_${newshoeid}`} key={index}>
-                  {/* <Card>
-                  <Card.Img
-                    class="m-0 p-0"
-                    variant="top"
-                    src={elem.cover_image}
-                  />
-                  <Card.Body className="cBody" class="m-0">
-                    <Card.Title className="cTxt">{elem.name}</Card.Title>
-                  </Card.Body>
-                </Card> */}
+                <Link key={index} to={`/browse/${elem.collection_id}/`}>
                   <div className="cardDiv">
-                    <img className="cardImg" src={elem.cover_image} />
+                    <img className="cardImg" src={elem.imageUrl} />
                     <div className="textCont">
-                      <h5>{elem.name}</h5>
-                      <span>Lowest Price</span>
-                      <h5>null AED</h5>
-                      <div className="lastSoldDiv">Last Sold: null</div>
+                      <h5>{elem.title}</h5>
                     </div>
                   </div>
                 </Link>
