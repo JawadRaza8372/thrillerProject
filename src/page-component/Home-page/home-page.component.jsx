@@ -63,7 +63,7 @@ export const HomePage = () => {
           <div className="imageCont"></div>
         </div>
         {/* <HomeBanner /> */}
-        <CustomRecentMv tag="Popular Brands" brands={brands} />
+        <CustomRecentcs tag="Popular Brands" brands={brands} />
         <Recentcs class="x" name={"Just Dropped"} tag={"Just Dropped"} />
         <Recentcs name={"Most Popular"} tag={"Most Popular"} />
         <Recentcs name={"Favorites"} tag={"Favourites"} />
