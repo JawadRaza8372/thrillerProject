@@ -58,7 +58,7 @@ function CustomRecentMv({ tag, brands }) {
                   <Card.Img
                     class="m-0 p-0"
                     variant="top"
-                    src={`${elem.imageUrl}`}
+                    src={`${elem.imageURL}`}
                   />
                   <Card.Body className="cBody" class="m-0">
                     <Card.Title className="cTxt">{elem.title}</Card.Title>
