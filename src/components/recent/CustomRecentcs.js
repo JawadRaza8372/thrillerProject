@@ -17,8 +17,6 @@ import "react-multi-carousel/lib/styles.css";
 import { makingValidName } from "../../Constants/Functions";
 
 function CustomRecentcs({ tag, brands }) {
-  const [slider, setSlider] = useState(brands);
-
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -52,7 +50,7 @@ function CustomRecentcs({ tag, brands }) {
           // customLeftArrow={<CustomLeftArrow />}
           // customRightArrow={<CustomRightArrow />}
         >
-          {slider.map((elem, index) => {
+          {brands.map((elem, index) => {
             return (
               <>
                 <Link key={index} to={`/browse/${elem.collection_id}/`}>

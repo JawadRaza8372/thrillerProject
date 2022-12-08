@@ -29,7 +29,6 @@ import { makingValidName } from "../../Constants/Functions";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
 function CustomRecentMv({ tag, brands }) {
-  const [slider, setSlider] = useState(brands);
   const history = useHistory();
   return (
     <div className="recent-mv-con" style={{ marginBottom: "20px" }}>
@@ -51,7 +50,7 @@ function CustomRecentMv({ tag, brands }) {
         onSwiper={(swiper) => {}}
         mousewheel={true}
       >
-        {slider.map((elem, index) => {
+        {brands.map((elem, index) => {
           return (
             <SwiperSlide key={index}>
               <Link to={`/browse/${elem.collection_id}/`}>
