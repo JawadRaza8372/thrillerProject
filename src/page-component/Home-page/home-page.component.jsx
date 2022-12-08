@@ -3,11 +3,14 @@ import "./home-page.styles.scss";
 import Links from "../../components/links/Links";
 import RecentMV from "../../components/recent-mobile-view/RecentMV";
 import Recentcs from "../../components/recent/Recentcs";
+import CustomRecentcs from "../../components/recent/CustomRecentcs";
+
 import Slideshow from "../../components/slideshow/Slideshow";
 import { Link } from "react-router-dom";
 import Carousel from "../../components/review-carousel/reviewCarousel";
 import HomeBanner from "../../components/home-banner/Banner";
 import axios from "axios";
+import CustomRecentMv from "../../components/recent-mobile-view/CustomRecentMv";
 
 export const HomePage = () => {
   const [brands, setBrands] = useState([]);
@@ -60,6 +63,7 @@ export const HomePage = () => {
           <div className="imageCont"></div>
         </div>
         {/* <HomeBanner /> */}
+        <CustomRecentMv tag="Popular Brands" brands={brands} />
         <Recentcs class="x" name={"Just Dropped"} tag={"Just Dropped"} />
         <Recentcs name={"Most Popular"} tag={"Most Popular"} />
         <Recentcs name={"Favorites"} tag={"Favourites"} />
@@ -85,7 +89,7 @@ export const HomePage = () => {
           </div>
         </div>
         {/* <HomeBanner /> */}
-
+        <CustomRecentMv tag={"Popular Brand"} brands={brands} />
         <RecentMV class="x" name={"Just Dropped"} tag={"Just Dropped"} />
         <RecentMV name={"Most Popular"} tag={"Most Popular"} />
         <RecentMV name={"Favorites"} tag={"Favourites"} />

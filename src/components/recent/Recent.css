@@ -51,12 +51,19 @@ img {
   margin: 10px auto;
   cursor: pointer;
 }
-.cardDiv:hover {
-  border: 3px solid rgba(255, 0, 0, 0.5);
-}
+
 .cardDiv .cardImg {
   width: 100%;
   object-fit: contain;
+}
+.cardDiv .textCont {
+  width: 90%;
+  margin: 10px auto;
+}
+.cardDiv .textCont .lastSoldDiv {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: hsl(0, 0%, 94%);
 }
 .card {
   height: auto;

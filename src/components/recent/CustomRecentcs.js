@@ -16,120 +16,27 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { makingValidName } from "../../Constants/Functions";
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+function CustomRecentcs({ tag, brands }) {
+  const [slider, setSlider] = useState(brands);
 
-const CustomLeftArrow = ({ onClick }) => {
-  return (
-    <button onClick={() => onClick()}>
-      <img
-        src={arrowleft}
-        alt="logo"
-        style={{
-          position: "absolute",
-          left: "0px",
-          marginTop: "-25px",
-          height: "40px",
-          width: "40px",
-        }}
-      />
-    </button>
-  );
-};
-
-const CustomRightArrow = ({ onClick }) => {
-  return (
-    <button onClick={() => onClick()}>
-      <img
-        src={arrowright}
-        alt="logo"
-        style={{
-          position: "absolute",
-          right: "0px",
-          marginTop: "-25px",
-          height: "40px",
-          width: "40px",
-        }}
-      />
-    </button>
-  );
-};
-const Recentcs = ({ name, tag }) => {
-  const [slider, setSlider] = useState([
-    {
-      name: "item 1",
-      sku_number: "12345",
-      shoe_id: "123",
-      cover_image: cardImg1,
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 4,
     },
-    {
-      name: "item 2",
-      sku_number: "23456",
-      shoe_id: "56",
-      cover_image: cardImg2,
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
     },
-    {
-      name: "item 3",
-      sku_number: "4356",
-      shoe_id: "987",
-      cover_image: cardImg3,
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
     },
-    {
-      name: "item 4",
-      sku_number: "43356",
-      shoe_id: "9875",
-      cover_image: cardImg3,
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
     },
-    {
-      name: "item 5",
-      sku_number: "45356",
-      shoe_id: "9874",
-      cover_image: cardImg3,
-    },
-    {
-      name: "item 6",
-      sku_number: "48356",
-      shoe_id: "9817",
-      cover_image: cardImg3,
-    },
-  ]);
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    Load();
-  }, []);
-  console.log("checkingSlider", slider[0]);
-
-  var mainURL = "https://appick.io/u/thriller/imgs/";
-
-  function Load() {
-    //////console.log("Laoding: ", name);
-    var url = `https://api.thrillerme.com/shoes/getByTag/${name}`;
-    var encodedURL = encodeURI(url);
-    axios.get(encodedURL).then((res) => {
-      setSlider(res.data);
-      ////console.log(name, slider);
-    });
-  }
-  // if (slider.length > 0) {
-  //   console.log("recentcs wala first index name slider hy arry ka", slider[0]);
-  // }
+  };
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -179,6 +86,6 @@ const Recentcs = ({ name, tag }) => {
       </div>
     </div>
   );
-};
+}
 
-export default Recentcs;
+export default CustomRecentcs;
