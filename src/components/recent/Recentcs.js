@@ -114,7 +114,6 @@ const Recentcs = ({ name, tag }) => {
   useEffect(() => {
     Load();
   }, []);
-  console.log("checkingSlider", slider[0]);
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
