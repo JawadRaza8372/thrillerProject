@@ -55,7 +55,11 @@ function CustomRecentMv({ tag, brands }) {
             <SwiperSlide key={index}>
               <Link to={`/browse/${elem.collection_id}/`}>
                 <Card style={{ marginBottom: "35px" }}>
-                  <Card.Img class="m-0 p-0" variant="top" src={elem.imageUrl} />
+                  <Card.Img
+                    class="m-0 p-0"
+                    variant="top"
+                    src={`${elem.imageUrl}`}
+                  />
                   <Card.Body className="cBody" class="m-0">
                     <Card.Title className="cTxt">{elem.title}</Card.Title>
                   </Card.Body>
