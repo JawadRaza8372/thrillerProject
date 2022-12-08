@@ -71,8 +71,6 @@ const CustomRightArrow = ({ onClick }) => {
   );
 };
 const Recentcs = ({ name, tag }) => {
-  console.log("checkingSlider", slider[0]);
-
   const [slider, setSlider] = useState([
     {
       name: "item 1",
@@ -116,6 +114,7 @@ const Recentcs = ({ name, tag }) => {
   useEffect(() => {
     Load();
   }, []);
+  console.log("checkingSlider", slider[0]);
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
