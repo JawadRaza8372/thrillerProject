@@ -19,11 +19,11 @@ import { makingValidName } from "../../Constants/Functions";
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items: 5,
+    items: 4,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3.5,
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -70,9 +70,47 @@ const CustomRightArrow = ({ onClick }) => {
     </button>
   );
 };
-
 const Recentcs = ({ name, tag }) => {
-  const [slider, setSlider] = useState([]);
+  console.log("checkingSlider", slider[0]);
+
+  const [slider, setSlider] = useState([
+    {
+      name: "item 1",
+      sku_number: "12345",
+      shoe_id: "123",
+      cover_image: cardImg1,
+    },
+    {
+      name: "item 2",
+      sku_number: "23456",
+      shoe_id: "56",
+      cover_image: cardImg2,
+    },
+    {
+      name: "item 3",
+      sku_number: "4356",
+      shoe_id: "987",
+      cover_image: cardImg3,
+    },
+    {
+      name: "item 4",
+      sku_number: "43356",
+      shoe_id: "9875",
+      cover_image: cardImg3,
+    },
+    {
+      name: "item 5",
+      sku_number: "45356",
+      shoe_id: "9874",
+      cover_image: cardImg3,
+    },
+    {
+      name: "item 6",
+      sku_number: "48356",
+      shoe_id: "9817",
+      cover_image: cardImg3,
+    },
+  ]);
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
@@ -93,6 +131,7 @@ const Recentcs = ({ name, tag }) => {
   // if (slider.length > 0) {
   //   console.log("recentcs wala first index name slider hy arry ka", slider[0]);
   // }
+
   return (
     <div style={{ marginBottom: "20px" }}>
       <div className="txt">{tag}</div>
@@ -100,18 +139,21 @@ const Recentcs = ({ name, tag }) => {
         <Carousel
           renderButtonGroupOutside={true}
           responsive={responsive}
-          infinite={true}
-          itemClass="card"
-          customLeftArrow={<CustomLeftArrow />}
-          customRightArrow={<CustomRightArrow />}
+          // infinite={true}
+          centerMode={false}
+          slidesToSlide={1}
+          itemClass="cardItemDiv"
+          // customLeftArrow={<CustomLeftArrow />}
+          // customRightArrow={<CustomRightArrow />}
         >
           {slider.map((elem, index) => {
             const newname = makingValidName(`${elem.name}`);
             const newskunumb = makingValidName(`${elem.sku_number}`);
             const newshoeid = makingValidName(`${elem.shoe_id}`);
             return (
-              <Link to={`/${newname}_id_${newshoeid}`} key={index}>
-                <Card>
+              <>
+                <Link to={`/${newname}_id_${newshoeid}`} key={index}>
+                  {/* <Card>
                   <Card.Img
                     class="m-0 p-0"
                     variant="top"
@@ -120,8 +162,16 @@ const Recentcs = ({ name, tag }) => {
                   <Card.Body className="cBody" class="m-0">
                     <Card.Title className="cTxt">{elem.name}</Card.Title>
                   </Card.Body>
-                </Card>
-              </Link>
+                </Card> */}
+                  <div className="cardDiv">
+                    <img className="cardImg" src={elem.cover_image} />
+                    <span>{elem.name}</span>
+                    <span>Lowest Price:</span>
+                    <span></span>
+                    <div>Last Price</div>
+                  </div>
+                </Link>
+              </>
             );
           })}
         </Carousel>

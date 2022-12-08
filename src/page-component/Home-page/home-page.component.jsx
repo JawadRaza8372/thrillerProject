@@ -22,6 +22,11 @@ export const HomePage = () => {
         console.error(error);
       });
   }, []);
+  // brands data
+  // collection_id: 20;
+  // description: "It could be said that Michael Jordan was the genesis of basketball as we know it today. Throughout a fiery and storied career, MJ overcame his hurdles, soaring challenge above challenge to realize the unexpected. Along the way, he redefined basketball's relationship to style, the sports connection to youth counter-culture and the games creative potential.";
+  // imageURL: "https://dk0pm9zdlq16s.cloudfront.net/4de136a4-a575-4f52-b82b-625e0692d9fd.png";
+  // title: "Air Jordan ";
   console.log("CHECKING BRANDS", brands);
   // useEffect(() => {
   //   localStorage.removeItem("selectedSection");
