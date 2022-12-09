@@ -75,9 +75,10 @@ export const HomePage = () => {
         <Recentcs name={"Off White"} tag={"Off-White"} />
         <Links />
       </div>
+      {/* <Slideshow /> */}
+      {/* <HomeBanner /> */}
 
-      <div className="home-mob">
-        {/* <Slideshow /> */}
+      {/* <div className="home-mob">
         <div className="customHomeBanner">
           <div className="imageCont"></div>
 
@@ -88,7 +89,6 @@ export const HomePage = () => {
             </div>
           </div>
         </div>
-        {/* <HomeBanner /> */}
         <CustomRecentMv tag={"Popular Brand"} brands={brands} />
         <RecentMV class="x" name={"Just Dropped"} tag={"Just Dropped"} />
         <RecentMV name={"Most Popular"} tag={"Most Popular"} />
@@ -100,7 +100,7 @@ export const HomePage = () => {
         <RecentMV name={"Travis Scot"} tag={"Travis Scott"} />
         <RecentMV name={"Off White"} tag={"Off-White"} />
         <Links />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -58,8 +58,25 @@
 
 @media screen and (max-width: 830px) {
   .home {
-    display: none;
-    overflow-y: hidden;
+    // display: none;
+    // overflow-y: hidden;
+    .customHomeBanner {
+      flex-direction: column;
+      .imageCont {
+        width: 100%;
+      }
+      .textCont {
+        width: 100%;
+        h1 {
+          font-size: 2em;
+        }
+        .customBtnCont {
+          button {
+            font-size: 1em;
+          }
+        }
+      }
+    }
   }
   .home-mob {
     height: auto;
