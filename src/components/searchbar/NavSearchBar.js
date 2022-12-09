@@ -66,7 +66,7 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
               <CustomSearchResultItem
                 imgUrl={dat.cover_image}
                 title={dat?.name}
-                description={dat?.description}
+                description={`Sku Number: ${dat?.sku_number}`}
                 toLink={`/${newname}_id_${newshoeid}`}
               />
             );

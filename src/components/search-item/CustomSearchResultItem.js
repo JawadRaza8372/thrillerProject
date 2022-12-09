@@ -8,7 +8,7 @@ export const CustomSearchResultItem = ({
   description,
   toLink,
 }) => {
-  const shortDes = `${description}`?.substring(0, 31);
+  const shortDes = `${description}`?.substring(0, 28) + "...";
   return (
     <Link to={`${toLink}`}>
       <div className="searchResultItemCont">
