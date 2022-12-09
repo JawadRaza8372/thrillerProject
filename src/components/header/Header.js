@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link, useHistory, withRouter } from "react-router-dom";
 import "./Header.css";
-import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
 import { Row, Col } from "react-simple-flex-grid";
 import "react-simple-flex-grid/lib/main.css";
 import axios from "axios";
@@ -167,171 +167,140 @@ const Header = ({
     <div>
       <Navbar
         className={dropShadow ? "drop-shadow nav-pricon" : "nav-pricon"}
-        bg="white"
+        bg="light"
+        expand={"lg"}
         fixed={!(sidebar || searchbar || catbar) ? "top" : null}
         style={{
-          height: "10vh",
+          // height: "10vh",
           position: "fixed",
           width: "100%",
           zIndex: "1000",
         }}
       >
-        <Link to={`/`}>
-          <Navbar.Brand href="#home">
-            <img
-              src="/images/logo.svg"
-              className="navbrand"
-              width="200px"
-              alt="logo"
-            />
-          </Navbar.Brand>
-        </Link>
-        <Nav className="mr-auto" style={{ flex: "1" }}>
-          <NavSearchBar allProducts={products} allBrands={brands} />
-        </Nav>
-        <Nav className="ml-auto">
-          <NavDropdown
-            title="Browse"
-            id="basic-nav-dropdown"
-            className="m-1 navs centeredBtnsClass"
-            show={show}
-            onMouseEnter={showDropdown}
-            onMouseLeave={hideDropdown}
-          >
-            {brands.map((item, index) => {
-              return (
-                <NavDropdown.Item
-                  active="true"
-                  href={"/browse/" + item.collection_id + "/"}
-                  style={{ maxWidth: "50px" }}
-                  onClick={() => {
-                    window.localStorage.setItem("filter", null);
-                  }}
-                >
-                  {item.title}
-                </NavDropdown.Item>
-              );
-            })}
-          </NavDropdown>
-          <Nav.Link
-            href="/browse/0/"
-            onClick={() => {
-              window.localStorage.setItem("filter", null);
-            }}
-            className="m-1 navs centeredBtnsClass"
-          >
-            Shop All
-          </Nav.Link>
-          <Link to="/styles" className="m-1 navs nav-link centeredBtnsClass">
-            Styles
-          </Link>
-
-          <Link to="/help" className="m-1 navs nav-link centeredBtnsClass">
-            Help
-          </Link>
-          <Link
-            to="/sell"
-            className="m-1 navs nav-link centeredBtnsClass"
-            style={{ color: "Red" }}
-          >
-            Sell
-          </Link>
-          <Link className="centeredBtnsClass" to="/login">
-            <button className="loginButtonCustom">Login/SignUp</button>
-          </Link>
-          <Nav.Link href="#link" className="m-1">
-            <Row gutter={12}>
-              <Col span={6}>
-                <div onClick={() => setSearchbar(!searchbar)}>
-                  <img
-                    src="/images/search.png"
-                    alt="logo"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/images/search_dark.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/images/search.png")
-                    }
-                    style={{
-                      width: "24px",
-                      paddingBottom: "10px",
-                    }}
-                  />
-                </div>
-              </Col>
-              <Col span={6}>
-                <div onClick={() => setSidebar(!sidebar)}>
-                  <img
-                    src="/images/menu.png"
-                    alt="logo"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/images/menu_dark.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/images/menu.png")
-                    }
-                    style={{
-                      width: "24px",
-                      paddingBottom: "10px",
-                    }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </Nav.Link>
-        </Nav>
-      </Navbar>
-      {/* 
-      <Navbar
-        className={dropShadow ? "drop-shadow nav-priconmob" : "nav-priconmob"}
-        bg="white"
-        fixed={!(sidebar || searchbar || catbar) ? "top" : null}
-        // style={{
-        //   height: "10vh",
-        // }}
-      >
-        <Nav className="sldbtn">
-          <div onClick={() => setSidebar(!sidebar)}>
-            <img
-              src="/images/menu.png"
-              alt="logo"
-              onMouseOver={(e) =>
-                (e.currentTarget.src = "/images/menu_dark.png")
-              }
-              onMouseOut={(e) => (e.currentTarget.src = "/images/menu.png")}
-              style={{
-                width: "24px",
-                margin: "10px",
-              }}
-            />
-          </div>
+        <Container fluid>
           <Link to={`/`}>
             <Navbar.Brand href="#home">
               <img
                 src="/images/logo.svg"
                 className="navbrand"
-                width="150px"
+                width="200px"
                 alt="logo"
               />
             </Navbar.Brand>
           </Link>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <NavSearchBar allProducts={products} allBrands={brands} />
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+              {/* <Nav className="mr-auto" style={{ flex: "1" }}> */}
+              {/* <NavSearchBar allProducts={products} allBrands={brands} /> */}
+              {/* </Nav> */}
+              <NavDropdown
+                title="Browse"
+                id="basic-nav-dropdown"
+                className="m-1 navs centeredBtnsClass"
+                show={show}
+                onMouseEnter={showDropdown}
+                onMouseLeave={hideDropdown}
+              >
+                {brands.map((item, index) => {
+                  return (
+                    <NavDropdown.Item
+                      active="true"
+                      href={"/browse/" + item.collection_id + "/"}
+                      style={{ maxWidth: "50px" }}
+                      onClick={() => {
+                        window.localStorage.setItem("filter", null);
+                      }}
+                    >
+                      {item.title}
+                    </NavDropdown.Item>
+                  );
+                })}
+              </NavDropdown>
+              <Nav.Link
+                href="/browse/0/"
+                onClick={() => {
+                  window.localStorage.setItem("filter", null);
+                }}
+                className="m-1 navs centeredBtnsClass"
+              >
+                Shop All
+              </Nav.Link>
+              <Link
+                to="/styles"
+                className="m-1 navs nav-link centeredBtnsClass"
+              >
+                Styles
+              </Link>
 
-          <div onClick={() => setSearchbar(!searchbar)}>
-            <img
-              src="/images/search.png"
-              alt="logo"
-              onMouseOver={(e) =>
-                (e.currentTarget.src = "/images/search_dark.png")
-              }
-              onMouseOut={(e) => (e.currentTarget.src = "/images/search.png")}
-              style={{
-                width: "24px",
-                margin: "10px",
-              }}
-            />
-          </div>
-        </Nav>
-      </Navbar> */}
+              <Link to="/help" className="m-1 navs nav-link centeredBtnsClass">
+                Help
+              </Link>
+              <Link
+                to="/sell"
+                className="m-1 navs nav-link centeredBtnsClass"
+                style={{ color: "Red" }}
+              >
+                Sell
+              </Link>
+              <Link className="centeredBtnsClass" to="/login">
+                <button className="loginButtonCustom">Login/SignUp</button>
+              </Link>
+              {/* <Nav.Link href="#link" className="m-1">
+                <Row gutter={12}>
+                  <Col span={6}>
+                    <div onClick={() => setSearchbar(!searchbar)}>
+                      <img
+                        src="/images/search.png"
+                        alt="logo"
+                        onMouseOver={(e) =>
+                          (e.currentTarget.src = "/images/search_dark.png")
+                        }
+                        onMouseOut={(e) =>
+                          (e.currentTarget.src = "/images/search.png")
+                        }
+                        style={{
+                          width: "24px",
+                          paddingBottom: "10px",
+                        }}
+                      />
+                    </div>
+                  </Col>
+                  <Col span={6}>
+                    <div onClick={() => setSidebar(!sidebar)}>
+                      <img
+                        src="/images/menu.png"
+                        alt="logo"
+                        onMouseOver={(e) =>
+                          (e.currentTarget.src = "/images/menu_dark.png")
+                        }
+                        onMouseOut={(e) =>
+                          (e.currentTarget.src = "/images/menu.png")
+                        }
+                        style={{
+                          width: "24px",
+                          paddingBottom: "10px",
+                        }}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+              </Nav.Link> */}
+            </Nav>
+
+            {/* <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form> */}
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 };
