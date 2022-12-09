@@ -87,7 +87,7 @@
     box-shadow: 0px 3px 15px 3px #ccc;
   }
   .nav-pricon {
-    display: block;
+    display: flex;
   }
 
   .nav-priconmob {
