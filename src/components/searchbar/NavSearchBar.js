@@ -1,49 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 import "./Searchbar.scss";
-import axios from "axios";
-import { SearchResult } from "../../components/search-result/search-result.component";
-
+import { CustomSearchResultItem } from "../search-item/CustomSearchResultItem";
+import { makingValidName } from "../../Constants/Functions";
 export const NavSearchBar = ({ allProducts, allBrands }) => {
   const [inputValue, setInputValue] = useState("");
-
-  const history = useHistory();
-  const [filterData, setFilterData] = useState([]);
-  const [isSearching, setSearching] = useState(false);
-  const [searchbar, setSearchbar] = useState(true);
-  var timer = null;
+  const [filterProducts, setFilterProducts] = useState([]);
+  const [filterBrands, setfilterBrands] = useState([]);
+  const [searchbar, setSearchbar] = useState(false);
   const handlechange = (e) => {
     if (e.target.value.length === 0) {
-      setSearching(false);
+      setSearchbar(false);
     } else {
-      setSearching(true);
+      setSearchbar(true);
     }
     setInputValue(e.target.value);
-    const filterproducts = allProducts?.filter(
-      (dat, index) =>
-        dat?.name?.includes(e.target.value) ||
-        dat?.name === e.target.value ||
-        dat.sku_number?.includes(e.target.value) ||
-        dat.sku_number === e.target.value
+    var enterdValue = makingValidName(`${e.target.value}`);
+    setFilterProducts(
+      allProducts?.filter(
+        (dat, index) =>
+          makingValidName(`${dat.name}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.name}`) === enterdValue ||
+          makingValidName(`${dat.sku_number}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.sku_number}`) === enterdValue
+      )
     );
-    const filterBrands = allBrands?.filter(
-      (item, index) =>
-        item.title?.includes(e.target.value) || item.title === e.target.value
+    setfilterBrands(
+      allBrands?.filter(
+        (item, index) =>
+          makingValidName(`${item.title}`)?.includes(enterdValue) ||
+          makingValidName(`${item.title}`) === enterdValue
+      )
     );
-    console.log("show filtered Products", filterproducts);
-    console.log("filteredBrands", filterBrands);
-    console.log("all products", allProducts);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    console.log(allProducts[0], allBrands[0]);
   };
 
   return (
-    <div className="searchBarComponentMain">
-      <div className="searchBox">
-        <div className="search-container">
+    <>
+      <div className="searchContainerCont">
+        <div className="search-container" style={{ margin: "0px" }}>
           <input
             style={{
               fontWeight: "1000",
@@ -57,6 +52,39 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
           />
           <i className="fas fa-search"></i>
         </div>
+        <NavDropdown
+          title=""
+          id="basic-nav-dropdown"
+          className="navs"
+          show={searchbar}
+        >
+          {filterProducts.map((dat, index) => {
+            const newname = makingValidName(`${dat.name}`);
+            const newshoeid = makingValidName(`${dat.shoe_id}`);
+
+            return (
+              <CustomSearchResultItem
+                imgUrl={dat.cover_image}
+                title={dat?.name}
+                description={dat?.description}
+                toLink={`/${newname}_id_${newshoeid}`}
+              />
+            );
+          })}
+
+          {filterBrands.map((item, index) => {
+            return (
+              <>
+                <CustomSearchResultItem
+                  imgUrl={item.imageURL}
+                  title={item.title}
+                  description={item.description}
+                  toLink={"/browse/" + item.collection_id + "/"}
+                />
+              </>
+            );
+          })}
+        </NavDropdown>
       </div>
       {/* {isSearching ? (
         <i
@@ -78,29 +106,6 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
           searchbar={searchbar}
         />
       ) : null} */}
-      <NavDropdown
-        title="Browse"
-        id="basic-nav-dropdown"
-        className="m-1 navs"
-        // show={show}
-        // onMouseEnter={showDropdown}
-        // onMouseLeave={hideDropdown}
-      >
-        {filterData.map((item, index) => {
-          return (
-            <NavDropdown.Item
-              active="true"
-              href={"/browse/" + item.collection_id + "/"}
-              style={{ maxWidth: "50px" }}
-              onClick={() => {
-                window.localStorage.setItem("filter", null);
-              }}
-            >
-              {item.title}
-            </NavDropdown.Item>
-          );
-        })}
-      </NavDropdown>
-    </div>
+    </>
   );
 };

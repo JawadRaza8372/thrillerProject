@@ -187,10 +187,10 @@ const Header = ({
             />
           </Navbar.Brand>
         </Link>
-        <Nav className="ml-auto sldbtn">
+        <Nav className="mr-auto" style={{ flex: "1" }}>
           <NavSearchBar allProducts={products} allBrands={brands} />
         </Nav>
-        <Nav className="ml-auto sldbtn">
+        <Nav className="ml-auto">
           <NavDropdown
             title="Browse"
             id="basic-nav-dropdown"
