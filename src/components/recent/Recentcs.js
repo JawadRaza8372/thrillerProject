@@ -71,27 +71,9 @@ const CustomRightArrow = ({ onClick }) => {
   );
 };
 const Recentcs = ({ name, tag, productData }) => {
-  const [slider, setSlider] = useState([]);
-
   // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    Load();
-  }, []);
-  console.log(productData);
-  var mainURL = "https://appick.io/u/thriller/imgs/";
 
-  function Load() {
-    //////console.log("Laoding: ", name);
-    var url = `https://api.thrillerme.com/shoes/getByTag/${name}`;
-    var encodedURL = encodeURI(url);
-    axios.get(encodedURL).then((res) => {
-      setSlider(res.data);
-      ////console.log(name, slider);
-    });
-  }
-  // if (slider.length > 0) {
-  //   console.log("recentcs wala first index name slider hy arry ka", slider[0]);
-  // }
+  const recentSlider = productData?.filter((iem) => iem?.tag.includes(name));
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -107,9 +89,8 @@ const Recentcs = ({ name, tag, productData }) => {
           // customLeftArrow={<CustomLeftArrow />}
           // customRightArrow={<CustomRightArrow />}
         >
-          {slider.map((elem, index) => {
+          {recentSlider.map((elem, index) => {
             const newname = makingValidName(`${elem.name}`);
-            const newskunumb = makingValidName(`${elem.sku_number}`);
             const newshoeid = makingValidName(`${elem.shoe_id}`);
             return (
               <>

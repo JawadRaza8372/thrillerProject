@@ -33,7 +33,7 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
       )
     );
   };
-  console.log(filterProducts);
+
   return (
     <>
       <div className="searchContainerCont">
