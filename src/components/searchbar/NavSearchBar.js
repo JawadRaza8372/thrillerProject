@@ -32,9 +32,8 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
           makingValidName(`${item.title}`) === enterdValue
       )
     );
-    console.log(allProducts[0], allBrands[0]);
   };
-
+  console.log(filterProducts);
   return (
     <>
       <div className="searchContainerCont">

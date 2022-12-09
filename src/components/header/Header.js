@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { NavSearchBar } from "../searchbar/NavSearchBar";
 
 const Header = ({
+  brands,
   products,
   setSidebar,
   sidebar,
@@ -36,7 +37,6 @@ const Header = ({
   var hasShipping = false;
 
   const history = useHistory();
-  const [brands, setBrands] = useState([]);
 
   var user = LocalStorage.getItem("user");
   //console.log(user);
@@ -100,18 +100,17 @@ const Header = ({
     } catch {}
   };
 
-  useEffect(() => {
-    var url = `https://api.thrillerme.com/collections`;
-    axios
-      .get(url)
-      .then((res) => {
-        setBrands(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    initialSetup();
-  }, []);
+  // useEffect(() => {
+  //   var url = `https://api.thrillerme.com/collections`;
+  //   axios
+  //     .get(url)
+  //     .then((res) => {
+  //       setBrands(res.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   const setupChecks = async () => {
     try {
@@ -194,7 +193,7 @@ const Header = ({
           <NavDropdown
             title="Browse"
             id="basic-nav-dropdown"
-            className="m-1 navs"
+            className="m-1 navs centeredBtnsClass"
             show={show}
             onMouseEnter={showDropdown}
             onMouseLeave={hideDropdown}
@@ -219,40 +218,27 @@ const Header = ({
             onClick={() => {
               window.localStorage.setItem("filter", null);
             }}
-            className="m-1 navs"
+            className="m-1 navs centeredBtnsClass"
           >
             Shop All
           </Nav.Link>
-
-          <Nav.Link href="/styles" className="m-1 navs">
+          <Link to="/styles" className="m-1 navs nav-link centeredBtnsClass">
             Styles
-          </Nav.Link>
-
-          <Link
-            className=" sellbtn"
-            style={{
-              height: "40px",
-              width: "85px",
-              marginTop: "5px",
-              marginRight: "5px",
-            }}
-          >
-            <Button
-              style={{
-                height: "35px",
-                width: "85px",
-                background: "#ec1d25",
-                borderColor: "#ec1d25",
-                padding: "0px",
-                marginLeft: "5px",
-                marginTop: "2px",
-              }}
-              onClick={setupChecks}
-            >
-              <span className="p-0 m-0 selltxt">Sell</span>
-            </Button>
           </Link>
 
+          <Link to="/help" className="m-1 navs nav-link centeredBtnsClass">
+            Help
+          </Link>
+          <Link
+            to="/sell"
+            className="m-1 navs nav-link centeredBtnsClass"
+            style={{ color: "Red" }}
+          >
+            Sell
+          </Link>
+          <Link className="centeredBtnsClass" to="/login">
+            <button className="loginButtonCustom">Login/SignUp</button>
+          </Link>
           <Nav.Link href="#link" className="m-1">
             <Row gutter={12}>
               <Col span={6}>

@@ -12,43 +12,8 @@ import HomeBanner from "../../components/home-banner/Banner";
 import axios from "axios";
 import CustomRecentMv from "../../components/recent-mobile-view/CustomRecentMv";
 
-export const HomePage = () => {
-  const [brands, setBrands] = useState([]);
-  useEffect(() => {
-    var url = `https://api.thrillerme.com/collections`;
-    axios
-      .get(url)
-      .then((res) => {
-        setBrands(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  // brands data
-  // collection_id: 20;
-  // description: "It could be said that Michael Jordan was the genesis of basketball as we know it today. Throughout a fiery and storied career, MJ overcame his hurdles, soaring challenge above challenge to realize the unexpected. Along the way, he redefined basketball's relationship to style, the sports connection to youth counter-culture and the games creative potential.";
-  // imageURL: "https://dk0pm9zdlq16s.cloudfront.net/4de136a4-a575-4f52-b82b-625e0692d9fd.png";
-  // title: "Air Jordan ";
-  console.log("CHECKING BRANDS", brands);
-  // useEffect(() => {
-  //   localStorage.removeItem("selectedSection");
-
-  //   try {
-  //     var user = JSON.parse(localStorage.getItem("user"));
-
-  //     var urlUser = `https://api.thrillerme.com/registrations/${user.user_id}`;
-  //     var encodedURLU = encodeURI(urlUser);
-  //     axios.get(encodedURLU).then((res) => {
-  //       if (res.data !== null) {
-  //         localStorage.setItem("user", JSON.stringify(res.data));
-  //         var _user = JSON.parse(localStorage.getItem("user"));
-  //         console.log(_user);
-  //       }
-  //       //console.log("User Default size: ", defaultSize);
-  //     });
-  //   } catch (error) {}
-  // }, []);
+export const HomePage = ({ allBrands, allProducts }) => {
+  console.log("checking Lengths", allBrands.length, allProducts.length);
   return (
     <div>
       <div className="home">
@@ -63,16 +28,49 @@ export const HomePage = () => {
           <div className="imageCont"></div>
         </div>
         {/* <HomeBanner /> */}
-        <CustomRecentcs tag="Popular Brands" brands={brands} />
-        <Recentcs class="x" name={"Just Dropped"} tag={"Just Dropped"} />
-        <Recentcs name={"Most Popular"} tag={"Most Popular"} />
-        <Recentcs name={"Favorites"} tag={"Favourites"} />
-        <Recentcs name={"Air Jordon"} tag={"Air Jordan"} />
-        <Recentcs name={"Adidas Yeezy"} tag={"Adidas Yeezy"} />
-        <Recentcs name={"Dunks"} tag={"Dunks"} />
-        <Recentcs name={"Jordon 1"} tag={"Jordan 1"} />
-        <Recentcs name={"Travis Scot"} tag={"Travis Scott"} />
-        <Recentcs name={"Off White"} tag={"Off-White"} />
+        <CustomRecentcs tag="Popular Brands" brands={allBrands} />
+        <Recentcs
+          class="x"
+          name={"Just Dropped"}
+          tag={"Just Dropped"}
+          productData={allProducts}
+        />
+        <Recentcs
+          name={"Most Popular"}
+          tag={"Most Popular"}
+          productData={allProducts}
+        />
+        <Recentcs
+          name={"Favorites"}
+          tag={"Favourites"}
+          productData={allProducts}
+        />
+        <Recentcs
+          name={"Air Jordon"}
+          tag={"Air Jordan"}
+          productData={allProducts}
+        />
+        <Recentcs
+          name={"Adidas Yeezy"}
+          tag={"Adidas Yeezy"}
+          productData={allProducts}
+        />
+        <Recentcs name={"Dunks"} tag={"Dunks"} productData={allProducts} />
+        <Recentcs
+          name={"Jordon 1"}
+          tag={"Jordan 1"}
+          productData={allProducts}
+        />
+        <Recentcs
+          name={"Travis Scot"}
+          tag={"Travis Scott"}
+          productData={allProducts}
+        />
+        <Recentcs
+          name={"Off White"}
+          tag={"Off-White"}
+          productData={allProducts}
+        />
         <Links />
       </div>
       {/* <Slideshow /> */}

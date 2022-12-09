@@ -49,10 +49,24 @@ const App = ({ location }) => {
   const [catbar, setCatbar] = useState(false);
   const [signedIn, setSignIn] = useState(false);
   const [allProducts, setallProducts] = useState([]);
+  const [allBrands, setAllBrands] = useState([]);
+
   useEffect(() => {
-    axios.get(`https://api.thrillerme.com/shoes`).then((res) => {
-      setallProducts(res.data);
-    });
+    axios
+      .get(`https://api.thrillerme.com/shoes`)
+      .then((res) => {
+        setallProducts(res.data);
+      })
+      .catch((e) => console.log(e));
+    var url = `https://api.thrillerme.com/collections`;
+    axios
+      .get(url)
+      .then((resb) => {
+        setAllBrands(resb.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
   return (
     <div className="app">
@@ -62,6 +76,7 @@ const App = ({ location }) => {
         <HeaderCentered />
       ) : location.pathname === "/account" ? (
         <Header
+          brands={allBrands}
           products={allProducts}
           setSidebar={setSidebar}
           sidebar={sidebar}
@@ -72,6 +87,7 @@ const App = ({ location }) => {
         />
       ) : (
         <Header
+          brands={allBrands}
           products={allProducts}
           setSidebar={setSidebar}
           sidebar={sidebar}
@@ -96,7 +112,13 @@ const App = ({ location }) => {
         <Searchbar searchbar={searchbar} setSearchbar={setSearchbar} />
       </div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return <HomePage allBrands={allBrands} allProducts={allProducts} />;
+          }}
+        />
         <Route exact path="/sell" component={SellPage} />
         <Route exact path="/shoe" component={ShoePage} />
         {/* <Route exact path="/login" component={LoginSignupPage} /> */}
@@ -104,7 +126,6 @@ const App = ({ location }) => {
           exact
           path="/login"
           render={(props) => {
-            console.log("app file ma login wali props", props);
             return (
               <LoginSignupPage
                 {...props}

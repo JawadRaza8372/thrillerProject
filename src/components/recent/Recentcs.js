@@ -70,14 +70,14 @@ const CustomRightArrow = ({ onClick }) => {
     </button>
   );
 };
-const Recentcs = ({ name, tag }) => {
+const Recentcs = ({ name, tag, productData }) => {
   const [slider, setSlider] = useState([]);
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     Load();
   }, []);
-
+  console.log(productData);
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
   function Load() {
