@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 
 import { HomePage } from "./page-component/Home-page/home-page.component";
@@ -38,7 +38,7 @@ import ContactUs from "./page-component/contact-us/ContactUs";
 import StylePage from "./page-component/style-page/style-page";
 import Altogether from "./page-component/altogether/Altogether";
 import { Reset } from "./page-component/reset-password/reset";
-
+import axios from "axios";
 import ReactGA from "react-ga";
 const TRACKING_ID = "UA-198989119-1"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -48,6 +48,12 @@ const App = ({ location }) => {
   const [searchbar, setSearchbar] = useState(false);
   const [catbar, setCatbar] = useState(false);
   const [signedIn, setSignIn] = useState(false);
+  const [allProducts, setallProducts] = useState([]);
+  useEffect(() => {
+    axios.get(`https://api.thrillerme.com/shoes`).then((res) => {
+      setallProducts(res.data);
+    });
+  }, []);
   return (
     <div className="app">
       {location.pathname === "/login" ||
@@ -56,6 +62,7 @@ const App = ({ location }) => {
         <HeaderCentered />
       ) : location.pathname === "/account" ? (
         <Header
+          products={allProducts}
           setSidebar={setSidebar}
           sidebar={sidebar}
           setSearchbar={setSearchbar}
@@ -65,6 +72,7 @@ const App = ({ location }) => {
         />
       ) : (
         <Header
+          products={allProducts}
           setSidebar={setSidebar}
           sidebar={sidebar}
           setSearchbar={setSearchbar}

@@ -7,8 +7,10 @@ import "react-simple-flex-grid/lib/main.css";
 import axios from "axios";
 import LocalStorage from "redux-persist/es/storage";
 import { connect } from "react-redux";
+import { NavSearchBar } from "../searchbar/NavSearchBar";
 
 const Header = ({
+  products,
   setSidebar,
   sidebar,
   setSearchbar,
@@ -186,6 +188,9 @@ const Header = ({
           </Navbar.Brand>
         </Link>
         <Nav className="ml-auto sldbtn">
+          <NavSearchBar allProducts={products} allBrands={brands} />
+        </Nav>
+        <Nav className="ml-auto sldbtn">
           <NavDropdown
             title="Browse"
             id="basic-nav-dropdown"
@@ -218,30 +223,13 @@ const Header = ({
           >
             Shop All
           </Nav.Link>
-          {/* <Nav.Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeDB9_Fj2EOpkT2Sx5S_HaYGOOVn8BOhRjZf3yYWWVcVFkHNQ/viewform?usp=sf_link"
-            onClick={() => {
-              window.localStorage.setItem("filter", null);
-            }}
-            className="m-1 navs"
-          >
-            Free Authentication
-          </Nav.Link> */}
+
           <Nav.Link href="/styles" className="m-1 navs">
             Styles
           </Nav.Link>
-          {/* {signedIn === true ? (
-          <Nav.Link href="account" className="m-1 navs">
-            Account
-          </Nav.Link>
-        ) : (
-          <Nav.Link href="#home" className="m-1 navs">
-            Login
-          </Nav.Link>
-        )} */}
+
           <Link
             className=" sellbtn"
-            // to={`/sell`}
             style={{
               height: "40px",
               width: "85px",
@@ -307,7 +295,7 @@ const Header = ({
           </Nav.Link>
         </Nav>
       </Navbar>
-
+      {/* 
       <Navbar
         className={dropShadow ? "drop-shadow nav-priconmob" : "nav-priconmob"}
         bg="white"
@@ -357,7 +345,7 @@ const Header = ({
             />
           </div>
         </Nav>
-      </Navbar>
+      </Navbar> */}
     </div>
   );
 };
