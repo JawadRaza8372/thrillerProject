@@ -37,11 +37,10 @@ const Header = ({
   useEffect(() => {
     const rawUserId = LocalStorage.getItem("user");
     //
-    if (rawUserId && rawUserId.length > 0) {
+    if (rawUserId) {
       try {
         let rawuser = JSON.parse(rawUserId);
         setisUserAvailable(rawuser);
-        console.log("headerUser", rawuser);
       } catch (error) {
         console.log("error", error);
       }
@@ -155,6 +154,7 @@ const Header = ({
   //   setSearchbar(!searchbar);
   //   history.push(`/browse/${rout}/`);
   // }
+  console.log("headerUser", isUserAvailable);
 
   return (
     <div>
