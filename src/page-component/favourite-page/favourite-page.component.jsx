@@ -5,6 +5,7 @@ import { CustomButton } from "../../components/custom-button/custome-button.comp
 import { FavouriteTable } from "../../components/favourite-table/favourite-table.component";
 import { FavouriteModal } from "../../components/favourites-modal/favourites-modal.component";
 import { AccountSidebar2 } from "../../components/account-sidebar-2/account-sidebar-2.component";
+import { useHistory } from "react-router-dom";
 
 const sideBarLinks = [
   {
@@ -43,10 +44,21 @@ export const FavouritePage = () => {
   const [modalStatus, setModalStatus] = useState(false);
   const [page, setPage] = useState("Favourites");
   const [sideBarStatus, setSideBarStatus] = useState(true);
-
+  const newhistory = useHistory();
+  const fetchUser = async () => {
+    const rawUserId = await window.localStorage.getItem("user");
+    //
+    if (rawUserId) {
+      console.log("user found");
+    } else {
+      newhistory.push("/login");
+    }
+  };
   useEffect(() => {
+    fetchUser();
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="favourites-page-container">
       <AccountSidebar2

@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 import { AccountSidebar2 } from "../../components/account-sidebar-2/account-sidebar-2.component";
 import EditOffering from "../../components/edit-offering-modal/EditOffering";
+import { useHistory } from "react-router-dom";
 
 const sideBarLinks = [
   {
@@ -56,10 +57,22 @@ if (user !== null || user !== undefined) {
 export const SecurityPage = withRouter(({ history }) => {
   const [page, setPage] = useState("Security");
   const [sideBarStatus, setSideBarStatus] = useState(true);
+  const newhistory = useHistory();
 
+  const fetchUser = async () => {
+    const rawUserId = await window.localStorage.getItem("user");
+    //
+    if (rawUserId) {
+      console.log("user found");
+    } else {
+      newhistory.push("/login");
+    }
+  };
   useEffect(() => {
+    fetchUser();
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="security-page-container">
       <AccountSidebar2

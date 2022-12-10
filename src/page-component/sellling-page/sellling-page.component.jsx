@@ -8,6 +8,7 @@ import { AccountSidebar2 } from "../../components/account-sidebar-2/account-side
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 
 import SHOE_DATA from "../../temporary-data/shoe-data";
+import { useHistory } from "react-router-dom";
 
 const sideBarLinks = [
   {
@@ -46,11 +47,21 @@ export const SellingPage = () => {
   const [selectedSection, toggleSelectedSection] = useState("Current");
   const [pendingShoeData, appendPendingData] = useState([]);
   const [currentShoeData, popShoeData] = useState(SHOE_DATA);
-
+  const newhistory = useHistory();
   const [page, setPage] = useState("Selling");
   const [sideBarStatus, setSideBarStatus] = useState(true);
 
+  const fetchUser = async () => {
+    const rawUserId = await window.localStorage.getItem("user");
+    //
+    if (rawUserId) {
+      console.log("user found");
+    } else {
+      newhistory.push("/login");
+    }
+  };
   useEffect(() => {
+    fetchUser();
     window.scrollTo(0, 0);
   }, []);
 

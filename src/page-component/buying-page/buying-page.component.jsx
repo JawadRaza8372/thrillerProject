@@ -6,6 +6,7 @@ import { HistoryBuying } from "../../components/history-buying/history-buying.co
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 
 import { AccountSidebar2 } from "../../components/account-sidebar-2/account-sidebar-2.component";
+import { useHistory } from "react-router-dom";
 
 const sideBarLinks = [
   {
@@ -44,8 +45,18 @@ export const BuyingPage = () => {
   const [selectedSection, toggleSelectedSection] = useState("Pending");
   const [page, setPage] = useState("Buying");
   const [sideBarStatus, setSideBarStatus] = useState(true);
-
+  const newhistory = useHistory();
+  const fetchUser = async () => {
+    const rawUserId = await window.localStorage.getItem("user");
+    //
+    if (rawUserId) {
+      console.log("user found");
+    } else {
+      newhistory.push("/login");
+    }
+  };
   useEffect(() => {
+    fetchUser();
     window.scrollTo(0, 0);
 
     var his = localStorage.getItem("history");

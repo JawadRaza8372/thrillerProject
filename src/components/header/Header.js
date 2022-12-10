@@ -156,7 +156,6 @@ const Header = ({
   //   setSearchbar(!searchbar);
   //   history.push(`/browse/${rout}/`);
   // }
-  console.log("headerUser", isUserAvailable);
 
   return (
     <div>
@@ -259,7 +258,7 @@ const Header = ({
                       active="true"
                       href="#"
                       onClick={() => {
-                        window.localStorage.clear();
+                        window.localStorage.removeItem("user");
                       }}
                     >
                       Logout

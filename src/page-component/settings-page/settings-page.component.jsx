@@ -12,6 +12,7 @@ import { AccountSidebar2 } from "../../components/account-sidebar-2/account-side
 import { NotificationInfo } from "../../components/notification-info/notification-info.component";
 
 import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const sideBarLinks = [
   {
@@ -49,13 +50,18 @@ const sideBarLinks = [
 export const SettingsPage = withRouter(({ history }) => {
   const [page, setPage] = useState("Settings");
   const [sideBarStatus, setSideBarStatus] = useState(true);
-
-  var user = JSON.parse(localStorage.getItem("user"));
-  //console.log("user", user);
-  if (user === undefined) {
-    history.go("/login");
-  }
+  const newhistory = useHistory();
+  const fetchUser = async () => {
+    const rawUserId = await window.localStorage.getItem("user");
+    //
+    if (rawUserId) {
+      console.log("user found");
+    } else {
+      newhistory.push("/login");
+    }
+  };
   useEffect(() => {
+    fetchUser();
     window.scrollTo(0, 0);
   }, []);
 
@@ -82,7 +88,6 @@ export const SettingsPage = withRouter(({ history }) => {
         <ProfileInfo />
         {/* <BuyingInfo /> */}
         <SellerInfo />
-        {/* {user.user_role === 1 && <SellerInfo />} */}
         <ShippingInfo />
         <PayoutInfo />
 
