@@ -57,32 +57,34 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
           className="navs"
           show={searchbar}
         >
-          {filterProducts.map((dat, index) => {
-            const newname = makingValidName(`${dat.name}`);
-            const newshoeid = makingValidName(`${dat.shoe_id}`);
+          <div className="fixedHeightDiv">
+            {filterProducts.map((dat, index) => {
+              const newname = makingValidName(`${dat.name}`);
+              const newshoeid = makingValidName(`${dat.shoe_id}`);
 
-            return (
-              <CustomSearchResultItem
-                imgUrl={dat.cover_image}
-                title={dat?.name}
-                description={`Sku Number: ${dat?.sku_number}`}
-                toLink={`/${newname}_id_${newshoeid}`}
-              />
-            );
-          })}
-
-          {filterBrands.map((item, index) => {
-            return (
-              <>
+              return (
                 <CustomSearchResultItem
-                  imgUrl={item.imageURL}
-                  title={item.title}
-                  description={item.description}
-                  toLink={"/browse/" + item.collection_id + "/"}
+                  imgUrl={dat.cover_image}
+                  title={dat?.name}
+                  description={`Sku Number: ${dat?.sku_number}`}
+                  toLink={`/${newname}_id_${newshoeid}`}
                 />
-              </>
-            );
-          })}
+              );
+            })}
+
+            {filterBrands.map((item, index) => {
+              return (
+                <>
+                  <CustomSearchResultItem
+                    imgUrl={item.imageURL}
+                    title={item.title}
+                    description={item.description}
+                    toLink={"/browse/" + item.collection_id + "/"}
+                  />
+                </>
+              );
+            })}
+          </div>
         </NavDropdown>
       </div>
       {/* {isSearching ? (

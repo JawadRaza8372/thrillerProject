@@ -4,6 +4,12 @@
     display: none;
   }
 }
+.fixedHeightDiv {
+  width: 100%;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 .nav-menusb {
   background-color: whitesmoke;
   width: 400px;
