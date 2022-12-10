@@ -243,9 +243,6 @@ const Header = ({
                     title="Accounts"
                     id="basic-nav-dropdown"
                     className="m-1 navs centeredBtnsClass"
-                    show={show}
-                    onMouseEnter={showDropdown}
-                    onMouseLeave={hideDropdown}
                   >
                     <NavDropdown.Item
                       active="true"
