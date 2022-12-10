@@ -100,18 +100,6 @@ const Header = ({
     } catch {}
   };
 
-  // useEffect(() => {
-  //   var url = `https://api.thrillerme.com/collections`;
-  //   axios
-  //     .get(url)
-  //     .then((res) => {
-  //       setBrands(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-
   const setupChecks = async () => {
     try {
       await initialSetup();

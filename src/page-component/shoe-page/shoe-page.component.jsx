@@ -17,13 +17,6 @@ import ReactPixel from "react-facebook-pixel";
 
 const ShoePage = ({ match, location, userData, orderDetail }) => {
   var shoe = JSON.parse(localStorage.getItem("sellShoe"));
-  //console.log(shoe.name);
-  // const {
-  //   location: {
-  //     state: { shoe },
-  //   },
-  // } = useHistory();
-
   const [displayShoeSize, toggleShoeDisplay] = useState([true, shoe]);
   const [buttonCheck, setCheck] = useState(false);
   // const [isAuthenticated, setAuthenticated] = useState(false);
@@ -36,13 +29,74 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
   });
   const [lowestAsk, setLowestAsk] = useState("0");
   const [locationKeys, setLocationKeys] = useState([]);
+  const [hasPayout, sethasPayout] = useState(false);
+  const [hasShipping, setHasShipping] = useState(false);
   const history = useHistory();
   var user = LocalStorage.getItem("user");
+  var rawuserid = LocalStorage.getItem("user");
+
   // var userData = JSON.parse(user);
   user.then((res) => {
     user = JSON.parse(res);
     userData = JSON.parse(res);
   });
+  useEffect(async () => {
+    var newuserdata = await JSON.parse(rawuserid);
+    if (!newuserdata) {
+      history.push({
+        pathname: "/logins/1",
+        state: {
+          historyShoe: true,
+        },
+      });
+    } else if (newuserdata?.isAuthenticated !== 1) {
+      history.push({
+        pathname: "/twoFactorAuth",
+        state: {
+          hasShipping: hasShipping,
+          hasPayout: hasPayout,
+          historyShoe: true,
+        },
+      });
+      await axios
+        .get(`https://api.thrillerme.com/payout/${newuserdata.user_id}`)
+        .then((rest) => {
+          if (rest.data) {
+            console.log("payout found");
+            sethasPayout(true);
+          } else {
+            history.push({
+              pathname: "/payoutInfo",
+              state: {
+                historyShoe: true,
+              },
+            });
+          }
+        })
+        .catch((rest) => {
+          console.error(rest);
+        });
+      await axios
+        .get(`https://api.thrillerme.com/sellers/${newuserdata.user_id}`)
+        .then((res) => {
+          if (res.data) {
+            console.log("seller info found");
+            setHasShipping(true);
+          } else {
+            history.push({
+              pathname: "/shippingInfo/1",
+              state: {
+                hasPayout: hasPayout,
+                historyShoe: true,
+              },
+            });
+          }
+        })
+        .catch((res) => {
+          console.error(res);
+        });
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -86,12 +140,6 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
         }
       });
     }
-
-    // if (user === null || user === undefined) {
-    //   history.push("/login");
-    // } else {
-    //   initialSetup();
-    // }
 
     return history.listen((location) => {
       if (history.action === "PUSH") {

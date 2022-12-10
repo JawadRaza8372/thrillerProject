@@ -49,6 +49,7 @@ const BuyPage = ({ history, match, userDetails }) => {
           console.log("shipping info product-review", res.data);
           if (res.data) {
             setShipping(true);
+          } else {
             newhistory.push({
               pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
               state: {
