@@ -35,7 +35,7 @@ const Header = ({
   };
 
   useEffect(() => {
-    const rawUserId = LocalStorage.getItem("user");
+    const rawUserId = window.localStorage.getItem("user");
     //
     if (rawUserId) {
       try {
