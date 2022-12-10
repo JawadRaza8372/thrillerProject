@@ -25,6 +25,8 @@ const Header = ({
   // const [hasShipping, setShipping] = useState(false);
   // const [hasPayout, setPayout] = useState(false);
   const [show, setShow] = useState(false);
+  const [isUserAvailable, setisUserAvailable] = useState({});
+  const history = useHistory();
   const showDropdown = (e) => {
     setShow(!show);
   };
@@ -32,124 +34,127 @@ const Header = ({
     setShow(false);
   };
 
-  var isAuthenticated = false;
-  var hasPayout = false;
-  var hasShipping = false;
-
-  const history = useHistory();
-
-  var user = LocalStorage.getItem("user");
-  //console.log(user);
-  user.then((res) => {
-    user = JSON.parse(res);
-    //console.log(user);
-  });
-
-  const initialSetup = async () => {
-    // user = LocalStorage.getItem("user");
-    // //console.log(user);
-    // user.then((res) => {
-    //   user = JSON.parse(res);
-    //   //console.log(user);
-    // });
-    // if (user === null || user === undefined) {
-    //   //console.log(user);
-    //   history.push("/login");
-    // }
-
-    // if (user === null) {
-    //   //console.log(user);
-    //   history.push("/login");
-    // }
-
-    try {
-      // if (user.isAuthenticated === 1) {
-      //   setAuthenticated(true);
-      // }
-
-      var authData = await axios.get(
-        `https://api.thrillerme.com/registrations/${user.user_id}`
-      );
-
-      //console.log(authData.data.isAuthenticated);
-
-      if (authData.data.isAuthenticated === 1) {
-        //console.log("hello");
-        isAuthenticated = true;
-        //console.log(isAuthenticated);
-      }
-
-      var data = await axios.get(
-        `https://api.thrillerme.com/sellers/${user.user_id}`
-      );
-
-      //console.log("### SHIPPING ###", data);
-      if (data.data !== "") {
-        hasShipping = true;
-      }
-
+  useEffect(() => {
+    const rawUserId = LocalStorage.getItem("user");
+    //
+    if (rawUserId && rawUserId.length > 0) {
       try {
-        var payData = await axios.get(
-          `https://api.thrillerme.com/payout/${user.user_id}`
-        );
-        //console.log(payData);
-        if (payData.data !== "") {
-          hasPayout = true;
-        }
-      } catch (error) {}
-    } catch {}
-  };
-
-  const setupChecks = async () => {
-    try {
-      await initialSetup();
-      var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
-      axios.get(url).then((res) => {
-        ////console.log(res);
-        // !res.data.isApproved
-        if (!isAuthenticated) {
-          history.push({
-            pathname: "/twoFactorAuth",
-            state: {
-              hasShipping: hasShipping,
-              hasPayout: hasPayout,
-              historyShoe: true,
-            },
-          });
-        } else if (!hasShipping) {
-          history.push({
-            pathname: "/shippingInfo/1",
-            state: {
-              hasPayout: hasPayout,
-              historyShoe: true,
-            },
-          });
-        } else if (!hasPayout) {
-          history.push({
-            pathname: "/payoutInfo",
-            state: {
-              historyShoe: true,
-            },
-          });
-        } else {
-          history.push("/sell");
-        }
-      });
-    } catch {
-      //make logins/1 for smooth seller journey
-      history.push({
-        pathname: "/logins/1",
-        state: {
-          historyShoe: true,
-        },
-      });
+        let rawuser = JSON.parse(rawUserId);
+        setisUserAvailable(rawuser);
+        console.log("headerUser", rawuser);
+      } catch (error) {
+        console.log("error", error);
+      }
+    } else {
+      setisUserAvailable({});
     }
-  };
+  }, []);
+  // var user = JSON.parse(LocalStorage.getItem("user"));
+  // const initialSetup = async () => {
+  //   // user = LocalStorage.getItem("user");
+  //   // //console.log(user);
+  //   // user.then((res) => {
+  //   //   user = JSON.parse(res);
+  //   //   //console.log(user);
+  //   // });
+  //   // if (user === null || user === undefined) {
+  //   //   //console.log(user);
+  //   //   history.push("/login");
+  //   // }
 
-  function goTo(rout) {
-    setSearchbar(!searchbar);
-    history.push(`/browse/${rout}/`);
-  }
+  //   // if (user === null) {
+  //   //   //console.log(user);
+  //   //   history.push("/login");
+  //   // }
+
+  //   try {
+  //     // if (user.isAuthenticated === 1) {
+  //     //   setAuthenticated(true);
+  //     // }
+
+  //     var authData = await axios.get(
+  //       `https://api.thrillerme.com/registrations/${user.user_id}`
+  //     );
+
+  //     //console.log(authData.data.isAuthenticated);
+
+  //     if (authData.data.isAuthenticated === 1) {
+  //       //console.log("hello");
+  //       isAuthenticated = true;
+  //       //console.log(isAuthenticated);
+  //     }
+
+  //     var data = await axios.get(
+  //       `https://api.thrillerme.com/sellers/${user.user_id}`
+  //     );
+
+  //     //console.log("### SHIPPING ###", data);
+  //     if (data.data !== "") {
+  //       hasShipping = true;
+  //     }
+
+  //     try {
+  //       var payData = await axios.get(
+  //         `https://api.thrillerme.com/payout/${user.user_id}`
+  //       );
+  //       //console.log(payData);
+  //       if (payData.data !== "") {
+  //         hasPayout = true;
+  //       }
+  //     } catch (error) {}
+  //   } catch {}
+  // };
+
+  // const setupChecks = async () => {
+  //   try {
+  //     await initialSetup();
+  //     var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
+  //     axios.get(url).then((res) => {
+  //       ////console.log(res);
+  //       // !res.data.isApproved
+  //       if (!isAuthenticated) {
+  //         history.push({
+  //           pathname: "/twoFactorAuth",
+  //           state: {
+  //             hasShipping: hasShipping,
+  //             hasPayout: hasPayout,
+  //             historyShoe: true,
+  //           },
+  //         });
+  //       } else if (!hasShipping) {
+  //         history.push({
+  //           pathname: "/shippingInfo/1",
+  //           state: {
+  //             hasPayout: hasPayout,
+  //             historyShoe: true,
+  //           },
+  //         });
+  //       } else if (!hasPayout) {
+  //         history.push({
+  //           pathname: "/payoutInfo",
+  //           state: {
+  //             historyShoe: true,
+  //           },
+  //         });
+  //       } else {
+  //         history.push("/sell");
+  //       }
+  //     });
+  //   } catch {
+  //     //make logins/1 for smooth seller journey
+  //     history.push({
+  //       pathname: "/logins/1",
+  //       state: {
+  //         historyShoe: true,
+  //       },
+  //     });
+  //   }
+  // };
+
+  // function goTo(rout) {
+  //   setSearchbar(!searchbar);
+  //   history.push(`/browse/${rout}/`);
+  // }
 
   return (
     <div>
@@ -232,9 +237,41 @@ const Header = ({
               >
                 Sell
               </Link>
-              <Link className="centeredBtnsClass" to="/login">
-                <button className="loginButtonCustom">Login/SignUp</button>
-              </Link>
+              {isUserAvailable && isUserAvailable?.user_id ? (
+                <>
+                  <NavDropdown
+                    title="Accounts"
+                    id="basic-nav-dropdown"
+                    className="m-1 navs centeredBtnsClass"
+                    show={show}
+                    onMouseEnter={showDropdown}
+                    onMouseLeave={hideDropdown}
+                  >
+                    <NavDropdown.Item
+                      active="true"
+                      href="#"
+                      onClick={() => {
+                        history.push("/account");
+                      }}
+                    >
+                      Accounts
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      active="true"
+                      href="#"
+                      onClick={() => {
+                        window.localStorage.clear();
+                      }}
+                    >
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              ) : (
+                <Link className="centeredBtnsClass" to="/login">
+                  <button className="loginButtonCustom">Login/SignUp</button>
+                </Link>
+              )}
               {/* <Nav.Link href="#link" className="m-1">
                 <Row gutter={12}>
                   <Col span={6}>
