@@ -119,7 +119,14 @@ const App = ({ location }) => {
             return <HomePage allBrands={allBrands} allProducts={allProducts} />;
           }}
         />
-        <Route exact path="/sell" component={SellPage} />
+        <Route
+          exact
+          path="/sell"
+          component={SellPage}
+          render={() => {
+            return <SellPage allProducts={allProducts} />;
+          }}
+        />
         <Route exact path="/shoe" component={ShoePage} />
         {/* <Route exact path="/login" component={LoginSignupPage} /> */}
         <Route

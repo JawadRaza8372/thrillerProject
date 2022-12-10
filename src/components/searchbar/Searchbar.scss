@@ -1,5 +1,45 @@
 .searchContainerCont {
   flex: 1;
+  .CustomSearchContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 1px solid lightgrey;
+    .searchInput {
+      padding: 10px;
+      flex: 1;
+      border: none;
+      border-radius: 3px;
+      outline: none;
+      text-align: left;
+      background: transparent;
+      font-weight: bold;
+      font-size: 18px;
+      text-transform: uppercase;
+      &::placeholder {
+        text-align: left;
+        color: lightgray;
+        font-weight: normal;
+        font-size: 18px;
+
+        @media screen and (max-width: 1000px) {
+          font-size: 15px;
+        }
+      }
+    }
+    i {
+      margin: 0px 10px;
+    }
+    .closeBtn {
+      margin: 0px 10px;
+      height: 100%;
+      border: none !important;
+      outline: none !important;
+      background: transparent;
+    }
+  }
   #basic-nav-dropdown {
     display: none;
   }
@@ -72,6 +112,12 @@
         z-index: 1;
         top: 12px;
         left: 10px;
+      }
+      .closeBtn {
+        position: absolute;
+        z-index: 1;
+        top: 12px;
+        right: 10px;
       }
     }
   }

@@ -3,6 +3,7 @@ import { NavDropdown } from "react-bootstrap";
 import "./Searchbar.scss";
 import { CustomSearchResultItem } from "../search-item/CustomSearchResultItem";
 import { makingValidName } from "../../Constants/Functions";
+import { CloseSharp } from "@material-ui/icons";
 export const NavSearchBar = ({ allProducts, allBrands }) => {
   const [inputValue, setInputValue] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
@@ -37,19 +38,27 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
   return (
     <>
       <div className="searchContainerCont">
-        <div className="search-container" style={{ margin: "0px" }}>
+        <div className="CustomSearchContainer" style={{ margin: "0px" }}>
+          <i className="fas fa-search"></i>
+
           <input
-            style={{
-              fontWeight: "1000",
-              fontSize: "18px",
-              textTransform: "uppercase",
-            }}
+            className="searchInput"
             name="input"
             onChange={handlechange}
             value={inputValue}
             placeholder="TYPE TO SEARCH"
           />
-          <i className="fas fa-search"></i>
+          {inputValue.length > 0 && (
+            <button
+              onClick={() => {
+                setInputValue("");
+                setSearchbar(false);
+              }}
+              className="closeBtn"
+            >
+              <CloseSharp />
+            </button>
+          )}
         </div>
         <NavDropdown
           title=""

@@ -6,28 +6,39 @@ import axios from "axios";
 import { GETSEARCHEDSHOES } from "../../Constants/Global";
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
+import { makingValidName } from "../../Constants/Functions";
 
-export const SellPage = () => {
+export const SellPage = ({ allProducts }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [shoes, setShoes] = useState(null);
+  const [shoes, setShoes] = useState([]);
   const [isSearching, setSearching] = useState(false);
   var timer = null;
 
   const handleChange = async (event) => {
-    //console.log(event.target.value);
-    setSearching(true);
     setSearchValue(event.target.value);
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      axios
-        .get(GETSEARCHEDSHOES + event.target.value)
-        .then((res) => {
-          //console.log(res.data);
-          setShoes(res.data);
-          setSearching(false);
-        })
-        .catch((err) => {});
-    }, 5000);
+    var enterdValue = makingValidName(`${event.target.value}`);
+    setSearching(true);
+    await setShoes(
+      allProducts?.filter(
+        (dat, index) =>
+          makingValidName(`${dat.name}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.name}`) === enterdValue ||
+          makingValidName(`${dat.sku_number}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.sku_number}`) === enterdValue
+      )
+    );
+    setSearching(false);
+    // clearTimeout(timer);
+    // timer = setTimeout(() => {
+    //   axios
+    //     .get(GETSEARCHEDSHOES + event.target.value)
+    //     .then((res) => {
+    //       //console.log(res.data);
+    //       setShoes(res.data);
+    //       setSearching(false);
+    //     })
+    //     .catch((err) => {});
+    // }, 5000);
   };
 
   return (
