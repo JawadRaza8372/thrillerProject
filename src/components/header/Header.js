@@ -33,9 +33,8 @@ const Header = ({
   const hideDropdown = (e) => {
     setShow(false);
   };
-
-  useEffect(() => {
-    const rawUserId = window.localStorage.getItem("user");
+  const fetchUser = async () => {
+    const rawUserId = await window.localStorage.getItem("user");
     //
     if (rawUserId) {
       try {
@@ -47,6 +46,9 @@ const Header = ({
     } else {
       setisUserAvailable({});
     }
+  };
+  useEffect(() => {
+    fetchUser();
   }, []);
   // var user = JSON.parse(LocalStorage.getItem("user"));
   // const initialSetup = async () => {
