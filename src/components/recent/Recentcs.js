@@ -106,7 +106,10 @@ const Recentcs = ({ name, tag, productData }) => {
                   </Card.Body>
                 </Card> */}
                   <div className="cardDiv">
-                    <img className="cardImg" src={elem.cover_image} />
+                    <img
+                      className="cardImg"
+                      src={elem.cover_image ? elem.cover_image : cardImg6}
+                    />
                     <div className="textCont">
                       <h5>{elem.name}</h5>
                       <span>Lowest Price</span>

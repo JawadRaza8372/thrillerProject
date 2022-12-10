@@ -13,7 +13,6 @@ import axios from "axios";
 import CustomRecentMv from "../../components/recent-mobile-view/CustomRecentMv";
 
 export const HomePage = ({ allBrands, allProducts }) => {
-  console.log("checking Lengths", allBrands.length, allProducts[0]);
   return (
     <div>
       <div className="home">
