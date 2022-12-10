@@ -122,7 +122,6 @@ const App = ({ location }) => {
         <Route
           exact
           path="/sell"
-          component={SellPage}
           render={() => {
             return <SellPage allProducts={allProducts} />;
           }}
