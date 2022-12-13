@@ -31,7 +31,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
               <div
                 className="custBtnsNav"
                 key={index}
-                onClick={() => setLocalStorage(dat.title)}
+                onClick={() => setLocalStorage(`${dat.title}`)}
               >
                 {dat.title}
               </div>

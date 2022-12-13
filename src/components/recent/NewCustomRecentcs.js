@@ -13,8 +13,8 @@ import "./NewCustomRecentcs.scss";
 const NewCustomRecentcs = ({ name, tag, productData }) => {
   const history = useHistory();
   const recentSlider = productData?.filter((iem) => iem?.tag.includes(name));
-  const setLocalStorage = (name) => {
-    localStorage.setItem("selectedSection", JSON.stringify(name));
+  const setLocalStorage = (attr) => {
+    localStorage.setItem("selectedSection", JSON.stringify(attr));
     history.push("/browse/0");
   };
   return (
@@ -24,7 +24,7 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
           <h1>{tag}</h1>
         </div>
         <div className="col-2">
-          <button onClick={setLocalStorage} className="nextButton">
+          <button onClick={() => setLocalStorage(name)} className="nextButton">
             <KeyboardArrowRight />
           </button>
         </div>
