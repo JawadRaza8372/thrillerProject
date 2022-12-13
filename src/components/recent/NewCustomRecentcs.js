@@ -24,7 +24,7 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
           <h1>{tag}</h1>
         </div>
         <div className="col-2">
-          <button onClick={setLocalStorage(name)} className="nextButton">
+          <button onClick={setLocalStorage} className="nextButton">
             <KeyboardArrowRight />
           </button>
         </div>
