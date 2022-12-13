@@ -1,31 +1,33 @@
-.container {
-  .productShowDiv {
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    overflow-y: hidden;
-    overflow-x: auto;
-    .cardDiv {
-      height: 100%;
+.col-11 {
+  .row {
+    .productShowDiv {
       width: 100%;
-      max-width: 250px !important;
-      background-color: white;
-      border: 3px solid #ededed;
-      /* max-width: 250px; */
-      margin: 10px auto;
-      cursor: pointer;
-      .cardImg {
+      height: auto;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      overflow-y: hidden;
+      overflow-x: auto;
+      .cardDiv {
+        height: 100%;
         width: 100%;
-        object-fit: contain;
-      }
-      .textCont {
-        width: 90%;
+        max-width: 250px !important;
+        background-color: white;
+        border: 3px solid #ededed;
+        /* max-width: 250px; */
         margin: 10px auto;
-        .lastSoldDiv {
+        cursor: pointer;
+        .cardImg {
           width: 100%;
-          padding: 5px 10px;
-          background-color: hsl(0, 0%, 94%);
+          object-fit: contain;
+        }
+        .textCont {
+          width: 90%;
+          margin: 10px auto;
+          .lastSoldDiv {
+            width: 100%;
+            padding: 5px 10px;
+            background-color: hsl(0, 0%, 94%);
+          }
         }
       }
     }
