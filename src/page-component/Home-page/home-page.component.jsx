@@ -54,7 +54,42 @@ export const HomePage = ({ allBrands, allProducts }) => {
           tag={"Just Dropped"}
           productData={allProducts}
         />
-        <Recentcs
+        <NewCustomRecentcs
+          name={"Most Popular"}
+          tag={"Most Popular"}
+          productData={allProducts}
+        />
+        <NewCustomRecentcs
+          name={"Favorites"}
+          tag={"Favourites"}
+          productData={allProducts}
+        />
+        <NewCustomRecentcs
+          name={"Air Jordon"}
+          tag={"Air Jordan"}
+          productData={allProducts}
+        />
+        <NewCustomRecentcs
+          name={"Adidas Yeezy"}
+          tag={"Adidas Yeezy"}
+          productData={allProducts}
+        />
+        <NewCustomRecentcs
+          name={"Jordon 1"}
+          tag={"Jordan 1"}
+          productData={allProducts}
+        />
+        <NewCustomRecentcs
+          name={"Travis Scot"}
+          tag={"Travis Scott"}
+          productData={allProducts}
+        />
+        <NewCustomRecentcs
+          name={"Off White"}
+          tag={"Off-White"}
+          productData={allProducts}
+        />
+        {/* <Recentcs
           class="x"
           name={"Just Dropped"}
           tag={"Just Dropped"}
@@ -95,7 +130,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           name={"Off White"}
           tag={"Off-White"}
           productData={allProducts}
-        />
+        /> */}
         <Links />
       </div>
       {/* <Slideshow /> */}
