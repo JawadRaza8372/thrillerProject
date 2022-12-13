@@ -15,4 +15,10 @@
 .sbar {
   position: absolute;
   z-index: 1000;
+  display: none;
+}
+@media screen and (max-width: 992px) {
+  .sbar {
+    display: block;
+  }
 }

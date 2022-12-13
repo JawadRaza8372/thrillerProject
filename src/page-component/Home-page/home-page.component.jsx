@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./home-page.styles.scss";
 import Links from "../../components/links/Links";
-import RecentMV from "../../components/recent-mobile-view/RecentMV";
-import Recentcs from "../../components/recent/Recentcs";
 import CustomRecentcs from "../../components/recent/CustomRecentcs";
-
-import Slideshow from "../../components/slideshow/Slideshow";
 import { Link } from "react-router-dom";
-import Carousel from "../../components/review-carousel/reviewCarousel";
-import HomeBanner from "../../components/home-banner/Banner";
-import axios from "axios";
-import CustomRecentMv from "../../components/recent-mobile-view/CustomRecentMv";
 import { useHistory } from "react-router-dom";
 import NewCustomRecentcs from "../../components/recent/NewCustomRecentcs";
+import localStorage from "redux-persist/es/storage";
 
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
@@ -25,16 +18,23 @@ export const HomePage = ({ allBrands, allProducts }) => {
     { to: "/", title: "Collectibles" },
     { to: "/", title: "Accessories" },
   ];
+  const setLocalStorage = (name) => {
+    localStorage.setItem("selectedSection", JSON.stringify(name));
+    newhistory.push("/browse/0");
+  };
   return (
     <div>
       <div className="home">
-        {/* <Slideshow /> */}
         <div className="greyNavigation">
           <div className="linkContainber">
             {topGreyNavugation.map((dat, index) => (
-              <Link className="custBtnsNav" key={index} to={`${dat.to}`}>
+              <div
+                className="custBtnsNav"
+                key={index}
+                onClick={() => setLocalStorage(dat.title)}
+              >
                 {dat.title}
-              </Link>
+              </div>
             ))}
           </div>
         </div>

@@ -8,6 +8,7 @@ import CategoryBar from "../cat-sidebar/CategoryBar";
 import "./Sidebar.css";
 
 const Sidebar = ({
+  allBrands,
   sidebar,
   setSidebar,
   catbar,
@@ -242,6 +243,7 @@ const Sidebar = ({
     </div>
   ) : (
     <CategoryBar
+      allBrands={allBrands}
       catbar={catbar}
       setCatbar={setCatbar}
       setSidebar={setSidebar}

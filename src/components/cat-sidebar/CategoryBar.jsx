@@ -4,16 +4,12 @@ import "./CategoryBar.scss";
 import categories from "../../temporary-data/categories";
 import axios from "axios";
 
-const CategoryBar = ({ catbar, setCatbar, sidebar, setSidebar }) => {
+const CategoryBar = ({ allBrands, catbar, setCatbar, sidebar, setSidebar }) => {
   const onCatClick = (path) => {
     setSidebar(false);
     setCatbar(false);
     window.localStorage.setItem("filter", null);
     window.open(`https://thrillerme.com/browse/${path}/`, "_self");
-    // window.open(`http://localhost:3000/browse/${path}`, "_self");
-
-    // ////console.log("Saving: ", path);
-    // localStorage.setItem("collection_id", path);
   };
   const onCatClickDone = () => {
     setSidebar(true);
@@ -24,9 +20,6 @@ const CategoryBar = ({ catbar, setCatbar, sidebar, setSidebar }) => {
   var urlTo = "";
 
   // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    Load();
-  }, []);
 
   function Load() {
     ////console.log("Laoding Collection");
@@ -60,8 +53,8 @@ const CategoryBar = ({ catbar, setCatbar, sidebar, setSidebar }) => {
           <li className="navbar-toogle">
             <Link to="#" className="menu-bars"></Link>
           </li>
-          {collection.length > 0
-            ? collection.map((item, index) => {
+          {allBrands.length > 0
+            ? allBrands.map((item, index) => {
                 return (
                   <li
                     style={{ border: "5px", borderColor: "black" }}

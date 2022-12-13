@@ -101,6 +101,7 @@ const App = ({ location }) => {
       )}
       <div className="sbar">
         <Sidebar
+          allBrands={allBrands}
           sidebar={sidebar}
           setSidebar={setSidebar}
           catbar={catbar}
@@ -109,7 +110,12 @@ const App = ({ location }) => {
         />
       </div>
       <div className="sbar">
-        <Searchbar searchbar={searchbar} setSearchbar={setSearchbar} />
+        <Searchbar
+          searchbar={searchbar}
+          setSearchbar={setSearchbar}
+          allProducts={allProducts}
+          allBrands={allBrands}
+        />
       </div>
       <Switch>
         <Route
