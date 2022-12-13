@@ -54,6 +54,7 @@ function CustomRecentcs({ tag, brands }) {
                     <div className="CustomcardDiv">
                       <img
                         className="cardImg"
+                        style={{ height: "200px" }}
                         src={elem.imageURL ? elem.imageURL : cardImg6}
                       />
                       <div className="textCont">

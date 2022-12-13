@@ -17,7 +17,6 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
     localStorage.setItem("selectedSection", JSON.stringify(attr));
     history.push("/browse/0");
   };
-  console.log(productData[0]);
   return (
     <div className="col-11" style={{ margin: "0px auto" }}>
       <div className="row flex-row">
@@ -46,8 +45,8 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
                     <div className="textCont">
                       <h6>{elem.name}</h6>
                       <span>Lowest Price</span>
-                      <h6>null AED</h6>
-                      <div className="lastSoldDiv">Last Sold: null</div>
+                      <h6>--</h6>
+                      <div className="lastSoldDiv">Last Sold: --</div>
                     </div>
                   </div>
                 </Link>
