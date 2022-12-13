@@ -1,5 +1,8 @@
 .col-11 {
   .row {
+    h1 {
+      font-size: 2em;
+    }
     .nextButton {
       height: 100%;
       width: 100%;
@@ -18,14 +21,12 @@
       column-gap: 10px;
       overflow-y: hidden;
       overflow-x: auto;
-      .cardDiv {
+      .CustomcardDiv {
         height: 100%;
-        width: 100%;
-        max-width: 250px !important;
+        width: 150px;
         background-color: white;
         border: 3px solid #ededed;
         /* max-width: 250px; */
-        margin: 10px auto;
         cursor: pointer;
         .cardImg {
           width: 100%;
@@ -34,6 +35,7 @@
         .textCont {
           width: 90%;
           margin: 10px auto;
+          color: black !important;
           .lastSoldDiv {
             width: 100%;
             padding: 5px 10px;

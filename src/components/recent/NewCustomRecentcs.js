@@ -37,7 +37,7 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
             return (
               <>
                 <Link to={`/${newname}_id_${newshoeid}`} key={index}>
-                  <div className="cardDiv">
+                  <div className="CustomcardDiv">
                     <img
                       className="cardImg"
                       src={elem.cover_image ? elem.cover_image : cardImg6}
