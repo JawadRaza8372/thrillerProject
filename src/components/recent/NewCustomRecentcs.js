@@ -7,10 +7,10 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
   const recentSlider = productData?.filter((iem) => iem?.tag.includes(name));
 
   return (
-    <div className="container">
+    <div className="col-11" style={{ margin: "0px auto" }}>
       <h1>{tag}</h1>
-      <div className="productShowDiv">
-        {recentSlider.map((elem, index) => {
+      <div className="productShowDiv" style={{ background: "red" }}>
+        {recentSlider?.slice(0, 7).map((elem, index) => {
           const newname = makingValidName(`${elem.name}`);
           const newshoeid = makingValidName(`${elem.shoe_id}`);
           return (
