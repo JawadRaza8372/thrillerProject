@@ -4,7 +4,9 @@ import "./Searchbar.scss";
 import { CustomSearchResultItem } from "../search-item/CustomSearchResultItem";
 import { makingValidName } from "../../Constants/Functions";
 import { CloseSharp } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
 export const NavSearchBar = ({ allProducts, allBrands }) => {
+  const newhistory = useHistory();
   const [inputValue, setInputValue] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
   const [filterBrands, setfilterBrands] = useState([]);
@@ -76,7 +78,11 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
                   imgUrl={dat.cover_image}
                   title={dat?.name}
                   description={`Sku Number: ${dat?.sku_number}`}
-                  toLink={`/${newname}_id_${newshoeid}`}
+                  toLink={() => {
+                    newhistory.push(`/${newname}_id_${newshoeid}`);
+                    setInputValue("");
+                    setSearchbar(false);
+                  }}
                 />
               );
             })}
@@ -88,7 +94,11 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
                     imgUrl={item.imageURL}
                     title={item.title}
                     description={item.description}
-                    toLink={"/browse/" + item.collection_id + "/"}
+                    toLink={() => {
+                      newhistory.push(`/browse/${item.collection_id}/`);
+                      setInputValue("");
+                      setSearchbar(false);
+                    }}
                   />
                 </>
               );

@@ -13,16 +13,14 @@ export const CustomSearchResultItem = ({
       ? `${description}`?.substring(0, 28) + "..."
       : description;
   return (
-    <Link to={`${toLink}`}>
-      <div className="searchResultItemCont">
-        <div className="imgContainr">
-          <img src={`${imgUrl ? imgUrl : cardImg6}`} alt={title} />
-        </div>
-        <div className="infoContainr">
-          <span>{title}</span>
-          <span>{shortDes}</span>
-        </div>
+    <div className="searchResultItemCont" onClick={toLink}>
+      <div className="imgContainr">
+        <img src={`${imgUrl ? imgUrl : cardImg6}`} alt={title} />
       </div>
-    </Link>
+      <div className="infoContainr">
+        <span>{title}</span>
+        <span>{shortDes}</span>
+      </div>
+    </div>
   );
 };

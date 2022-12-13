@@ -1,7 +1,19 @@
 .nav-priconmob {
   display: none;
 }
-
+.container-fluid .smallMenuBtns {
+  width: 40px;
+  height: 50px;
+  border: 0px !important;
+  outline: 0px !important;
+  background-color: transparent;
+  display: none;
+}
+.container-fluid .smallMenuBtns .MuiSvgIcon-root {
+  font-size: 35px;
+  color: grey;
+  display: none;
+}
 .drop-shadow {
   -moz-box-shadow: 3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -9,7 +21,8 @@
 }
 .navbar-brand {
   margin-top: 10px;
-  margin-left: 45px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 #basic-nav-dropdown::after {
@@ -35,6 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0px !important;
 }
 .dropdown-item {
   color: white;
@@ -79,7 +93,27 @@
     margin-left: 0;
   }
 } */
-
+@media screen and (max-width: 992px) {
+  .container-fluid {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
+  .container-fluid .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .container-fluid .navbar-toggler.collapsed {
+    display: none !important;
+  }
+  .container-fluid .smallMenuBtns {
+    display: block;
+  }
+  .container-fluid .smallMenuBtns .MuiSvgIcon-root {
+    display: block;
+  }
+}
 @media screen and (max-width: 830px) {
   .drop-shadow {
     -moz-box-shadow: 3px 3px 5px 6px #ccc;

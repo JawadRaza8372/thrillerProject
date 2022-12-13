@@ -11,12 +11,33 @@ import Carousel from "../../components/review-carousel/reviewCarousel";
 import HomeBanner from "../../components/home-banner/Banner";
 import axios from "axios";
 import CustomRecentMv from "../../components/recent-mobile-view/CustomRecentMv";
+import { useHistory } from "react-router-dom";
+import NewCustomRecentcs from "../../components/recent/NewCustomRecentcs";
 
 export const HomePage = ({ allBrands, allProducts }) => {
+  const newhistory = useHistory();
+  const topGreyNavugation = [
+    { to: "/", title: "Sneakers" },
+    { to: "/", title: "Shoes" },
+    { to: "/", title: "Apparel" },
+    { to: "/", title: "Electronics" },
+    { to: "/", title: "Trading Cards" },
+    { to: "/", title: "Collectibles" },
+    { to: "/", title: "Accessories" },
+  ];
   return (
     <div>
       <div className="home">
         {/* <Slideshow /> */}
+        <div className="greyNavigation">
+          <div className="linkContainber">
+            {topGreyNavugation.map((dat, index) => (
+              <Link className="custBtnsNav" key={index} to={`${dat.to}`}>
+                {dat.title}
+              </Link>
+            ))}
+          </div>
+        </div>
         <div className="customHomeBanner">
           <div className="textCont">
             <h1>Air Jordan 11 Cherry</h1>
@@ -28,6 +49,11 @@ export const HomePage = ({ allBrands, allProducts }) => {
         </div>
         {/* <HomeBanner /> */}
         <CustomRecentcs tag="Popular Brands" brands={allBrands} />
+        <NewCustomRecentcs
+          name={"Just Dropped"}
+          tag={"Just Dropped"}
+          productData={allProducts}
+        />
         <Recentcs
           class="x"
           name={"Just Dropped"}

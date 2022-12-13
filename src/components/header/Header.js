@@ -8,6 +8,8 @@ import axios from "axios";
 import LocalStorage from "redux-persist/es/storage";
 import { connect } from "react-redux";
 import { NavSearchBar } from "../searchbar/NavSearchBar";
+import { Search } from "@material-ui/icons";
+import List from "@material-ui/icons/Reorder";
 
 const Header = ({
   brands,
@@ -30,6 +32,7 @@ const Header = ({
   const showDropdown = (e) => {
     setShow(!show);
   };
+
   const hideDropdown = (e) => {
     setShow(false);
   };
@@ -171,7 +174,11 @@ const Header = ({
           zIndex: "1000",
         }}
       >
-        <Container fluid>
+        <Container fluid style={{ padding: "0px" }}>
+          <button onClick={() => setSearchbar(true)} className="smallMenuBtns">
+            <Search />
+          </button>
+
           <Link to={`/`}>
             <Navbar.Brand href="#home">
               <img
@@ -183,16 +190,17 @@ const Header = ({
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
+          <button onClick={() => setSidebar(true)} className="smallMenuBtns">
+            <List />
+          </button>
+
           <Navbar.Collapse id="navbarScroll">
             <NavSearchBar allProducts={products} allBrands={brands} />
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              {/* <Nav className="mr-auto" style={{ flex: "1" }}> */}
-              {/* <NavSearchBar allProducts={products} allBrands={brands} /> */}
-              {/* </Nav> */}
               <NavDropdown
                 title="Browse"
                 id="basic-nav-dropdown"
-                className="m-1 navs centeredBtnsClass"
+                className="mx-2 navs centeredBtnsClass"
                 show={show}
                 onMouseEnter={showDropdown}
                 onMouseLeave={hideDropdown}
@@ -212,18 +220,18 @@ const Header = ({
                   );
                 })}
               </NavDropdown>
-              <Nav.Link
-                href="/browse/0/"
+              <Link
+                to="/browse/0/"
                 onClick={() => {
                   window.localStorage.setItem("filter", null);
                 }}
-                className="m-1 navs centeredBtnsClass"
+                className="mx-2 navs nav-link centeredBtnsClass"
               >
                 Shop All
-              </Nav.Link>
+              </Link>
               <Link
                 to="/styles"
-                className="m-1 navs nav-link centeredBtnsClass"
+                className="mx-2 navs nav-link centeredBtnsClass"
               >
                 Styles
               </Link>
@@ -233,7 +241,7 @@ const Header = ({
               </Link>
               <Link
                 to="/sell"
-                className="m-1 navs nav-link centeredBtnsClass"
+                className="mx-2 navs nav-link centeredBtnsClass"
                 style={{ color: "Red" }}
               >
                 Sell
@@ -267,60 +275,12 @@ const Header = ({
                 </>
               ) : (
                 <Link className="centeredBtnsClass" to="/login">
-                  <button className="loginButtonCustom">Login/SignUp</button>
+                  <button className="btn btn-outline-danger">
+                    Login/SignUp
+                  </button>
                 </Link>
               )}
-              {/* <Nav.Link href="#link" className="m-1">
-                <Row gutter={12}>
-                  <Col span={6}>
-                    <div onClick={() => setSearchbar(!searchbar)}>
-                      <img
-                        src="/images/search.png"
-                        alt="logo"
-                        onMouseOver={(e) =>
-                          (e.currentTarget.src = "/images/search_dark.png")
-                        }
-                        onMouseOut={(e) =>
-                          (e.currentTarget.src = "/images/search.png")
-                        }
-                        style={{
-                          width: "24px",
-                          paddingBottom: "10px",
-                        }}
-                      />
-                    </div>
-                  </Col>
-                  <Col span={6}>
-                    <div onClick={() => setSidebar(!sidebar)}>
-                      <img
-                        src="/images/menu.png"
-                        alt="logo"
-                        onMouseOver={(e) =>
-                          (e.currentTarget.src = "/images/menu_dark.png")
-                        }
-                        onMouseOut={(e) =>
-                          (e.currentTarget.src = "/images/menu.png")
-                        }
-                        style={{
-                          width: "24px",
-                          paddingBottom: "10px",
-                        }}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-              </Nav.Link> */}
             </Nav>
-
-            {/* <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

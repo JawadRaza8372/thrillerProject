@@ -7,12 +7,14 @@ import axios from "axios";
 import { SearchResult } from "../../components/search-result/search-result.component";
 import { Avatar } from "@material-ui/core";
 import debounce from "lodash.debounce";
+import { makingValidName } from "../../Constants/Functions";
 
 // api.thrillerme.com/shoes/getByName/nike%20dunk
 
-const Searchbar = ({ searchbar, setSearchbar }) => {
+const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
   const CancelToken = axios.CancelToken;
-
+  const [filterProducts, setFilterProducts] = useState([]);
+  const [filterBrands, setfilterBrands] = useState([]);
   let cancel;
 
   const [inputValue, setInputValue] = useState("");
@@ -77,15 +79,30 @@ const Searchbar = ({ searchbar, setSearchbar }) => {
   // }
 
   const handlechange = (e) => {
-    if (e.target.value.length === 0) setSearching(false);
-    setFilterData([]);
-    setSearching(true);
+    if (e.target.value.length === 0) {
+      setSearchbar(false);
+    } else {
+      setSearchbar(true);
+    }
     setInputValue(e.target.value);
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      //setInputValue(e.target.value + " ");
-      getFilterData(e.target.value + " ");
-    }, 5000);
+
+    var enterdValue = makingValidName(`${e.target.value}`);
+    setFilterProducts(
+      allProducts?.filter(
+        (dat, index) =>
+          makingValidName(`${dat.name}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.name}`) === enterdValue ||
+          makingValidName(`${dat.sku_number}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.sku_number}`) === enterdValue
+      )
+    );
+    setfilterBrands(
+      allBrands?.filter(
+        (item, index) =>
+          makingValidName(`${item.title}`)?.includes(enterdValue) ||
+          makingValidName(`${item.title}`) === enterdValue
+      )
+    );
   };
 
   // var setQuery = debounce(async function (query) {
@@ -273,7 +290,7 @@ const Searchbar = ({ searchbar, setSearchbar }) => {
         {inputValue.length > 0 ? (
           <SearchResult
             className="result"
-            SearchResult={filterData}
+            SearchResult={filterProducts}
             setSearchbar={setSearchbar}
             setInputValue={setInputValue}
             searchbar={searchbar}

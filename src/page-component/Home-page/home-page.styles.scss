@@ -1,9 +1,44 @@
 @mixin responsiveCont {
+  .greyNavigation {
+    margin-top: 90px;
+    background-color: #f4f3f1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+    .linkContainber {
+      width: 100%;
+      height: 100%;
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      align-content: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      .custBtnsNav {
+        cursor: pointer;
+        margin: 0px 5px;
+        height: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0f0f0f;
+        font-size: 16px;
+        font-weight: 700;
+        outline: 0px !important;
+        outline-color: transparent !important;
+        border: 0px !important;
+        width: 110px;
+      }
+    }
+  }
   .customHomeBanner {
     width: 100%;
     height: 60vh;
     background-color: #4f4a9e;
-    margin-top: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
