@@ -168,7 +168,7 @@ const Header = ({
         expand={"lg"}
         fixed={!(sidebar || searchbar || catbar) ? "top" : null}
         style={{
-          // height: "10vh",
+          height: "10vh",
           position: "fixed",
           width: "100%",
           zIndex: "1000",
