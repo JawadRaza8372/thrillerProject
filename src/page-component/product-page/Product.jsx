@@ -360,27 +360,27 @@ const Product = (props) => {
           <meta itemprop="priceCurrency" content="USD" />
         </div>
       </div>
-      <div className="col-9 m-auto">
+      <div className="col-md-9 col-sm-10 mx-auto">
         <div className="row d-flex flex-row mt-2">
-          <div className="col-8">
+          <div className="col-md-8 col-sm-12">
             <span>
               Home / Sneakers / Nike / Dunk / Low / Nike Dunk Low Retro White
               Black Panda (2021) (GS)
             </span>
           </div>
-          <div className="col-4">
+          <div className="col-md-4 col-sm-12">
             <div className="row d-flex flex-row align-items-center justify-content-center">
-              <div className="col">
+              <div className="col-4 d-flex align-items-center justify-content-center">
                 <button className="btn smallBtns">
                   <AddCircleOutline />
                 </button>
               </div>
-              <div className="col">
+              <div className="col-4 d-flex align-items-center justify-content-center">
                 <button className="btn smallBtns">
                   <FavoriteBorder />
                 </button>
               </div>
-              <div className="col">
+              <div className="col-4 d-flex align-items-center justify-content-center">
                 <button className="btn smallBtns">
                   <ShareOutlined />
                 </button>
@@ -411,7 +411,7 @@ const Product = (props) => {
               }}
             />
           </div>
-          <div className="col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-evenly">
+          <div className="col-lg-16 col-md-12 d-flex h-100 flex-column align-items-center justify-content-evenly">
             <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
               <div className="col-2 h-100 d-flex align-items-center justify-content-center">
                 <img className="w-100 align-self-center img-fluid" src={Bolt} />
