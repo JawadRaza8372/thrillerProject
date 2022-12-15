@@ -8,7 +8,15 @@
   background-size: contain;
   /* border: 2px solid red; */
 }
-
+.imageContainerSlideShow {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+.imageContainerSlideShow img {
+  width: 100%;
+  height: 100%;
+}
 .shopbtn {
   position: absolute;
   border-radius: 40px;

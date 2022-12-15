@@ -4,7 +4,28 @@ import shoe from "../../temporary-data/shoeee.jpg";
 import banner from "./banner-shoe.jpeg";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import img1 from "../../assets/1st.png";
+import img2 from "../../assets/2nd.png";
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 const Slideshow = () => {
   var bann = {};
   const [banner, setBanner] = useState(bann);
@@ -24,23 +45,21 @@ const Slideshow = () => {
       //console.log(banner);
     });
   }
-
+  const slideshowdata = [{ source: img1 }, { source: img2 }];
   return (
-    <div
-      className="main-container"
-      style={{
-        backgroundImage: `url(${banner.imageURL})`,
-        backgroundPosition: "right",
-      }}
-      // style={{ backgroundImage: { banner } }}
+    <Carousel
+      renderButtonGroupOutside={true}
+      responsive={responsive}
+      infinite={true}
+      // customRightArrow={<CustomLeftArrow />}
+      // customLeftArrow={<CustomRightArrow />}
     >
-      <div className="h1 shoetxt"> {banner.title}</div>
-      <Link to={`/browse/0`}>
-        <button type="button" className="btn btn-light btn-lg shopbtn">
-          {banner.buttonText}
-        </button>
-      </Link>
-    </div>
+      {slideshowdata.map((dat, index) => (
+        <div className="imageContainerSlideShow">
+          <img src={dat.source} alt={`image number ${index}`} />
+        </div>
+      ))}
+    </Carousel>
   );
 };
 

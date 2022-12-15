@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import NewCustomRecentcs from "../../components/recent/NewCustomRecentcs";
 import localStorage from "redux-persist/es/storage";
-
+import SlideShow from "../../components/slideshow/Slideshow";
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
   const topGreyNavugation = [
@@ -22,76 +22,81 @@ export const HomePage = ({ allBrands, allProducts }) => {
     localStorage.setItem("selectedSection", JSON.stringify(name));
     newhistory.push("/browse/0");
   };
+  console.log(allBrands);
   return (
-    <div>
-      <div className="home">
-        <div className="greyNavigation">
-          <div className="linkContainber">
-            {topGreyNavugation.map((dat, index) => (
-              <div
-                className="custBtnsNav"
-                key={index}
-                onClick={() => setLocalStorage(`${dat.title}`)}
-              >
-                {dat.title}
-              </div>
-            ))}
+    <>
+      <div className="col-11 mx-auto">
+        <div className="home">
+          <div className="greyNavigation">
+            <div className="linkContainber">
+              {topGreyNavugation.map((dat, index) => (
+                <div
+                  className="custBtnsNav"
+                  key={index}
+                  onClick={() => setLocalStorage(`${dat.title}`)}
+                >
+                  {dat.title}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="customHomeBanner">
+          <SlideShow />
+
+          {/* <div className="customHomeBanner">
           <div className="textCont">
             <h1>Air Jordan 11 Cherry</h1>
             <div className="customBtnCont">
               <button>Buy & Sell Now</button>
             </div>
           </div>
-          <div className="imageCont"></div>
-        </div>
-        {/* <HomeBanner /> */}
-        <CustomRecentcs tag="Popular Brands" brands={allBrands} />
-        <NewCustomRecentcs
-          name={"Just Dropped"}
-          tag={"Just Dropped"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Most Popular"}
-          tag={"Most Popular"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Favorites"}
-          tag={"Favourites"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Air Jordon"}
-          tag={"Air Jordan"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Adidas Yeezy"}
-          tag={"Adidas Yeezy"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Jordon 1"}
-          tag={"Jordan 1"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Travis Scot"}
-          tag={"Travis Scott"}
-          productData={allProducts}
-        />
-        <NewCustomRecentcs
-          name={"Off White"}
-          tag={"Off-White"}
-          productData={allProducts}
-        />
-        <br />
-        <br />
-        {/* <Recentcs
+          <div className="imageCont"></div> </div> */}
+
+          {/* <HomeBanner /> */}
+          <NewCustomRecentcs
+            name={"Just Dropped"}
+            tag={"Recomanded For You"}
+            productData={allProducts}
+          />
+          <CustomRecentcs tag="Popular Brands" brands={allBrands} />
+          {/* 
+          <NewCustomRecentcs
+            name={"Most Popular"}
+            tag={"Most Popular"}
+            productData={allProducts}
+          />
+          <NewCustomRecentcs
+            name={"Favorites"}
+            tag={"Favourites"}
+            productData={allProducts}
+          />
+          <NewCustomRecentcs
+            name={"Air Jordon"}
+            tag={"Air Jordan"}
+            productData={allProducts}
+          />
+          <NewCustomRecentcs
+            name={"Adidas Yeezy"}
+            tag={"Adidas Yeezy"}
+            productData={allProducts}
+          />
+          <NewCustomRecentcs
+            name={"Jordon 1"}
+            tag={"Jordan 1"}
+            productData={allProducts}
+          />
+          <NewCustomRecentcs
+            name={"Travis Scot"}
+            tag={"Travis Scott"}
+            productData={allProducts}
+          />
+          <NewCustomRecentcs
+            name={"Off White"}
+            tag={"Off-White"}
+            productData={allProducts}
+          /> */}
+          <br />
+          <br />
+          {/* <Recentcs
           class="x"
           name={"Just Dropped"}
           tag={"Just Dropped"}
@@ -133,12 +138,11 @@ export const HomePage = ({ allBrands, allProducts }) => {
           tag={"Off-White"}
           productData={allProducts}
         /> */}
-        <Links />
-      </div>
-      {/* <Slideshow /> */}
-      {/* <HomeBanner /> */}
+        </div>
+        {/* <Slideshow /> */}
+        {/* <HomeBanner /> */}
 
-      {/* <div className="home-mob">
+        {/* <div className="home-mob">
         <div className="customHomeBanner">
           <div className="imageCont"></div>
 
@@ -161,6 +165,8 @@ export const HomePage = ({ allBrands, allProducts }) => {
         <RecentMV name={"Off White"} tag={"Off-White"} />
         <Links />
       </div> */}
-    </div>
+      </div>
+      <Links />
+    </>
   );
 };
