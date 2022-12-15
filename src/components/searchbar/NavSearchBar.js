@@ -24,6 +24,8 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
         (dat, index) =>
           makingValidName(`${dat.name}`)?.includes(enterdValue) ||
           makingValidName(`${dat.name}`) === enterdValue ||
+          makingValidName(`${dat.colorway}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.colorway}`) === enterdValue ||
           makingValidName(`${dat.sku_number}`)?.includes(enterdValue) ||
           makingValidName(`${dat.sku_number}`) === enterdValue
       )
