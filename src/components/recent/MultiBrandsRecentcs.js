@@ -22,6 +22,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
   let newbrand5 = allBrands?.find((brnd) =>
     makingValidName(brnd.title).includes(tagsArry[4])
   );
+  console.log(newbrand1, newbrand2, newbrand3, newbrand4, newbrand5);
 
   let resultProducts1 = allProducts?.filter((dat, index) =>
     makingValidName(dat?.tag).includes(
@@ -68,6 +69,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
         )
     )
   );
+
   let finalArray = [
     { brandName: tagsArry[0] + " Top 10", data: resultProducts1?.slice(0, 5) },
     { brandName: tagsArry[1] + " Top 10", data: resultProducts2?.slice(0, 5) },
@@ -75,7 +77,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
     { brandName: tagsArry[3] + " Top 10", data: resultProducts4?.slice(0, 5) },
     { brandName: tagsArry[4] + " Top 10", data: resultProducts5?.slice(0, 5) },
   ];
-
+  console.log(finalArray);
   return (
     <>
       <div className="row flex-row">
