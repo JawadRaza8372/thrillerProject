@@ -25,21 +25,21 @@ export const HomePage = ({ allBrands, allProducts }) => {
   };
   return (
     <>
+      <div className="greyNavigation">
+        <div className="linkContainber">
+          {topGreyNavugation.map((dat, index) => (
+            <div
+              className="custBtnsNav"
+              key={index}
+              onClick={() => setLocalStorage(`${dat.title}`)}
+            >
+              {dat.title}
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="col-11 mx-auto">
         <div className="home">
-          <div className="greyNavigation">
-            <div className="linkContainber">
-              {topGreyNavugation.map((dat, index) => (
-                <div
-                  className="custBtnsNav"
-                  key={index}
-                  onClick={() => setLocalStorage(`${dat.title}`)}
-                >
-                  {dat.title}
-                </div>
-              ))}
-            </div>
-          </div>
           <SlideShow />
 
           {/* <div className="customHomeBanner">

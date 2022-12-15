@@ -155,7 +155,8 @@ const Product = (props) => {
   }
 
   const LoadDetails = async () => {
-    let result = await allProducts?.find((dat) => dat?.shoe_id === id);
+    let awaitedresult = await allProducts?.filter((dat) => dat?.shoe_id === id);
+    let result = awaitedresult.length > 0 ? awaitedresult[0] : [];
     if (result?.release_date !== null && result?.release_date !== undefined) {
       var date = result?.release_date.split("T")[0];
       setProduct({ ...result, release_date: date });
@@ -262,6 +263,7 @@ const Product = (props) => {
     GetLowsetAsk(val);
     // setFavSize(val);
   }
+  console.log(product);
   function GoToBuy() {
     history.push(`/buy/${id}/${defaultSize}/0`);
     localStorage.setItem("price", lowestAsk);

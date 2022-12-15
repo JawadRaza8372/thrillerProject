@@ -6,66 +6,75 @@ import cardImg6 from "../../temporary-data/6.png";
 import { KeyboardArrowRight } from "@material-ui/icons";
 const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
   const history = useHistory();
-  let newbrand1 = allBrands?.find((brnd) =>
-    makingValidName(brnd.title).includes(tagsArry[0])
+  let newbrand1 = allBrands?.filter((brnd) =>
+    makingValidName(`${brnd.title}`).includes(`${tagsArry[0]}`)
   );
-  let newbrand2 = allBrands?.find((brnd) =>
-    makingValidName(brnd.title).includes(tagsArry[1])
+  let newbrand2 = allBrands?.filter((brnd) =>
+    makingValidName(`${brnd.title}`).includes(`${tagsArry[1]}`)
   );
 
-  let newbrand3 = allBrands?.find((brnd) =>
-    makingValidName(brnd.title).includes(tagsArry[2])
+  let newbrand3 = allBrands?.filter((brnd) =>
+    makingValidName(`${brnd.title}`).includes(`${tagsArry[2]}`)
   );
-  let newbrand4 = allBrands?.find((brnd) =>
-    makingValidName(brnd.title).includes(tagsArry[3])
+  let newbrand4 = allBrands?.filter((brnd) =>
+    makingValidName(`${brnd.title}`).includes(`${tagsArry[3]}`)
   );
-  let newbrand5 = allBrands?.find((brnd) =>
-    makingValidName(brnd.title).includes(tagsArry[4])
+  let newbrand5 = allBrands?.filter((brnd) =>
+    makingValidName(`${brnd.title}`).includes(`${tagsArry[4]}`)
   );
-  console.log(newbrand1, newbrand2, newbrand3, newbrand4, newbrand5);
 
   let resultProducts1 = allProducts?.filter((dat, index) =>
-    makingValidName(dat?.tag).includes(
-      makingValidName(tagsArry[0]) ||
-        makingValidName(dat?.name).includes(makingValidName(tagsArry[0])) ||
-        makingValidName(dat?.collection_id).includes(
-          makingValidName(newbrand1?.collection_id)
+    makingValidName(`${dat?.tag}`).includes(
+      makingValidName(`${tagsArry[0]}`) ||
+        makingValidName(`${dat?.name}`).includes(
+          makingValidName(`${tagsArry[0]}`)
+        ) ||
+        makingValidName(`${dat?.collection_id}`).includes(
+          makingValidName(`${newbrand1[0]?.collection_id}`)
         )
     )
   );
   let resultProducts2 = allProducts?.filter((dat, index) =>
-    makingValidName(dat?.tag).includes(
-      makingValidName(tagsArry[1]) ||
-        makingValidName(dat?.name).includes(makingValidName(tagsArry[1])) ||
-        makingValidName(dat?.collection_id).includes(
-          makingValidName(newbrand2?.collection_id)
+    makingValidName(`${dat?.tag}`).includes(
+      makingValidName(`${tagsArry[1]}`) ||
+        makingValidName(`${dat?.name}`).includes(
+          makingValidName(`${tagsArry[1]}`)
+        ) ||
+        makingValidName(`${dat?.collection_id}`).includes(
+          makingValidName(`${newbrand2?.collection_id}`)
         )
     )
   );
   let resultProducts3 = allProducts?.filter((dat, index) =>
-    makingValidName(dat?.tag).includes(
-      makingValidName(tagsArry[2]) ||
-        makingValidName(dat?.name).includes(makingValidName(tagsArry[2])) ||
-        makingValidName(dat?.collection_id).includes(
-          makingValidName(newbrand3?.collection_id)
+    makingValidName(`${dat?.tag}`).includes(
+      makingValidName(`${tagsArry[2]}`) ||
+        makingValidName(`${dat?.name}`).includes(
+          makingValidName(`${tagsArry[2]}`)
+        ) ||
+        makingValidName(`${dat?.collection_id}`).includes(
+          makingValidName(`${newbrand3?.collection_id}`)
         )
     )
   );
   let resultProducts4 = allProducts?.filter((dat, index) =>
-    makingValidName(dat?.tag).includes(
-      makingValidName(tagsArry[3]) ||
-        makingValidName(dat?.name).includes(makingValidName(tagsArry[3])) ||
-        makingValidName(dat?.collection_id).includes(
-          makingValidName(newbrand4?.collection_id)
+    makingValidName(`${dat?.tag}`).includes(
+      makingValidName(`${tagsArry[3]}`) ||
+        makingValidName(`${dat?.name}`).includes(
+          makingValidName(`${tagsArry[3]}`)
+        ) ||
+        makingValidName(`${dat?.collection_id}`).includes(
+          makingValidName(`${newbrand4?.collection_id}`)
         )
     )
   );
   let resultProducts5 = allProducts?.filter((dat, index) =>
-    makingValidName(dat?.tag).includes(
-      makingValidName(tagsArry[4]) ||
-        makingValidName(dat?.name).includes(makingValidName(tagsArry[4])) ||
-        makingValidName(dat?.collection_id).includes(
-          makingValidName(newbrand5?.collection_id)
+    makingValidName(`${dat?.tag}`).includes(
+      makingValidName(`${tagsArry[4]}`) ||
+        makingValidName(`${dat?.name}`).includes(
+          makingValidName(`${tagsArry[4]}`)
+        ) ||
+        makingValidName(`${dat?.collection_id}`).includes(
+          makingValidName(`${newbrand5?.collection_id}`)
         )
     )
   );
