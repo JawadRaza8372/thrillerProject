@@ -18,10 +18,10 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
     history.push("/browse/0");
   };
   return (
-    <div className="col-11" style={{ margin: "0px auto" }}>
+    <>
       <div className="row flex-row">
         <div className="col-10">
-          <h1>{tag}</h1>
+          <h1 className="my-5">{tag}</h1>
         </div>
         <div className="col-2">
           <button onClick={() => setLocalStorage(name)} className="nextButton">
@@ -55,7 +55,7 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

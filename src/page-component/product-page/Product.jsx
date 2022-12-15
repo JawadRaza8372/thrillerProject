@@ -53,7 +53,14 @@ import { makingValidName } from "../../Constants/Functions";
 import CustomImageSlider from "../../components/CustomImageSlider/CustomImageSlider";
 import CustomMobileSizeSelctor from "../../components/size-selector-mobile/CustomMobileSizeSelctor";
 import { useHistory } from "react-router-dom";
-import { ArrowDownward, KeyboardArrowDown } from "@material-ui/icons";
+import {
+  AddBoxRounded,
+  AddCircleOutline,
+  ArrowDownward,
+  FavoriteBorder,
+  KeyboardArrowDown,
+  ShareOutlined,
+} from "@material-ui/icons";
 import Bolt from "../../assets/bolt.png";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
@@ -83,7 +90,7 @@ const Product = (props) => {
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
   const [toasterData, settoasterData] = useState([]);
-  const allProducts = props?.allProducts;
+  let allProducts = useParams()?.allProducts;
   const closeMobileChart = () => {
     setSizeChart(false);
   };
@@ -148,13 +155,16 @@ const Product = (props) => {
   }
 
   const LoadDetails = async () => {
-    let result = await allProducts.filter((dat) => dat?.shoe_id === id);
-    if (result?.release_date !== null && result?.release_date !== undefined) {
-      var date = result?.release_date.split("T")[0];
-      setProduct({ ...result, release_date: date });
-    } else {
-      setProduct(result);
+    if (allProducts?.length > 0) {
+      let result = await allProducts?.filter((dat) => dat?.shoe_id === id);
+      if (result?.release_date !== null && result?.release_date !== undefined) {
+        var date = result?.release_date.split("T")[0];
+        setProduct({ ...result, release_date: date });
+      } else {
+        setProduct(result);
+      }
     }
+
     // var url = `https://api.thrillerme.com/shoes/${id}`;
     // var encodedURL = encodeURI(url);
     // await axios.get(encodedURL).then((res) => {
@@ -247,7 +257,7 @@ const Product = (props) => {
 
   useEffect(() => {
     LoadDetails();
-  }, [id]);
+  }, [id, allProducts]);
 
   function updateSizeValue(val) {
     setDefaultSize(val);
@@ -361,13 +371,19 @@ const Product = (props) => {
           <div className="col-4">
             <div className="row d-flex flex-row align-items-center justify-content-center">
               <div className="col">
-                <button className="btn smallBtns">Add</button>
+                <button className="btn smallBtns">
+                  <AddCircleOutline />
+                </button>
               </div>
               <div className="col">
-                <button className="btn smallBtns">Heart</button>
+                <button className="btn smallBtns">
+                  <FavoriteBorder />
+                </button>
               </div>
               <div className="col">
-                <button className="btn smallBtns">Share</button>
+                <button className="btn smallBtns">
+                  <ShareOutlined />
+                </button>
               </div>
             </div>
           </div>
@@ -395,7 +411,7 @@ const Product = (props) => {
               }}
             />
           </div>
-          <div className="col-lg-6 col-md-12">
+          <div className="col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-evenly">
             <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
               <div className="col-2 h-100 d-flex align-items-center justify-content-center">
                 <img className="w-100 align-self-center img-fluid" src={Bolt} />
@@ -442,14 +458,20 @@ const Product = (props) => {
               </div>
               <div className="col-lg-8 col-md-12">
                 <div className="row d-flex flex-row">
-                  <div className="col-4">
-                    <button className="btn btn-outline-dark">View Asks</button>
+                  <div className="col-4 d-flex align-items-center justify-content-center">
+                    <button className="btn btn-outline-dark smallBtns">
+                      View Asks
+                    </button>
                   </div>
-                  <div className="col-4">
-                    <button className="btn btn-outline-dark">View Bids</button>
+                  <div className="col-4 d-flex align-items-center justify-content-center">
+                    <button className="btn btn-outline-dark smallBtns">
+                      View Bids
+                    </button>
                   </div>
-                  <div className="col-4">
-                    <button className="btn btn-outline-dark">View Sales</button>
+                  <div className="col-4 d-flex align-items-center justify-content-center">
+                    <button className="btn btn-outline-dark smallBtns">
+                      View Sales
+                    </button>
                   </div>
                 </div>
               </div>

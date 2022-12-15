@@ -39,33 +39,31 @@ function CustomRecentcs({ tag, brands }) {
 
   return (
     <>
-      <div className="col-11" style={{ margin: "0px auto" }}>
-        <div className="row flex-row">
-          <div className="col-12">
-            <h1>{tag}</h1>
-          </div>
+      <div className="row flex-row">
+        <div className="col-12">
+          <h1 className="my-5">{tag}</h1>
         </div>
-        <div className="row">
-          <div className="productShowDiv">
-            {brands?.slice(0, 6).map((elem, index) => {
-              return (
-                <>
-                  <Link to={`/browse/${elem.collection_id}/`} key={index}>
-                    <div className="CustomcardDiv">
-                      <img
-                        className="cardImg"
-                        style={{ height: "200px" }}
-                        src={elem.imageURL ? elem.imageURL : cardImg6}
-                      />
-                      <div className="textCont">
-                        <h6>{elem.title}</h6>
-                      </div>
+      </div>
+      <div className="row">
+        <div className="productShowDiv">
+          {brands?.slice(0, 6).map((elem, index) => {
+            return (
+              <>
+                <Link to={`/browse/${elem.collection_id}/`} key={index}>
+                  <div className="CustomcardDiv">
+                    <img
+                      className="cardImg"
+                      style={{ height: "200px" }}
+                      src={elem.imageURL ? elem.imageURL : cardImg6}
+                    />
+                    <div className="textCont">
+                      <h6>{elem.title}</h6>
                     </div>
-                  </Link>
-                </>
-              );
-            })}
-          </div>
+                  </div>
+                </Link>
+              </>
+            );
+          })}
         </div>
       </div>
       {/* <div style={{ marginBottom: "20px" }}>

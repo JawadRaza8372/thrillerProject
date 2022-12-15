@@ -78,7 +78,7 @@ const Suggestion = (props) => {
   const redirect = (id) => {
     window.open(`https://thrillerme.com/${id}`, "_self");
   };
-  const allProducts = props?.allProducts;
+  const allProducts = props?.allProducts?.length > 0 ? props?.allProducts : [];
   const Load = () => {
     //////console.log("Similar products:", props.collection_id);
 
@@ -112,7 +112,7 @@ const Suggestion = (props) => {
           // customRightArrow={<CustomLeftArrow />}
           // customLeftArrow={<CustomRightArrow />}
         >
-          {similarProducts.map((elem, index) => {
+          {similarProducts?.map((elem, index) => {
             const newname = makingValidName(`${elem.name}`);
             const newskunumb = makingValidName(`${elem.sku_number}`);
             const newshoeid = makingValidName(`${elem.shoe_id}`);
