@@ -78,35 +78,39 @@ const Suggestion = (props) => {
   const redirect = (id) => {
     window.open(`https://thrillerme.com/${id}`, "_self");
   };
-
-  const Load = useCallback(() => {
+  const allProducts = props?.allProducts;
+  const Load = () => {
     //////console.log("Similar products:", props.collection_id);
-    var url = `https://api.thrillerme.com/shoes/${props.collection_id}`;
-    var encodedURL = encodeURI(url);
-    axios.get(encodedURL).then((res) => {
-      var collectionID = res.data.collection_id;
-      var urlC = `https://api.thrillerme.com/shoes/collections/${collectionID}/${props.collection_id}`;
-      axios.get(urlC).then((ress) => {
-        setSimilarProducts(ress.data);
-      });
-    });
-  }, [props.collection_id]);
+
+    setSimilarProducts(
+      allProducts?.filter((dat) => dat.collection_id === props.collection_id)
+    );
+    // var url = `https://api.thrillerme.com/shoes/${props.collection_id}`;
+    // var encodedURL = encodeURI(url);
+    // axios.get(encodedURL).then((res) => {
+    //   var collectionID = res.data.collection_id;
+    //   var urlC = `https://api.thrillerme.com/shoes/collections/${collectionID}/${props.collection_id}`;
+    //   axios.get(urlC).then((ress) => {
+    //     setSimilarProducts(ress.data);
+    //   });
+    // });
+  };
 
   useEffect(() => {
     Load();
-  }, [Load]);
+  }, [props.collection_id, props.allProducts]);
 
   return (
     <div style={{ marginBottom: "20px" }} className="suggestions">
-      <div className="sug-txt customFont">You may also like</div>
+      <h1>{props.name}</h1>
       <div>
         <Carousel
           renderButtonGroupOutside={true}
           responsive={responsive}
           infinite={true}
           itemClass="card"
-          customRightArrow={<CustomLeftArrow />}
-          customLeftArrow={<CustomRightArrow />}
+          // customRightArrow={<CustomLeftArrow />}
+          // customLeftArrow={<CustomRightArrow />}
         >
           {similarProducts.map((elem, index) => {
             const newname = makingValidName(`${elem.name}`);
@@ -116,17 +120,18 @@ const Suggestion = (props) => {
             return (
               //  to={`/${newname}_id_${newshoeid}`}
               <Link to={`/${newname}_id_${newshoeid}`} key={index}>
-                <Card>
-                  <Card.Img
-                    style={{ height: "300px", width: "300px" }}
-                    class="m-0 p-0"
-                    variant="top"
-                    src={elem.cover_image}
+                <div className="CustomcardDiv">
+                  <img
+                    className="cardImg"
+                    src={elem.cover_image ? elem.cover_image : cardImg6}
                   />
-                  <Card.Body className="cBody" class="m-0">
-                    <Card.Title className="cTxt">{elem.name}</Card.Title>
-                  </Card.Body>
-                </Card>
+                  <div className="textCont">
+                    <h6>{elem.name}</h6>
+                    <span>Lowest Price</span>
+                    <h6>--</h6>
+                    <div className="lastSoldDiv">Last Sold: --</div>
+                  </div>
+                </div>
               </Link>
             );
           })}

@@ -1,3 +1,4 @@
+import thrillerVerified from "../../assets/thrillverf.png";
 import React, { useEffect, useState } from "react";
 import PillContainer from "../../components/product-page-pills/PillContainer";
 import Recentcs from "../../components/suggestions/Suggestion";
@@ -17,6 +18,7 @@ import CustomToast from "../../components/CustomToast/CustomToast.js";
 import shoe from "../../temporary-data/shoeee.jpg";
 import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
+import authentic from "../../assets/Authentic.png";
 
 import SwiperCore, {
   Navigation,
@@ -52,6 +54,7 @@ import CustomImageSlider from "../../components/CustomImageSlider/CustomImageSli
 import CustomMobileSizeSelctor from "../../components/size-selector-mobile/CustomMobileSizeSelctor";
 import { useHistory } from "react-router-dom";
 import { ArrowDownward, KeyboardArrowDown } from "@material-ui/icons";
+import Bolt from "../../assets/bolt.png";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -80,25 +83,12 @@ const Product = (props) => {
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
   const [toasterData, settoasterData] = useState([]);
+  const allProducts = props?.allProducts;
   const closeMobileChart = () => {
     setSizeChart(false);
   };
   function Load() {
     console.log("Loading....");
-    //props.setID(id);
-    var urlProductstest = `https://api.thrillerme.com/shoes/`;
-    var encodedURLProductstest = encodeURI(urlProductstest);
-    axios.get(encodedURLProductstest).then((res) => {
-      settoasterData(res.data);
-    });
-    if (product.sku_number === undefined) {
-      var url = `https://api.thrillerme.com/shoes/${id}`;
-      var encodedURL = encodeURI(url);
-      axios.get(encodedURL).then((res) => {
-        setProduct(res.data);
-      });
-    }
-
     var user = localStorage.getItem("user");
     if (user !== null) {
       var userID = JSON.parse(user).user_id;
@@ -108,10 +98,8 @@ const Product = (props) => {
         if (res.data.defaultSize !== null) {
           setDefaultSize(res.data.defaultSize);
         }
-        //console.log("User Default size: ", defaultSize);
       });
     }
-
     GetLowsetAsk(defaultSize);
     getPriceMobile();
   }
@@ -160,62 +148,69 @@ const Product = (props) => {
   }
 
   const LoadDetails = async () => {
-    var url = `https://api.thrillerme.com/shoes/${id}`;
-    var encodedURL = encodeURI(url);
-    await axios.get(encodedURL).then((res) => {
-      var date = res.data.release_date;
-      var data = res.data;
-      setProduct(data);
-      if (date !== null && date !== undefined) {
-        date = date.split("T")[0];
-        data.release_date = date;
-      }
+    let result = await allProducts.filter((dat) => dat?.shoe_id === id);
+    if (result?.release_date !== null && result?.release_date !== undefined) {
+      var date = result?.release_date.split("T")[0];
+      setProduct({ ...result, release_date: date });
+    } else {
+      setProduct(result);
+    }
+    // var url = `https://api.thrillerme.com/shoes/${id}`;
+    // var encodedURL = encodeURI(url);
+    // await axios.get(encodedURL).then((res) => {
+    //   var date = res.data.release_date;
+    //   var data = res.data;
+    //   setProduct(data);
+    //   if (date !== null && date !== undefined) {
+    //     date = date.split("T")[0];
+    //     data.release_date = date;
+    //   }
 
-      const advancedMatching = { em: "some@email.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
-      const options = {
-        autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
-        debug: true, // enable logs
-      };
+    //   const advancedMatching = { em: "some@email.com" }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/advanced/advanced-matching
+    //   const options = {
+    //     autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
+    //     debug: true, // enable logs
+    //   };
 
-      ReactPixel.init("3098857153686189", advancedMatching, options);
+    //   ReactPixel.init("3098857153686189", advancedMatching, options);
 
-      ReactPixel.pageView(); // For tracking page view
-      ReactPixel.trackSingleCustom("3098857153686189", "AddToCart", {
-        content_name: data.name,
-        content_category: data.sku_number,
-        content_ids: [data.sku_number],
-        content_type: "product",
-        value: data.price,
-        currency: "AED",
-      }); // For tracking custom events.
+    //   ReactPixel.pageView(); // For tracking page view
+    //   ReactPixel.trackSingleCustom("3098857153686189", "AddToCart", {
+    //     content_name: data.name,
+    //     content_category: data.sku_number,
+    //     content_ids: [data.sku_number],
+    //     content_type: "product",
+    //     value: data.price,
+    //     currency: "AED",
+    //   }); // For tracking custom events.
 
-      ReactPixel.track("ViewContent", {
-        content_ids: data.shoe_id,
-        //product_catalog_id: eventId,
-        content_type: "product",
-        contents: [{ id: data.shoe_id, quantity: 1 }],
-      });
+    //   ReactPixel.track("ViewContent", {
+    //     content_ids: data.shoe_id,
+    //     //product_catalog_id: eventId,
+    //     content_type: "product",
+    //     contents: [{ id: data.shoe_id, quantity: 1 }],
+    //   });
 
-      GetLowsetAsk(defaultSize);
-      localStorage.setItem("favSize", defaultSize);
+    //   GetLowsetAsk(defaultSize);
+    //   localStorage.setItem("favSize", defaultSize);
 
-      try {
-        ReactGA.initialize("UA-198989119-1", {
-          debug: true,
-        });
-        ReactGA.event({
-          category: "Add to cart",
-          action: "Add to cart",
-          label: data.sku_number,
-        });
-      } catch (ex) {
-        console.log("$$$$error", ex);
-      }
+    //   try {
+    //     ReactGA.initialize("UA-198989119-1", {
+    //       debug: true,
+    //     });
+    //     ReactGA.event({
+    //       category: "Add to cart",
+    //       action: "Add to cart",
+    //       label: data.sku_number,
+    //     });
+    //   } catch (ex) {
+    //     console.log("$$$$error", ex);
+    //   }
 
-      //gtag("event", "add_to_cart", data);
-    });
+    //   //gtag("event", "add_to_cart", data);
+    // });
 
-    axios
+    await axios
       .get(`https://api.thrillerme.com/shoesImages/${id}`)
       .then((res) => {
         setcurrentimg(res.data[0].imgURL);
@@ -232,22 +227,22 @@ const Product = (props) => {
   useEffect(() => {
     ReactGA.initialize("UA-198989119-1");
     Load();
-    axios
-      .get(`https://api.thrillerme.com/styles/galleryselected/${id}`)
-      .then((resp) => {
-        try {
-          setCoverImage(resp.data[0].cover);
+    // axios
+    //   .get(`https://api.thrillerme.com/styles/galleryselected/${id}`)
+    //   .then((resp) => {
+    //     try {
+    //       setCoverImage(resp.data[0].cover);
 
-          // gallery images
-          axios
-            .get(
-              `https://api.thrillerme.com/styles/galleryselected/${props.shoe_id}`
-            )
-            .then((resp) => {
-              setGalleryImages(resp);
-            });
-        } catch (error) {}
-      });
+    // gallery images
+    //   axios
+    //     .get(
+    //       `https://api.thrillerme.com/styles/galleryselected/${props.shoe_id}`
+    //     )
+    //     .then((resp) => {
+    //       setGalleryImages(resp);
+    //     });
+    // } catch (error) {}
+    //});
   }, []);
 
   useEffect(() => {
@@ -280,7 +275,7 @@ const Product = (props) => {
   const newshoeid = makingValidName(`${product.shoe_id}`);
   return (
     <div className="product-page-container">
-      <CustomToast
+      {/* <CustomToast
         imgurl={`${
           toasterData.length > 0
             ? toasterData[customernumber].cover_image
@@ -294,7 +289,7 @@ const Product = (props) => {
         time="a second ago."
         show={showToast}
         hide={() => closetoast()}
-      />
+      /> */}
       <div className="wrapper">
         <Helmet>
           <meta charSet="utf-8" />
@@ -355,177 +350,31 @@ const Product = (props) => {
           <meta itemprop="priceCurrency" content="USD" />
         </div>
       </div>
-
-      <div className="prod-top-contain">
-        <div className="conText blink">
-          <span>CONDITION:</span>
-          <span style={{ color: "#ec1d25" }}> NEW</span>
-        </div>
-        <PillContainer shoe_id={id} favSize={favSize} />
-      </div>
-      <div className="prod-container">
-        <div className="prod-info-container">
-          <span style={{ color: "gray" }}>
-            <span style={{ fontWeight: "500", margin: "0px", color: "black" }}>
-              SKU:
+      <div className="col-9 m-auto">
+        <div className="row d-flex flex-row mt-2">
+          <div className="col-8">
+            <span>
+              Home / Sneakers / Nike / Dunk / Low / Nike Dunk Low Retro White
+              Black Panda (2021) (GS)
             </span>
-            &nbsp;{product.sku_number}
-          </span>
-          <span style={{ color: "gray" }}>
-            <span style={{ fontWeight: "500", margin: "0px", color: "black" }}>
-              COLORWAY:
-            </span>
-            &nbsp;{product.colorway}
-          </span>
-          {product.release_date !== null && (
-            <span style={{ color: "gray" }}>
-              <span
-                style={{ fontWeight: "500", margin: "0px", color: "black" }}
-              >
-                RELEASE DATE:
-              </span>
-              &nbsp;{product.release_date}
-            </span>
-          )}
-        </div>
-        <div className="prod-img-container">
-          <div className="d-flex flex-column align-self-center prod-img-text-container">
-            <span>{product.name}</span>
           </div>
-          <CustomImageSlider
-            currentimg={currentimg ? currentimg : product.cover_image}
-            allimgs={pimagesTotal[0] ? pimagesTotal : [product.cover_image]}
-            onClickFunction={(newimg) => {
-              setcurrentimg(newimg);
-            }}
-          />
-        </div>
-        <div className="prod-size-container">
-          {/* <span>AED 1400 |</span>
-          <SizeSelector /> */}
-          <SizeBuyProd
-            price={lowestAsk}
-            size={defaultSize}
-            id={id}
-            setFavSize={setFavSize}
-            parentCallBack={updateSizeValue}
-            lowestAsk={lowestAsk}
-          />
-        </div>
-      </div>
-      <div className="mob-prod-container">
-        <div className="mob-prod-top-contain">
-          {/* <div className="conText blink">
-            <span>CONDITION:</span>
-            <span style={{ color: "#ec1d25" }}> NEW</span>
-          </div> */}
-          <button className="sizeSlctbtn" onClick={() => setSizeChart(true)}>
-            <div className="fill_size">
-              Size:
-              <span>
-                US M {defaultSize}{" "}
-                <KeyboardArrowDown style={{ fontSize: "22px" }} />
-              </span>
+          <div className="col-4">
+            <div className="row d-flex flex-row align-items-center justify-content-center">
+              <div className="col">
+                <button className="btn smallBtns">Add</button>
+              </div>
+              <div className="col">
+                <button className="btn smallBtns">Heart</button>
+              </div>
+              <div className="col">
+                <button className="btn smallBtns">Share</button>
+              </div>
             </div>
-          </button>
-
-          <div className="btnContainers">
-            <button className="customBtnn buynow" onClick={GoToBuy}>
-              Place Offer
-            </button>
-            <button className="customBtnn cstoffer" onClick={GoToBuy}>
-              Buy Now
-            </button>
-
-            {/* <Button
-              style={{
-                height: "35px",
-                width: "85px",
-                background: "#ec1d25",
-                borderColor: "#ec1d25",
-                padding: "0px",
-                marginLeft: "5px",
-                marginTop: "2px",
-                marginBottom: "5px",
-              }}
-              onClick={() => setSizeChart(true)}
-            >
-              <span className="p-0 m-0 selltxt">Buy Now</span>
-            </Button> */}
           </div>
         </div>
-        {/* <div
-          className="mob-prod-img-container"
-          style={{
-            backgroundImage: `url(${product.cover_image})`,
-          }}
-        ></div> */}
-        {/* <div className="gallery-div">
-          {coverImage && galleryImages && (
-            <ImagePopup
-              image={coverImage}
-              shoe_id={product.shoe_id}
-              title={product.name}
-              galleryImages={galleryImages}
-              fulldata={product}
-            />
-          )}
-        </div> */}
-        <div className="prod-img-container">
-          {/* <div className="d-flex flex-column align-self-center prod-img-text-container">
-            <span>{product.name}</span>
-          </div> 
-          <div
-            className="shoeImg"
-            style={{
-              height: "100%",
-              width: "100%",
-              // backgroundImage: `url(${shoe})`,
-            }}
-          >
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={1}
-              scrollbar={{ draggable: true }}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
-              mousewheel={true}
-            >
-              <SwiperSlide>
-                <img src={product.cover_image} alt={product.sku_number}></img>
-              </SwiperSlide>
-              {images.map(function (name, index) {
-                return (
-                  <SwiperSlide key={index}>
-                    <img src={name.imgURL} alt={name.imgURL}></img>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>*/}
-          <CustomImageSlider
-            currentimg={currentimg ? currentimg : product.cover_image}
-            allimgs={pimagesTotal[0] ? pimagesTotal : [product.cover_image]}
-            onClickFunction={(newimg) => {
-              setcurrentimg(newimg);
-            }}
-          />
-          <div className="conText blink">
-            <span>CONDITION:</span>
-            <span style={{ color: "#ec1d25" }}> NEW</span>
-          </div>
-        </div>
-
-        <div className="d-flex flex-column align-items-center">
-          <div>
-            <span>{product.name}</span>
-          </div>
-          <div>
-            <span>{product.colorway}</span>
-          </div>
-        </div>
-        <div className="d-flex justify-content-center">
-          <PillContainer shoe_id={id} />
+        <div className="row">
+          <h1>{product.name ? product.name : "---"}</h1>
+          <span>{product?.colorway ? product?.colorway : "---"}</span>
         </div>
         {showSizeChart ? (
           <div className="d-flex justify-content-center align-item-center">
@@ -536,31 +385,145 @@ const Product = (props) => {
             />
           </div>
         ) : null}
-
-        <div className="prod-info-container">
-          <div className="prod-price-container">
-            <span>AED {priceMobile}</span>
+        <div className="row d-flex flex-row">
+          <div className="col-lg-6 col-md-12">
+            <CustomImageSlider
+              currentimg={currentimg ? currentimg : product.cover_image}
+              allimgs={pimagesTotal[0] ? pimagesTotal : [product.cover_image]}
+              onClickFunction={(newimg) => {
+                setcurrentimg(newimg);
+              }}
+            />
           </div>
-          <div style={{ textAlign: "center" }}>
-            <span>
-              {product.sku_number}&nbsp;|&nbsp;{product.colorway}
-            </span>
-          </div>
+          <div className="col-lg-6 col-md-12">
+            <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
+              <div className="col-2 h-100 d-flex align-items-center justify-content-center">
+                <img className="w-100 align-self-center img-fluid" src={Bolt} />
+              </div>
+              <div className="col-10 d-flex justify-content-start align-items-center">
+                1574 Sold in Last 3 Days!
+              </div>
+            </div>
+            <div className="borderedDiv px-2 py-1 row m-0 w-100 d-flex flex-row">
+              <button
+                className="btn btn-outline-dark w-100 my-2"
+                onClick={() => setSizeChart(true)}
+              >
+                <div className="fill_size">
+                  Size:
+                  <span>
+                    US M {defaultSize}
+                    <KeyboardArrowDown style={{ fontSize: "22px" }} />
+                  </span>
+                </div>
+              </button>
+              <button
+                className="btn btn-outline-dark w-100 mb-2"
+                onClick={GoToBuy}
+              >
+                Place Bid
+              </button>
+              <hr />
 
-          {product.release_date !== null &&
-            product.release_date !== undefined && (
-              <span>RELEASE DATE: {product.release_date}</span>
-            )}
+              <button
+                className="btn btn-outline-light w-100 removeBorder my-2"
+                style={{ color: "green" }}
+                onClick={() => console.log("sell for")}
+              >
+                Sell for -- or Ask for More
+              </button>
+            </div>
+            <div className="row w-100 d-flex flex-row mx-0 my-3">
+              <div className="col-lg-4 col-md-12 py-2 h-100 d-flex align-items-center justify-content-start">
+                <span>
+                  Last Sale:
+                  <b>---</b>
+                </span>
+              </div>
+              <div className="col-lg-8 col-md-12">
+                <div className="row d-flex flex-row">
+                  <div className="col-4">
+                    <button className="btn btn-outline-dark">View Asks</button>
+                  </div>
+                  <div className="col-4">
+                    <button className="btn btn-outline-dark">View Bids</button>
+                  </div>
+                  <div className="col-4">
+                    <button className="btn btn-outline-dark">View Sales</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="prod-text">{product.summary}</div>
-      <div className="prod-page-suggest">
+        <hr className="my-4" />
         <Suggestion
-          collection_id={id}
-          shoe_id={product.shoe_id}
-          name="You May Also Like"
+          allProducts={allProducts}
+          collection_id={product?.collection_id ? product?.collection_id : id}
+          shoe_id={product?.shoe_id ? product?.shoe_id : id}
+          name="Related Products"
         />
+        <hr className="my-4" />
+
+        <div className="row">
+          <h2>Product Details</h2>
+        </div>
+        <div className="row d-flex flex-row">
+          <div className="col-lg-6 col-md-12">
+            <div className="row d-flex flex-row">
+              <div className="col-6">Style</div>
+              <div className="col-6">
+                <span>
+                  <b>{product?.sku_number ? product?.sku_number : "---"}</b>
+                </span>
+              </div>
+            </div>
+            <div className="row d-flex flex-row">
+              <div className="col-6">Colorway</div>
+              <div className="col-6">
+                <span>
+                  <b>{product?.colorway ? product?.colorway : "---"}</b>
+                </span>
+              </div>
+            </div>
+            <div className="row d-flex flex-row">
+              <div className="col-6">Retail Price</div>
+              <div className="col-6">
+                <span>
+                  <b>{product?.price ? product?.price : "---"}</b>
+                </span>
+              </div>
+            </div>
+            <div className="row d-flex flex-row">
+              <div className="col-6">Release Date</div>
+              <div className="col-6">
+                <span>
+                  <b>{product?.release_date ? product?.release_date : "---"}</b>
+                </span>
+              </div>
+            </div>
+            <div className="row d-flex flex-row">
+              <img src={authentic} alt="authentic" className="authenticImg" />
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 d-flex flex-column">
+            <span>
+              <b>Product Description</b>
+            </span>
+            <span>{product?.summary ? product?.summary : "---"}</span>
+          </div>
+        </div>
+        <hr className="my-4" />
+        <div className="row">
+          <h3 className="text-center">Thriller Verified Sneakers</h3>
+          <p className="text-center">We Verify Every Item. Every Time.</p>
+          <img
+            src={thrillerVerified}
+            className="img-fluid mx-auto mb-4"
+            style={{ maxWidth: "500px" }}
+            alt="thrillerVerified"
+          />
+        </div>
       </div>
       <Links />
       <Footer />

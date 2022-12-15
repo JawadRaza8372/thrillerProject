@@ -1,3 +1,25 @@
+.CustomcardDiv {
+  height: 100%;
+  width: 200px;
+  background-color: white;
+  border: 3px solid #ededed;
+  /* max-width: 250px; */
+  cursor: pointer;
+  .cardImg {
+    width: 100%;
+    object-fit: contain;
+  }
+  .textCont {
+    width: 90%;
+    margin: 10px auto;
+    color: black !important;
+    .lastSoldDiv {
+      width: 100%;
+      padding: 5px 10px;
+      background-color: hsl(0, 0%, 94%);
+    }
+  }
+}
 .suggestions {
   .sug-txt {
     color: black;

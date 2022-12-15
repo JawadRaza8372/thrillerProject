@@ -4,19 +4,25 @@ function CustomImageSlider({ currentimg, allimgs, onClickFunction }) {
   return (
     <div className="customesSliderContainer">
       <div className="mainImageContainer">
-        <img className="mainImage" src={currentimg} alt={currentimg} />
+        {currentimg && (
+          <img className="mainImage" src={currentimg} alt={currentimg} />
+        )}
       </div>
       <div className="imagesThumbnailContainer">
-        {allimgs &&
+        {allimgs?.length > 0 &&
           allimgs.map((image, index) => {
             const onClickFunctionImageChange = () => {
               onClickFunction(image);
             };
             return (
-              <div className="thumbContainer" key={index}>
-                <button onClick={onClickFunctionImageChange} />
-                <img className="thumbImage" src={image} alt={image} />
-              </div>
+              <>
+                {image && (
+                  <div className="thumbContainer" key={index}>
+                    <button onClick={onClickFunctionImageChange} />
+                    <img className="thumbImage" src={image} alt={image} />
+                  </div>
+                )}
+              </>
             );
           })}
       </div>

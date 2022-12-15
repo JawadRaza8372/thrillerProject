@@ -356,3 +356,47 @@
     }
   }
 }
+// new styles wala done
+.borderedDiv {
+  border-radius: 0.25rem;
+  border: 1px solid lightgrey;
+}
+.removeBorder {
+  border: 0px !important;
+}
+hr {
+  flex-shrink: 1 !important;
+  margin: 0px;
+}
+.customerBuyClass {
+  height: 40px;
+  background-color: lightgrey;
+  .col-2 {
+    img {
+      height: 70%;
+      object-fit: contain;
+    }
+  }
+  .col-10 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+}
+.authenticImg {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+.fill_size {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 18px;
+  padding: 0px 10px;
+  span {
+    font-weight: 600;
+  }
+}
