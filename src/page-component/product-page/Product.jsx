@@ -90,7 +90,7 @@ const Product = (props) => {
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
   const [toasterData, settoasterData] = useState([]);
-  let allProducts = useParams()?.allProducts;
+  let allProducts = props.allProducts;
   const closeMobileChart = () => {
     setSizeChart(false);
   };
