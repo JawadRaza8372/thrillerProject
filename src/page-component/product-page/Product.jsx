@@ -277,21 +277,20 @@ const Product = (props) => {
       }
     });
   }
-  const newname = makingValidName(`${product.name}`);
-  const newskunumb = makingValidName(`${product.sku_number}`);
-  const newshoeid = makingValidName(`${product.shoe_id}`);
+  const newname = makingValidName(`${product?.name}`);
+  const newshoeid = makingValidName(`${product?.shoe_id}`);
   return (
     <div className="product-page-container">
       {/* <CustomToast
         imgurl={`${
           toasterData.length > 0
             ? toasterData[customernumber].cover_image
-            : product.cover_image
+            : product?.cover_image
         }`}
         text={`${
           toasterData.length > 0
             ? toasterData[customernumber].name
-            : product.name
+            : product?.name
         }`}
         time="a second ago."
         show={showToast}
@@ -300,30 +299,30 @@ const Product = (props) => {
       <div className="wrapper">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{product.name}</title>
-          <meta property="og:description" content={product.summary} />
-          <meta property="og:title" content={product.name} />
-          <meta property="og:image" content={product.cover_image} />
+          <title>{product?.name}</title>
+          <meta property="og:description" content={product?.summary} />
+          <meta property="og:title" content={product?.name} />
+          <meta property="og:image" content={product?.cover_image} />
           <meta
             property="og:url"
             content={`https://thrillerme.com/${newname}_id_${newshoeid}`}
           />
           <meta
             property="product:retailer_item_id"
-            content={product.collection_id}
+            content={product?.collection_id}
           />
           <meta
             property="product:price:amount"
-            content={product.average_price}
+            content={product?.average_price}
           />
           <meta property="product:price:currency" content="AED" />
           <meta property="product:availability" content="available for order" />
-          <meta property="product:category" content={product.collection_id} />
-          <meta property="product:brand" content={product.name} />
+          <meta property="product:category" content={product?.collection_id} />
+          <meta property="product:brand" content={product?.name} />
           <meta property="product:condition" content="new" />
           <meta
             property="product:item_group_id"
-            content={product.collection_id}
+            content={product?.collection_id}
           ></meta>
         </Helmet>
       </div>
@@ -386,7 +385,7 @@ const Product = (props) => {
           </div>
         </div>
         <div className="row">
-          <h1>{product.name ? product.name : "---"}</h1>
+          <h1>{product?.name ? product?.name : "---"}</h1>
           <span>{product?.colorway ? product?.colorway : "---"}</span>
         </div>
         {showSizeChart ? (
@@ -401,8 +400,8 @@ const Product = (props) => {
         <div className="row d-flex flex-row">
           <div className="col-lg-6 col-md-12">
             <CustomImageSlider
-              currentimg={currentimg ? currentimg : product.cover_image}
-              allimgs={pimagesTotal[0] ? pimagesTotal : [product.cover_image]}
+              currentimg={currentimg ? currentimg : product?.cover_image}
+              allimgs={pimagesTotal[0] ? pimagesTotal : [product?.cover_image]}
               onClickFunction={(newimg) => {
                 setcurrentimg(newimg);
               }}
