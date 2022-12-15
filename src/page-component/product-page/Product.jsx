@@ -155,7 +155,7 @@ const Product = (props) => {
   }
 
   const LoadDetails = async () => {
-    let result = await allProducts?.filter((dat) => dat?.shoe_id === id);
+    let result = await allProducts?.find((dat) => dat?.shoe_id === id);
     if (result?.release_date !== null && result?.release_date !== undefined) {
       var date = result?.release_date.split("T")[0];
       setProduct({ ...result, release_date: date });
@@ -277,7 +277,6 @@ const Product = (props) => {
       }
     });
   }
-  console.log(product);
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
