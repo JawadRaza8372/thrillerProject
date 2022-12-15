@@ -9,7 +9,6 @@ import localStorage from "redux-persist/es/storage";
 import SlideShow from "../../components/slideshow/Slideshow";
 import MultiBrandsRecentcs from "../../components/recent/MultiBrandsRecentcs";
 export const HomePage = ({ allBrands, allProducts }) => {
-  console.log(allBrands);
   const newhistory = useHistory();
   const topGreyNavugation = [
     { to: "/", title: "Sneakers" },
@@ -61,6 +60,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <CustomRecentcs tag="Popular Brands" brands={allBrands} />
           <MultiBrandsRecentcs
             allProducts={allProducts}
+            allBrands={allBrands}
             tagsArry={[
               "Air Jordan",
               "Nike Dunk",

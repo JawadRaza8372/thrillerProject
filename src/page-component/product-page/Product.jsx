@@ -255,7 +255,7 @@ const Product = (props) => {
 
   useEffect(() => {
     LoadDetails();
-  }, [id, allProducts]);
+  }, [id, allProducts?.length]);
 
   function updateSizeValue(val) {
     setDefaultSize(val);
