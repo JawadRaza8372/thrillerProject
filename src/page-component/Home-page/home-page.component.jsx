@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import NewCustomRecentcs from "../../components/recent/NewCustomRecentcs";
 import localStorage from "redux-persist/es/storage";
 import SlideShow from "../../components/slideshow/Slideshow";
+import MultiBrandsRecentcs from "../../components/recent/MultiBrandsRecentcs";
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
   const topGreyNavugation = [
@@ -22,7 +23,6 @@ export const HomePage = ({ allBrands, allProducts }) => {
     localStorage.setItem("selectedSection", JSON.stringify(name));
     newhistory.push("/browse/0");
   };
-  console.log(allBrands);
   return (
     <>
       <div className="col-11 mx-auto">
@@ -58,6 +58,16 @@ export const HomePage = ({ allBrands, allProducts }) => {
             productData={allProducts}
           />
           <CustomRecentcs tag="Popular Brands" brands={allBrands} />
+          <MultiBrandsRecentcs
+            allProducts={allProducts}
+            tagsArry={[
+              "Air Jordan",
+              "Nike Dunk",
+              "Burbery",
+              "Yeezy",
+              "Off-White",
+            ]}
+          />
           {/* 
           <NewCustomRecentcs
             name={"Most Popular"}
