@@ -155,14 +155,12 @@ const Product = (props) => {
   }
 
   const LoadDetails = async () => {
-    if (allProducts?.length > 0) {
-      let result = await allProducts?.filter((dat) => dat?.shoe_id === id);
-      if (result?.release_date !== null && result?.release_date !== undefined) {
-        var date = result?.release_date.split("T")[0];
-        setProduct({ ...result, release_date: date });
-      } else {
-        setProduct(result);
-      }
+    let result = await allProducts?.filter((dat) => dat?.shoe_id === id);
+    if (result?.release_date !== null && result?.release_date !== undefined) {
+      var date = result?.release_date.split("T")[0];
+      setProduct({ ...result, release_date: date });
+    } else {
+      setProduct(result);
     }
 
     // var url = `https://api.thrillerme.com/shoes/${id}`;
@@ -279,7 +277,7 @@ const Product = (props) => {
       }
     });
   }
-
+  console.log(product);
   const newname = makingValidName(`${product.name}`);
   const newskunumb = makingValidName(`${product.sku_number}`);
   const newshoeid = makingValidName(`${product.shoe_id}`);
@@ -411,7 +409,7 @@ const Product = (props) => {
               }}
             />
           </div>
-          <div className="col-lg-16 col-md-12 d-flex h-100 flex-column align-items-center justify-content-evenly">
+          <div className="col-lg-6 col-md-12 d-flex h-100 flex-column align-items-center justify-content-evenly">
             <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
               <div className="col-2 h-100 d-flex align-items-center justify-content-center">
                 <img className="w-100 align-self-center img-fluid" src={Bolt} />
