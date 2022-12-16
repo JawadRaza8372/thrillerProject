@@ -451,14 +451,25 @@ const Product = ({ allProducts }) => {
                 setcurrentimg(newimg);
               }}
             /> */}
-            {pimagesTotal && (
-              <ImagePopup
-                image={product?.cover_image}
-                shoe_id={product?.shoe_id}
-                title={product?.name}
-                galleryImages={pimagesTotal}
-              />
-            )}
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={1}
+              scrollbar={{ draggable: true }}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+              // mousewheel={true}
+            >
+              <SwiperSlide>
+                <img src={product.cover_image} alt={product.sku_number} />
+              </SwiperSlide>
+              {pimagesTotal.map((name, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <img src={name.imgURL} alt={name.imgURL}></img>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </div>
           <div className="col-lg-6 col-md-12  d-none d-lg-flex d-xl-flex h-100 flex-column align-items-center justify-content-evenly">
             <div className="row d-none  d-lg-flex d-xl-flex w-100 flex-row mx-0 my-3 customerBuyClass">
