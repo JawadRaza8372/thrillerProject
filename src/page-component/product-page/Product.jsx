@@ -429,7 +429,7 @@ const Product = ({ allProducts }) => {
           onCloseModal={() => setshareShow(!shareShow)}
         />
         <div className="row d-flex flex-row">
-          <div className="col-lg-6 col-md-12 order-2 order-lg-1 order-xl-1">
+          <div className="col-lg-6 col-md-12">
             <div className="row d-flex flex-row">
               <div className="col-6">
                 <div className="conText blink">
@@ -469,17 +469,13 @@ const Product = ({ allProducts }) => {
               {pimagesTotal.map((name, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <img
-                      className="img-fluid"
-                      src={name.imgURL}
-                      alt={name.imgURL}
-                    ></img>
+                    <img className="img-fluid" src={name} alt={name}></img>
                   </SwiperSlide>
                 );
               })}
             </Swiper>
           </div>
-          <div className="col-lg-6 col-md-12  d-none d-lg-flex d-xl-flex h-100 flex-column align-items-center justify-content-evenly">
+          <div className="col-lg-6 col-md-12  d-none d-lg-flex d-xl-flex h-100 h-lg-auto h-xl-auto flex-column align-items-center justify-content-evenly">
             <div className="row d-none  d-lg-flex d-xl-flex w-100 flex-row mx-0 my-3 customerBuyClass">
               <div className="col-2 h-100 d-flex align-items-center justify-content-center">
                 <img className="w-100 align-self-center img-fluid" src={Bolt} />
