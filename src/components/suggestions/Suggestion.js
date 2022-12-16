@@ -101,86 +101,46 @@ const Suggestion = (props) => {
   }, [props.collection_id, props.allProducts]);
 
   return (
-    <div style={{ marginBottom: "20px" }} className="suggestions">
-      <h1>{props.name}</h1>
-      <div>
-        <Carousel
-          renderButtonGroupOutside={true}
-          responsive={responsive}
-          infinite={true}
-          itemClass="cardownItem"
-          // customRightArrow={<CustomLeftArrow />}
-          // customLeftArrow={<CustomRightArrow />}
-        >
-          {similarProducts?.map((elem, index) => {
-            const newname = makingValidName(`${elem.name}`);
-            const newskunumb = makingValidName(`${elem.sku_number}`);
-            const newshoeid = makingValidName(`${elem.shoe_id}`);
+    <>
+      {similarProducts.length > 0 && (
+        <>
+          <div style={{ marginBottom: "20px" }} className="suggestions">
+            <h1>{props.name}</h1>
+            <div>
+              <Carousel
+                renderButtonGroupOutside={true}
+                responsive={responsive}
+                infinite={true}
+                itemClass="cardownItem"
+              >
+                {similarProducts?.map((elem, index) => {
+                  const newname = makingValidName(`${elem.name}`);
+                  const newshoeid = makingValidName(`${elem.shoe_id}`);
 
-            return (
-              //  to={`/${newname}_id_${newshoeid}`}
-              <Link to={`/${newname}_id_${newshoeid}`} key={index}>
-                <div className="CustomcardDiv">
-                  <img
-                    className="cardImg"
-                    src={elem.cover_image ? elem.cover_image : cardImg6}
-                  />
-                  <div className="textCont">
-                    <h6>{elem.name}</h6>
-                    <span>Lowest Price</span>
-                    <h6>--</h6>
-                    <div className="lastSoldDiv">Last Sold: --</div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-
-          {/* <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg2} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg3} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg4} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg5} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg6} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg1} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Img class="m-0 p-0" variant="top" src={cardImg6} />
-            <Card.Body className="cBody" class="m-0">
-              <Card.Title className="cTxt">Nike Shoe</Card.Title>
-            </Card.Body>
-          </Card> */}
-        </Carousel>
-      </div>
-    </div>
+                  return (
+                    <Link to={`/${newname}_id_${newshoeid}`} key={index}>
+                      <div className="CustomcardDiv">
+                        <img
+                          className="cardImg"
+                          src={elem.cover_image ? elem.cover_image : cardImg6}
+                        />
+                        <div className="textCont">
+                          <h6>{elem.name}</h6>
+                          <span>Lowest Price</span>
+                          <h6>--</h6>
+                          <div className="lastSoldDiv">Last Sold: --</div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </Carousel>
+            </div>
+          </div>
+          <hr className="my-4" />
+        </>
+      )}
+    </>
   );
 };
 

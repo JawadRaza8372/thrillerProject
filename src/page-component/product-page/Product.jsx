@@ -517,7 +517,6 @@ const Product = ({ allProducts }) => {
           shoe_id={product?.shoe_id ? product?.shoe_id : id}
           name="Related Products"
         />
-        <hr className="my-4" />
 
         <div className="row">
           <h2>Product Details</h2>
