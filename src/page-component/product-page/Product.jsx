@@ -62,10 +62,11 @@ import {
   ShareOutlined,
 } from "@material-ui/icons";
 import Bolt from "../../assets/bolt.png";
+import ShareModal from "../../components/product-page-pills/ShareModal";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-const Product = (props) => {
+const Product = ({ allProducts }) => {
   var rawid = useParams().id;
   var findid = rawid.split("_");
   const index = findid.length - 1;
@@ -76,7 +77,6 @@ const Product = (props) => {
   var usr = JSON.parse(localStorage.getItem("user"));
   var sz = "4";
   if (usr !== null && usr !== undefined) sz = usr.defaultSize;
-  const [product, setProduct] = useState({});
   const [showToast, setshowToast] = useState("");
   const [images, setImages] = useState([]);
   const [pimagesTotal, setpimagesTotal] = useState([]);
@@ -90,12 +90,11 @@ const Product = (props) => {
   const [coverImage, setCoverImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState(null);
   const [toasterData, settoasterData] = useState([]);
-  let allProducts = props.allProducts;
+  const [shareShow, setshareShow] = useState(false);
   const closeMobileChart = () => {
     setSizeChart(false);
   };
   function Load() {
-    console.log("Loading....");
     var user = localStorage.getItem("user");
     if (user !== null) {
       var userID = JSON.parse(user).user_id;
@@ -153,17 +152,20 @@ const Product = (props) => {
       });
     }
   }
+  let foundProduct = allProducts?.filter(
+    (dat) => `${dat?.shoe_id}` === `${id}`
+  );
+  let product =
+    foundProduct.length > 0
+      ? foundProduct[0].release_date
+        ? {
+            ...foundProduct[0],
+            release_date: foundProduct[0]?.release_date.split("T")[0],
+          }
+        : { ...foundProduct[0] }
+      : {};
 
   const LoadDetails = async () => {
-    let awaitedresult = await allProducts?.filter((dat) => dat?.shoe_id === id);
-    let result = awaitedresult.length > 0 ? awaitedresult[0] : [];
-    if (result?.release_date !== null && result?.release_date !== undefined) {
-      var date = result?.release_date.split("T")[0];
-      setProduct({ ...result, release_date: date });
-    } else {
-      setProduct(result);
-    }
-
     // var url = `https://api.thrillerme.com/shoes/${id}`;
     // var encodedURL = encodeURI(url);
     // await axios.get(encodedURL).then((res) => {
@@ -256,7 +258,32 @@ const Product = (props) => {
 
   useEffect(() => {
     LoadDetails();
-  }, [id, allProducts?.length]);
+  }, [id]);
+  const addtoFavorite = () => {
+    var user = localStorage.getItem("user");
+    if (user === null) {
+      history.push("/login");
+    } else {
+      const data = {
+        shoe_id: parseInt(id),
+        user_id: JSON.parse(localStorage.getItem("user")).user_id,
+        size: JSON.parse(localStorage.getItem("favSize")),
+      };
+
+      axios
+        .post("https://api.thrillerme.com/fav", data)
+        .then((res) => {
+          if (res.data === "already added") {
+            alert("Already added to favourite!");
+          } else {
+            alert("Added to favourite!");
+          }
+        })
+        .catch((err) => {
+          alert("Something Went Wrong");
+        });
+    }
+  };
 
   function updateSizeValue(val) {
     setDefaultSize(val);
@@ -281,6 +308,8 @@ const Product = (props) => {
   }
   const newname = makingValidName(`${product?.name}`);
   const newshoeid = makingValidName(`${product?.shoe_id}`);
+  let maintag = product?.tag ? product?.tag?.split(",") : ["---"];
+  let productUrl = `${maintag[0]} / ${product?.name ? product?.name : "---"}`;
   return (
     <div className="product-page-container">
       {/* <CustomToast
@@ -298,6 +327,7 @@ const Product = (props) => {
         show={showToast}
         hide={() => closetoast()}
       /> */}
+
       <div className="wrapper">
         <Helmet>
           <meta charSet="utf-8" />
@@ -361,10 +391,7 @@ const Product = (props) => {
       <div className="col-md-9 col-sm-10 mx-auto">
         <div className="row d-flex flex-row mt-2">
           <div className="col-md-8 col-sm-12">
-            <span>
-              Home / Sneakers / Nike / Dunk / Low / Nike Dunk Low Retro White
-              Black Panda (2021) (GS)
-            </span>
+            <span>Home / {productUrl ? productUrl : "---"}</span>
           </div>
           <div className="col-md-4 col-sm-12">
             <div className="row d-flex flex-row align-items-center justify-content-center">
@@ -374,12 +401,15 @@ const Product = (props) => {
                 </button>
               </div>
               <div className="col-4 d-flex align-items-center justify-content-center">
-                <button className="btn smallBtns">
+                <button className="btn smallBtns" onClick={addtoFavorite}>
                   <FavoriteBorder />
                 </button>
               </div>
               <div className="col-4 d-flex align-items-center justify-content-center">
-                <button className="btn smallBtns">
+                <button
+                  className="btn smallBtns"
+                  onClick={() => setshareShow(!shareShow)}
+                >
                   <ShareOutlined />
                 </button>
               </div>
@@ -399,6 +429,10 @@ const Product = (props) => {
             />
           </div>
         ) : null}
+        <ShareModal
+          open={shareShow}
+          onCloseModal={() => setshareShow(!shareShow)}
+        />
         <div className="row d-flex flex-row">
           <div className="col-lg-6 col-md-12">
             <CustomImageSlider

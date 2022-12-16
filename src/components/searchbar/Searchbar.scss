@@ -1,5 +1,6 @@
 .searchContainerCont {
-  flex: 0.9;
+  flex-grow: 1;
+  flex-shrink: 1;
   .CustomSearchContainer {
     width: 100%;
     display: flex;

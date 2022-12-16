@@ -27,7 +27,7 @@ const Header = ({
   // const [hasShipping, setShipping] = useState(false);
   // const [hasPayout, setPayout] = useState(false);
   const [show, setShow] = useState(false);
-  const [isUserAvailable, setisUserAvailable] = useState({});
+  let [isUserAvailable, setisUserAvailable] = useState({});
   const history = useHistory();
   const showDropdown = (e) => {
     setShow(!show);
@@ -159,7 +159,6 @@ const Header = ({
   //   setSearchbar(!searchbar);
   //   history.push(`/browse/${rout}/`);
   // }
-
   return (
     <div>
       <Navbar
@@ -196,7 +195,10 @@ const Header = ({
 
           <Navbar.Collapse id="navbarScroll">
             <NavSearchBar allProducts={products} allBrands={brands} />
-            <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+            <Nav
+              className="mx-auto my-2 my-lg-0 flex-grow-1 flex-shrink-1 d-flex flex-row align-items-center justify-content-evenly"
+              navbarScroll
+            >
               <NavDropdown
                 title="Browse"
                 id="basic-nav-dropdown"
@@ -236,7 +238,7 @@ const Header = ({
                 Styles
               </Link>
 
-              <Link to="/help" className="m-1 navs nav-link centeredBtnsClass">
+              <Link to="/help" className="mx-2 navs nav-link centeredBtnsClass">
                 Help
               </Link>
               <Link
@@ -248,37 +250,30 @@ const Header = ({
               </Link>
               {isUserAvailable && isUserAvailable?.user_id ? (
                 <>
-                  <NavDropdown
-                    title="Accounts"
-                    id="basic-nav-dropdown"
-                    className="m-1 navs centeredBtnsClass"
+                  <Link
+                    to="/account"
+                    className="mx-2 navs nav-link centeredBtnsClass"
                   >
-                    <NavDropdown.Item
-                      active="true"
-                      href="#"
-                      onClick={() => {
-                        history.push("/account");
-                      }}
-                    >
-                      Accounts
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      active="true"
-                      href="#"
-                      onClick={() => {
-                        window.localStorage.removeItem("user");
-                      }}
-                    >
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                    Accounts
+                  </Link>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      window.localStorage.removeItem("user");
+                    }}
+                  >
+                    Logout
+                  </button>
                 </>
               ) : (
-                <Link className="centeredBtnsClass" to="/login">
-                  <button className="btn btn-outline-danger">
-                    Login/SignUp
-                  </button>
-                </Link>
+                <>
+                  <Link to="/login">
+                    <button className="btn btn-outline-danger">Login</button>
+                  </Link>
+                  <Link to="/login">
+                    <button className="btn btn-danger">Signup</button>
+                  </Link>
+                </>
               )}
             </Nav>
           </Navbar.Collapse>

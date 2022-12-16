@@ -4,7 +4,7 @@ import shoe from "../../temporary-data/shoeee.jpg";
 import banner from "./banner-shoe.jpeg";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Carousel from "react-multi-carousel";
+import { Carousel } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 import img1 from "../../assets/1st.png";
 import img2 from "../../assets/2nd.png";
@@ -48,16 +48,21 @@ const Slideshow = () => {
   const slideshowdata = [{ source: img1 }, { source: img2 }];
   return (
     <Carousel
-      renderButtonGroupOutside={true}
-      responsive={responsive}
-      infinite={true}
+      interval={7000}
+      // renderButtonGroupOutside={true}
+      // responsive={responsive}
+      // infinite={true}
       // customRightArrow={<CustomLeftArrow />}
       // customLeftArrow={<CustomRightArrow />}
     >
       {slideshowdata.map((dat, index) => (
-        <div className="imageContainerSlideShow">
-          <img src={dat.source} alt={`image number ${index}`} />
-        </div>
+        <Carousel.Item>
+          <img
+            className="img-fluid"
+            src={dat.source}
+            alt={`image number ${index}`}
+          />
+        </Carousel.Item>
       ))}
     </Carousel>
   );

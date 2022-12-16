@@ -63,10 +63,10 @@ export const HomePage = ({ allBrands, allProducts }) => {
             allBrands={allBrands}
             tagsArry={[
               "Air Jordan",
-              "Nike Dunk",
-              "Burbery",
+              "Dunks",
+              "Travis Scott",
               "Yeezy",
-              "Off-White",
+              "Off White",
             ]}
           />
           {/* 
