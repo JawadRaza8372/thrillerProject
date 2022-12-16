@@ -90,7 +90,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
         </div>
         <div className="col-2">
           <button
-            onClick={() => alert("don't know where to go")}
+            onClick={() => console.log("don't know where to go")}
             className="nextButton"
           >
             <KeyboardArrowRight />

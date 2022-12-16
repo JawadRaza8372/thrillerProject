@@ -63,6 +63,7 @@ import {
 } from "@material-ui/icons";
 import Bolt from "../../assets/bolt.png";
 import ShareModal from "../../components/product-page-pills/ShareModal";
+import ThreeBannerResponsive from "../../components/ThreeBannerResponsive/ThreeBannerResponsive";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -492,13 +493,7 @@ const Product = ({ allProducts }) => {
                 </div>
               </div>
             </div>
-            {/* <CustomImageSlider
-              currentimg={currentimg ? currentimg : product?.cover_image}
-              allimgs={pimagesTotal[0] ? pimagesTotal : [product?.cover_image]}
-              onClickFunction={(newimg) => {
-                setcurrentimg(newimg);
-              }}
-            /> */}
+
             <Swiper
               spaceBetween={50}
               slidesPerView={1}
@@ -524,14 +519,7 @@ const Product = ({ allProducts }) => {
             </Swiper>
           </div>
           <div className="col-lg-6 col-md-12  d-flex flex-column align-items-center justify-content-evenly responsiveheight">
-            <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
-              <div className="col-2 h-100 d-flex align-items-center justify-content-center">
-                <img className="w-100 align-self-center img-fluid" src={Bolt} />
-              </div>
-              <div className="col-10 d-flex justify-content-start align-items-center">
-                1574 Sold in Last 3 Days!
-              </div>
-            </div>
+            <ThreeBannerResponsive />
             <div className="borderedDiv  px-2 py-1 row m-0 w-100 d-none d-lg-flex d-xl-flex flex-row">
               <button
                 className="btn btn-outline-dark w-100 my-2"
@@ -545,12 +533,23 @@ const Product = ({ allProducts }) => {
                   </span>
                 </div>
               </button>
-              <button
-                className="btn btn-outline-dark w-100 mb-2"
-                onClick={GoToBuy}
-              >
-                Place Bid
-              </button>
+              <div className="d-flex w-100 align-items-center justify-content-between p-0 flex-row mb-2 mx-auto">
+                <button
+                  className="btn btn-outline-dark"
+                  style={{ width: "48%" }}
+                  onClick={GoToBuy}
+                >
+                  Place Bid
+                </button>
+                <button
+                  className="btn btn-danger"
+                  style={{ width: "48%" }}
+                  onClick={GoToBuy}
+                >
+                  Buy
+                </button>
+              </div>
+
               <hr />
 
               <button
