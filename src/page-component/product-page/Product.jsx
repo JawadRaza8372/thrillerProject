@@ -395,17 +395,12 @@ const Product = ({ allProducts }) => {
           </div>
           <div className="col-md-4 col-sm-12">
             <div className="row d-flex flex-row align-items-center justify-content-center">
-              <div className="col-4 d-flex align-items-center justify-content-center">
-                <button className="btn smallBtns">
-                  <AddCircleOutline />
-                </button>
-              </div>
-              <div className="col-4 d-flex align-items-center justify-content-center">
+              <div className="col-6 d-flex align-items-center justify-content-center">
                 <button className="btn smallBtns" onClick={addtoFavorite}>
                   <FavoriteBorder />
                 </button>
               </div>
-              <div className="col-4 d-flex align-items-center justify-content-center">
+              <div className="col-6 d-flex align-items-center justify-content-center">
                 <button
                   className="btn smallBtns"
                   onClick={() => setshareShow(!shareShow)}
@@ -434,17 +429,39 @@ const Product = ({ allProducts }) => {
           onCloseModal={() => setshareShow(!shareShow)}
         />
         <div className="row d-flex flex-row">
-          <div className="col-lg-6 col-md-12">
-            <CustomImageSlider
+          <div className="col-lg-6 col-md-12 order-2 order-lg-1 order-xl-1">
+            <div className="row d-flex flex-row">
+              <div className="col-6">
+                <div className="conText blink">
+                  <span>
+                    Condition:<span style={{ color: "#ec1d25" }}> New</span>
+                  </span>
+                </div>
+              </div>
+              <div className="col-6">
+                <div className="conText">
+                  <span>Verified Authentic</span>
+                </div>
+              </div>
+            </div>
+            {/* <CustomImageSlider
               currentimg={currentimg ? currentimg : product?.cover_image}
               allimgs={pimagesTotal[0] ? pimagesTotal : [product?.cover_image]}
               onClickFunction={(newimg) => {
                 setcurrentimg(newimg);
               }}
-            />
+            /> */}
+            {pimagesTotal && (
+              <ImagePopup
+                image={product?.cover_image}
+                shoe_id={product?.shoe_id}
+                title={product?.name}
+                galleryImages={pimagesTotal}
+              />
+            )}
           </div>
-          <div className="col-lg-6 col-md-12 d-flex h-auto flex-column align-items-center justify-content-evenly">
-            <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
+          <div className="col-lg-6 col-md-12  d-none d-lg-flex d-xl-flex h-100 flex-column align-items-center justify-content-evenly">
+            <div className="row d-none  d-lg-flex d-xl-flex w-100 flex-row mx-0 my-3 customerBuyClass">
               <div className="col-2 h-100 d-flex align-items-center justify-content-center">
                 <img className="w-100 align-self-center img-fluid" src={Bolt} />
               </div>

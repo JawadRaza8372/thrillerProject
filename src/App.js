@@ -252,19 +252,6 @@ const App = ({ location }) => {
       location.pathname === "/terms" ? (
         <Footer />
       ) : null}
-
-      {/* {location.pathname === "/shoe" ||
-      location.pathname === "/login" ||
-      location.pathname === "/sell" ||
-      location.pathname === "/help" ||
-      location.pathname === "/buy" ||
-      location.pathname === "/twoFactorAuth" ||
-      location.pathname === "/profileEdit" ||
-      location.pathname === "/buyingInfo" ||
-      location.pathname === "/product" ||
-      location.pathname === "/shippingInfo" ? null : (
-        <Footer />
-      )} */}
     </div>
   );
 };

@@ -357,6 +357,25 @@
   }
 }
 // new styles wala done
+
+.conText {
+  font-weight: 600;
+  padding-top: 10px;
+  font-family: "Montserrat";
+  font-weight: 500;
+  width: fit-content;
+  padding: 0px 10px;
+  background-color: #f4f3f1;
+  &.blink {
+    animation: blinker 1.5s linear infinite;
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+  }
+}
+
 .borderedDiv {
   border-radius: 0.25rem;
   border: 1px solid lightgrey;
