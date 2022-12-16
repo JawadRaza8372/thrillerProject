@@ -108,7 +108,7 @@ const Suggestion = (props) => {
           renderButtonGroupOutside={true}
           responsive={responsive}
           infinite={true}
-          itemClass="card"
+          itemClass="cardownItem"
           // customRightArrow={<CustomLeftArrow />}
           // customLeftArrow={<CustomRightArrow />}
         >

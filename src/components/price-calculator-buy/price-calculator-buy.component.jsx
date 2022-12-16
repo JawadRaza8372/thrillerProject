@@ -195,8 +195,9 @@ const PriceCalculatorBuy = ({
             <div style={{ width: "100%" }}>
               <h2>AED:</h2>
               <input
+                type={"number"}
                 disabled={!selectedButton}
-                value={selectedButton ? amount : _lowestAsk}
+                value={selectedButton ? parseInt(`${amount}`) : _lowestAsk}
                 onChange={(e) => setOfferAmount(e.target.value)}
                 placeholder="Enter your offer"
               ></input>
