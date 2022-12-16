@@ -460,12 +460,20 @@ const Product = ({ allProducts }) => {
               // mousewheel={true}
             >
               <SwiperSlide>
-                <img src={product.cover_image} alt={product.sku_number} />
+                <img
+                  className="img-fluid"
+                  src={product.cover_image}
+                  alt={product.sku_number}
+                />
               </SwiperSlide>
               {pimagesTotal.map((name, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <img src={name.imgURL} alt={name.imgURL}></img>
+                    <img
+                      className="img-fluid"
+                      src={name.imgURL}
+                      alt={name.imgURL}
+                    ></img>
                   </SwiperSlide>
                 );
               })}
