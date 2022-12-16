@@ -357,6 +357,14 @@
   }
 }
 // new styles wala done
+.responsiveheight {
+  height: auto;
+}
+@media screen and (max-width: 992px) {
+  .responsiveheight {
+    height: 100%;
+  }
+}
 
 .conText {
   font-weight: 600;

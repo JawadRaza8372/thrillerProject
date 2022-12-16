@@ -389,6 +389,54 @@ const Product = ({ allProducts }) => {
         </div>
       </div>
       <div className="col-md-9 col-sm-10 mx-auto">
+        <div
+          className="borderedDiv px-2 py-1 row m-0 w-100 d-flex d-lg-none d-xl-none flex-row"
+          style={{
+            position: "sticky",
+            top: "10vh",
+            background: "white",
+            zIndex: 1,
+          }}
+        >
+          <button
+            className="btn btn-outline-dark w-100 my-2"
+            onClick={() => setSizeChart(true)}
+          >
+            <div className="fill_size">
+              Size:
+              <span>
+                US M {defaultSize}
+                <KeyboardArrowDown style={{ fontSize: "22px" }} />
+              </span>
+            </div>
+          </button>
+          <div className="d-flex w-100 align-items-center justify-content-between p-0 flex-row mb-2 mx-auto">
+            <button
+              className="btn btn-outline-dark"
+              style={{ width: "48%" }}
+              onClick={GoToBuy}
+            >
+              Place Bid
+            </button>
+            <button
+              className="btn btn-danger"
+              style={{ width: "48%" }}
+              onClick={GoToBuy}
+            >
+              Buy
+            </button>
+          </div>
+
+          <hr />
+
+          <button
+            className="btn btn-outline-light w-100 removeBorder my-2"
+            style={{ color: "green" }}
+            onClick={() => console.log("sell for")}
+          >
+            Sell for -- or Ask for More
+          </button>
+        </div>
         <div className="row d-flex flex-row mt-2">
           <div className="col-md-8 col-sm-12">
             <span>Home / {productUrl ? productUrl : "---"}</span>
@@ -428,7 +476,7 @@ const Product = ({ allProducts }) => {
           open={shareShow}
           onCloseModal={() => setshareShow(!shareShow)}
         />
-        <div className="row d-flex flex-row">
+        <div className="row d-flex mt-4 flex-row">
           <div className="col-lg-6 col-md-12">
             <div className="row d-flex flex-row">
               <div className="col-6">
@@ -475,8 +523,8 @@ const Product = ({ allProducts }) => {
               })}
             </Swiper>
           </div>
-          <div className="col-lg-6 col-md-12  d-none d-lg-flex d-xl-flex h-100 h-lg-auto h-xl-auto flex-column align-items-center justify-content-evenly">
-            <div className="row d-none  d-lg-flex d-xl-flex w-100 flex-row mx-0 my-3 customerBuyClass">
+          <div className="col-lg-6 col-md-12  d-flex flex-column align-items-center justify-content-evenly responsiveheight">
+            <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
               <div className="col-2 h-100 d-flex align-items-center justify-content-center">
                 <img className="w-100 align-self-center img-fluid" src={Bolt} />
               </div>
@@ -484,7 +532,7 @@ const Product = ({ allProducts }) => {
                 1574 Sold in Last 3 Days!
               </div>
             </div>
-            <div className="borderedDiv px-2 py-1 row m-0 w-100 d-flex flex-row">
+            <div className="borderedDiv  px-2 py-1 row m-0 w-100 d-none d-lg-flex d-xl-flex flex-row">
               <button
                 className="btn btn-outline-dark w-100 my-2"
                 onClick={() => setSizeChart(true)}
@@ -522,19 +570,14 @@ const Product = ({ allProducts }) => {
               </div>
               <div className="col-lg-8 col-md-12">
                 <div className="row d-flex flex-row">
-                  <div className="col-4 d-flex align-items-center justify-content-center">
+                  <div className="col-6 d-flex align-items-center justify-content-center">
                     <button className="btn btn-outline-dark smallBtns">
                       View Asks
                     </button>
                   </div>
-                  <div className="col-4 d-flex align-items-center justify-content-center">
+                  <div className="col-6 d-flex align-items-center justify-content-center">
                     <button className="btn btn-outline-dark smallBtns">
                       View Bids
-                    </button>
-                  </div>
-                  <div className="col-4 d-flex align-items-center justify-content-center">
-                    <button className="btn btn-outline-dark smallBtns">
-                      View Sales
                     </button>
                   </div>
                 </div>
