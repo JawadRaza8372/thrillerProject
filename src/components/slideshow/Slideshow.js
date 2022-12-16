@@ -49,6 +49,8 @@ const Slideshow = () => {
   return (
     <Carousel
       interval={7000}
+      variant="dark"
+      fade={true}
       // renderButtonGroupOutside={true}
       // responsive={responsive}
       // infinite={true}
