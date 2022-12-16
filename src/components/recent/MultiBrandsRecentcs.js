@@ -47,32 +47,32 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
     (dat, index) =>
       dat?.tag?.includes(tagsArry[0]) ||
       makingValidName(`${dat?.name}`).includes(makingValidName(tagsArry[0])) ||
-      `${dat.collection_id}` === `${newbrand1[0].collection_id}`
+      `${dat?.collection_id}` === `${newbrand1[0]?.collection_id}`
   );
 
   let resultProducts2 = allProducts?.filter(
     (dat, index) =>
       dat?.tag?.includes(tagsArry[1]) ||
       makingValidName(`${dat?.name}`).includes(tagsArry[1]) ||
-      `${dat.collection_id}` === `${newbrand2[0].collection_id}`
+      `${dat?.collection_id}` === `${newbrand2[0]?.collection_id}`
   );
   let resultProducts3 = allProducts?.filter(
     (dat, index) =>
       dat?.tag?.includes(tagsArry[2]) ||
       makingValidName(`${dat?.name}`).includes(tagsArry[2]) ||
-      `${dat.collection_id}` === `${newbrand3[0].collection_id}`
+      `${dat?.collection_id}` === `${newbrand3[0]?.collection_id}`
   );
   let resultProducts4 = allProducts?.filter(
     (dat, index) =>
       dat?.tag?.includes(tagsArry[3]) ||
       makingValidName(`${dat?.name}`).includes(tagsArry[3]) ||
-      `${dat.collection_id}` === `${newbrand4[0].collection_id}`
+      `${dat?.collection_id}` === `${newbrand4[0]?.collection_id}`
   );
   let resultProducts5 = allProducts?.filter(
     (dat, index) =>
       dat?.tag?.includes(tagsArry[4]) ||
       makingValidName(`${dat?.name}`).includes(tagsArry[4]) ||
-      `${dat.collection_id}` === `${newbrand5[0].collection_id}`
+      `${dat?.collection_id}` === `${newbrand5[0]?.collection_id}`
   );
 
   let finalArray = [
