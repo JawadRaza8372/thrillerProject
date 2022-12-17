@@ -8,6 +8,8 @@ import NewCustomRecentcs from "../../components/recent/NewCustomRecentcs";
 import localStorage from "redux-persist/es/storage";
 import SlideShow from "../../components/slideshow/Slideshow";
 import MultiBrandsRecentcs from "../../components/recent/MultiBrandsRecentcs";
+import { mylocalStorage } from "../../Constants/Functions";
+
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
   const topGreyNavugation = [
@@ -20,7 +22,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
     { to: "/", title: "Accessories" },
   ];
   const setLocalStorage = (name) => {
-    localStorage.setItem("selectedSection", JSON.stringify(name));
+    mylocalStorage.setItem("selectedSection", JSON.stringify(name));
     newhistory.push("/browse/0");
   };
   return (

@@ -5,6 +5,7 @@ import SizeSelectProd from "../size-selector-product/SizeSelectProd";
 import * as Actions from "../../Redux/Actions";
 import { connect } from "react-redux";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const SizeButton = ({
   fromFilter,
@@ -25,7 +26,7 @@ const SizeButton = ({
   const sortBySize = async (arg) => {
     if (fromFilter === undefined) {
       //console.log("argument is: ", arg);
-      localStorage.setItem("bSize", arg);
+      mylocalStorage.setItem("bSize", arg);
       const { data } = await axios.get(
         `https://api.thrillerme.com/shoes/getBySize/${arg}`
       );
@@ -35,7 +36,7 @@ const SizeButton = ({
       } else {
         //console.log("Data found on size");
         setProducts([]);
-        window.localStorage.setItem("filter", JSON.stringify(data));
+        window.mylocalStorage.setItem("filter", JSON.stringify(data));
         setProducts(data);
       }
       try {
@@ -77,7 +78,7 @@ const SizeButton = ({
             setSizeNo(size);
             parentCallBack(size);
 
-            localStorage.setItem("favSize", size);
+            mylocalStorage.setItem("favSize", size);
             // setFavSize(size);
           }}
         >

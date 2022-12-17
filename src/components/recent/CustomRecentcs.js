@@ -45,8 +45,8 @@ function CustomRecentcs({ tag, brands }) {
         </div>
       </div>
       <div className="row">
-        <div className="productShowDiv">
-          {brands?.slice(0, 6).map((elem, index) => {
+        <div className="productShowDivBrnadsWala">
+          {brands?.slice(0, 5).map((elem, index) => {
             return (
               <>
                 <Link to={`/browse/${elem.collection_id}/`} key={index}>

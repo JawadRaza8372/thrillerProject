@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./setting-item.styles.scss";
 import EditOffering from "../edit-offering-modal/EditOffering";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { EditPriceModal } from "../edit-price-modal/edit-price-modal.component";
 import { SearchItem } from "../search-item/search-item.component";
@@ -73,7 +74,7 @@ export const SettingItem = ({
             window.open(shoe.dropOffTrackingURL, "_blank");
           } else {
             //console.log("ON", oID, name);
-            var user = JSON.parse(localStorage.getItem("user"));
+            var user = JSON.parse(mylocalStorage.getItem("user"));
             if (user !== null && user !== undefined) {
               var url = `https://api.thrillerme.com/sellers/${user.user_id}`;
               //console.log(url);
@@ -117,7 +118,7 @@ export const SettingItem = ({
                           "Please keep the package ready, Quiqup will arrive within 4 hours."
                         );
                         var userID = JSON.parse(
-                          localStorage.getItem("user")
+                          mylocalStorage.getItem("user")
                         ).user_id;
                         axios
                           .get(

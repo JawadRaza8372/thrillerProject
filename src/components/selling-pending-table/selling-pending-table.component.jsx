@@ -2,6 +2,7 @@ import "./selling-pending-table.styles.scss";
 import React, { useState, useEffect } from "react";
 
 import { SettingItem } from "../setting-item/setting-item.component";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import SHOE_DATA from "../../temporary-data/shoe-data";
 import axios from "axios";
@@ -23,7 +24,7 @@ export const SellingPendingTable = ({ searchValue, pendingShoeData }) => {
   const [pendingData, setPendingData] = useState([]);
   const [oData, setOdata] = useState([]);
 
-  var userID = JSON.parse(localStorage.getItem("user")).user_id;
+  var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
 
   useEffect(() => {
     axios

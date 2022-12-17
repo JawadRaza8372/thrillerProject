@@ -7,12 +7,13 @@ import SHOE_DATA from "../../temporary-data/shoe-data";
 import { useHistory, withRouter, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 const BuyPage = ({ history, match, userDetails }) => {
   const [hasShipping, setShipping] = useState(false);
-  const rawuserid = localStorage.getItem("user");
-  var off = JSON.parse(localStorage.getItem("offer"));
+  const rawuserid = mylocalStorage.getItem("user");
+  var off = JSON.parse(mylocalStorage.getItem("offer"));
   const [offer, setOffer] = useState(off);
   const params = useParams();
   const newhistory = useHistory();
@@ -42,7 +43,7 @@ const BuyPage = ({ history, match, userDetails }) => {
         },
       });
       setOffer({ ...off, buyer_id: newuserdata.user_id });
-      localStorage.setItem("offer", JSON.stringify(offer));
+      mylocalStorage.setItem("offer", JSON.stringify(offer));
       try {
         const res = await axios.get(
           `https://api.thrillerme.com/shippings/${newuserdata.user_id}`
@@ -105,7 +106,7 @@ const BuyPage = ({ history, match, userDetails }) => {
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     Load();
-    var chk = localStorage.getItem("buy");
+    var chk = mylocalStorage.getItem("buy");
     setChk(chk);
     if (chk === "1") {
       setText("Buy Now");
@@ -115,7 +116,7 @@ const BuyPage = ({ history, match, userDetails }) => {
   }, [product]);
 
   // function save() {
-  //   localStorage.setItem("proID", id);
+  //   mylocalStorage.setItem("proID", id);
   //   userDetails === null
   //     ? history.push({
   //         pathname: "/login",
@@ -132,8 +133,8 @@ const BuyPage = ({ history, match, userDetails }) => {
   });
 
   function SaveOffer() {
-    //localStorage.setItem("usd", 0);
-    var chk = localStorage.getItem("buy");
+    //mylocalStorage.setItem("usd", 0);
+    var chk = mylocalStorage.getItem("buy");
     if (chk === "1") {
       //Paypal here
       alert("Wait...");
@@ -160,7 +161,7 @@ const BuyPage = ({ history, match, userDetails }) => {
   }
 
   return (
-    <div className="shoex-page">
+    <div className="shoex-page" style={{ marginTop: "11vh" }}>
       <div className="shoe-content">
         <div className="shoe-image">
           <div className="shoe-info">

@@ -5,6 +5,7 @@ import { SettingItem } from "../setting-item/setting-item.component";
 
 import SHOE_DATA from "../../temporary-data/shoe-data";
 import { BASE_URL } from "../../Constants/Global";
+import { mylocalStorage } from "../../Constants/Functions";
 
 export const BuyingHistoryTable = ({ searchValue }) => {
   const [buy, setBuy] = useState([]);
@@ -12,7 +13,7 @@ export const BuyingHistoryTable = ({ searchValue }) => {
   useEffect(() => {
     var url =
       BASE_URL +
-      `orders/buyer/${JSON.parse(localStorage.getItem("user")).user_id}`;
+      `orders/buyer/${JSON.parse(mylocalStorage.getItem("user")).user_id}`;
     axios
       .get(encodeURI(url))
       .then((res) => {

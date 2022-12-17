@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Sdropdown from "../sort-dropdown/Sdropdown";
 import "./FilterSort.scss";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const FilterSort = ({ count, setFilter, filter, setProducts }) => {
-  var nav = localStorage.getItem("nav");
+  var nav = mylocalStorage.getItem("nav");
 
   return (
     <div className="p-container">

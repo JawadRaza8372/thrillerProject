@@ -14,9 +14,10 @@ import LocalStorage from "redux-persist/es/storage";
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 import ReactPixel from "react-facebook-pixel";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const ShoePage = ({ match, location, userData, orderDetail }) => {
-  var shoe = JSON.parse(localStorage.getItem("sellShoe"));
+  var shoe = JSON.parse(mylocalStorage.getItem("sellShoe"));
   const [displayShoeSize, toggleShoeDisplay] = useState([true, shoe]);
   const [buttonCheck, setCheck] = useState(false);
   // const [isAuthenticated, setAuthenticated] = useState(false);
@@ -32,8 +33,8 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
   const [hasPayout, sethasPayout] = useState(false);
   const [hasShipping, setHasShipping] = useState(false);
   const history = useHistory();
-  var user = LocalStorage.getItem("user");
-  var rawuserid = LocalStorage.getItem("user");
+  var user = mylocalStorage.getItem("user");
+  var rawuserid = mylocalStorage.getItem("user");
 
   // var userData = JSON.parse(user);
   user.then((res) => {
@@ -108,10 +109,10 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
   useEffect(() => {
     try {
       if (
-        LocalStorage.getItem("price") !== null &&
-        LocalStorage.getItem("price") !== undefined
+        mylocalStorage.getItem("price") !== null &&
+        mylocalStorage.getItem("price") !== undefined
       )
-        setLowestAsk(LocalStorage.getItem("price"));
+        setLowestAsk(mylocalStorage.getItem("price"));
     } catch (e) {}
 
     if (shoeSize !== null) {
@@ -384,7 +385,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                                         size: offer.size,
                                         buyerID: offer.buyer_id,
                                         sellerID: JSON.parse(
-                                          localStorage.getItem("user")
+                                          mylocalStorage.getItem("user")
                                         ).user_id,
                                         price: offer.totalBill,
                                         isAuthentic: 0,

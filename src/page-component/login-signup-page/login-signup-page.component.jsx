@@ -11,6 +11,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { mylocalStorage } from "../../Constants/Functions";
 
 export const LoginSignupPage = ({ signedIn, setSignIn }) => {
   let history = useHistory();
@@ -19,7 +20,7 @@ export const LoginSignupPage = ({ signedIn, setSignIn }) => {
   useEffect(() => {
     //console.log("sate", id);
     if (id === "0") {
-      window.localStorage.clear();
+      mylocalStorage.clear();
       //history.go("/login");
     }
   }, []);

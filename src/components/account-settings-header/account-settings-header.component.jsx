@@ -6,7 +6,7 @@ import ReactTooltip from "react-tooltip";
 import { CustomButton } from "../custom-button/custome-button.component";
 import { withRouter } from "react-router-dom";
 import { ToolTip } from "../tool-tip/tool-tip.component";
-
+import { mylocalStorage } from "../../Constants/Functions";
 export const AccountSettingHeader = withRouter(
   ({ headerTitle, pageRoute, history, displayButton, toolTip }) => {
     return (
@@ -36,13 +36,13 @@ export const AccountSettingHeader = withRouter(
           {displayButton ? null : (
             <CustomButton
               onClick={() => {
-                localStorage.setItem("cords", null);
+                mylocalStorage.setItem("cords", null);
                 if (
                   pageRoute === "shippingInfo/1" ||
                   pageRoute === "shippingInfo/0" ||
                   pageRoute === "payoutInfo"
                 ) {
-                  localStorage.setItem("cords", null);
+                  mylocalStorage.setItem("cords", null);
                   //console.log("hello");
                   history.push({
                     pathname: pageRoute,

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./account-sidebar.styles.scss";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const AccountSidebar = ({
   sideBarLinks,
@@ -9,7 +10,7 @@ const AccountSidebar = ({
   sideBarStatus,
   userDetails,
 }) => {
-  userDetails = JSON.parse(localStorage.getItem("user"));
+  userDetails = JSON.parse(mylocalStorage.getItem("user"));
   //console.log("ud", userDetails);
   return (
     <div className="account-sidebar-container">

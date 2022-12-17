@@ -3,24 +3,25 @@ import ReactTooltip from "react-tooltip";
 import "./Pill.scss";
 import axios from "axios";
 import { useHistory, withRouter, useParams } from "react-router-dom";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const PortfolioPill = (props) => {
   let history = useHistory();
 
   function saveFav(val, size) {
-    var user = localStorage.getItem("user");
+    var user = mylocalStorage.getItem("user");
     if (user === null) {
       history.push("/login");
     } else {
-      //console.log(JSON.parse(localStorage.getItem("favSize")));
+      //console.log(JSON.parse(mylocalStorage.getItem("favSize")));
       //console.log(parseInt(val));
       const data = {
         shoe_id: parseInt(val),
-        user_id: JSON.parse(localStorage.getItem("user")).user_id,
-        size: JSON.parse(localStorage.getItem("favSize")),
+        user_id: JSON.parse(mylocalStorage.getItem("user")).user_id,
+        size: JSON.parse(mylocalStorage.getItem("favSize")),
       };
       var url = `https://api.thrillerme.com/fav/${
-        JSON.parse(localStorage.getItem("user")).user_id
+        JSON.parse(mylocalStorage.getItem("user")).user_id
       }`;
       axios.get(url).then((res) => {
         //console.log(url, res.data);
@@ -74,13 +75,13 @@ const PortfolioPill = (props) => {
 export default PortfolioPill;
 
 // function saveFav(val) {
-//   var user = localStorage.getItem("user");
+//   var user = mylocalStorage.getItem("user");
 //   if (user === null) {
 //     history.push("/login");
 //   } else {
 //     const data = {
 //       shoe_id: parseInt(val),
-//       user_id: JSON.parse(localStorage.getItem("user")).user_id,
+//       user_id: JSON.parse(mylocalStorage.getItem("user")).user_id,
 //     };
 
 //     var url = `https://api.thrillerme.com/fav/${data.user_id}`;

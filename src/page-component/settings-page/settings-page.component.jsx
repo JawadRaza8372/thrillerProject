@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./settings-page.styles.scss";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 import { ProfileInfo } from "../../components/profile-info/profile-info.component";
@@ -52,7 +53,7 @@ export const SettingsPage = withRouter(({ history }) => {
   const [sideBarStatus, setSideBarStatus] = useState(true);
   const newhistory = useHistory();
   const fetchUser = async () => {
-    const rawUserId = await window.localStorage.getItem("user");
+    const rawUserId = await mylocalStorage.getItem("user");
     //
     if (rawUserId) {
       console.log("user found");

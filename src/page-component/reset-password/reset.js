@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./conformPassword.scss";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 import swal from "sweetalert";
 
 export const Reset = withRouter(({ history }) => {
   useEffect(() => {
-    var user = JSON.parse(localStorage.getItem("user"));
+    var user = JSON.parse(mylocalStorage.getItem("user"));
     if (user === undefined || user === null) {
       history.push("/login");
     }
@@ -54,18 +55,18 @@ export const Reset = withRouter(({ history }) => {
       userCredentials.newPassword === userCredentials.conformPassword
     ) {
       //Verify Account
-      var user = JSON.parse(localStorage.getItem("user"));
+      var user = JSON.parse(mylocalStorage.getItem("user"));
       var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
       user.password = userCredentials.newPassword;
       axios
         .put(url, user)
         .then((res) => {
           //console.log(res.data);
-          localStorage.setItem("user", JSON.stringify(user));
+          mylocalStorage.setItem("user", JSON.stringify(user));
           axios
             .post("https://api.thrillerme.com/signup", {
               emailType: "change",
-              emailTo: JSON.parse(localStorage.getItem("user")).email,
+              emailTo: JSON.parse(mylocalStorage.getItem("user")).email,
             })
             .then((res) => {
               //console.log("email sent", res.data);

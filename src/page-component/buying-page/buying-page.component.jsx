@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./buying-page.styles.scss";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { PendingBuying } from "../../components/pending-buying/pending-buying.component";
 import { HistoryBuying } from "../../components/history-buying/history-buying.component";
@@ -47,7 +48,7 @@ export const BuyingPage = () => {
   const [sideBarStatus, setSideBarStatus] = useState(true);
   const newhistory = useHistory();
   const fetchUser = async () => {
-    const rawUserId = await window.localStorage.getItem("user");
+    const rawUserId = await mylocalStorage.getItem("user");
     //
     if (rawUserId) {
       console.log("user found");
@@ -59,9 +60,9 @@ export const BuyingPage = () => {
     fetchUser();
     window.scrollTo(0, 0);
 
-    var his = localStorage.getItem("history");
+    var his = mylocalStorage.getItem("history");
     if (his !== null && his !== undefined && his !== "0") {
-      localStorage.setItem("history", "0");
+      mylocalStorage.setItem("history", "0");
       toggleSelectedSection("History");
     }
   }, []);

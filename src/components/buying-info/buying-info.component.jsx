@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./buying-info.styles.scss";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { AccountSettingHeader } from "../account-settings-header/account-settings-header.component";
 
@@ -8,7 +9,7 @@ export const BuyingInfo = () => {
   const [buyingData, setBuyingData] = useState({});
 
   useEffect(() => {
-    var user = JSON.parse(localStorage.getItem("user"));
+    var user = JSON.parse(mylocalStorage.getItem("user"));
     var url = `https://api.thrillerme.com/buyinginfo/${user.user_id}`;
     axios
       .get(url)

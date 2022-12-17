@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import SizeSelectProd from "../../components/size-selector-product/SizeSelectProd";
 import Sdropdown from "../../components/size-dropdown/SizeDropdown";
 import { validateUserInfo, validateNumber } from "../../Constants/Functions";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { DropDown } from "../../components/drop-down/drop-down.component";
 import axios from "axios";
@@ -21,7 +22,7 @@ const mapStateToProps = (state) => {
 
 export const EditProfilePage = connect(mapStateToProps)(
   withRouter(({ history, userDetails }) => {
-    var profileData = JSON.parse(localStorage.getItem("user"));
+    var profileData = JSON.parse(mylocalStorage.getItem("user"));
 
     const sortOptions = [
       { value: profileData.defaultSize, label: profileData.defaultSize },
@@ -280,7 +281,7 @@ export const EditProfilePage = connect(mapStateToProps)(
                   .then((res) => {
                     ////console.log("Success", res.data);
                     if (res.data.status === "success") {
-                      localStorage.setItem("user", JSON.stringify(data));
+                      mylocalStorage.setItem("user", JSON.stringify(data));
                       history.push("settings-section");
                     } else {
                       swal({

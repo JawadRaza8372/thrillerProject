@@ -4,6 +4,7 @@ import PillContainer from "../../components/product-page-pills/PillContainer";
 import Recentcs from "../../components/suggestions/Suggestion";
 import SizeSelector from "../../components/size-selector/SizeSelector";
 import { Button } from "react-bootstrap";
+import { mylocalStorage } from "../../Constants/Functions";
 import {
   Route,
   Switch,
@@ -75,7 +76,7 @@ const Product = ({ allProducts }) => {
   const history = useHistory();
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
-  var usr = JSON.parse(localStorage.getItem("user"));
+  var usr = JSON.parse(mylocalStorage.getItem("user"));
   var sz = "4";
   if (usr !== null && usr !== undefined) sz = usr.defaultSize;
   const [showToast, setshowToast] = useState("");
@@ -96,7 +97,7 @@ const Product = ({ allProducts }) => {
     setSizeChart(false);
   };
   function Load() {
-    var user = localStorage.getItem("user");
+    var user = mylocalStorage.getItem("user");
     if (user !== null) {
       var userID = JSON.parse(user).user_id;
       var urlUser = `https://api.thrillerme.com/registrations/${userID}`;
@@ -133,7 +134,7 @@ const Product = ({ allProducts }) => {
   }, [showToast]);
 
   function getPriceMobile() {
-    var user = localStorage.getItem("user");
+    var user = mylocalStorage.getItem("user");
     if (user === null) {
       var url = `https://api.thrillerme.com/shoes/${id}`;
       var encodedURLU = encodeURI(url);
@@ -204,7 +205,7 @@ const Product = ({ allProducts }) => {
     //   });
 
     //   GetLowsetAsk(defaultSize);
-    //   localStorage.setItem("favSize", defaultSize);
+    //   mylocalStorage.setItem("favSize", defaultSize);
 
     //   try {
     //     ReactGA.initialize("UA-198989119-1", {
@@ -261,14 +262,14 @@ const Product = ({ allProducts }) => {
     LoadDetails();
   }, [id]);
   const addtoFavorite = () => {
-    var user = localStorage.getItem("user");
+    var user = mylocalStorage.getItem("user");
     if (user === null) {
       history.push("/login");
     } else {
       const data = {
         shoe_id: parseInt(id),
-        user_id: JSON.parse(localStorage.getItem("user")).user_id,
-        size: JSON.parse(localStorage.getItem("favSize")),
+        user_id: JSON.parse(mylocalStorage.getItem("user")).user_id,
+        size: JSON.parse(mylocalStorage.getItem("favSize")),
       };
 
       axios
@@ -294,7 +295,7 @@ const Product = ({ allProducts }) => {
   console.log(product);
   function GoToBuy() {
     history.push(`/buy/${id}/${defaultSize}/0`);
-    localStorage.setItem("price", lowestAsk);
+    mylocalStorage.setItem("price", lowestAsk);
   }
   function GetLowsetAsk(sizz) {
     var urlL = `https://api.thrillerme.com/listing/lowest/${id}/${sizz}`;

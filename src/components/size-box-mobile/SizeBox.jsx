@@ -3,6 +3,7 @@ import "./SizeBox.scss";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 // import localStorage from "redux-persist/es/storage";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const SizeBox = ({
   size,
@@ -30,7 +31,7 @@ const SizeBox = ({
   function GoToBuy() {
     GetLowsetAsk(size);
     setTimeout(() => {
-      localStorage.setItem("price", lowestAsk);
+      mylocalStorage.setItem("price", lowestAsk);
       history.push(`/buy/${id}/${size}/${lowestAsk}`);
     }, 1000);
     setSizeChart(false);
@@ -39,7 +40,7 @@ const SizeBox = ({
   function GoToFav() {
     //console.log("check we in");
 
-    var user = localStorage.getItem("user");
+    var user = mylocalStorage.getItem("user");
     if (user !== null || user !== undefined) {
       var userID = JSON.parse(user).user_id;
       //console.log(userID);

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as Actions from "../../Redux/Actions";
 import axios from "axios";
 import { CustomButton } from "../custom-button/custome-button.component";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -40,7 +41,7 @@ const ShoeBuy = (props) => {
     axios
       .get(
         "https://api.thrillerme.com/shippings/" +
-          JSON.parse(localStorage.getItem("user")).user_id
+          JSON.parse(mylocalStorage.getItem("user")).user_id
       )
       .then((res) => {
         if (res.data.city !== undefined) {
@@ -50,14 +51,14 @@ const ShoeBuy = (props) => {
             res.data.city !== null
           ) {
             //console.log("update shipping");
-            localStorage.setItem("shippingFee", 20);
+            mylocalStorage.setItem("shippingFee", 20);
             shipping = 20; //next_day
           } else {
-            localStorage.setItem("shippingFee", 22.5);
+            mylocalStorage.setItem("shippingFee", 22.5);
             shipping = 22.5; //same_day
           }
         } else {
-          localStorage.setItem("shippingFee", 22.5);
+          mylocalStorage.setItem("shippingFee", 22.5);
           shipping = 22.5; //same_day
         }
 
@@ -69,7 +70,7 @@ const ShoeBuy = (props) => {
             var offerData = {
               productID: offer.shoe_id,
               size: offer.size,
-              buyerID: JSON.parse(localStorage.getItem("user")).user_id,
+              buyerID: JSON.parse(mylocalStorage.getItem("user")).user_id,
               sellerID: offer.seller_id,
               price: props.offer.totalBill,
               isAuthentic: 0,
@@ -89,12 +90,12 @@ const ShoeBuy = (props) => {
             //console.log("O", offerData);
             // //console.log(
             //   "Shipping",
-            //   parseFloat(localStorage.getItem("shippingFee"))
+            //   parseFloat(mylocalStorage.getItem("shippingFee"))
             // );
 
             var orderProcessing = 0;
             try {
-              orderProcessing = localStorage.getItem("order-processing");
+              orderProcessing = mylocalStorage.getItem("order-processing");
             } catch (error) {}
 
             console.log("order processing", orderProcessing);
@@ -104,7 +105,7 @@ const ShoeBuy = (props) => {
                 offerData: offerData,
                 listing_id: offer.listing_id,
                 offer_id: 0,
-                soldTo: JSON.parse(localStorage.getItem("user")).user_id,
+                soldTo: JSON.parse(mylocalStorage.getItem("user")).user_id,
                 shipping: shipping,
                 vat: offer.processingFee,
                 processing: orderProcessing,
@@ -113,7 +114,7 @@ const ShoeBuy = (props) => {
               .then(
                 (response) => {
                   //console.log(response);
-                  localStorage.setItem("history", "1");
+                  mylocalStorage.setItem("history", "1");
                   history.push("/buying-section");
                 },
                 (error) => {
@@ -131,7 +132,7 @@ const ShoeBuy = (props) => {
   }
 
   useEffect(() => {
-    var user = JSON.parse(localStorage.getItem("user"));
+    var user = JSON.parse(mylocalStorage.getItem("user"));
     ////console.log("user", user);
     if (user === null || user === undefined) {
       history.push({

@@ -3,6 +3,7 @@ import "./account-sidebar-2.styles.scss";
 
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const mapStateToProps = (state) => {
   return {
@@ -20,7 +21,7 @@ export const AccountSidebar2 = connect(mapStateToProps)(
       userDetails,
       history,
     }) => {
-      userDetails = JSON.parse(localStorage.getItem("user"));
+      userDetails = JSON.parse(mylocalStorage.getItem("user"));
 
       return (
         <div

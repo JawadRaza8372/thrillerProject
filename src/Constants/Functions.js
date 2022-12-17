@@ -81,3 +81,5 @@ export const makingValidName = (name) => {
     return strname.replace(/\s+/g, "-").toLowerCase();
   }
 };
+import AsyncStorage from "@react-native-async-storage/async-storage";
+export let mylocalStorage = AsyncStorage;

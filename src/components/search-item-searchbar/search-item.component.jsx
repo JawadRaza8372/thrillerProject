@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { makingValidName } from "../../Constants/Functions";
+import { mylocalStorage } from "../../Constants/Functions";
 
 export const SearchItem = ({
   searchOpen,
@@ -24,13 +25,13 @@ export const SearchItem = ({
     history.push(`/${val}`);
 
     // if (location.pathname == "/favourites-section") {
-    //   var user = localStorage.getItem("user");
+    //   var user = mylocalStorage.getItem("user");
     // if (user === null) {
     //   history.push("/login");
     // } else {
     //   const data = {
     //     shoe_id: parseInt(val),
-    //     user_id: JSON.parse(localStorage.getItem("user")).user_id,
+    //     user_id: JSON.parse(mylocalStorage.getItem("user")).user_id,
     //   };
 
     //   //console.log("Fav:", data);

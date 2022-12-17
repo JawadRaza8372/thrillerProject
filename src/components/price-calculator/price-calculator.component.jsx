@@ -6,6 +6,7 @@ import ReturnableCell from "../returnable-cells/returnable-cell.component";
 import { connect } from "react-redux";
 import * as Actions from "../../Redux/Actions";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const PriceCalculator = ({
   selectedButton,
@@ -53,7 +54,7 @@ const PriceCalculator = ({
   }, [selectedButton]);
 
   useEffect(() => {
-    var user = JSON.parse(localStorage.getItem("user"));
+    var user = JSON.parse(mylocalStorage.getItem("user"));
     //console.log("### Ask Value ####", askValue);
     if (user !== null && user !== undefined) {
       //console.log("sellers shipping...", user.user_id);
@@ -73,20 +74,20 @@ const PriceCalculator = ({
                   res.data.city !== null
                 ) {
                   setShippingCost(settings.deliveryIn); //outside dubai -> same_day cost Quid
-                  localStorage.setItem(
+                  mylocalStorage.setItem(
                     "l_shipping",
                     JSON.stringify(settings.deliveryIn)
                   );
                 } else {
                   setShippingCost(settings.quidashIn); //same_day
-                  localStorage.setItem(
+                  mylocalStorage.setItem(
                     "l_shipping",
                     JSON.stringify(settings.quidashIn)
                   );
                 }
               } else {
                 setShippingCost(settings.quidashIn); //same_day
-                localStorage.setItem(
+                mylocalStorage.setItem(
                   "l_shipping",
                   JSON.stringify(settings.quidashIn)
                 );
@@ -96,11 +97,11 @@ const PriceCalculator = ({
               setTrans("(" + settings.marketplaceShare + "%)");
               setProcessing("(" + settings.processingFee + "%)");
 
-              localStorage.setItem(
+              mylocalStorage.setItem(
                 "l_trans",
                 JSON.stringify((askValue * share).toFixed(2))
               );
-              localStorage.setItem(
+              mylocalStorage.setItem(
                 "l_processing",
                 JSON.stringify(
                   (
@@ -108,7 +109,7 @@ const PriceCalculator = ({
                   ).toFixed(2)
                 )
               );
-              localStorage.setItem(
+              mylocalStorage.setItem(
                 "l_payout",
                 JSON.stringify(
                   (

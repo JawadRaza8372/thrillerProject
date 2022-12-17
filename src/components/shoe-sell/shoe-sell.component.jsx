@@ -6,6 +6,7 @@ import axios from "axios";
 import LocalStorage from "redux-persist/es/storage";
 
 import PriceCalculator from "../price-calculator/price-calculator.component";
+import { mylocalStorage } from "../../Constants/Functions";
 
 export const ShoeSell = ({
   displayShoeSize,
@@ -15,7 +16,7 @@ export const ShoeSell = ({
   setCheck,
   user_id,
 }) => {
-  var user = LocalStorage.getItem("user");
+  var user = mylocalStorage.getItem("user");
   // var userData = JSON.parse(user);
   user.then((res) => {
     user = JSON.parse(res);
@@ -48,7 +49,7 @@ export const ShoeSell = ({
       });
   }, [user.user_id, user_id]);
 
-  var sizeID = localStorage.getItem("shoeSize");
+  var sizeID = mylocalStorage.getItem("shoeSize");
   const shoeSize = useState(sizeID);
 
   const { name, id } = displayShoeSize[1];

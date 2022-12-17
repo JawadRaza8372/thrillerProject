@@ -6,6 +6,7 @@ import LocalStorage from "redux-persist/es/storage";
 import { sidebarData } from "../../temporary-data/sidebarData";
 import CategoryBar from "../cat-sidebar/CategoryBar";
 import "./Sidebar.css";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const Sidebar = ({
   allBrands,
@@ -19,7 +20,7 @@ const Sidebar = ({
 }) => {
   var userObj = null;
   try {
-    userObj = JSON.parse(localStorage.getItem("user"));
+    userObj = JSON.parse(mylocalStorage.getItem("user"));
     userDetails = userObj;
   } catch (error) {
     //console.log("### userObj ####", error);
@@ -43,7 +44,7 @@ const Sidebar = ({
   const History = useHistory();
 
   const initialSetup = async () => {
-    var uData = JSON.parse(localStorage.getItem("user"));
+    var uData = JSON.parse(mylocalStorage.getItem("user"));
     //console.log("######## init setup #####", uData);
 
     try {
@@ -83,7 +84,7 @@ const Sidebar = ({
   const setupChecks = async () => {
     try {
       await initialSetup();
-      var uData = JSON.parse(localStorage.getItem("user"));
+      var uData = JSON.parse(mylocalStorage.getItem("user"));
       var url = `https://api.thrillerme.com/registrations/${uData.user_id}`;
       axios.get(url).then((res) => {
         ////console.log(res);
@@ -126,7 +127,7 @@ const Sidebar = ({
     }
   };
 
-  const isUserAvailable = localStorage.getItem("user");
+  const isUserAvailable = mylocalStorage.getItem("user");
   ////console.log(isUserAvailable);
 
   var widthScreen = getWindowDimensions();
@@ -170,7 +171,7 @@ const Sidebar = ({
                     className="nav-text"
                     onClick={() => {
                       if (userDetails === null) {
-                        localStorage.setItem("coming", {
+                        mylocalStorage.setItem("coming", {
                           path: "accounts",
                           id: null,
                         });
@@ -206,7 +207,7 @@ const Sidebar = ({
                   <Link
                     className="nav-text"
                     onClick={() => {
-                      window.localStorage.clear();
+                      window.mylocalStorage.clear();
                       window.location.href = window.location.origin + "/login";
                     }}
                   >
@@ -219,8 +220,8 @@ const Sidebar = ({
                   <Link
                     className="nav-text"
                     onClick={() => {
-                      window.localStorage.setItem("filter", null);
-                      localStorage.removeItem("selectedSection");
+                      window.mylocalStorage.setItem("filter", null);
+                      mylocalStorage.removeItem("selectedSection");
                       window.open(`https://thrillerme.com/browse/0/`, "_self");
                     }}
                   >

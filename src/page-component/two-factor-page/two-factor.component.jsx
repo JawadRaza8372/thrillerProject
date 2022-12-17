@@ -4,6 +4,7 @@ import { useHistory, withRouter, useParams } from "react-router-dom";
 import axios from "axios";
 import { validateTowFactorAuthNumber } from "../../Constants/Functions";
 import swal from "sweetalert";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 import SelectSearch from "react-select-search";
@@ -317,7 +318,7 @@ export const TwoFactorPage = withRouter(({ history }) => {
   };
 
   function VerifyAccount() {
-    var user = JSON.parse(localStorage.getItem("user"));
+    var user = JSON.parse(mylocalStorage.getItem("user"));
     //console.log(user);
     if (fieldStatus.countryCode !== "" && fieldStatus.phoneNumber !== "") {
       // if (!validateTowFactorAuthNumber(fieldStatus.phoneNumber)) {
@@ -372,7 +373,7 @@ export const TwoFactorPage = withRouter(({ history }) => {
                     text: "Your account is verified!",
                     icon: "success",
                   });
-                  var user = JSON.parse(localStorage.getItem("user"));
+                  var user = JSON.parse(mylocalStorage.getItem("user"));
                   var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
                   console.log(url);
                   user.isAuthenticated = 1;
@@ -380,7 +381,7 @@ export const TwoFactorPage = withRouter(({ history }) => {
                     .put(url, user)
                     .then((res) => {
                       console.log(res.data);
-                      localStorage.setItem("user", JSON.stringify(user));
+                      mylocalStorage.setItem("user", JSON.stringify(user));
                       swal.close();
                     })
                     .catch((err) => {
@@ -492,14 +493,14 @@ export const TwoFactorPage = withRouter(({ history }) => {
                 text: "Your account is verified!",
                 icon: "success",
               });
-              var user = JSON.parse(localStorage.getItem("user"));
+              var user = JSON.parse(mylocalStorage.getItem("user"));
               var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
               user.isAuthenticated = 1;
               axios
                 .put(url, user)
                 .then((res) => {
                   //console.log(res.data);
-                  localStorage.setItem("user", JSON.stringify(user));
+                  mylocalStorage.setItem("user", JSON.stringify(user));
                   swal.close();
                 })
                 .catch((err) => {
@@ -568,7 +569,7 @@ export const TwoFactorPage = withRouter(({ history }) => {
       alert("Please enter your phone number with country code.");
     }
   }
-  const rawuserid = localStorage.getItem("user");
+  const rawuserid = mylocalStorage.getItem("user");
   var userDetails = JSON.parse(rawuserid);
   if (userDetails && userDetails.isAuthenticated === 1) {
     newHistory.goBack();

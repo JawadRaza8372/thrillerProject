@@ -4,6 +4,8 @@ import FilterBar from "../filter-bar/FilterBar";
 import { Link } from "react-router-dom";
 import SizeSelector from "../size-selector/SizeSelector";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
+
 function FilterComponentt({
   setProducts,
   setFilterComponent,
@@ -12,27 +14,27 @@ function FilterComponentt({
   //console.log("########### A ############", setFilterComponent);
 
   const handleReq = async (param) => {
-    var myCollectionID = localStorage.getItem("myCollectionID");
+    var myCollectionID = mylocalStorage.getItem("myCollectionID");
 
     const { data } = await axios.get(
       `https://api.thrillerme.com/shoes/collections/${myCollectionID}/tag/${param}`
     );
     setProducts([]);
     setProducts(data);
-    window.localStorage.setItem("filter", JSON.stringify(data));
+    mylocalStorage.setItem("filter", JSON.stringify(data));
     // //console.log(data);
   };
 
   const handleClick = async (param) => {
     if (param === "reset") {
-      var myCollectionID = localStorage.getItem("myCollectionID");
+      var myCollectionID = mylocalStorage.getItem("myCollectionID");
 
       const { data } = await axios.get(
         `https://api.thrillerme.com/shoes/collections/${myCollectionID}`
       );
       setProducts([]);
       setProducts(data);
-      window.localStorage.setItem("filter", JSON.stringify(data));
+      mylocalStorage.setItem("filter", JSON.stringify(data));
     } else {
       handleReq(param);
     }

@@ -9,22 +9,23 @@ import { useHistory, withRouter, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const BuyPage = ({ history, match, userDetails, buyer }) => {
   const id = useParams().id;
   const size = useParams().size;
   var _lowestAsk = 0;
   try {
-    _lowestAsk = JSON.parse(localStorage.getItem("price"));
+    _lowestAsk = JSON.parse(mylocalStorage.getItem("price"));
   } catch (error) {}
 
-  var user_data = JSON.parse(localStorage.getItem("user"));
+  var user_data = JSON.parse(mylocalStorage.getItem("user"));
   // if (
-  //   localStorage.getItem("user") === null ||
-  //   localStorage.getItem("user") === undefined
+  //   mylocalStorage.getItem("user") === null ||
+  //   mylocalStorage.getItem("user") === undefined
   // )
   //   history.push("/login");
-  //console.log("uData", localStorage.getItem("user"));
+  //console.log("uData", mylocalStorage.getItem("user"));
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
@@ -101,7 +102,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
 
   ////////console.log("Product Aya", product);
   return (
-    <div className="shoe-page">
+    <div className="shoe-page" style={{ marginTop: "11vh" }}>
       <div className="shoe-content">
         <div className="shoe-image">
           <div className="shoe-info">
@@ -149,7 +150,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
             onClick={() => {
               var _lowestAsk = 0;
               try {
-                _lowestAsk = JSON.parse(localStorage.getItem("price"));
+                _lowestAsk = JSON.parse(mylocalStorage.getItem("price"));
               } catch (error) {}
               if (!selectedButton) {
                 setOfferAmount(_lowestAsk);
@@ -190,7 +191,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                 axios.get(`https://api.thrillerme.com/settings`).then((res) => {
                   var settings = res.data.result[0];
                   settings.marketplaceShare = 0; //marketplace share 0
-                  const rawuserid = localStorage.getItem("user");
+                  const rawuserid = mylocalStorage.getItem("user");
                   var data = {
                     buyer_id: rawuserid ? JSON.parse(rawuserid).user_id : "",
                     shoe_id: id,
@@ -203,7 +204,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                       offerAmount * (settings.processingFee / 100).toFixed(4)
                     ).toFixed(2),
                     shippingFee: parseFloat(
-                      localStorage.getItem("shippingFee")
+                      mylocalStorage.getItem("shippingFee")
                     ),
                     totalBill: 0,
                     status: "Pending",
@@ -225,11 +226,11 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                     parseFloat(data.shippingFee)
                   ).toFixed(2);
                   //console.log("Offer Data", data);
-                  localStorage.setItem("offer", JSON.stringify(data));
+                  mylocalStorage.setItem("offer", JSON.stringify(data));
                   if (!selectedButton) {
-                    localStorage.setItem("buy", "1");
+                    mylocalStorage.setItem("buy", "1");
                   } else {
-                    localStorage.setItem("buy", "0");
+                    mylocalStorage.setItem("buy", "0");
                   }
                   //just for now
                   // if (!isAuthenticated) {

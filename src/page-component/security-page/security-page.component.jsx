@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./security-page.styles.scss";
+import { mylocalStorage } from "../../Constants/Functions";
 
 import { withRouter } from "react-router-dom";
 
@@ -41,7 +42,7 @@ const sideBarLinks = [
   },
 ];
 
-var user = JSON.parse(localStorage.getItem("user"));
+var user = JSON.parse(mylocalStorage.getItem("user"));
 var check = false;
 //console.log(user);
 if (user !== null || user !== undefined) {
@@ -60,7 +61,7 @@ export const SecurityPage = withRouter(({ history }) => {
   const newhistory = useHistory();
 
   const fetchUser = async () => {
-    const rawUserId = await window.localStorage.getItem("user");
+    const rawUserId = await window.mylocalStorage.getItem("user");
     //
     if (rawUserId) {
       console.log("user found");

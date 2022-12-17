@@ -2,12 +2,13 @@ import React from "react";
 import "./Filterbar.scss";
 import { Link, useHistory, withRouter } from "react-router-dom";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const FilterBar = ({ setProducts }) => {
   const history = useHistory();
 
   const handleReq = async (param) => {
-    var myCollectionID = localStorage.getItem("myCollectionID");
+    var myCollectionID = mylocalStorage.getItem("myCollectionID");
 
     const { data } = await axios.get(
       `https://api.thrillerme.com/shoes/collections/${myCollectionID}/tag/${param}`
@@ -15,13 +16,13 @@ const FilterBar = ({ setProducts }) => {
     setProducts([]);
     setProducts(data);
     console.log("filtersettocat");
-    window.localStorage.setItem("filter", JSON.stringify(data));
+    mylocalStorage.setItem("filter", JSON.stringify(data));
     window.scrollTo(0, 0);
     // //console.log(data);
   };
 
   const handleReqReset = async () => {
-    var myCollectionID = localStorage.getItem("myCollectionID");
+    var myCollectionID = mylocalStorage.getItem("myCollectionID");
 
     const { data } = await axios.get(
       `https://api.thrillerme.com/shoes/collections/${myCollectionID}`

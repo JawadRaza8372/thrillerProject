@@ -9,6 +9,7 @@ import { CustomButton } from "../../components/custom-button/custome-button.comp
 
 import SHOE_DATA from "../../temporary-data/shoe-data";
 import { useHistory } from "react-router-dom";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const sideBarLinks = [
   {
@@ -52,7 +53,7 @@ export const SellingPage = () => {
   const [sideBarStatus, setSideBarStatus] = useState(true);
 
   const fetchUser = async () => {
-    const rawUserId = await window.localStorage.getItem("user");
+    const rawUserId = await mylocalStorage.getItem("user");
     //
     if (rawUserId) {
       console.log("user found");

@@ -4,6 +4,7 @@ import { Grid } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import "./reset-email.css";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const ResetEmail = ({ history }) => {
   useEffect(() => {
@@ -11,7 +12,7 @@ const ResetEmail = ({ history }) => {
     axios
       .post("https://api.thrillerme.com/signup", {
         emailType: "forgot",
-        emailTo: JSON.parse(localStorage.getItem("user")).email,
+        emailTo: JSON.parse(mylocalStorage.getItem("user")).email,
       })
       .then((res) => {
         //console.log("email sent", res.data);

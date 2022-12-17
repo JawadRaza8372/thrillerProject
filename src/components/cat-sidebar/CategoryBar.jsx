@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import "./CategoryBar.scss";
 import categories from "../../temporary-data/categories";
 import axios from "axios";
+import { mylocalStorage } from "../../Constants/Functions";
 
 const CategoryBar = ({ allBrands, catbar, setCatbar, sidebar, setSidebar }) => {
   const onCatClick = (path) => {
     setSidebar(false);
     setCatbar(false);
-    window.localStorage.setItem("filter", null);
+    mylocalStorage.setItem("filter", null);
     window.open(`https://thrillerme.com/browse/${path}/`, "_self");
   };
   const onCatClickDone = () => {

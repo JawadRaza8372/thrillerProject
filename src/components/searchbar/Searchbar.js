@@ -8,6 +8,7 @@ import { SearchResult } from "../../components/search-result/search-result.compo
 import { Avatar } from "@material-ui/core";
 import debounce from "lodash.debounce";
 import { makingValidName } from "../../Constants/Functions";
+import { mylocalStorage } from "../../Constants/Functions";
 
 // api.thrillerme.com/shoes/getByName/nike%20dunk
 
@@ -36,7 +37,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
 
   useEffect(() => {
     try {
-      var userID = JSON.parse(localStorage.getItem("user"));
+      var userID = JSON.parse(mylocalStorage.getItem("user"));
       //////console.log("userID", userID);
       if (userID !== null) {
         userID = userID.user_id;
@@ -143,7 +144,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
 
   const getUser = async () => {
     try {
-      let { user_id } = await JSON.parse(localStorage.getItem("user"));
+      let { user_id } = await JSON.parse(mylocalStorage.getItem("user"));
       return user_id;
     } catch (error) {
       return 0;
@@ -159,8 +160,8 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
       var url = "https://api.thrillerme.com/searches";
       var userID = 0;
       try {
-        userID = JSON.parse(localStorage.getItem("user")).user_id;
-        localStorage.setItem("filter", null);
+        userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+        mylocalStorage.setItem("filter", null);
       } catch (error) {}
       axios
         .post(url, {
