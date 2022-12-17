@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./buying-pending-table.styles.scss";
 
 import { SettingItem } from "../setting-item/setting-item.component";
-import { mylocalStorage } from "../../Constants/Functions";
 
 import SHOE_DATA from "../../temporary-data/shoe-data";
 import axios from "axios";
@@ -11,7 +10,7 @@ import { connect } from "react-redux";
 
 const BuyingPendingTable = ({ searchValue, userDetails }) => {
   const [buy, setBuy] = useState([]);
-  var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+  var userID = JSON.parse(window.localStorage.getItem("user")).user_id;
   useEffect(() => {
     axios
       .get(BASE_URL + `offers/current/${userID}`)

@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./shipping-info-page.styles.scss";
-import { mylocalStorage } from "../../Constants/Functions";
+
 import {
   validateEmail,
   validatePassword,
@@ -32,8 +32,8 @@ export const ShippingInfoPage = withRouter(({ history }) => {
     //console.log("#### uType ###", uType);
   } catch (error) {}
 
-  var userObj = JSON.parse(mylocalStorage.getItem("user"));
-  var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+  var userObj = JSON.parse(window.localStorage.getItem("user"));
+  var userID = JSON.parse(window.localStorage.getItem("user")).user_id;
 
   const [lati, setLatitude] = useState(25.1882891);
   const [lngi, setLongitude] = useState(55.2695004);
@@ -52,7 +52,7 @@ export const ShippingInfoPage = withRouter(({ history }) => {
   //0 - shipping, 1 - seller, 2 - buyer
 
   useEffect(() => {
-    var items = JSON.parse(mylocalStorage.getItem("cords"));
+    var items = JSON.parse(window.localStorage.getItem("cords"));
     //console.log("CORDS 1", items);
 
     if (
@@ -64,10 +64,10 @@ export const ShippingInfoPage = withRouter(({ history }) => {
 
   useEffect(() => {
     try {
-      var items = JSON.parse(mylocalStorage.getItem("cords"));
-      var shipName = mylocalStorage.getItem("shipName");
-      var shipLastName = mylocalStorage.getItem("shipLastName");
-      var shipPhone = mylocalStorage.getItem("shipPhone");
+      var items = JSON.parse(window.localStorage.getItem("cords"));
+      var shipName = window.localStorage.getItem("shipName");
+      var shipLastName = window.localStorage.getItem("shipLastName");
+      var shipPhone = window.localStorage.getItem("shipPhone");
 
       if (items !== null && items !== undefined) {
         //console.log("CORDS", items);
@@ -254,7 +254,7 @@ export const ShippingInfoPage = withRouter(({ history }) => {
         const { lat, lng } = response.results[0].geometry.location;
         // setCoordinates({ lat: lat, long: lng })
 
-        mylocalStorage.setItem(
+        window.localStorage.setItem(
           "cords",
           JSON.stringify({
             lat: lat,
@@ -263,9 +263,9 @@ export const ShippingInfoPage = withRouter(({ history }) => {
           })
         );
 
-        mylocalStorage.setItem("shipName", userCredentials.firstName);
-        mylocalStorage.setItem("shipLastName", userCredentials.lastName);
-        mylocalStorage.setItem("shipPhone", userCredentials.phoneNumber);
+        window.localStorage.setItem("shipName", userCredentials.firstName);
+        window.localStorage.setItem("shipLastName", userCredentials.lastName);
+        window.localStorage.setItem("shipPhone", userCredentials.phoneNumber);
 
         if (rel) {
           window.location.reload(false);
@@ -288,7 +288,7 @@ export const ShippingInfoPage = withRouter(({ history }) => {
         const { lat, lng } = response.results[0].geometry.location;
         // setCoordinates({ lat: lat, long: lng })
 
-        // mylocalStorage.setItem(
+        // window.localStorage.setItem(
         //   "cords",
         //   JSON.stringify({
         //     lat: lat,
@@ -368,9 +368,9 @@ export const ShippingInfoPage = withRouter(({ history }) => {
           shippingData.lastName === undefined &&
           shippingData.phoneNumber === undefined
         ) {
-          shippingData.firstName = mylocalStorage.getItem("shipName");
-          shippingData.lastName = mylocalStorage.getItem("shipLastName");
-          shippingData.phone = mylocalStorage.getItem("shipPhone");
+          shippingData.firstName = window.localStorage.getItem("shipName");
+          shippingData.lastName = window.localStorage.getItem("shipLastName");
+          shippingData.phone = window.localStorage.getItem("shipPhone");
         }
 
         if (
@@ -439,7 +439,7 @@ export const ShippingInfoPage = withRouter(({ history }) => {
             .post(urlS, shippingData)
             .then((res) => {
               //console.log(res);
-              mylocalStorage.setItem(
+              window.localStorage.setItem(
                 "cords",
                 JSON.stringify({
                   lat: lat,
@@ -447,7 +447,7 @@ export const ShippingInfoPage = withRouter(({ history }) => {
                   address: address,
                 })
               );
-              mylocalStorage.setItem("cords", null);
+              window.localStorage.setItem("cords", null);
               if (history.location.state.historySetting) {
                 if (uData === undefined) {
                   history.goBack();

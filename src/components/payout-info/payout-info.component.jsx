@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./payout-info.styles.scss";
-import { mylocalStorage } from "../../Constants/Functions";
 
 import { AccountSettingHeader } from "../account-settings-header/account-settings-header.component";
 import axios from "axios";
@@ -10,8 +9,8 @@ export const PayoutInfo = () => {
   const [info, setInfo] = useState(false);
 
   useEffect(() => {
-    setUser(JSON.parse(mylocalStorage.getItem("user")));
-    var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+    setUser(JSON.parse(window.localStorage.getItem("user")));
+    var userID = JSON.parse(window.localStorage.getItem("user")).user_id;
     var url = `https://api.thrillerme.com/payout/${userID}`;
     //console.log(url);
     axios
@@ -31,7 +30,7 @@ export const PayoutInfo = () => {
 
   const saveDetails = (name, value) => {
     // Get the existing data
-    var existing = mylocalStorage.getItem("user");
+    var existing = window.localStorage.getItem("user");
 
     // If no existing data, create an array
     // Otherwise, convert the localStorage string to an array
@@ -41,7 +40,7 @@ export const PayoutInfo = () => {
     existing[name] = value;
 
     // Save back to localStorage
-    mylocalStorage.setItem("user", JSON.stringify(existing));
+    window.localStorage.setItem("user", JSON.stringify(existing));
   };
 
   var check = true;

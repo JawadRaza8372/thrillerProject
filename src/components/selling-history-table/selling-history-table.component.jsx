@@ -6,12 +6,11 @@ import { SettingItem } from "../setting-item/setting-item.component";
 import SHOE_DATA from "../../temporary-data/shoe-data";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/Global";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const SellingHistoryTable = ({ searchValue }) => {
   const [buy, setBuy] = useState([]);
   const [oData, setOdata] = useState([]);
-  var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+  var userID = JSON.parse(window.localStorage.getItem("user")).user_id;
 
   useEffect(() => {
     axios

@@ -10,7 +10,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import ReactPixel from "react-facebook-pixel";
 import ApplePay from "./ApplePay";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export default function Pay(props) {
   const [succeeded, setSucceeded] = useState(false);
@@ -62,7 +61,7 @@ export default function Pay(props) {
     axios
       .get(
         "https://api.thrillerme.com/shippings/" +
-          JSON.parse(mylocalStorage.getItem("user")).user_id
+          JSON.parse(window.localStorage.getItem("user")).user_id
       )
       .then((res) => {
         if (res.data.city !== undefined) {
@@ -72,14 +71,14 @@ export default function Pay(props) {
             res.data.city !== null
           ) {
             //console.log("update shipping");
-            mylocalStorage.setItem("shippingFee", 20);
+            window.localStorage.setItem("shippingFee", 20);
             shipping = 20; //next_day
           } else {
-            mylocalStorage.setItem("shippingFee", 22.5);
+            window.localStorage.setItem("shippingFee", 22.5);
             shipping = 22.5; //same_day
           }
         } else {
-          mylocalStorage.setItem("shippingFee", 22.5);
+          window.localStorage.setItem("shippingFee", 22.5);
           shipping = 22.5; //same_day
         }
 
@@ -91,7 +90,7 @@ export default function Pay(props) {
             var offerData = {
               productID: offer.shoe_id,
               size: offer.size,
-              buyerID: JSON.parse(mylocalStorage.getItem("user")).user_id,
+              buyerID: JSON.parse(window.localStorage.getItem("user")).user_id,
               sellerID: offer.seller_id,
               price: props.offer.totalBill,
               isAuthentic: 0,
@@ -111,14 +110,14 @@ export default function Pay(props) {
             //console.log("O", offerData);
             // //console.log(
             //   "Shipping",
-            //   parseFloat(mylocalStorage.getItem("shippingFee"))
+            //   parseFloat(window.localStorage.getItem("shippingFee"))
             // );
             axios
               .post(urlOrders, {
                 offerData: offerData,
                 listing_id: offer.listing_id,
                 offer_id: 0,
-                soldTo: JSON.parse(mylocalStorage.getItem("user")).user_id,
+                soldTo: JSON.parse(window.localStorage.getItem("user")).user_id,
                 shipping: shipping,
                 vat: offer.processingFee,
                 processing: offer.transactionFee,
@@ -144,7 +143,7 @@ export default function Pay(props) {
                     offerData
                   ); // For tracking custom events.
 
-                  mylocalStorage.setItem("history", "1");
+                  window.localStorage.setItem("history", "1");
                   history.push("/buying-section");
                 },
                 (error) => {

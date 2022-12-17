@@ -9,7 +9,6 @@ import cardImg4 from "../../temporary-data/4.png";
 import cardImg5 from "../../temporary-data/5.png";
 import cardImg6 from "../../temporary-data/6.png";
 // import { Link } from 'react-router-dom'
-import { mylocalStorage } from "../../Constants/Functions";
 
 import SwiperCore, {
   Navigation,
@@ -50,7 +49,7 @@ const RecentMV = ({ name, tag }) => {
   }
 
   const setLocalStorage = (name) => {
-    mylocalStorage.setItem("selectedSection", JSON.stringify(name));
+    window.localStorage.setItem("selectedSection", JSON.stringify(name));
     history.push("/browse/0");
   };
   // if (slider.length > 0) {

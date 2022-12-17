@@ -6,7 +6,6 @@ import { SearchItem } from "../search-item/search-item.component";
 import { CustomButton } from "../custom-button/custome-button.component";
 import EditOffering from "../edit-offering-modal/EditOffering";
 import ReactPixel from "react-facebook-pixel";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const SellingCurrentItem = ({
   shoe,
@@ -37,7 +36,7 @@ export const SellingCurrentItem = ({
           productID: offer.shoe_id,
           size: offer.size,
           buyerID: offer.buyer_id,
-          sellerID: JSON.parse(mylocalStorage.getItem("user")).user_id,
+          sellerID: JSON.parse(window.localStorage.getItem("user")).user_id,
           price: offer.totalBill,
           isAuthentic: 0,
           notes: null,
@@ -69,7 +68,7 @@ export const SellingCurrentItem = ({
                 //console.log("O", offerData);
                 // //console.log(
                 //   "Shipping",
-                //   parseFloat(mylocalStorage.getItem("shippingFee"))
+                //   parseFloat(window.localStorage.getItem("shippingFee"))
                 // );
                 axios
                   .post(urlOrders, {
@@ -104,7 +103,9 @@ export const SellingCurrentItem = ({
                         offerData
                       ); // For tracking custom events.
 
-                      var user = JSON.parse(mylocalStorage.getItem("user"));
+                      var user = JSON.parse(
+                        window.localStorage.getItem("user")
+                      );
                       var url = `https://api.thrillerme.com/listing/current/${user.user_id}`;
                       //console.log(url);
                       axios.get(encodeURI(url)).then((res) => {

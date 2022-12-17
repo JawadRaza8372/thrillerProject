@@ -11,7 +11,6 @@ import { validateEmail, validatePassword } from "../../Constants/Functions";
 import * as Actions from "../../Redux/Actions";
 import { connect } from "react-redux";
 import swal from "sweetalert";
-import { mylocalStorage } from "../../Constants/Functions";
 
 import {
   BrowserRouter as Router,
@@ -55,7 +54,7 @@ const Login = ({ history, updateUser, location, signedIn, setSignIn }) => {
   };
 
   const initialSetup = async () => {
-    var uData = JSON.parse(mylocalStorage.getItem("user"));
+    var uData = JSON.parse(window.localStorage.getItem("user"));
     //console.log("######## init setup #####", uData);
 
     try {
@@ -95,7 +94,7 @@ const Login = ({ history, updateUser, location, signedIn, setSignIn }) => {
   const setupChecks = async () => {
     try {
       await initialSetup();
-      var uData = JSON.parse(mylocalStorage.getItem("user"));
+      var uData = JSON.parse(window.localStorage.getItem("user"));
       var url = `https://api.thrillerme.com/registrations/${uData.user_id}`;
       axios.get(url).then((res) => {
         ////console.log(res);
@@ -176,9 +175,9 @@ const Login = ({ history, updateUser, location, signedIn, setSignIn }) => {
         //console.log(res);
 
         //updateUser(res.data);
-        mylocalStorage.setItem("user", JSON.stringify(res.data));
-        mylocalStorage.setItem("user_id", res.data.user_id);
-        // //console.log(JSON.parse(mylocalStorage.getItem("user")));
+        window.localStorage.setItem("user", JSON.stringify(res.data));
+        window.localStorage.setItem("user_id", res.data.user_id);
+        // //console.log(JSON.parse(window.localStorage.getItem("user")));
 
         //alert("User Logged in successfully, You can now Proceed!");
         setSignIn(true);

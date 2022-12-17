@@ -4,7 +4,6 @@ import AccountBalanceSharpIcon from "@material-ui/icons/AccountBalanceSharp";
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const BillingSettingPage = withRouter(({ history }) => {
   const [paypalDetails, setPaypalDetails] = useState({
@@ -49,7 +48,7 @@ export const BillingSettingPage = withRouter(({ history }) => {
 
   const saveDetails = (name, value) => {
     // Get the existing data
-    var existing = mylocalStorage.getItem("user");
+    var existing = window.localStorage.getItem("user");
 
     // If no existing data, create an array
     // Otherwise, convert the localStorage string to an array
@@ -59,11 +58,11 @@ export const BillingSettingPage = withRouter(({ history }) => {
     existing[name] = value;
 
     // Save back to localStorage
-    mylocalStorage.setItem("user", JSON.stringify(existing));
+    window.localStorage.setItem("user", JSON.stringify(existing));
   };
 
   function savePayout() {
-    var user = JSON.parse(mylocalStorage.getItem("user"));
+    var user = JSON.parse(window.localStorage.getItem("user"));
 
     //console.log(user);
     var payoutData = {
@@ -104,7 +103,7 @@ export const BillingSettingPage = withRouter(({ history }) => {
   }
 
   useEffect(() => {
-    var user = JSON.parse(mylocalStorage.getItem("user"));
+    var user = JSON.parse(window.localStorage.getItem("user"));
 
     if (user.paypalEmail !== undefined) {
       setPaypalDetails({ ...paypalDetails, email: user.paypalEmail });

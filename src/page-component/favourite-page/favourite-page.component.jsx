@@ -6,7 +6,6 @@ import { FavouriteTable } from "../../components/favourite-table/favourite-table
 import { FavouriteModal } from "../../components/favourites-modal/favourites-modal.component";
 import { AccountSidebar2 } from "../../components/account-sidebar-2/account-sidebar-2.component";
 import { useHistory } from "react-router-dom";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const sideBarLinks = [
   {
@@ -47,7 +46,7 @@ export const FavouritePage = () => {
   const [sideBarStatus, setSideBarStatus] = useState(true);
   const newhistory = useHistory();
   const fetchUser = async () => {
-    const rawUserId = await mylocalStorage.getItem("user");
+    const rawUserId = await window.localStorage.getItem("user");
     //
     if (rawUserId) {
       console.log("user found");

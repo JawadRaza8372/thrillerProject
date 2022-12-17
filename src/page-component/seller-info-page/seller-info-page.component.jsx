@@ -17,11 +17,10 @@ import {
   validateCard,
   validateDate,
 } from "../../Constants/Functions";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const SellerInfoPage = withRouter(({ history, location, title }) => {
-  var userObj = JSON.parse(mylocalStorage.getItem("user"));
-  var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+  var userObj = JSON.parse(window.localStorage.getItem("user"));
+  var userID = JSON.parse(window.localStorage.getItem("user")).user_id;
 
   const [userCredentials, setUserCredentials] = useState({
     countryShipping: "",
@@ -133,7 +132,7 @@ export const SellerInfoPage = withRouter(({ history, location, title }) => {
     }
 
     var data = {
-      user_id: JSON.parse(mylocalStorage.getItem("user")).user_id,
+      user_id: JSON.parse(window.localStorage.getItem("user")).user_id,
       email: userCredentials.contactInfo,
       country: userCredentials.country,
       address: userCredentials.address,

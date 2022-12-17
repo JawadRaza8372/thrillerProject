@@ -10,7 +10,6 @@ import { connect } from "react-redux";
 import { NavSearchBar } from "../searchbar/NavSearchBar";
 import { Search } from "@material-ui/icons";
 import List from "@material-ui/icons/Reorder";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const Header = ({
   brands,
@@ -38,7 +37,7 @@ const Header = ({
     setShow(false);
   };
   const fetchUser = async () => {
-    const rawUserId = await mylocalStorage.getItem("user");
+    const rawUserId = await window.localStorage.getItem("user");
     //
     if (rawUserId) {
       try {
@@ -54,9 +53,9 @@ const Header = ({
   useEffect(() => {
     fetchUser();
   }, []);
-  // var user = JSON.parse(mylocalStorage.getItem("user"));
+  // var user = JSON.parse(window.localStorage.getItem("user"));
   // const initialSetup = async () => {
-  //   // user = mylocalStorage.getItem("user");
+  //   // user = window.localStorage.getItem("user");
   //   // //console.log(user);
   //   // user.then((res) => {
   //   //   user = JSON.parse(res);
@@ -215,7 +214,7 @@ const Header = ({
                       href={"/browse/" + item.collection_id + "/"}
                       style={{ maxWidth: "50px" }}
                       onClick={() => {
-                        mylocalStorage.setItem("filter", null);
+                        window.localStorage.setItem("filter", null);
                       }}
                     >
                       {item.title}
@@ -226,7 +225,7 @@ const Header = ({
               <Link
                 to="/browse/0/"
                 onClick={() => {
-                  mylocalStorage.setItem("filter", null);
+                  window.localStorage.setItem("filter", null);
                 }}
                 className="mx-2 navs nav-link centeredBtnsClass"
               >
@@ -260,7 +259,7 @@ const Header = ({
                   <button
                     className="btn btn-danger"
                     onClick={() => {
-                      mylocalStorage.removeItem("user");
+                      window.localStorage.removeItem("user");
                       setisUserAvailable({});
                     }}
                   >

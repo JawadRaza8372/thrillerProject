@@ -10,13 +10,12 @@ import localStorage from "redux-persist/es/storage";
 import { makingValidName } from "../../Constants/Functions";
 import cardImg6 from "../../temporary-data/6.png";
 import "./NewCustomRecentcs.scss";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const NewCustomRecentcs = ({ name, tag, productData }) => {
   const history = useHistory();
   const recentSlider = productData?.filter((iem) => iem?.tag.includes(name));
   const setLocalStorage = (attr) => {
-    mylocalStorage.setItem("selectedSection", JSON.stringify(attr));
+    window.localStorage.setItem("selectedSection", JSON.stringify(attr));
     history.push("/browse/0");
   };
   return (

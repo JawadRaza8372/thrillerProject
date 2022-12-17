@@ -1,12 +1,11 @@
 import React from "react";
 import "./security-section.styles.scss";
-import { mylocalStorage } from "../../Constants/Functions";
 
 import { withRouter } from "react-router-dom";
 
 import { CustomButton } from "../custom-button/custome-button.component";
 
-var user = JSON.parse(mylocalStorage.getItem("user"));
+var user = JSON.parse(window.localStorage.getItem("user"));
 var check = false;
 //console.log(user);
 if (user !== null || user !== undefined) {

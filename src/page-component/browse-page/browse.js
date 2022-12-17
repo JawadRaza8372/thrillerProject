@@ -19,7 +19,6 @@ import {
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 import { Fragment } from "react";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const Browse = (props) => {
   const [dataLoad, setDataLoad] = useState(false);
@@ -30,7 +29,7 @@ const Browse = (props) => {
   var sizee = useParams().sizee;
   console.log("###### size ########", sizee);
 
-  mylocalStorage.setItem("myCollectionID", id);
+  window.localStorage.setItem("myCollectionID", id);
 
   const [filter, setFilter] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -58,7 +57,7 @@ const Browse = (props) => {
   const checkSelectedSection = async () => {
     // //console.log("Loading by tag: ", selectedSection);
     const selectedSection = JSON.parse(
-      mylocalStorage.getItem("selectedSection")
+      window.localStorage.getItem("selectedSection")
     );
     // //console.log(selectedSection)
     if (selectedSection !== null) {
@@ -96,10 +95,10 @@ const Browse = (props) => {
           setProducts([]);
           console.log(res);
           setProducts(res.data);
-          mylocalStorage.setItem("nav", `Collection/Shop All`);
+          window.localStorage.setItem("nav", `Collection/Shop All`);
         });
         // if (!filterComponent) {
-        //   var filterDataCol = JSON.parse(mylocalStorage.getItem("filter"));
+        //   var filterDataCol = JSON.parse(window.localStorage.getItem("filter"));
         //   if (filterDataCol === null) {
         //     console.log("filtercheck");
         //   } else {
@@ -133,7 +132,10 @@ const Browse = (props) => {
           await axios.get(encodedURL).then((res) => {
             //console.log(res);
             setCollectionData(res.data);
-            mylocalStorage.setItem("nav", `Collection/${collectionData.title}`);
+            window.localStorage.setItem(
+              "nav",
+              `Collection/${collectionData.title}`
+            );
           });
 
           //Load Products
@@ -144,7 +146,7 @@ const Browse = (props) => {
             setProducts(res.data);
           });
 
-          // var filterDataId = JSON.parse(mylocalStorage.getItem("filter"));
+          // var filterDataId = JSON.parse(window.localStorage.getItem("filter"));
           // if (filterDataId === null) {
           //   console.log("filtercheck");
           // } else {
@@ -169,7 +171,10 @@ const Browse = (props) => {
           var encodedURL = encodeURI(url);
           await axios.get(encodedURL).then((res) => {
             setCollectionData(res.data);
-            mylocalStorage.setItem("nav", `Collection/${collectionData.title}`);
+            window.localStorage.setItem(
+              "nav",
+              `Collection/${collectionData.title}`
+            );
           });
 
           if (sizee !== undefined) {
@@ -200,7 +205,7 @@ const Browse = (props) => {
               });
           }
 
-          // var filterData = JSON.parse(mylocalStorage.getItem("filter"));
+          // var filterData = JSON.parse(window.localStorage.getItem("filter"));
           // if (filterData === null) {
           //   console.log("filtercheck");
           // } else {
@@ -222,7 +227,7 @@ const Browse = (props) => {
             setProducts([]);
           } else {
             setProducts([]);
-            mylocalStorage.setItem("filter", JSON.stringify(data));
+            window.localStorage.setItem("filter", JSON.stringify(data));
             setProducts(data);
           }
         } else {
@@ -237,7 +242,7 @@ const Browse = (props) => {
           await axios.get(encodedURLProducts).then((res) => {
             setProducts(res.data);
 
-            mylocalStorage.setItem("nav", `Collection/Shop All`);
+            window.localStorage.setItem("nav", `Collection/Shop All`);
           });
 
           // if (!filterComponent) {
@@ -247,9 +252,9 @@ const Browse = (props) => {
           //   await axios.get(encodedURLProducts).then((res) => {
           //     setProducts(res.data);
 
-          //     mylocalStorage.setItem("nav", `Collection/Shop All`);
+          //     window.localStorage.setItem("nav", `Collection/Shop All`);
           //   });
-          //   var filterDataAll = JSON.parse(mylocalStorage.getItem("filter"));
+          //   var filterDataAll = JSON.parse(window.localStorage.getItem("filter"));
           //   if (filterDataAll === null) {
           //     console.log("filtercheck");
           //   } else {
@@ -270,7 +275,7 @@ const Browse = (props) => {
       setFooter();
     }
     ////console.log("Rendered...");
-    const localStorageSet = mylocalStorage.getItem("selectedSection");
+    const localStorageSet = window.localStorage.getItem("selectedSection");
     if (localStorageSet !== null) {
       checkSelectedSection();
     } else {
@@ -313,7 +318,7 @@ const Browse = (props) => {
   //       axios.get(encodedURLProducts).then((res) => {
   //         //console.log(res);
   //         setProducts(res.data);
-  //         mylocalStorage.setItem("nav", `Collection/Shop All`);
+  //         window.localStorage.setItem("nav", `Collection/Shop All`);
   //       });
   //     }
   //   } else if (id > 0) {
@@ -324,7 +329,7 @@ const Browse = (props) => {
   //       var encodedURL = encodeURI(url);
   //       axios.get(encodedURL).then((res) => {
   //         setCollectionData(res.data);
-  //         mylocalStorage.setItem("nav", `Collection/${collectionData.title}`);
+  //         window.localStorage.setItem("nav", `Collection/${collectionData.title}`);
   //       });
 
   //       //Load Products
@@ -349,7 +354,7 @@ const Browse = (props) => {
   //       var encodedURL = encodeURI(url);
   //       axios.get(encodedURL).then((res) => {
   //         setCollectionData(res.data);
-  //         mylocalStorage.setItem("nav", `Collection/${collectionData.title}`);
+  //         window.localStorage.setItem("nav", `Collection/${collectionData.title}`);
   //       });
 
   //       //Load Products
@@ -375,7 +380,7 @@ const Browse = (props) => {
   //       axios.get(encodedURLProducts).then((res) => {
   //         //setProducts([]);
   //         setProducts(res.data);
-  //         mylocalStorage.setItem("nav", `Collection/Shop All`);
+  //         window.localStorage.setItem("nav", `Collection/Shop All`);
   //       });
   //     }
   //   }

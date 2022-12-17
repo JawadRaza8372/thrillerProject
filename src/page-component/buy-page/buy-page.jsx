@@ -9,23 +9,22 @@ import { useHistory, withRouter, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const BuyPage = ({ history, match, userDetails, buyer }) => {
   const id = useParams().id;
   const size = useParams().size;
   var _lowestAsk = 0;
   try {
-    _lowestAsk = JSON.parse(mylocalStorage.getItem("price"));
+    _lowestAsk = JSON.parse(window.localStorage.getItem("price"));
   } catch (error) {}
 
-  var user_data = JSON.parse(mylocalStorage.getItem("user"));
+  var user_data = JSON.parse(window.localStorage.getItem("user"));
   // if (
-  //   mylocalStorage.getItem("user") === null ||
-  //   mylocalStorage.getItem("user") === undefined
+  //   window.localStorage.getItem("user") === null ||
+  //   window.localStorage.getItem("user") === undefined
   // )
   //   history.push("/login");
-  //console.log("uData", mylocalStorage.getItem("user"));
+  //console.log("uData", window.localStorage.getItem("user"));
 
   var mainURL = "https://appick.io/u/thriller/imgs/";
 
@@ -150,7 +149,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
             onClick={() => {
               var _lowestAsk = 0;
               try {
-                _lowestAsk = JSON.parse(mylocalStorage.getItem("price"));
+                _lowestAsk = JSON.parse(window.localStorage.getItem("price"));
               } catch (error) {}
               if (!selectedButton) {
                 setOfferAmount(_lowestAsk);
@@ -191,7 +190,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                 axios.get(`https://api.thrillerme.com/settings`).then((res) => {
                   var settings = res.data.result[0];
                   settings.marketplaceShare = 0; //marketplace share 0
-                  const rawuserid = mylocalStorage.getItem("user");
+                  const rawuserid = window.localStorage.getItem("user");
                   var data = {
                     buyer_id: rawuserid ? JSON.parse(rawuserid).user_id : "",
                     shoe_id: id,
@@ -204,7 +203,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                       offerAmount * (settings.processingFee / 100).toFixed(4)
                     ).toFixed(2),
                     shippingFee: parseFloat(
-                      mylocalStorage.getItem("shippingFee")
+                      window.localStorage.getItem("shippingFee")
                     ),
                     totalBill: 0,
                     status: "Pending",
@@ -226,11 +225,11 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
                     parseFloat(data.shippingFee)
                   ).toFixed(2);
                   //console.log("Offer Data", data);
-                  mylocalStorage.setItem("offer", JSON.stringify(data));
+                  window.localStorage.setItem("offer", JSON.stringify(data));
                   if (!selectedButton) {
-                    mylocalStorage.setItem("buy", "1");
+                    window.localStorage.setItem("buy", "1");
                   } else {
-                    mylocalStorage.setItem("buy", "0");
+                    window.localStorage.setItem("buy", "0");
                   }
                   //just for now
                   // if (!isAuthenticated) {

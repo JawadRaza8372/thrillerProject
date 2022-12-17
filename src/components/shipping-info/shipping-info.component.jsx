@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./shipping-info.styles.scss";
 import axios from "axios";
 import { AccountSettingHeader } from "../account-settings-header/account-settings-header.component";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const ShippingInfo = () => {
   const [shippingData, setShippingData] = useState({});
-  var user = JSON.parse(mylocalStorage.getItem("user"));
+  var user = JSON.parse(window.localStorage.getItem("user"));
 
   useEffect(() => {
     var url = `https://api.thrillerme.com/shippings/${user.user_id}`;

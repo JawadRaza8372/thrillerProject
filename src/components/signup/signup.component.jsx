@@ -5,7 +5,7 @@ import "react-simple-flex-grid/lib/main.css";
 import { CustomButton } from "../custom-button/custome-button.component";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
-import { mylocalStorage } from "../../Constants/Functions";
+
 import { SIGNUP, BASE_URL } from "../../Constants/Global";
 import { withRouter } from "react-router";
 import {
@@ -76,7 +76,7 @@ const Signup = ({ setSignIn }) => {
   };
 
   const initialSetup = async () => {
-    var uData = JSON.parse(mylocalStorage.getItem("user"));
+    var uData = JSON.parse(window.localStorage.getItem("user"));
     //console.log("######## init setup #####", uData);
 
     try {
@@ -116,7 +116,7 @@ const Signup = ({ setSignIn }) => {
   const setupChecks = async () => {
     try {
       await initialSetup();
-      var uData = JSON.parse(mylocalStorage.getItem("user"));
+      var uData = JSON.parse(window.localStorage.getItem("user"));
       var url = `https://api.thrillerme.com/registrations/${uData.user_id}`;
       axios.get(url).then((res) => {
         ////console.log(res);
@@ -235,8 +235,8 @@ const Signup = ({ setSignIn }) => {
             ...data,
             user_id: response,
           };
-          mylocalStorage.setItem("user", JSON.stringify(data));
-          mylocalStorage.setItem("user_id", response);
+          window.localStorage.setItem("user", JSON.stringify(data));
+          window.localStorage.setItem("user_id", response);
 
           //Send email
           axios

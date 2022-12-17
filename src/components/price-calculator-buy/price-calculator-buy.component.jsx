@@ -5,7 +5,6 @@ import { ToolTip } from "../tool-tip/tool-tip.component";
 import * as Actions from "../../Redux/Actions";
 import axios from "axios";
 import { useHistory, withRouter, useParams } from "react-router-dom";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const PriceCalculatorBuy = ({
   selectedButton,
@@ -52,7 +51,7 @@ const PriceCalculatorBuy = ({
 
   var _lowestAsk = 0;
   try {
-    _lowestAsk = JSON.parse(mylocalStorage.getItem("price"));
+    _lowestAsk = JSON.parse(window.localStorage.getItem("price"));
   } catch (error) {}
 
   const [displayToolTip, toggleToolTip] = useState(false);
@@ -63,7 +62,7 @@ const PriceCalculatorBuy = ({
 
   useEffect(() => {
     //find shipping cost
-    var user = JSON.parse(mylocalStorage.getItem("user"));
+    var user = JSON.parse(window.localStorage.getItem("user"));
 
     if (user !== null && user !== undefined) {
       //console.log("uID", user.user_id);
@@ -104,14 +103,17 @@ const PriceCalculatorBuy = ({
                 res.data.city !== "دبي" &&
                 res.data.city !== null
               ) {
-                mylocalStorage.setItem("shippingFee", settings.deliveryOut);
+                window.localStorage.setItem(
+                  "shippingFee",
+                  settings.deliveryOut
+                );
                 setShippingCost(settings.deliveryOut); //next_day
               } else {
-                mylocalStorage.setItem("shippingFee", settings.deliveryIn);
+                window.localStorage.setItem("shippingFee", settings.deliveryIn);
                 setShippingCost(settings.deliveryIn); //same_day
               }
             } else {
-              mylocalStorage.setItem("shippingFee", settings.deliveryIn);
+              window.localStorage.setItem("shippingFee", settings.deliveryIn);
               setShippingCost(settings.deliveryIn); //same_day
             }
 
@@ -174,7 +176,7 @@ const PriceCalculatorBuy = ({
                 parseFloat(data.paymentGateway) +
                 parseFloat(data.shippingCost);
 
-              mylocalStorage.setItem(
+              window.localStorage.setItem(
                 "order-processing",
                 parseFloat(data.transactionFee)
               );

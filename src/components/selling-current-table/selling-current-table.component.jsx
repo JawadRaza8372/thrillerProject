@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./selling-current-table.styles.scss";
 import axios from "axios";
-import { mylocalStorage } from "../../Constants/Functions";
 
 import { SellingCurrentItem } from "../selling-current-item/selling-current-item.component";
 
@@ -16,7 +15,7 @@ export const SellingCurrentTable = ({
 
   useEffect(() => {
     console.log("load again........");
-    var user = JSON.parse(mylocalStorage.getItem("user"));
+    var user = JSON.parse(window.localStorage.getItem("user"));
     var url = `https://api.thrillerme.com/listing/current/${user.user_id}`;
     console.log(url);
     axios

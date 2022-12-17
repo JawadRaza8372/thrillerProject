@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./profile-info.styles.scss";
-import { mylocalStorage } from "../../Constants/Functions";
+
 import { AccountSettingHeader } from "../account-settings-header/account-settings-header.component";
 import { CustomButton } from "../custom-button/custome-button.component";
 import { ToolTip } from "../tool-tip/tool-tip.component";
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 export const ProfileInfo = connect(mapStateToProps)(
   withRouter(({ history, userDetails }) => {
-    userDetails = JSON.parse(mylocalStorage.getItem("user"));
+    userDetails = JSON.parse(window.localStorage.getItem("user"));
 
     const [displayToolTip, toggleToolTip] = useState(false);
     return (

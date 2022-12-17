@@ -6,7 +6,6 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { Fragment } from "react";
 import SizeSelectorMobile from "../size-selector-mobile/SizeSelectorMobile";
 import { makingValidName } from "../../Constants/Functions";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const SearchItem = ({
   refreshComponent,
@@ -29,11 +28,11 @@ export const SearchItem = ({
   const [sizeFav, setSizeFav] = useState(0);
 
   useEffect(() => {}, []);
-  //var userID = JSON.parse(mylocalStorage.getItem("user")).user_id;
+  //var userID = JSON.parse(window.localStorage.getItem("user")).user_id;
   function saveFav(val, refreshComponent) {
     //console.log(location.pathname);
     if (location.pathname === "/favourites-section" && linkCheck === false) {
-      var user = mylocalStorage.getItem("user");
+      var user = window.localStorage.getItem("user");
       if (user === null) {
         History.push("/login");
       } else {
@@ -43,7 +42,7 @@ export const SearchItem = ({
         setSizechartFav(true);
         // const data = {
         //   shoe_id: parseInt(val),
-        //   user_id: JSON.parse(mylocalStorage.getItem("user")).user_id,
+        //   user_id: JSON.parse(window.localStorage.getItem("user")).user_id,
         // };
 
         // //console.log("Fav:", data);
@@ -65,7 +64,7 @@ export const SearchItem = ({
     ) {
       History.push(`/${val}`);
     } else if (location.pathname === "/sell") {
-      mylocalStorage.setItem("sellShoe", JSON.stringify(shoe));
+      window.localStorage.setItem("sellShoe", JSON.stringify(shoe));
       History.push("/shoe");
     } else if (location.pathname === "/buying-section") {
       History.push(`/${val}`);

@@ -3,7 +3,6 @@ import React from "react";
 import { connect } from "react-redux";
 import "./shoe-size.styles.scss";
 import * as Actions from "../../Redux/Actions";
-import { mylocalStorage } from "../../Constants/Functions";
 
 const ShoeSize = ({
   shoe,
@@ -22,7 +21,7 @@ const ShoeSize = ({
       sizeID: sizeID,
     };
 
-    mylocalStorage.setItem("shoeSize", sizeID);
+    window.localStorage.setItem("shoeSize", sizeID);
     saveShoe(data);
 
     toggleShoeDisplay([!displayShoeSize[0], displayShoeSize[1]]);

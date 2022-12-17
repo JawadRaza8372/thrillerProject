@@ -5,13 +5,12 @@ import { SettingItem } from "../setting-item/setting-item.component";
 import SHOE_DATA from "../../temporary-data/shoe-data";
 import axios from "axios";
 import { Fragment } from "react";
-import { mylocalStorage } from "../../Constants/Functions";
 
 export const FavouriteTable = () => {
   const [favData, setFavData] = useState([]);
   useEffect(() => {
     var url = `https://api.thrillerme.com/fav/${
-      JSON.parse(mylocalStorage.getItem("user")).user_id
+      JSON.parse(window.localStorage.getItem("user")).user_id
     }`;
     axios.get(url).then((res) => {
       //console.log(url, res.data);
