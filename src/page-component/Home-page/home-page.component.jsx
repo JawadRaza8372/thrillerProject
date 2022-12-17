@@ -38,7 +38,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           ))}
         </div>
       </div>
-      <div className="col-11 mx-auto">
+      <div className="col-md-9 col-sm-11 mx-auto">
         <div className="home">
           <SlideShow />
 
@@ -54,7 +54,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           {/* <HomeBanner /> */}
           <NewCustomRecentcs
             name={"Just Dropped"}
-            tag={"Recomanded For You"}
+            tag={"Recommended For You"}
             productData={allProducts}
           />
           <CustomRecentcs tag="Popular Brands" brands={allBrands} />

@@ -389,7 +389,7 @@ const Product = ({ allProducts }) => {
           <meta itemprop="priceCurrency" content="USD" />
         </div>
       </div>
-      <div className="col-md-9 col-sm-10 mx-auto">
+      <div className="col-md-9 col-sm-11 mx-auto">
         <div
           className="borderedDiv px-2 py-1 row m-0 w-100 d-flex d-lg-none d-xl-none flex-row"
           style={{
@@ -628,9 +628,6 @@ const Product = ({ allProducts }) => {
                   <b>{product?.release_date ? product?.release_date : "---"}</b>
                 </span>
               </div>
-            </div>
-            <div className="row d-flex flex-row">
-              <img src={authentic} alt="authentic" className="authenticImg" />
             </div>
           </div>
           <div className="col-lg-6 col-md-12 d-flex flex-column">

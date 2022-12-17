@@ -1,0 +1,60 @@
+.myImag {
+  width: 100%;
+  max-width: 500px;
+  object-fit: contain;
+}
+.stepHeadNumber {
+  width: 95%;
+  font-size: 3em !important;
+  color: red;
+}
+.contactCardsAbout {
+  background: #2d2d2d;
+  border-radius: 21.3623px;
+  display: flex;
+  height: 230px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  .MuiSvgIcon-root {
+    color: #fafafa !important;
+    font-size: 50px;
+  }
+  h3 {
+    color: #fafafa;
+    width: 95%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+.stepHeading {
+  width: 95%;
+}
+.stepInfo {
+  width: 95%;
+  font-size: 16px !important;
+  color: #808080;
+}
+.myImagsec {
+  width: 100%;
+  max-width: 400px;
+  object-fit: contain;
+}
+.customAboutSmallImage {
+  width: 70px;
+  object-fit: contain;
+  margin: 0px auto;
+}
+.smallCardTextP {
+  font-size: 16px;
+  color: #808080;
+  width: 100%;
+  max-width: 300px;
+}
+@media screen and (min-width: 1024px) {
+  .ownstylesImg {
+    min-width: 200px;
+    max-width: none !important;
+    object-fit: contain;
+  }
+}

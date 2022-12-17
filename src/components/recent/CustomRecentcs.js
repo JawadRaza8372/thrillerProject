@@ -50,7 +50,7 @@ function CustomRecentcs({ tag, brands }) {
             return (
               <>
                 <Link to={`/browse/${elem.collection_id}/`} key={index}>
-                  <div className="CustomcardDiv">
+                  <div className="CustomcardDiv2">
                     <img
                       className="cardImg"
                       style={{ height: "200px" }}

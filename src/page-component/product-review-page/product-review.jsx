@@ -43,25 +43,28 @@ const BuyPage = ({ history, match, userDetails }) => {
       });
       setOffer({ ...off, buyer_id: newuserdata.user_id });
       localStorage.setItem("offer", JSON.stringify(offer));
-      await axios
-        .get(`https://api.thrillerme.com/shippings/${newuserdata.user_id}`)
-        .then((res) => {
-          console.log("shipping info product-review", res.data);
-          if (res.data) {
-            setShipping(true);
-          } else {
-            newhistory.push({
-              pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
-              state: {
-                id: id,
-                historyBuy: true,
-              },
-            });
-          }
-        })
-        .catch((res) => {
-          console.error(res);
-        });
+      try {
+        const res = await axios.get(
+          `https://api.thrillerme.com/shippings/${newuserdata.user_id}`
+        );
+        if (
+          res.data === null ||
+          res.data === "" ||
+          res.data === [] ||
+          res.data === {} ||
+          res.data.length <= 0
+        ) {
+          newhistory.push({
+            pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+            state: {
+              id: id,
+              historyBuy: true,
+            },
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }, []);
 

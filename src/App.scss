@@ -11,7 +11,24 @@
     overflow: visible !important;
   }
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+  font-family: NewFontMedium !important;
+}
+p,
+span,
+a,
+div,
+section,
+ul,
+li {
+  font-family: NewFontRegular !important;
+}
 .sbar {
   position: absolute;
   z-index: 1000;

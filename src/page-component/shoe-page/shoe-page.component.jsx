@@ -58,43 +58,50 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
           historyShoe: true,
         },
       });
-      await axios
-        .get(`https://api.thrillerme.com/payout/${newuserdata.user_id}`)
-        .then((rest) => {
-          if (rest.data) {
-            console.log("payout found");
-            sethasPayout(true);
-          } else {
-            history.push({
-              pathname: "/payoutInfo",
-              state: {
-                historyShoe: true,
-              },
-            });
+      try {
+        const res1 = await axios.get(
+          `https://api.thrillerme.com/payout/${newuserdata.user_id}`
+        );
+        if (
+          res1.data === null ||
+          res1.data === "" ||
+          res1.data === [] ||
+          res1.data === {} ||
+          res1.data.length <= 0
+        ) {
+          history.push({
+            pathname: "/payoutInfo",
+            state: {
+              historyShoe: true,
+            },
+          });
+        } else {
+          try {
+            const restt = await axios.get(
+              `https://api.thrillerme.com/sellers/${newuserdata.user_id}`
+            );
+            if (
+              restt.data === null ||
+              restt.data === "" ||
+              restt.data === [] ||
+              restt.data === {} ||
+              restt.data.length <= 0
+            ) {
+              history.push({
+                pathname: "/shippingInfo/1",
+                state: {
+                  hasPayout: hasPayout,
+                  historyShoe: true,
+                },
+              });
+            }
+          } catch (err) {
+            console.log(err);
           }
-        })
-        .catch((rest) => {
-          console.error(rest);
-        });
-      await axios
-        .get(`https://api.thrillerme.com/sellers/${newuserdata.user_id}`)
-        .then((res) => {
-          if (res.data) {
-            console.log("seller info found");
-            setHasShipping(true);
-          } else {
-            history.push({
-              pathname: "/shippingInfo/1",
-              state: {
-                hasPayout: hasPayout,
-                historyShoe: true,
-              },
-            });
-          }
-        })
-        .catch((res) => {
-          console.error(res);
-        });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }, []);
 

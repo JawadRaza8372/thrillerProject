@@ -40,6 +40,7 @@ import Altogether from "./page-component/altogether/Altogether";
 import { Reset } from "./page-component/reset-password/reset";
 import axios from "axios";
 import ReactGA from "react-ga";
+import AboutPage from "./page-component/AboutPage/AboutPage";
 const TRACKING_ID = "UA-198989119-1"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
@@ -226,6 +227,17 @@ const App = ({ location }) => {
           <SellerInfoPage title="Billing" />
         </Route>
         <Route exact path="/payoutInfo" component={BillingSettingPage} />
+
+        <Route exact path="/help" component={HelpPage} />
+        <Route exact path="/buy/:id" component={BuyPage} />
+        <Route exact path="/buy/:id/:size/:lowestAsk" component={BuyPage} />
+        <Route exact path="/faq" component={FAQPage} />
+        <Route exact path="/faqSeller" component={FaqSeller} />
+        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/terms" component={TermsPage} />
+        <Route exact path="/reset" component={ResetEmail} />
+        <Route exact path="/resett" component={Reset} />
+        <Route exact path="/privacy" component={PrivacyPage} />
         <Route
           exact
           path="/:id"
@@ -233,16 +245,6 @@ const App = ({ location }) => {
             return <Product allProducts={allProducts} />;
           }}
         />
-        <Route exact path="/help" component={HelpPage} />
-        <Route exact path="/buy/:id" component={BuyPage} />
-        <Route exact path="/buy/:id/:size/:lowestAsk" component={BuyPage} />
-        <Route exact path="/faq" component={FAQPage} />
-        <Route exact path="/faqSeller" component={FaqSeller} />
-        <Route exact path="/terms" component={TermsPage} />
-        <Route exact path="/reset" component={ResetEmail} />
-        <Route exact path="/resett" component={Reset} />
-        <Route exact path="/privacy" component={PrivacyPage} />
-
         {/* <Route exact path="/forgot" component={Forgot} /> */}
       </Switch>
 
