@@ -642,6 +642,9 @@ const Product = ({ allProducts }) => {
           <h3 className="text-center">Thriller Verified Sneakers</h3>
           <p className="text-center">We Verify Every Item. Every Time.</p>
           <img
+            onClick={() => {
+              history.push("/about");
+            }}
             src={thrillerVerified}
             className="img-fluid mx-auto mb-4"
             style={{ maxWidth: "500px" }}
