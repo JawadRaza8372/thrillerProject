@@ -10,6 +10,7 @@ import cardImg6 from "../../temporary-data/6.png";
 import { Link } from "react-router-dom";
 import arrowleft from "../../temporary-data/arrow-left.png";
 import arrowright from "../../temporary-data/arrow-right.png";
+import Slider from "react-slick";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -34,7 +35,33 @@ const responsive = {
     items: 1,
   },
 };
+var settings = {
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
 
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 const CustomLeftArrow = ({ onClick }) => {
   return (
     <button onClick={() => onClick()}>
@@ -107,12 +134,13 @@ const Suggestion = (props) => {
           <div style={{ marginBottom: "20px" }} className="suggestions">
             <h1>{props.name}</h1>
             <div>
-              <Carousel
+              {/* <Carousel
                 renderButtonGroupOutside={true}
                 responsive={responsive}
                 infinite={true}
                 itemClass="cardownItem"
-              >
+              > */}
+              <Slider {...settings}>
                 {similarProducts?.map((elem, index) => {
                   const newname = makingValidName(`${elem.name}`);
                   const newshoeid = makingValidName(`${elem.shoe_id}`);
@@ -134,7 +162,8 @@ const Suggestion = (props) => {
                     </Link>
                   );
                 })}
-              </Carousel>
+              </Slider>
+              {/* </Carousel> */}
             </div>
           </div>
           <hr className="my-4" />

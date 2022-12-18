@@ -397,7 +397,7 @@ const Product = ({ allProducts }) => {
             position: "sticky",
             top: "10vh",
             background: "white",
-            zIndex: 1,
+            zIndex: 999,
           }}
         >
           <button

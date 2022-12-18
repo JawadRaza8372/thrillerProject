@@ -76,11 +76,11 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
   );
 
   let finalArray = [
-    { brandName: tagsArry[0] + " Top 10", data: resultProducts1?.slice(0, 5) },
-    { brandName: "Nike Dunk Top 10", data: resultProducts2?.slice(0, 5) },
-    { brandName: tagsArry[2] + " Top 10", data: resultProducts3?.slice(0, 5) },
-    { brandName: tagsArry[3] + " Top 10", data: resultProducts4?.slice(0, 5) },
-    { brandName: tagsArry[4] + " Top 10", data: resultProducts5?.slice(0, 5) },
+    { brandName: tagsArry[0] + " Top 10", data: resultProducts1?.slice(0, 10) },
+    { brandName: "Nike Dunk Top 10", data: resultProducts2?.slice(0, 10) },
+    { brandName: tagsArry[2] + " Top 10", data: resultProducts3?.slice(0, 10) },
+    { brandName: tagsArry[3] + " Top 10", data: resultProducts4?.slice(0, 10) },
+    { brandName: tagsArry[4] + " Top 10", data: resultProducts5?.slice(0, 10) },
   ];
   return (
     <>
@@ -112,7 +112,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
                         history.push(`/${newname}_id_${newshoeid}`)
                       }
                       key={ind}
-                      className="smallCardCont"
+                      className="smallCardCont d-flex align-items-center justify-content-center flex-row"
                     >
                       <span className="spanText">{ind + 1}</span>
                       <img
