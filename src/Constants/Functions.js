@@ -81,3 +81,14 @@ export const makingValidName = (name) => {
     return strname.replace(/\s+/g, "-").toLowerCase();
   }
 };
+export const makingTextArray = (name) => {
+  const strname = name.replace(/[^a-z\d\s]+/gi, "");
+  let finalString = "";
+  if (/\s$/.test(strname)) {
+    finalString = strname.slice(0, -1).replace(/\s+/g, "-").toLowerCase();
+    return finalString.split("-");
+  } else {
+    finalString = strname.replace(/\s+/g, "-").toLowerCase();
+    return finalString.split("-");
+  }
+};
