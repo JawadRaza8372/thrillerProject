@@ -7,7 +7,7 @@ import axios from "axios";
 import { SearchResult } from "../../components/search-result/search-result.component";
 import { Avatar } from "@material-ui/core";
 import debounce from "lodash.debounce";
-import { makingValidName } from "../../Constants/Functions";
+import { makingValidName, makingTextArray } from "../../Constants/Functions";
 
 // api.thrillerme.com/shoes/getByName/nike%20dunk
 
@@ -90,6 +90,9 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
     setFilterProducts(
       allProducts?.filter(
         (dat, index) =>
+          makingTextArray(`${e.target.value}`).map((dam) =>
+            dat?.name.includes(dam)
+          ) ||
           makingValidName(`${dat.name}`)?.includes(enterdValue) ||
           makingValidName(`${dat.name}`) === enterdValue ||
           makingValidName(`${dat.colorway}`)?.includes(enterdValue) ||
