@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavDropdown } from "react-bootstrap";
 import "./Searchbar.scss";
 import { CustomSearchResultItem } from "../search-item/CustomSearchResultItem";
-import { makingValidName } from "../../Constants/Functions";
+import { makingValidName, makingTextArray } from "../../Constants/Functions";
 import { CloseSharp } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 export const NavSearchBar = ({ allProducts, allBrands }) => {
@@ -22,12 +22,15 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
     setFilterProducts(
       allProducts?.filter(
         (dat, index) =>
-          makingValidName(`${dat.name}`)?.includes(enterdValue) ||
-          makingValidName(`${dat.name}`) === enterdValue ||
-          makingValidName(`${dat.colorway}`)?.includes(enterdValue) ||
-          makingValidName(`${dat.colorway}`) === enterdValue ||
-          makingValidName(`${dat.sku_number}`)?.includes(enterdValue) ||
-          makingValidName(`${dat.sku_number}`) === enterdValue
+          makingTextArray(`${e.target.value}`).map((dam) =>
+            dat?.name.includes(dam)
+          ) ||
+          makingValidName(`${dat?.name}`)?.includes(enterdValue) ||
+          makingValidName(`${dat?.name}`) === enterdValue ||
+          makingValidName(`${dat?.colorway}`)?.includes(enterdValue) ||
+          makingValidName(`${dat?.colorway}`) === enterdValue ||
+          makingValidName(`${dat?.sku_number}`)?.includes(enterdValue) ||
+          makingValidName(`${dat?.sku_number}`) === enterdValue
       )
     );
     setfilterBrands(
