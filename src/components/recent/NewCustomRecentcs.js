@@ -44,10 +44,17 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
                       src={elem.cover_image ? elem.cover_image : cardImg6}
                     />
                     <div className="textCont">
-                      <h6>{elem.name}</h6>
-                      <span>Lowest Price</span>
-                      <h6>--</h6>
-                      <div className="lastSoldDiv">Last Sold: --</div>
+                      <div className="headingDiv">
+                        <h6>{elem.name}</h6>
+                      </div>
+                      <div className="priceDiv">
+                        <span>Lowest Price</span>
+                        <h6>--</h6>
+                      </div>
+
+                      <div className="lastSoldDiv">
+                        <span>Last Sold: --</span>
+                      </div>
                     </div>
                   </div>
                 </Link>

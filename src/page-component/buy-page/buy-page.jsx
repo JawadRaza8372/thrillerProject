@@ -98,7 +98,212 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
   SHOE_DATA.map((_shoe) => {
     shoe.shoe = _shoe;
   });
+  const placeOfferNext = () => {
+    var _lowestAsk = 0;
+    try {
+      _lowestAsk = JSON.parse(window.localStorage.getItem("price"));
+    } catch (error) {}
+    if (!selectedButton) {
+      setOfferAmount(_lowestAsk);
+    }
+    ////console.log("LA", _lowestAsk === 0);
 
+    if (_lowestAsk === 0) {
+      ////console.log(1);
+      console.log("This shoe is not available at the moment.");
+    } else if (
+      parseFloat(offerAmount) > parseFloat(lowestAsk) &&
+      parseFloat(lowestAsk) > 0
+    ) {
+      //////console.log("2", lowestAsk);
+      alert("You cannot place an offer that is higher than the asking price");
+    }
+
+    // just for now
+    else if (offerAmount === "" || (offerAmount <= 0 && selectedButton)) {
+      alert("Please Enter the offer amount");
+    } else if (parseFloat(offerAmount) < 25 && selectedButton) {
+      alert("Minimum offer must be 25");
+    } else {
+      //just for now
+      if (!selectedButton && parseFloat(lowestAsk) === 0) {
+        alert(
+          "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
+        );
+        return;
+      }
+
+      //offers.post
+      axios.get(`https://api.thrillerme.com/settings`).then((res) => {
+        var settings = res.data.result[0];
+        settings.marketplaceShare = 0; //marketplace share 0
+        const rawuserid = window.localStorage.getItem("user");
+        var data = {
+          buyer_id: rawuserid ? JSON.parse(rawuserid).user_id : "",
+          shoe_id: id,
+          size: size,
+          offerAmount: offerAmount,
+          vat: parseFloat(
+            offerAmount * (settings.marketplaceShare / 100).toFixed(4)
+          ).toFixed(2),
+          processingFee: parseFloat(
+            offerAmount * (settings.processingFee / 100).toFixed(4)
+          ).toFixed(2),
+          shippingFee: parseFloat(window.localStorage.getItem("shippingFee")),
+          totalBill: 0,
+          status: "Pending",
+        };
+        if (!selectedButton) {
+          data.offerAmount = _lowestAsk;
+          data.vat = parseFloat(
+            _lowestAsk * (settings.marketplaceShare / 100).toFixed(4)
+          ).toFixed(2);
+          data.processingFee = parseFloat(
+            _lowestAsk * (settings.processingFee / 100).toFixed(4)
+          ).toFixed(2);
+        }
+
+        data.totalBill = (
+          parseFloat(data.offerAmount) +
+          parseFloat(data.vat) +
+          parseFloat(data.processingFee) +
+          parseFloat(data.shippingFee)
+        ).toFixed(2);
+        //console.log("Offer Data", data);
+        window.localStorage.setItem("offer", JSON.stringify(data));
+        if (!selectedButton) {
+          window.localStorage.setItem("buy", "1");
+        } else {
+          window.localStorage.setItem("buy", "0");
+        }
+        //just for now
+        // if (!isAuthenticated) {
+        //   history.push({
+        //     pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+        //     state: {
+        //       hasShippingBuy: hasShipping,
+        //       id: id,
+        //       historyBuy: true,
+        //     },
+        //   });
+        // } else
+        // if (!hasShipping) {
+        //   history.push({
+        //     pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+        //     state: {
+        //       id: id,
+        //       historyBuy: true,
+        //     },
+        //   });}
+        // else {
+        history.push(`/product-review/${id}_size_${size}/${selectedButton}`);
+        // }
+      });
+    }
+  };
+  const buyOptionsNext = () => {
+    var _lowestAsk = 0;
+    try {
+      _lowestAsk = JSON.parse(window.localStorage.getItem("price"));
+    } catch (error) {}
+    if (!selectedButton) {
+      setOfferAmount(_lowestAsk);
+    }
+    ////console.log("LA", _lowestAsk === 0);
+
+    if (_lowestAsk === 0) {
+      ////console.log(1);
+      alert("This shoe is not available at the moment.");
+    } else if (
+      parseFloat(offerAmount) > parseFloat(lowestAsk) &&
+      parseFloat(lowestAsk) > 0
+    ) {
+      //////console.log("2", lowestAsk);
+      alert("You cannot place an offer that is higher than the asking price");
+    }
+
+    // just for now
+    else if (offerAmount === "" || (offerAmount <= 0 && selectedButton)) {
+      alert("Please Enter the offer amount");
+    } else if (parseFloat(offerAmount) < 25 && selectedButton) {
+      alert("Minimum offer must be 25");
+    } else {
+      //just for now
+      if (!selectedButton && parseFloat(lowestAsk) === 0) {
+        alert(
+          "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
+        );
+        return;
+      }
+
+      //offers.post
+      axios.get(`https://api.thrillerme.com/settings`).then((res) => {
+        var settings = res.data.result[0];
+        settings.marketplaceShare = 0; //marketplace share 0
+        const rawuserid = window.localStorage.getItem("user");
+        var data = {
+          buyer_id: rawuserid ? JSON.parse(rawuserid).user_id : "",
+          shoe_id: id,
+          size: size,
+          offerAmount: offerAmount,
+          vat: parseFloat(
+            offerAmount * (settings.marketplaceShare / 100).toFixed(4)
+          ).toFixed(2),
+          processingFee: parseFloat(
+            offerAmount * (settings.processingFee / 100).toFixed(4)
+          ).toFixed(2),
+          shippingFee: parseFloat(window.localStorage.getItem("shippingFee")),
+          totalBill: 0,
+          status: "Pending",
+        };
+        if (!selectedButton) {
+          data.offerAmount = _lowestAsk;
+          data.vat = parseFloat(
+            _lowestAsk * (settings.marketplaceShare / 100).toFixed(4)
+          ).toFixed(2);
+          data.processingFee = parseFloat(
+            _lowestAsk * (settings.processingFee / 100).toFixed(4)
+          ).toFixed(2);
+        }
+
+        data.totalBill = (
+          parseFloat(data.offerAmount) +
+          parseFloat(data.vat) +
+          parseFloat(data.processingFee) +
+          parseFloat(data.shippingFee)
+        ).toFixed(2);
+        //console.log("Offer Data", data);
+        window.localStorage.setItem("offer", JSON.stringify(data));
+        if (!selectedButton) {
+          window.localStorage.setItem("buy", "1");
+        } else {
+          window.localStorage.setItem("buy", "0");
+        }
+        //just for now
+        // if (!isAuthenticated) {
+        //   history.push({
+        //     pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
+        //     state: {
+        //       hasShippingBuy: hasShipping,
+        //       id: id,
+        //       historyBuy: true,
+        //     },
+        //   });
+        // } else
+        // if (!hasShipping) {
+        //   history.push({
+        //     pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
+        //     state: {
+        //       id: id,
+        //       historyBuy: true,
+        //     },
+        //   });}
+        // else {
+        history.push(`/product-review/${id}_size_${size}/${selectedButton}`);
+        // }
+      });
+    }
+  };
   ////////console.log("Product Aya", product);
   return (
     <div className="shoe-page" style={{ marginTop: "11vh" }}>
@@ -147,115 +352,10 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
           </CustomButton>
           <CustomButton
             onClick={() => {
-              var _lowestAsk = 0;
-              try {
-                _lowestAsk = JSON.parse(window.localStorage.getItem("price"));
-              } catch (error) {}
-              if (!selectedButton) {
-                setOfferAmount(_lowestAsk);
-              }
-              ////console.log("LA", _lowestAsk === 0);
-
-              if (_lowestAsk === 0) {
-                ////console.log(1);
-                alert("This shoe is not available at the moment.");
-              } else if (
-                parseFloat(offerAmount) > parseFloat(lowestAsk) &&
-                parseFloat(lowestAsk) > 0
-              ) {
-                //////console.log("2", lowestAsk);
-                alert(
-                  "You cannot place an offer that is higher than the asking price"
-                );
-              }
-
-              // just for now
-              else if (
-                offerAmount === "" ||
-                (offerAmount <= 0 && selectedButton)
-              ) {
-                alert("Please Enter the offer amount");
-              } else if (parseFloat(offerAmount) < 25 && selectedButton) {
-                alert("Minimum offer must be 25");
+              if (selectedButton) {
+                placeOfferNext();
               } else {
-                //just for now
-                if (!selectedButton && parseFloat(lowestAsk) === 0) {
-                  alert(
-                    "There are no asks to buy now in that size. You may place an offer that a seller may choose to accept at any time, and we'll keep you notified if it get's back in stock"
-                  );
-                  return;
-                }
-
-                //offers.post
-                axios.get(`https://api.thrillerme.com/settings`).then((res) => {
-                  var settings = res.data.result[0];
-                  settings.marketplaceShare = 0; //marketplace share 0
-                  const rawuserid = window.localStorage.getItem("user");
-                  var data = {
-                    buyer_id: rawuserid ? JSON.parse(rawuserid).user_id : "",
-                    shoe_id: id,
-                    size: size,
-                    offerAmount: offerAmount,
-                    vat: parseFloat(
-                      offerAmount * (settings.marketplaceShare / 100).toFixed(4)
-                    ).toFixed(2),
-                    processingFee: parseFloat(
-                      offerAmount * (settings.processingFee / 100).toFixed(4)
-                    ).toFixed(2),
-                    shippingFee: parseFloat(
-                      window.localStorage.getItem("shippingFee")
-                    ),
-                    totalBill: 0,
-                    status: "Pending",
-                  };
-                  if (!selectedButton) {
-                    data.offerAmount = _lowestAsk;
-                    data.vat = parseFloat(
-                      _lowestAsk * (settings.marketplaceShare / 100).toFixed(4)
-                    ).toFixed(2);
-                    data.processingFee = parseFloat(
-                      _lowestAsk * (settings.processingFee / 100).toFixed(4)
-                    ).toFixed(2);
-                  }
-
-                  data.totalBill = (
-                    parseFloat(data.offerAmount) +
-                    parseFloat(data.vat) +
-                    parseFloat(data.processingFee) +
-                    parseFloat(data.shippingFee)
-                  ).toFixed(2);
-                  //console.log("Offer Data", data);
-                  window.localStorage.setItem("offer", JSON.stringify(data));
-                  if (!selectedButton) {
-                    window.localStorage.setItem("buy", "1");
-                  } else {
-                    window.localStorage.setItem("buy", "0");
-                  }
-                  //just for now
-                  // if (!isAuthenticated) {
-                  //   history.push({
-                  //     pathname: "/twoFactorAuth/" + id + "-" + size + "-0",
-                  //     state: {
-                  //       hasShippingBuy: hasShipping,
-                  //       id: id,
-                  //       historyBuy: true,
-                  //     },
-                  //   });
-                  // } else
-                  // if (!hasShipping) {
-                  //   history.push({
-                  //     pathname: "/shippingInfo/0/" + id + "-" + size + "-0",
-                  //     state: {
-                  //       id: id,
-                  //       historyBuy: true,
-                  //     },
-                  //   });}
-                  // else {
-                  history.push(
-                    `/product-review/${id}_size_${size}/${selectedButton}`
-                  );
-                  // }
-                });
+                buyOptionsNext();
               }
             }}
           >

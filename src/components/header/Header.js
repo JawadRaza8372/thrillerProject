@@ -174,10 +174,9 @@ const Header = ({
         }}
       >
         <Container fluid style={{ padding: "0px" }}>
-          <button onClick={() => setSearchbar(true)} className="smallMenuBtns">
-            <Search />
+          <button onClick={() => setSidebar(true)} className="smallMenuBtns">
+            <List />
           </button>
-
           <Link to={`/`}>
             <Navbar.Brand href="#home">
               <img
@@ -189,14 +188,15 @@ const Header = ({
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <button onClick={() => setSidebar(true)} className="smallMenuBtns">
-            <List />
+
+          <button onClick={() => setSearchbar(true)} className="smallMenuBtns">
+            <Search />
           </button>
 
           <Navbar.Collapse id="navbarScroll">
             <NavSearchBar allProducts={products} allBrands={brands} />
             <Nav
-              className="mx-auto my-2 my-lg-0 flex-grow-1 flex-shrink-1 d-flex flex-row align-items-center justify-content-evenly"
+              className="mx-auto my-2 my-lg-0 d-flex flex-row align-items-center justify-content-evenly"
               navbarScroll
             >
               <NavDropdown
@@ -256,22 +256,30 @@ const Header = ({
                   >
                     Accounts
                   </Link>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      window.localStorage.removeItem("user");
-                      setisUserAvailable({});
-                    }}
-                  >
-                    Logout
-                  </button>
+                  <Link className="mx-2 navs nav-link centeredBtnsClass" to="/">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        window.localStorage.removeItem("user");
+                        setisUserAvailable({});
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </Link>
                 </>
               ) : (
                 <>
-                  <Link to="/login">
+                  <Link
+                    className="mx-2 navs nav-link centeredBtnsClass"
+                    to="/login"
+                  >
                     <button className="btn btn-outline-danger">Login</button>
                   </Link>
-                  <Link to="/login">
+                  <Link
+                    className="mx-2 navs nav-link centeredBtnsClass"
+                    to="/login"
+                  >
                     <button className="btn btn-danger">Signup</button>
                   </Link>
                 </>

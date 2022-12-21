@@ -90,9 +90,6 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
     setFilterProducts(
       allProducts?.filter(
         (dat, index) =>
-          makingTextArray(`${e.target.value}`).map((dam) =>
-            dat?.name.includes(dam)
-          ) ||
           makingValidName(`${dat.name}`)?.includes(enterdValue) ||
           makingValidName(`${dat.name}`) === enterdValue ||
           makingValidName(`${dat.colorway}`)?.includes(enterdValue) ||
