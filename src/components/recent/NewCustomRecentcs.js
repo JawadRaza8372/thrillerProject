@@ -47,7 +47,7 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
                       <div className="headingDiv">
                         <h6>
                           {elem.name.length > 32
-                            ? elem.name.substring(0, 31) + " ..."
+                            ? elem.name.substring(0, 29) + " .."
                             : elem.name}
                         </h6>
                       </div>

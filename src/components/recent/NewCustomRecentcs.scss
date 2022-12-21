@@ -119,6 +119,8 @@
         flex-direction: column;
         .headingDiv {
           width: 100%;
+          height: 41.6px;
+          overflow: hidden;
           h6 {
             font-size: 0.875rem;
           }
