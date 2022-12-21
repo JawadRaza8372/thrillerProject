@@ -7,7 +7,8 @@ import axios from "axios";
 import { SearchResult } from "../../components/search-result/search-result.component";
 import { Avatar } from "@material-ui/core";
 import debounce from "lodash.debounce";
-import { makingValidName, makingTextArray } from "../../Constants/Functions";
+import { makingValidName } from "../../Constants/Functions";
+import searchIcon from '../../assets/searchIcon.png';
 
 // api.thrillerme.com/shoes/getByName/nike%20dunk
 
@@ -213,14 +214,15 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
                   // verticalAlign: 'center',
                   fontWeight: "1000",
                   fontSize: "18px",
-                  textTransform: "uppercase",
+                  // textTransform: "uppercase",
                 }}
                 name="input"
                 onChange={handlechange}
                 value={inputValue}
-                placeholder="TYPE TO SEARCH"
+                placeholder="Search for brands, colors etc"
               />
-              <i className="fas fa-search"></i>
+              {/* <i className="fas fa-search"></i> */}
+              <img src={searchIcon} />
             </form>
           </div>
         </div>

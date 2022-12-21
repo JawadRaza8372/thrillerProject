@@ -173,10 +173,11 @@ const Header = ({
           zIndex: "1000",
         }}
       >
-        <Container fluid style={{ padding: "0px" }}>
-          <button onClick={() => setSidebar(true)} className="smallMenuBtns">
-            <List />
+        <div style={{ padding: "0px" }} className="container-fluid navBarContainer" >
+          <button onClick={() => setSearchbar(true)} className="smallMenuBtns">
+            <Search />
           </button>
+
           <Link to={`/`}>
             <Navbar.Brand href="#home">
               <img
@@ -188,15 +189,13 @@ const Header = ({
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
-
-          <button onClick={() => setSearchbar(true)} className="smallMenuBtns">
-            <Search />
+          <button onClick={() => setSidebar(true)} className="smallMenuBtns">
+            <List />
           </button>
-
           <Navbar.Collapse id="navbarScroll">
             <NavSearchBar allProducts={products} allBrands={brands} />
             <Nav
-              className="mx-auto my-2 my-lg-0 d-flex flex-row align-items-center justify-content-evenly"
+              className="mx-auto my-2 my-lg-0 flex-grow-1 flex-shrink-1 d-flex flex-row align-items-center justify-content-end"
               navbarScroll
             >
               <NavDropdown
@@ -256,37 +255,29 @@ const Header = ({
                   >
                     Accounts
                   </Link>
-                  <Link className="mx-2 navs nav-link centeredBtnsClass" to="/">
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => {
-                        window.localStorage.removeItem("user");
-                        setisUserAvailable({});
-                      }}
-                    >
-                      Logout
-                    </button>
-                  </Link>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      window.localStorage.removeItem("user");
+                      setisUserAvailable({});
+                    }}
+                  >
+                    Logout
+                  </button>
                 </>
               ) : (
                 <>
-                  <Link
-                    className="mx-2 navs nav-link centeredBtnsClass"
-                    to="/login"
-                  >
-                    <button className="btn btn-outline-danger">Login</button>
+                  <Link to="/login">
+                    <button className="btn btn-outline-secondary headerBtn" >Login</button>
                   </Link>
-                  <Link
-                    className="mx-2 navs nav-link centeredBtnsClass"
-                    to="/login"
-                  >
-                    <button className="btn btn-danger">Signup</button>
+                  <Link to="/login">
+                    <button className="btn btn-danger headerBtn" >Signup</button>
                   </Link>
                 </>
               )}
             </Nav>
           </Navbar.Collapse>
-        </Container>
+        </div>
       </Navbar>
     </div>
   );

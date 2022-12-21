@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { NavDropdown } from "react-bootstrap";
 import "./Searchbar.scss";
 import { CustomSearchResultItem } from "../search-item/CustomSearchResultItem";
-import { makingValidName, makingTextArray } from "../../Constants/Functions";
+import { makingValidName } from "../../Constants/Functions";
 import { CloseSharp } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
+import searchIcon from '../../assets/searchIcon.png';
+
 export const NavSearchBar = ({ allProducts, allBrands }) => {
   const newhistory = useHistory();
   const [inputValue, setInputValue] = useState("");
@@ -22,12 +24,12 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
     setFilterProducts(
       allProducts?.filter(
         (dat, index) =>
-          makingValidName(`${dat?.name}`)?.includes(enterdValue) ||
-          makingValidName(`${dat?.name}`) === enterdValue ||
-          makingValidName(`${dat?.colorway}`)?.includes(enterdValue) ||
-          makingValidName(`${dat?.colorway}`) === enterdValue ||
-          makingValidName(`${dat?.sku_number}`)?.includes(enterdValue) ||
-          makingValidName(`${dat?.sku_number}`) === enterdValue
+          makingValidName(`${dat.name}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.name}`) === enterdValue ||
+          makingValidName(`${dat.colorway}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.colorway}`) === enterdValue ||
+          makingValidName(`${dat.sku_number}`)?.includes(enterdValue) ||
+          makingValidName(`${dat.sku_number}`) === enterdValue
       )
     );
     setfilterBrands(
@@ -43,14 +45,18 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
     <>
       <div className="searchContainerCont">
         <div className="CustomSearchContainer" style={{ margin: "0px" }}>
-          <i className="fas fa-search"></i>
-
+          <img src={searchIcon} 
+            style={{
+              width: '25px',
+              marginLeft: '10px'
+            }}
+          />
           <input
             className="searchInput"
             name="input"
             onChange={handlechange}
             value={inputValue}
-            placeholder="TYPE TO SEARCH"
+            placeholder="Search for brands, colors etc"
           />
           {inputValue.length > 0 && (
             <button

@@ -430,13 +430,6 @@ export const ShippingInfoPage = withRouter(({ history }) => {
         icon: "error",
       });
       return;
-    } else if (!validateNumber(shippingData.phone)) {
-      swal({
-        title: "Error!",
-        text: "Please enter the phone number with country code",
-        icon: "error",
-      });
-      return;
     } else if (address === "") {
       swal({
         title: "Error!",
@@ -672,10 +665,10 @@ export const ShippingInfoPage = withRouter(({ history }) => {
               </label>
 
               <Autocomplete
-                options={{
-                  types: ["(regions)"],
-                  componentRestrictions: { country: "ae" },
-                }}
+                // options={{
+                //   types: ["(regions)"],
+                //   componentRestrictions: { country: "ae" },
+                // }}
                 defaultValue={formattedAddress}
                 apiKey={"AIzaSyB5fNADpw-uWy5kw8EYDtxY56DyOtw87zc"}
                 onPlaceSelected={(place) => GetCity(place)}

@@ -1,3 +1,24 @@
+
+@media screen and (max-width: 480px) {
+
+  .navbrand {
+    width: 130px !important;
+  }
+
+  .container-fluid {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+  }
+}
+
+.headerBtn {
+  padding: 13px 28px 13px 28px !important; 
+  font-size: 17px;
+  border-radius: 5px !important;
+
+  margin-right: 10px !important;
+}
+
 .nav-priconmob {
   display: none;
 }
@@ -15,9 +36,9 @@
   display: none;
 }
 .drop-shadow {
-  -moz-box-shadow: 3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow: 0px 3px 15px 3px #ccc;
+  -moz-box-shadow: 0px 0px 0px 1px #ccc;
+  -webkit-box-shadow: 0px 0px 0px 1px #ccc;
+  box-shadow: 0px 0px 0px 1px #ccc;
 }
 .navbar-brand {
   margin-top: 10px;
@@ -48,7 +69,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px !important;
+  padding: 0px 20px 0px 20px !important;
 }
 .dropdown-item {
   color: white;
@@ -94,13 +115,13 @@
   }
 } */
 @media screen and (max-width: 992px) {
-  .container-fluid {
+  /* .container-fluid {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-  }
+  } */
   .container-fluid .navbar-collapse.collapse {
     display: none !important;
   }
@@ -116,9 +137,9 @@
 }
 @media screen and (max-width: 830px) {
   .drop-shadow {
-    -moz-box-shadow: 3px 3px 5px 6px #ccc;
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-    box-shadow: 0px 3px 15px 3px #ccc;
+    -moz-box-shadow: 0px 0px 0px 1px black;
+    -webkit-box-shadow: 0px 0px 0px 1px black;
+    box-shadow: 0px 0px 0px 1px black;
   }
   .nav-pricon {
     display: flex;

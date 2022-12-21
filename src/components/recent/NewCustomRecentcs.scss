@@ -29,6 +29,9 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      h5 {
+        font-size: 1rem;
+      }
       .cardContainers {
         display: flex;
         align-items: center;

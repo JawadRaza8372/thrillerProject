@@ -1,30 +1,29 @@
 .searchContainerCont {
-  flex-grow: 0.7;
+  flex-grow: 1;
   flex-shrink: 1;
-  margin: 0px auto;
   .CustomSearchContainer {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    border: 1px solid lightgrey;
+    border: 1px solid gray;
+    border-radius: 8px !important;
     .searchInput {
-      padding: 10px;
+      padding: 15px;
       flex: 1;
       border: none;
       border-radius: 3px;
       outline: none;
       text-align: left;
       background: transparent;
-      font-weight: bold;
-      font-size: 18px;
-      text-transform: uppercase;
+      // font-weight: bold;
+      font-size: 16px;
+      // text-transform: uppercase;
       &::placeholder {
         text-align: left;
-        color: lightgray;
-        font-weight: normal;
-        font-size: 18px;
+        color: gray;
+        font-size: 16px;
 
         @media screen and (max-width: 1000px) {
           font-size: 15px;

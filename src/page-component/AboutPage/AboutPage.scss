@@ -1,3 +1,161 @@
+
+@media screen and (max-width: 480px) {
+
+  .stepsSection .step2, .stepsSection .step3 {
+    margin-top: 40px !important;
+  }
+
+  .stepsSection .stepHeadNumber {
+    color: black !important;
+    font-family: 'SuisseIntlM' !important;
+    font-size: 60px !important;
+  }
+
+  .stepsSection .stepHeading {
+    color: black !important;
+    font-family: 'SuisseIntlM' !important;
+  }
+
+  .stepsSection .stepInfo {
+    color: black !important;
+    font-family: 'SuisseIntlM' !important;
+  }
+
+
+  .stepsSection .titlePc {
+    display: none !important;
+  }
+  .stepsSection .titleMobile {
+    display: block !important;
+    font-family: 'Sumana' !important;
+    font-weight: 500 !important;
+    color: black;
+    margin: 0px 0px 0px 0px !important;
+    font-size: 43px !important;
+    padding: 0px 0px 0px 0px !important;
+  }
+
+  .aboutInfoCardsSection {
+    margin: 0px 0px 0px 0px !important;
+    padding: 20px 0px 0px 0px !important;
+  }
+
+  .aboutInfoCards h3 {
+    font-family: 'SuisseIntlM' !important;
+    color: black;
+    margin: 20px 0px 20px 0px !important;
+  }
+
+  .aboutInfoCards p {
+    width: 100%;
+    max-width: none;
+    font-family: 'SuisseIntlM' !important;
+    color: black;
+    margin: auto !important;
+    padding: 0px 15px 30px 10px
+  }
+
+  .securityLogos {
+    width: 90% !important;
+    margin: -20px auto 20px auto !important;
+  }
+
+  .aboutPage {
+    margin-top: 10vh !important;
+  }
+
+  .HeroSectionAbout .texts .subText {
+    display: none !important;
+  }
+
+  .HeroSectionAbout {
+    padding-top: 50px !important;
+    padding-bottom: 30px !important;
+  }  
+
+  .HeroSectionAbout .texts {
+    margin-left: 10px;
+    align-items: flex-start !important;
+  }
+  
+  .HeroSectionAbout .texts div {
+    font-family: Sumana !important;
+    font-size: 35px !important;
+    margin-bottom: 10px;
+    line-height: 1.5 !important  
+  }
+  
+  .HeroSectionAbout .imges {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .HeroSectionAbout .imges img {
+    width: 100% !important;
+  }
+
+
+
+  .step1 .text div, .step2 .text div, .step3 .text div {
+    width: auto !important;
+  }
+
+  .step1 .img img, .step2 .img img, .step3 .img img {
+    width: 100% !important;
+  }
+
+  .slick-next {
+    right: -0px !important;
+  }
+
+  .slick-prev {
+    left: 0px !important;
+  }
+
+  .contactCardsAbout {
+    height: auto !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    border-radius: 5px !important;
+  }
+
+  .contactCardsAbout svg {
+    font-size: 30px !important;
+  }
+
+  .contactCardsAbout h3, .contactCardsAbout h1 {
+    margin-top: 5px !important;
+    font-size: 12px !important;
+    margin-bottom: 0px !important;
+  }
+}
+
+.stepsSection .titlePc {
+  display: block;
+}
+.stepsSection .titleMobile {
+  display: none;
+}
+
+.contactCardsAbout svg {
+  font-size: 100px !important;
+}
+
+.HeroSectionAbout .texts {
+  margin-left: 10px;
+}
+
+.HeroSectionAbout .texts div {
+  font-size: 50px;
+}
+
+.HeroSectionAbout .texts .subText {
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.HeroSectionAbout .imges {
+}
+
 .myImag {
   width: 100%;
   max-width: 500px;
@@ -6,7 +164,7 @@
 .stepHeadNumber {
   width: 95%;
   font-size: 3em !important;
-  color: red;
+  color: #E20909;
 }
 .contactCardsAbout {
   background: #2d2d2d;
@@ -36,12 +194,11 @@
   color: #808080;
 }
 .myImagsec {
-  width: 100%;
-  max-width: 400px;
+  width: 76%;
   object-fit: contain;
 }
 .customAboutSmallImage {
-  width: 70px;
+  width: 90px;
   object-fit: contain;
   margin: 0px auto;
 }
