@@ -108,10 +108,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
     }
     ////console.log("LA", _lowestAsk === 0);
 
-    if (_lowestAsk === 0) {
-      ////console.log(1);
-      console.log("This shoe is not available at the moment.");
-    } else if (
+    if (
       parseFloat(offerAmount) > parseFloat(lowestAsk) &&
       parseFloat(lowestAsk) > 0
     ) {
