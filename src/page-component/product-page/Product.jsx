@@ -516,7 +516,7 @@ const Product = ({ allProducts }) => {
           </div>
           <div className="col-lg-6 col-md-12  d-flex flex-column align-items-center justify-content-evenly h-100">
             <ThreeBannerResponsive />
-            <div className="borderedDiv  px-2 py-1 row m-0 w-100 d-none d-lg-flex d-xl-flex flex-row">
+            <div className="borderedDiv my-4  px-2 py-1 row m-0 w-100 d-none d-lg-flex d-xl-flex flex-row">
               <button
                 className="btn btn-outline-dark w-100 my-2"
                 onClick={() => setSizeChart(true)}
