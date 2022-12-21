@@ -441,7 +441,7 @@ const Product = ({ allProducts }) => {
         </div>
 
         <div className="row mt-2">
-          <h1>{product?.name ? product?.name : "---"}</h1>
+          <h1 className="productName" >{product?.name ? product?.name : "---"}</h1>
           <span>{product?.colorway ? product?.colorway : "---"}</span>
         </div>
         <div className="row d-flex flex-row">
@@ -485,7 +485,7 @@ const Product = ({ allProducts }) => {
               </div>
               <div className="col-6">
                 <div className="conText">
-                  <span>Verified Authentic</span>
+                  <span>100% Authentic</span>
                 </div>
               </div>
             </div>
@@ -582,7 +582,7 @@ const Product = ({ allProducts }) => {
               <div className="row d-flex d-lg-none d-xl-none flex-row">
                 <div className="col-6">
                   <div className="conText">
-                    <span>Verified Authentic</span>
+                    <span>100% Authentic</span>
                   </div>
                 </div>
                 <div className="col-6">
@@ -605,10 +605,10 @@ const Product = ({ allProducts }) => {
         />
 
         <div className="row">
-          <h2>Product Details</h2>
+          <h2 style={{fontSize: 25}} >Product Details</h2>
         </div>
         <div className="row d-flex flex-row">
-          <div className="col-lg-6 col-md-12">
+          <div className="col-lg-6 col-md-12 mt-2">
             <div className="row d-flex flex-row">
               <div className="col-6">Style</div>
               <div className="col-6">
@@ -642,7 +642,7 @@ const Product = ({ allProducts }) => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 d-flex flex-column">
+          <div className="col-lg-6 col-md-12 d-flex flex-column mt-3">
             <span>
               <b>Product Description</b>
             </span>

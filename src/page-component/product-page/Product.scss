@@ -1,3 +1,24 @@
+@media screen and (max-width: 480px) {
+  .product-page-container .productName {
+    font-size: 20px !important;
+    margin-top: 30px !important;
+  }
+  .product-page-container .smallBtnsContainer button {
+    width: auto !important;
+  }
+  .product-page-container .CustomcardDiv {
+    margin: 0px 5px 0px 30px !important;
+  }
+
+  .product-page-container .slick-slide{
+    width: auto !important;
+  }
+
+  .product-page-container .slick-arrow {
+    display: none !important;
+  }
+}
+
 @mixin butnStyle($bg, $color) {
   background-color: $bg;
   color: $color;
