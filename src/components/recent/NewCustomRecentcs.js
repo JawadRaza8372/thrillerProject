@@ -22,7 +22,7 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
     <>
       <div className="row flex-row">
         <div className="col-10">
-          <h1 className="my-5">{tag}</h1>
+          <h1 className="slidersHeading my-5">{tag}</h1>
         </div>
         <div className="col-2">
           <button onClick={() => setLocalStorage(name)} className="nextButton">

@@ -1,6 +1,8 @@
 .row {
   h1 {
-    font-size: 1.9em;
+    &.slidersHeading {
+      font-size: 1.125rem;
+    }
   }
   .nextButton {
     height: 100%;
@@ -78,10 +80,8 @@
         width: 90%;
         margin: 10px auto;
         color: black !important;
-        .lastSoldDiv {
-          width: 100%;
-          padding: 5px 10px;
-          background-color: hsl(0, 0%, 94%);
+        h6 {
+          font-size: 0.875rem;
         }
       }
     }
@@ -138,7 +138,7 @@
           width: 100%;
           span {
             width: auto;
-            padding: 0px 5px;
+            padding: 7px;
             font-size: 0.75rem;
             background-color: hsl(0, 0%, 94%);
           }
