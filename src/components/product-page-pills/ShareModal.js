@@ -1,9 +1,11 @@
+import { CloseSharp, Facebook, Twitter, WhatsApp } from "@material-ui/icons";
 import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import swal from "sweetalert";
 import { CustomButton } from "../../components/custom-button/custome-button.component";
 import { validateUAE_Number_test } from "../../Constants/Functions";
+
 const ShareModal = ({ open, onCloseModal }) => {
   const [secondOpen, setSecondOpen] = useState(false);
 
@@ -48,38 +50,78 @@ const ShareModal = ({ open, onCloseModal }) => {
 
   return (
     <>
-      <Modal open={open} onClose={onCloseModal} center>
-        <h2 className="mt-5"></h2>
-        <div className="d-flex justify-content-center">
-          <div className="sharePill_modalIcon mx-3">
-            <i onClick={openTabFB} className="fab fa-facebook-f"></i>
-          </div>
-          <div className="sharePill_modalIcon mx-3">
-            <i onClick={onSecondOpenModal} className="fab fa-whatsapp"></i>
-            {
-              <Modal open={secondOpen} onClose={onSecondCloseModal} center>
-                <div className="sharePillInputText my-3 mx-3">
-                  <h4>Contact Number</h4>
-                  <div className="SharePillform-container my-3">
-                    <label htmlFor={1}></label>
-                    <input
-                      placeholder="+9715******"
-                      id={1}
-                      name="contectNumber"
-                      type="text"
-                      onChange={handleChange}
-                      value={contect}
-                    />
-                  </div>
-                  <div className="ttbutton-container">
-                    <CustomButton onClick={handleSubmit}>Share</CustomButton>
-                  </div>
+      <Modal open={open} onClose={onCloseModal}>
+        <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "200px",
+              background: "white",
+              position: "absolute",
+              bottom: "2vh",
+            }}
+          >
+            <div className="col-md-10 col-lg-8 mx-auto">
+              <div className="titleContSocialShare">
+                <h1>Share</h1>
+                <button onClick={onCloseModal} className="btn float-right">
+                  <CloseSharp />
+                </button>
+              </div>
+              <div className="socailBtnsContaineShare">
+                <div onClick={openTabFB} className="newSocialBtn">
+                  <Facebook />
+                  <span>Facebook</span>
                 </div>
-              </Modal>
-            }
+                <div onClick={onSecondOpenModal} className="newSocialBtn">
+                  <WhatsApp />
+                  <span>WhatsApp</span>
+                </div>
+                <div onClick={openTabTwt} className="newSocialBtn">
+                  <Twitter />
+                  <span>Twitter</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div onClick={openTabTwt} className="sharePill_modalIcon mx-3">
-            <i className="fab fa-twitter"></i>
+        </div>
+      </Modal>
+      <Modal open={secondOpen} onClose={onSecondCloseModal} center>
+        <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "230px",
+              background: "white",
+              position: "absolute",
+              bottom: "2vh",
+            }}
+          >
+            <div className="col-md-10 col-lg-8 mx-auto">
+              <div className="titleContSocialShare">
+                <h1>Contact Number</h1>
+                <button
+                  onClick={onSecondCloseModal}
+                  className="btn float-right"
+                >
+                  <CloseSharp />
+                </button>
+              </div>
+              <div className="SharePillform-container my-3">
+                <label htmlFor={1}></label>
+                <input
+                  placeholder="+9715******"
+                  id={1}
+                  name="contectNumber"
+                  type="text"
+                  onChange={handleChange}
+                  value={contect}
+                />
+              </div>
+              <div className="ttbutton-container">
+                <CustomButton onClick={handleSubmit}>Share</CustomButton>
+              </div>
+            </div>
           </div>
         </div>
       </Modal>

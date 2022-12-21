@@ -7,6 +7,12 @@
     color: $bg;
   }
 }
+.smallBtnsContainer {
+  width: 100%;
+  button {
+    width: 90px;
+  }
+}
 .product-page-container {
   // position: absolute;
   // top: 12vh;
@@ -32,7 +38,7 @@
       .conText {
         font-weight: 600;
         padding-top: 10px;
-        font-family: "Montserrat";
+
         font-weight: 500;
       }
       .blink {
@@ -81,7 +87,6 @@
         // align-items: center;
         width: 58%;
         .prod-img-text-container {
-          font-family: proxima-nova, sans-serif;
           letter-spacing: 0;
           font-weight: 700;
         }
@@ -149,7 +154,6 @@
     }
 
     .customFont {
-      font-family: "Montserrat";
       font-weight: 350;
     }
   }
@@ -186,7 +190,6 @@
         min-height: 45vh;
         margin-bottom: 13px;
         .conText {
-          font-family: "Montserrat";
           font-size: small;
           display: flex;
           flex-direction: row;
@@ -204,7 +207,6 @@
           }
         }
         .prod-img-text-container {
-          font-family: proxima-nova, sans-serif;
           letter-spacing: 0;
           font-weight: 700;
           font-size: 40px;
@@ -351,7 +353,6 @@
     //   margin-top: 10px;
     // }
     .customFont {
-      font-family: "Montserrat";
       font-weight: 100;
     }
   }
@@ -369,7 +370,6 @@
 .conText {
   font-weight: 600;
   padding-top: 10px;
-  font-family: "Montserrat";
   font-weight: 500;
   width: fit-content;
   padding: 0px 10px;

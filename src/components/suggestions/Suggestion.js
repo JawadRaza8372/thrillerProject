@@ -36,12 +36,13 @@ const responsive = {
   },
 };
 var settings = {
-  dots: true,
+  dots: false,
   infinite: false,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
   initialSlide: 0,
+
   responsive: [
     {
       breakpoint: 1024,
@@ -58,6 +59,7 @@ var settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        dots: false,
       },
     },
   ],

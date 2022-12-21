@@ -439,31 +439,26 @@ const Product = ({ allProducts }) => {
             Sell for -- or Ask for More
           </button>
         </div>
-        <div className="row d-flex flex-row mt-2">
-          <div className="col-md-8 col-sm-12">
-            <span>Home / {productUrl ? productUrl : "---"}</span>
-          </div>
-          <div className="col-md-4 col-sm-12">
-            <div className="row d-flex flex-row align-items-center justify-content-center">
-              <div className="col-6 d-flex align-items-center justify-content-center">
-                <button className="btn smallBtns" onClick={addtoFavorite}>
-                  <FavoriteBorder />
-                </button>
-              </div>
-              <div className="col-6 d-flex align-items-center justify-content-center">
-                <button
-                  className="btn smallBtns"
-                  onClick={() => setshareShow(!shareShow)}
-                >
-                  <ShareOutlined />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
+
+        <div className="row mt-2">
           <h1>{product?.name ? product?.name : "---"}</h1>
           <span>{product?.colorway ? product?.colorway : "---"}</span>
+        </div>
+        <div className="row d-flex flex-row">
+          <div className="smallBtnsContainer">
+            <button
+              className="btn smallBtns float-left float-lg-right float-xl-right"
+              onClick={addtoFavorite}
+            >
+              <FavoriteBorder />
+            </button>
+            <button
+              className="btn smallBtns float-left float-lg-right float-xl-right"
+              onClick={() => setshareShow(!shareShow)}
+            >
+              <ShareOutlined />
+            </button>
+          </div>
         </div>
         {showSizeChart ? (
           <div className="d-flex justify-content-center align-item-center">
@@ -480,7 +475,7 @@ const Product = ({ allProducts }) => {
         />
         <div className="row d-flex mt-4 flex-row">
           <div className="col-lg-6 col-md-12">
-            <div className="row d-flex flex-row">
+            <div className="row d-none d-lg-flex d-xl-flex flex-row">
               <div className="col-6">
                 <div className="conText blink">
                   <span>
@@ -579,6 +574,22 @@ const Product = ({ allProducts }) => {
                     <button className="btn btn-outline-dark smallBtns">
                       View Bids
                     </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-12">
+              <div className="row d-flex d-lg-none d-xl-none flex-row">
+                <div className="col-6">
+                  <div className="conText">
+                    <span>Verified Authentic</span>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="conText blink">
+                    <span>
+                      Condition:<span style={{ color: "#ec1d25" }}> New</span>
+                    </span>
                   </div>
                 </div>
               </div>

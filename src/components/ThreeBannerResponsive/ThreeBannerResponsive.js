@@ -1,33 +1,39 @@
 import React, { useState, useEffect } from "react";
 import Bolt from "../../assets/bolt.png";
 import { Fireplace } from "@material-ui/icons";
+import thunder from "../../assets/thunder.svg";
+import chart from "../../assets/chart.svg";
+import Fire from "../../assets/fire.svg";
+
 const ThreeBannerResponsive = () => {
   const [showChartNum, setshowChartNum] = useState(0);
   useEffect(() => {
     setshowChartNum(Math.floor(Math.random() * 3) + 1);
   }, []);
-  console.log(showChartNum);
   return (
     <>
       <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass">
         <div className="col-2 h-100 d-flex align-items-center justify-content-center">
           {showChartNum === 1 && (
-            <i
-              className="fas fa-bolt mx-auto"
-              style={{ fontSize: "30px", color: "#ffc107" }}
-            ></i>
+            <img
+              src={thunder}
+              style={{ height: "53px", objectFit: "contain" }}
+              alt="fire"
+            />
           )}
           {showChartNum === 2 && (
-            <i
-              className="fas fa-chart-bar mx-auto"
-              style={{ fontSize: "30px", color: "#28a745" }}
-            ></i>
+            <img
+              src={chart}
+              style={{ height: "53px", objectFit: "contain" }}
+              alt="fire"
+            />
           )}
           {showChartNum === 3 && (
-            <i
-              className="fas fa-fire mx-auto"
-              style={{ fontSize: "30px", color: "red" }}
-            ></i>
+            <img
+              src={Fire}
+              style={{ height: "53px", objectFit: "contain" }}
+              alt="fire"
+            />
           )}
         </div>
         <div className="col-10 d-flex justify-content-center align-items-start flex-column">
