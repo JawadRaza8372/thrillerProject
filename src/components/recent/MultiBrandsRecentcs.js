@@ -85,14 +85,15 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
   return (
     <>
       <div className="row flex-row">
-        <div className="col-10">
+        <div className="col-11">
           <h1 className="slidersHeading my-5">Thriller Top 10</h1>
         </div>
-        <div className="col-2">
+        <div className="col-1">
           <button
             onClick={() => console.log("don't know where to go")}
             className="nextButton"
           >
+            <span className="mr-1" >SELL ALL</span>
             <KeyboardArrowRight />
           </button>
         </div>
@@ -101,7 +102,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
         <div className="productShowDivBrands">
           {finalArray.map((dat, index) => (
             <div className="columnProductContainer" key={index}>
-              <h5 className="my-3 mx-1 text-center">{dat.brandName}</h5>
+              <h5 className="my-3 mx-1 text-center slidersHeading">{dat.brandName}</h5>
               <div className="cardContainers">
                 {dat?.data?.map((dam, ind) => {
                   const newname = makingValidName(`${dam.name}`);

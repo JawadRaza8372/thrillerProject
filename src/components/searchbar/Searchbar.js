@@ -9,7 +9,7 @@ import { Avatar } from "@material-ui/core";
 import debounce from "lodash.debounce";
 import { makingValidName } from "../../Constants/Functions";
 import searchIcon from '../../assets/searchIcon.png';
-
+import { BASE_URL } from "../../Constants/Global";
 // api.thrillerme.com/shoes/getByName/nike%20dunk
 
 const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
@@ -29,7 +29,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
   const [products, setProudcts] = useState(null);
   var timer = null;
   // useEffect(() => {
-  //   axios.get(`https://api.thrillerme.com/shoes`).then((res) => {
+  //   axios.get(BASE_URL+`shoes`).then((res) => {
   //     setProudcts(res.data);
   //     //console.log("### data ###", products);
   //   });
@@ -45,7 +45,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
         userID = 0;
       }
 
-      var url = `https://api.thrillerme.com/searches/recent/${userID}/5`;
+      var url = BASE_URL+`searches/recent/${userID}/5`;
       axios
         .get(url)
         .then((res) => {
@@ -58,7 +58,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
       //////console.log(e);
     }
 
-    var urlP = `https://api.thrillerme.com/searches/popular/5`;
+    var urlP = BASE_URL+`searches/popular/5`;
     axios
       .get(urlP)
       .then((res) => {
@@ -125,7 +125,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
     //console.log("### search ###", e);
 
     axios
-      .get(`https://api.thrillerme.com/shoes/searchShoe/${e}`, {
+      .get(BASE_URL+`shoes/searchShoe/${e}`, {
         cancelToken: new CancelToken(function executor(c) {
           cancel = c;
         }),

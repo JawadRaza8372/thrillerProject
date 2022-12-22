@@ -8,6 +8,10 @@ import NewCustomRecentcs from "../../components/recent/NewCustomRecentcs";
 import localStorage from "redux-persist/es/storage";
 import SlideShow from "../../components/slideshow/Slideshow";
 import MultiBrandsRecentcs from "../../components/recent/MultiBrandsRecentcs";
+import HomeBanner from "../../components/home-banner/Banner";
+import banner1 from '../../assets/Home/banners/BelowRetailAAFocus_Primary_Desktop.webp'
+import banner2 from '../../assets/Home/banners/OuterwearGiftGuide_Primary_Desktop.webp'
+import banner3 from '../../assets/Home/banners/Popular_Gaming_Controllers_BannersPrimary_Desktop.webp'
 
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
@@ -39,9 +43,12 @@ export const HomePage = ({ allBrands, allProducts }) => {
           ))}
         </div>
       </div>
+      <div className="mt-4 p-0 m-0">
+          <SlideShow />
+      </div>
+
       <div className="col-md-9 col-sm-11 mx-auto">
         <div className="home">
-          <SlideShow />
 
           {/* <div className="customHomeBanner">
           <div className="textCont">
@@ -53,6 +60,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <div className="imageCont"></div> </div> */}
 
           {/* <HomeBanner /> */}
+        
           <NewCustomRecentcs
             name={"Just Dropped"}
             tag={"Recommended For You"}
@@ -70,30 +78,34 @@ export const HomePage = ({ allBrands, allProducts }) => {
               "Off White",
             ]}
           />
-          {/* 
+
+          <div>
+            <img src={banner1} style={{width: '100%', marginTop: 40}} />
+          </div>
+
           <NewCustomRecentcs
             name={"Most Popular"}
-            tag={"Most Popular"}
+            tag={"Seasonal Favourite"}
             productData={allProducts}
           />
           <NewCustomRecentcs
-            name={"Favorites"}
-            tag={"Favourites"}
-            productData={allProducts}
-          />
-          <NewCustomRecentcs
-            name={"Air Jordon"}
-            tag={"Air Jordan"}
-            productData={allProducts}
-          />
-          <NewCustomRecentcs
-            name={"Adidas Yeezy"}
+            name={"Yeezy"}
             tag={"Adidas Yeezy"}
             productData={allProducts}
           />
           <NewCustomRecentcs
-            name={"Jordon 1"}
-            tag={"Jordan 1"}
+            name={"Dunks"}
+            tag={"Nike Dunk"}
+            productData={allProducts}
+          />
+
+          <div>
+            <img src={banner2} style={{width: '100%', marginTop: 40}} />
+          </div>
+
+          <NewCustomRecentcs
+            name={"Favorites"}
+            tag={"Designer Collection"}
             productData={allProducts}
           />
           <NewCustomRecentcs
@@ -102,10 +114,10 @@ export const HomePage = ({ allBrands, allProducts }) => {
             productData={allProducts}
           />
           <NewCustomRecentcs
-            name={"Off White"}
-            tag={"Off-White"}
+            name={"Jordon 1"}
+            tag={"Brought Back From Collection"}
             productData={allProducts}
-          /> */}
+          />
           <br />
           <br />
           {/* <Recentcs
@@ -113,39 +125,39 @@ export const HomePage = ({ allBrands, allProducts }) => {
           name={"Just Dropped"}
           tag={"Just Dropped"}
           productData={allProducts}
-        />
-        <Recentcs
+        /> */}
+        {/* <Recentcs
           name={"Most Popular"}
           tag={"Most Popular"}
           productData={allProducts}
-        />
-        <Recentcs
+        /> */}
+        {/* <Recentcs
           name={"Favorites"}
           tag={"Favourites"}
           productData={allProducts}
-        />
-        <Recentcs
+        /> */}
+        {/* <Recentcs
           name={"Air Jordon"}
           tag={"Air Jordan"}
           productData={allProducts}
-        />
-        <Recentcs
+        /> */}
+        {/* <Recentcs
           name={"Adidas Yeezy"}
           tag={"Adidas Yeezy"}
           productData={allProducts}
-        />
-        <Recentcs name={"Dunks"} tag={"Dunks"} productData={allProducts} />
+        /> */}
+        {/* <Recentcs name={"Dunks"} tag={"Dunks"} productData={allProducts} />
         <Recentcs
           name={"Jordon 1"}
           tag={"Jordan 1"}
           productData={allProducts}
-        />
-        <Recentcs
+        /> */}
+        {/* <Recentcs
           name={"Travis Scot"}
           tag={"Travis Scott"}
           productData={allProducts}
-        />
-        <Recentcs
+        /> */}
+        {/* <Recentcs
           name={"Off White"}
           tag={"Off-White"}
           productData={allProducts}

@@ -11,6 +11,14 @@ import { makingValidName } from "../../Constants/Functions";
 import cardImg6 from "../../temporary-data/6.png";
 import "./NewCustomRecentcs.scss";
 
+function QuestionSign() {
+  return (
+    <button type="button" class="infoQuestionBtn">
+      ?
+    </button>
+  )
+} 
+
 const NewCustomRecentcs = ({ name, tag, productData }) => {
   const history = useHistory();
   const recentSlider = productData?.filter((iem) => iem?.tag.includes(name));
@@ -21,11 +29,12 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
   return (
     <>
       <div className="row flex-row">
-        <div className="col-10">
-          <h1 className="slidersHeading my-5">{tag}</h1>
+        <div className="col-11">
+          <h1 className="slidersHeading my-5">{tag} <QuestionSign /></h1>
         </div>
-        <div className="col-2">
+        <div className="col-1">
           <button onClick={() => setLocalStorage(name)} className="nextButton">
+            <span className="mr-1">SEE ALL</span>
             <KeyboardArrowRight />
           </button>
         </div>

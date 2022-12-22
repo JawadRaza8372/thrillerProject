@@ -47,8 +47,8 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
         <div className="CustomSearchContainer" style={{ margin: "0px" }}>
           <img src={searchIcon} 
             style={{
-              width: '25px',
-              marginLeft: '10px'
+              width: '20px',
+              marginLeft: '15px'
             }}
           />
           <input

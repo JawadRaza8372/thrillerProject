@@ -163,7 +163,7 @@ const Header = ({
     <div>
       <Navbar
         className={dropShadow ? "drop-shadow nav-pricon" : "nav-pricon"}
-        bg="light"
+        // bg="light"
         expand={"lg"}
         fixed={!(sidebar || searchbar || catbar) ? "top" : null}
         style={{
@@ -195,13 +195,13 @@ const Header = ({
           <Navbar.Collapse id="navbarScroll">
             <NavSearchBar allProducts={products} allBrands={brands} />
             <Nav
-              className="mx-auto my-2 my-lg-0 flex-grow-1 flex-shrink-1 d-flex flex-row align-items-center justify-content-end"
+              className="ml-3 d-flex flex-row align-items-center justify-content-end"
               navbarScroll
             >
               <NavDropdown
                 title="Browse"
                 id="basic-nav-dropdown"
-                className="mx-2 navs centeredBtnsClass"
+                className="navs centeredBtnsClass"
                 show={show}
                 onMouseEnter={showDropdown}
                 onMouseLeave={hideDropdown}
@@ -226,23 +226,23 @@ const Header = ({
                 onClick={() => {
                   window.localStorage.setItem("filter", null);
                 }}
-                className="mx-2 navs nav-link centeredBtnsClass"
+                className="navs nav-link centeredBtnsClass"
               >
                 Shop All
               </Link>
               <Link
                 to="/styles"
-                className="mx-2 navs nav-link centeredBtnsClass"
+                className="navs nav-link centeredBtnsClass"
               >
                 Styles
               </Link>
 
-              <Link to="/help" className="mx-2 navs nav-link centeredBtnsClass">
+              <Link to="/help" className="navs nav-link centeredBtnsClass">
                 Help
               </Link>
               <Link
                 to="/sell"
-                className="mx-2 navs nav-link centeredBtnsClass"
+                className="mr-3 navs nav-link centeredBtnsClass"
                 style={{ color: "Red" }}
               >
                 Sell

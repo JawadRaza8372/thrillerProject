@@ -6,6 +6,7 @@ import LocalStorage from "redux-persist/es/storage";
 import { sidebarData } from "../../temporary-data/sidebarData";
 import CategoryBar from "../cat-sidebar/CategoryBar";
 import "./Sidebar.css";
+import { BASE_URL } from "../../Constants/Global";
 
 const Sidebar = ({
   allBrands,
@@ -48,7 +49,7 @@ const Sidebar = ({
 
     try {
       var authData = await axios.get(
-        `https://api.thrillerme.com/registrations/${uData.user_id}`
+        BASE_URL+`registrations/${uData.user_id}`
       );
 
       //console.log("####### auth ######", authData.data.isAuthenticated);
@@ -60,7 +61,7 @@ const Sidebar = ({
       }
 
       var data = await axios.get(
-        `https://api.thrillerme.com/sellers/${uData.user_id}`
+        BASE_URL+`sellers/${uData.user_id}`
       );
 
       //console.log("### SHIPPING ###", data);
@@ -70,7 +71,7 @@ const Sidebar = ({
 
       try {
         var payData = await axios.get(
-          `https://api.thrillerme.com/payout/${uData.user_id}`
+          BASE_URL+`payout/${uData.user_id}`
         );
         //console.log(payData);
         if (payData.data !== "") {
@@ -84,7 +85,7 @@ const Sidebar = ({
     try {
       await initialSetup();
       var uData = JSON.parse(window.localStorage.getItem("user"));
-      var url = `https://api.thrillerme.com/registrations/${uData.user_id}`;
+      var url = BASE_URL+`registrations/${uData.user_id}`;
       axios.get(url).then((res) => {
         ////console.log(res);
         // !res.data.isApproved

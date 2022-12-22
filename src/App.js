@@ -41,6 +41,8 @@ import { Reset } from "./page-component/reset-password/reset";
 import axios from "axios";
 import ReactGA from "react-ga";
 import AboutPage from "./page-component/AboutPage/AboutPage";
+import {BASE_URL} from './Constants/Global';
+
 const TRACKING_ID = "UA-198989119-1"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
@@ -54,12 +56,13 @@ const App = ({ location }) => {
 
   useEffect(() => {
     axios
-      .get(`https://api.thrillerme.com/shoes`)
+      .get(BASE_URL+`shoes`)
       .then((res) => {
+        console.log("after api hit");
         setallProducts(res.data);
       })
       .catch((e) => console.log(e));
-    var url = `https://api.thrillerme.com/collections`;
+    var url = BASE_URL+`collections`;
     axios
       .get(url)
       .then((resb) => {
