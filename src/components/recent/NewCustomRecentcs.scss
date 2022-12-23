@@ -82,6 +82,14 @@
     }
   }
   .productShowDivBrnadsWala {
+
+    overflow-y: scroll !important;
+    scrollbar-width: 0px !important;
+    -ms-overflow-style: none !important;
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+
     width: 100%;
     height: auto;
     display: grid;
@@ -91,7 +99,7 @@
     overflow-x: auto;
     .CustomcardDiv2 {
       height: 100%;
-      width: auto;
+      width: 300px;
       background-color: #f4f3f1;
       cursor: pointer;
 
