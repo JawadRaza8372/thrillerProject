@@ -11,15 +11,29 @@ import { makingValidName } from "../../Constants/Functions";
 import cardImg6 from "../../temporary-data/6.png";
 import "./NewCustomRecentcs.scss";
 
-function QuestionSign() {
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
+function QuestionSign({toolTip}) {
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {toolTip}
+    </Tooltip>
+  );
   return (
-    <button type="button" class="infoQuestionBtn">
-      ?
-    </button>
+    <OverlayTrigger
+      placement="top"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderTooltip}
+    >
+      <button type="button" class="infoQuestionBtn">
+        ?
+      </button>
+    </OverlayTrigger>
   )
 } 
 
-const NewCustomRecentcs = ({ name, tag, productData }) => {
+const NewCustomRecentcs = ({ name, tag, productData, toolTip }) => {
   const history = useHistory();
   const recentSlider = productData?.filter((iem) => iem?.tag.includes(name));
   const setLocalStorage = (attr) => {
@@ -29,10 +43,10 @@ const NewCustomRecentcs = ({ name, tag, productData }) => {
   return (
     <>
       <div className="row flex-row">
-        <div className="col-11">
-          <h1 className="slidersHeading my-5">{tag} <QuestionSign /></h1>
+        <div className="col-md-10 col-sm-12">
+          <h1 className="slidersHeading my-5">{tag} <QuestionSign toolTip={toolTip} /></h1>
         </div>
-        <div className="col-1">
+        <div className="col-md-2 col-sm-12 hideInMobile">
           <button onClick={() => setLocalStorage(name)} className="nextButton">
             <span className="mr-1">SEE ALL</span>
             <KeyboardArrowRight />

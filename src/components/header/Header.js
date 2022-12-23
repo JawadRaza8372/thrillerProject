@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 import { NavSearchBar } from "../searchbar/NavSearchBar";
 import { Search } from "@material-ui/icons";
 import List from "@material-ui/icons/Reorder";
+import HumberMenu from '../../assets/Header/HumberMenu.svg';
+import SearchHeader from '../../assets/Header/SearchHeader.svg';
 
 const Header = ({
   brands,
@@ -162,20 +164,19 @@ const Header = ({
   return (
     <div>
       <Navbar
-        className={dropShadow ? "drop-shadow nav-pricon" : "nav-pricon"}
-        // bg="light"
+        className={(dropShadow ? "drop-shadow nav-pricon" : "nav-pricon") +" headerSection"}
+        bg="light"
         expand={"lg"}
         fixed={!(sidebar || searchbar || catbar) ? "top" : null}
         style={{
-          height: "10vh",
           position: "fixed",
           width: "100%",
           zIndex: "1000",
         }}
       >
         <div style={{ padding: "0px" }} className="container-fluid navBarContainer" >
-          <button onClick={() => setSearchbar(true)} className="smallMenuBtns">
-            <Search />
+          <button onClick={() => setSearchbar(true)} className="smallMenuBtns searchBtnHeader">
+            <img src={SearchHeader} />
           </button>
 
           <Link to={`/`}>
@@ -190,7 +191,7 @@ const Header = ({
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <button onClick={() => setSidebar(true)} className="smallMenuBtns">
-            <List />
+            <img src={HumberMenu}/>
           </button>
           <Navbar.Collapse id="navbarScroll">
             <NavSearchBar allProducts={products} allBrands={brands} />

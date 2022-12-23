@@ -47,7 +47,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <SlideShow />
       </div>
 
-      <div className="col-md-9 col-sm-11 mx-auto">
+      <div className="col-lg-9 col-md-10 col-sm-11 mx-auto">
         <div className="home">
 
           {/* <div className="customHomeBanner">
@@ -64,6 +64,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <NewCustomRecentcs
             name={"Just Dropped"}
             tag={"Recommended For You"}
+            toolTip={"These products are inspired by your previous browsing history."}
             productData={allProducts}
           />
           <CustomRecentcs tag="Popular Brands" brands={allBrands} />
@@ -84,6 +85,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           </div>
 
           <NewCustomRecentcs
+            toolTip={"'Seasonal Favourite' products are a curated collection of our best selling items"}
             name={"Most Popular"}
             tag={"Seasonal Favourite"}
             productData={allProducts}
@@ -91,9 +93,11 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <NewCustomRecentcs
             name={"Yeezy"}
             tag={"Adidas Yeezy"}
+            toolTip={"'Adidas Yeezy' products are a curated collection of our best selling items"}
             productData={allProducts}
           />
           <NewCustomRecentcs
+            toolTip={"'Nike Dunk' products are a curated collection of our best selling items"}
             name={"Dunks"}
             tag={"Nike Dunk"}
             productData={allProducts}
@@ -104,17 +108,20 @@ export const HomePage = ({ allBrands, allProducts }) => {
           </div>
 
           <NewCustomRecentcs
+            toolTip={"'Designer Collection' products are a curated collection of our best selling items"}
             name={"Favorites"}
             tag={"Designer Collection"}
             productData={allProducts}
           />
           <NewCustomRecentcs
+            toolTip={"'Travis Scott' products are a curated collection of our best selling items"}
             name={"Travis Scot"}
             tag={"Travis Scott"}
             productData={allProducts}
           />
           <NewCustomRecentcs
             name={"Jordon 1"}
+            toolTip={"'Brought Back From Collection' products are a curated collection of our best selling items"}
             tag={"Brought Back From Collection"}
             productData={allProducts}
           />

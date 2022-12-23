@@ -243,7 +243,7 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
 
         {(inputValue == "" || inputValue == null) && (
           <ul className="nav-menu-items">
-            {recent.map((item, index) => {
+            {recent && recent.map((item, index) => {
               return (
                 <li
                   key={index}

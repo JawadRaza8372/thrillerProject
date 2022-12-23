@@ -91,7 +91,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
         <div className="col-1">
           <button
             onClick={() => console.log("don't know where to go")}
-            className="nextButton"
+            className="nextButton hideInMobile"
           >
             <span className="mr-1" >SELL ALL</span>
             <KeyboardArrowRight />

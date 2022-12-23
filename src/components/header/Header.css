@@ -9,6 +9,25 @@
     display: flex !important;
     flex-direction: row-reverse !important;
   }
+
+  .headerSection {
+    height: 7vh !important;  
+    background-color: white !important;
+  }
+  .greyNavigation {
+    margin-top: 7vh !important;
+  }
+
+  .searchBtnHeader img {
+    width: 20px !important;    
+  }
+  .smallMenuBtns img {
+    width: 25px;
+  }
+}
+
+.headerSection {
+  height: 10vh;
 }
 
 .headerBtn {
