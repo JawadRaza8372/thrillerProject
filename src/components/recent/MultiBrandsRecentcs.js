@@ -85,10 +85,10 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
   return (
     <>
       <div className="row flex-row">
-        <div className="col-11">
+        <div className="col-md-10 col-sm-12">
           <h1 className="slidersHeading my-5">Thriller Top 10</h1>
         </div>
-        <div className="col-1">
+        <div className="col-md-2 col-sm-12">
           <button
             onClick={() => console.log("don't know where to go")}
             className="nextButton hideInMobile"

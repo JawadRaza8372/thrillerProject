@@ -68,17 +68,6 @@ export const HomePage = ({ allBrands, allProducts }) => {
             productData={allProducts}
           />
           <CustomRecentcs tag="Popular Brands" brands={allBrands} />
-          <MultiBrandsRecentcs
-            allProducts={allProducts}
-            allBrands={allBrands}
-            tagsArry={[
-              "Air Jordan",
-              "Dunks",
-              "Travis Scott",
-              "Yeezy",
-              "Off White",
-            ]}
-          />
 
           <div>
             <img src={banner1} style={{width: '100%', marginTop: 40}} />
@@ -125,6 +114,18 @@ export const HomePage = ({ allBrands, allProducts }) => {
             tag={"Brought Back From Collection"}
             productData={allProducts}
           />
+          <MultiBrandsRecentcs
+            allProducts={allProducts}
+            allBrands={allBrands}
+            tagsArry={[
+              "Air Jordan",
+              "Dunks",
+              "Travis Scott",
+              "Yeezy",
+              "Off White",
+            ]}
+          />
+
           <br />
           <br />
           {/* <Recentcs
