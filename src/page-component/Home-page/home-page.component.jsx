@@ -46,7 +46,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
 
       <div className="col-lg-9 col-md-10 col-sm-11 mx-auto">
         <div className="home">
-        <div className="mt-4 p-0 m-0">
+        <div className="mt-4 p-0 m-0 mainSliderHome">
           <SlideShow />
         </div>
 
