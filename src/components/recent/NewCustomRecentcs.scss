@@ -123,15 +123,51 @@
     .productShowDiv {
       column-gap: 10px !important;
       .CustomcardDiv {
-        width: 200px !important;  
-        height: 270px;
-      }
+        width: 140px !important;  
+        height: 230px !important;
+        .cardImg {
+          height: 90px !important;
+          margin: 0px 0px 0px 12px !important;  
+        }
+        .textCont {
+          .headingDiv {
+            font-size: 0.8rem !important;
+            h6 {
+              font-size: 0.8rem !important;
+            }
+          }
+          .priceDiv {
+            span {
+              font-size: 0.6rem !important;
+            }
+            h6 {
+              font-size: 1rem !important;
+            }
+          }
+          .lastSoldDiv {
+            span {
+              padding: 5px !important;
+              font-size: 0.7rem !important;
+            }
+          }
+        }
+      }    
     }
     .productShowDivBrnadsWala {
-      column-gap: 10px !important;
+      column-gap: 5px !important;
       .CustomcardDiv2 {
-        width: 200px !important;        
+        width: 140px !important;        
         cursor: pointer;  
+        .cardImg {
+          height: 90px !important;
+        }
+        .textCont {
+          margin: 5px 0px -5px 0px !important;
+          h6 {
+            margin-left: 5px !important;
+            font-size: 0.8rem !important;
+          }
+        }
       }
     }
 
@@ -182,7 +218,7 @@
       .cardImg {
         height: 130px;
         width: 85%;
-        margin: 0px 0px 0px 16px !important;
+        margin: 0px 0px 0px 16px;
         object-fit: cover;
       }
       .textCont {
@@ -199,9 +235,9 @@
           height: auto !important;
           overflow: hidden;
           font-family: 'SuisseIntlM' !important;          
-          font-size: 1rem !important;
+          font-size: 1rem;
           h6 {
-            font-size: 1rem !important;
+            font-size: 1rem;
           }
         }
         .priceDiv {
