@@ -40,8 +40,8 @@ function CustomRecentcs({ tag, brands }) {
   return (
     <>
       <div className="row flex-row">
-        <div className="col-12">
-          <h1 className="slidersHeading my-5">{tag}</h1>
+        <div className="col-12 mt-5 mb-3">
+          <h1 className="slidersHeading">{tag}</h1>
         </div>
       </div>
       <div className="row">
@@ -53,7 +53,7 @@ function CustomRecentcs({ tag, brands }) {
                   <div className="CustomcardDiv2">
                     <img
                       className="cardImg"
-                      style={{ height: "200px" }}
+                      style={{ height: "170px" }}
                       src={elem.imageURL ? elem.imageURL : cardImg6}
                     />
                     <div className="textCont">

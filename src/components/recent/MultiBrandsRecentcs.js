@@ -85,8 +85,8 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
   return (
     <>
       <div className="row flex-row">
-        <div className="col-md-10 col-sm-12">
-          <h1 className="slidersHeading my-5">Thriller Top 10</h1>
+        <div className="col-md-10 col-sm-12 mt-5 mb-3">
+          <h1 className="slidersHeading">Thriller Top 10</h1>
         </div>
         <div className="col-md-2 col-sm-12">
           <button

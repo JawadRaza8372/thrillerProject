@@ -215,11 +215,13 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
                   fontWeight: "1000",
                   fontSize: "18px",
                   // textTransform: "uppercase",
+                  width: '60%',
+                  marginRight: '10px'
                 }}
                 name="input"
                 onChange={handlechange}
                 value={inputValue}
-                placeholder="Search for brands, colors etc"
+                placeholder="Search.."
               />
               {/* <i className="fas fa-search"></i> */}
               <img src={searchIcon} />

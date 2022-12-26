@@ -43,12 +43,13 @@ export const HomePage = ({ allBrands, allProducts }) => {
           ))}
         </div>
       </div>
-      <div className="mt-4 p-0 m-0">
-          <SlideShow />
-      </div>
 
       <div className="col-lg-9 col-md-10 col-sm-11 mx-auto">
         <div className="home">
+        <div className="mt-4 p-0 m-0">
+          <SlideShow />
+        </div>
+
 
           {/* <div className="customHomeBanner">
           <div className="textCont">
@@ -118,9 +119,9 @@ export const HomePage = ({ allBrands, allProducts }) => {
             allProducts={allProducts}
             allBrands={allBrands}
             tagsArry={[
-              "Air Jordan",
+              "Jordan",
               "Dunks",
-              "Travis Scott",
+              "Travis Scot",
               "Yeezy",
               "Off White",
             ]}
