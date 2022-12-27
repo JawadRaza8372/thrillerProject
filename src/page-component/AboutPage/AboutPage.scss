@@ -129,6 +129,77 @@
   }
 }
 
+.aboutPostCardContainer {
+  width: 450px;
+  box-shadow: 0px 4px 8px 0px #00000040;
+  padding: 40px;
+  
+  margin: 20px 20px 20px 20px;
+}
+
+.aboutPost {
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+}
+
+.aboutPostHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+
+  padding: 10px;
+}
+
+
+.aboutPostHeaderDetails h3 {
+  color: black !important;
+  font-size: 16px;
+  font-family: 'SuisseIntlM' !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.aboutPostHeaderDetails h3 img {
+  display: inline;
+  width: 20px;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.aboutPostHeaderDetails p {
+  font-size: 13px;
+  padding: 0px !important;
+  margin: 0px !important;
+  color: lightgray;
+}
+
+
+.aboutPostHeader button {
+  background-color: #3097F3 !important;
+  border: none !important;
+  border-radius: 5px;
+  color: white !important;
+  padding: 5px 15px 5px 15px !important;
+  font-size: 15px;
+}
+
+.aboutPostFooter {
+  color: #3097F3;
+  padding: 15px;
+  font-size: 20px;
+  font-family: 'SuisseIntlM' !important;
+}
+
+.aboutPostBody img {
+  width: 100% !important;
+}
+
+.aboutPostHeaderAvatar {
+  width: 50px;
+}
+
 .stepsSection .titlePc {
   display: block;
 }

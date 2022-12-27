@@ -19,24 +19,52 @@ import Post3 from "../../assets/post3.jpg";
 import Post4 from "../../assets/post4.jpg";
 import Post5 from "../../assets/review 3.jpg";
 
-import sneaker from "../../assets/aboutUs/aboutUsSneaker.png";
+import sneaker from "../../assets/aboutUs/aboutUsSneaker.svg";
 import chat from "../../assets/aboutUs/aboutUsChat.png";
 import lock from "../../assets/aboutUs/aboutUsLock.png";
-import authentication from "../../assets/aboutUs/aboutUsAuthentication.png";
-import yourPrice from "../../assets/aboutUs/aboutUsYourPrice.png";
+import authentication from "../../assets/aboutUs/aboutUsAuthentication.svg";
+import yourPrice from "../../assets/aboutUs/aboutUsYourPrice.svg";
 import securityLogos from "../../assets/aboutUs/security-logos.png";
 
 import step1Shoo from "../../assets/aboutUs/step1Shoo.gif";
 
 import Slider from "react-slick";
 
+import aboutBanner from '../../assets/aboutUs/aboutBanner.svg';
+import aboutPostVerifiedIcon from '../../assets/aboutUs/aboutPostVerifiedIcon.svg';
+
+import aboutUsPostImg1 from '../../assets/aboutUs/aboutUsPostImg1.jpg';
+import aboutUsPostImg1Avatar from '../../assets/aboutUs/aboutUsPostImg1Avatar.svg';
+import aboutUsPostImg2 from '../../assets/aboutUs/aboutUsPostImg2.jpg';
+import aboutUsPostImg2Avatar from '../../assets/aboutUs/aboutUsPostImg2Avatar.jpg';
+import aboutUsPostImg3 from '../../assets/aboutUs/aboutUsPostImg3.jpg';
+import aboutUsPostImg3Avatar from '../../assets/aboutUs/aboutUsPostImg3Avatar.jpg';
+
+import aboutUsContactDMUS from '../../assets/aboutUs/aboutUsContactDMUS.svg';
+import aboutUsContactEmail from '../../assets/aboutUs/aboutUsContactEmail.svg';
+import aboutUsContactWhatsapp from '../../assets/aboutUs/aboutUsContactWhatsapp.svg';
+
+
 const AboutPage = () => {
   const postArray = [
-    { imgUrl: Post1 },
-    { imgUrl: Post2 },
-    { imgUrl: Post3 },
-    { imgUrl: Post4 },
-    { imgUrl: Post5 },
+    { 
+      imgUrl: aboutUsPostImg1,
+      avatar: aboutUsPostImg1Avatar,
+      name: 'Jasonderulo',
+      url: 'https://instagram.com/jasonderulo?igshid=YWJhMjlhZTc='
+    },
+    { 
+      imgUrl: aboutUsPostImg2,
+      avatar: aboutUsPostImg2Avatar,
+      name: 'Swaelee',
+      url: 'https://instagram.com/swaelee?igshid=YWJhMjlhZTc='
+    },
+    { 
+      imgUrl: aboutUsPostImg3,
+      avatar: aboutUsPostImg3Avatar,
+      name: 'Rsd89',
+      url: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTMzNTIwMTcyNjQxNjQ3?story_media_id=2656083454456222494&igshid=YWJhMjlhZTc='
+    }
   ];
   var settings = {
     dots: false,
@@ -79,7 +107,7 @@ const AboutPage = () => {
   return (
     <>
       <div className="col-md-9 col-sm-10 mx-auto aboutPage" style={{ marginTop: "12.5vh" }}>
-        <div className="row py-4 HeroSectionAbout" style={{ background: "black" }}>
+        <div className="row py-5 HeroSectionAbout" style={{ background: "black" }}>
           <div className="col-lg-5 col-md-12 responsiveheight">
             <div className="col-12 d-flex flex-column align-items-end justify-content-center h-100 texts">
                 <div style={{ color: "white", lineHeight: 1.2 }}>
@@ -98,7 +126,7 @@ const AboutPage = () => {
             </div>
           </div>
           <div className="col-lg-7 col-md-12 d-flex flex-column align-items-center justify-content-center imges">
-            <img src={GridImg} style={{width: '70%'}} />
+            <img src={aboutBanner} style={{width: '70%'}} />
           </div>
         </div>
         <div className="row py-5 my-5 aboutInfoCardsSection">
@@ -215,17 +243,39 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <div className="row py-4 w-100 mx-auto overflow-hidden">
-        <div className="col-md-9 py-4 col-sm-10 mx-auto">
+      <div className="row w-100 pb-5 mx-auto overflow-hidden">
+        <div className="col-md-9 col-sm-10 mx-auto">
           <Slider {...settings}>
             {postArray.map((dat, index) => (
               <>
-                <img
+                <a href={dat.url}>
+                  <div className="aboutPostCardContainer" >
+                    <div className="aboutPost" >
+                      <div className="aboutPostHeader" >
+                        <img src={dat.avatar} className='aboutPostHeaderAvatar' />
+                        <div className="aboutPostHeaderDetails" >
+                          <h3>{dat.name} <img src={aboutPostVerifiedIcon} /> </h3>
+                          <p>21.5M Followers</p>
+                        </div>
+                        <button>
+                          View Profile
+                        </button>
+                      </div>
+                      <div className="aboutPostBody" >
+                        <img src={dat.imgUrl} />
+                      </div>
+                      <div className="aboutPostFooter" >
+                        View more on Instagram
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                {/* <img
                   key={index}
                   className="col img-fluid"
                   src={dat.imgUrl}
                   alt={`post ${index}`}
-                />
+                /> */}
               </>
             ))}
           </Slider>
@@ -243,19 +293,19 @@ const AboutPage = () => {
               <div className="row py-5">
                 <div className="col-4 mx-auto mb-2">
                     <div className="contactCardsAbout">
-                      <Instagram />
+                      <img src={aboutUsContactDMUS} />
                       <h1 className="text-center text-white">DM US</h1>
                     </div>
                   </div>
                   <div className="col-4 mx-auto mb-2">
                     <div className="contactCardsAbout">
-                      <WhatsApp />
+                      <img src={aboutUsContactWhatsapp} />
                       <h3 className="text-center">WHATSAPP</h3>
                     </div>
                   </div>
                   <div className="col-4 mx-auto mb-2">
                     <div className="contactCardsAbout">
-                      <Mail />
+                      <img src={aboutUsContactEmail} />
                       <h3 className="text-center">EMAIL</h3>
                     </div>
                   </div>
