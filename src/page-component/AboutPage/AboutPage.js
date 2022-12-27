@@ -244,12 +244,14 @@ const AboutPage = () => {
         </div>
       </div>
       <div className="row w-100 pb-5 mx-auto overflow-hidden">
-        <div className="col-md-9 col-sm-10 mx-auto">
-          <Slider {...settings}>
+        <div className="col-md-1 col-sm-12">
+        </div>
+        <div className="col-md-10 col-sm-12">
+          <div className="row w-100 pb-5 overflow-hidden">
             {postArray.map((dat, index) => (
-              <>
+              <div className="col-md-4 col-sm-12">
                 <a href={dat.url}>
-                  <div className="aboutPostCardContainer" >
+                  <div className="aboutPostCardContainer mx-3" >
                     <div className="aboutPost" >
                       <div className="aboutPostHeader" >
                         <img src={dat.avatar} className='aboutPostHeaderAvatar' />
@@ -270,16 +272,14 @@ const AboutPage = () => {
                     </div>
                   </div>
                 </a>
-                {/* <img
-                  key={index}
-                  className="col img-fluid"
-                  src={dat.imgUrl}
-                  alt={`post ${index}`}
-                /> */}
-              </>
+              </div>
             ))}
-          </Slider>
+          </div>
         </div>
+        {/* <div className="col-md-9 col-sm-10 mx-auto">
+          <Slider {...settings}>
+          </Slider>
+        </div> */}
       </div>
       <div
         className="row py-4 w-100 mx-auto overflow-hidden"
