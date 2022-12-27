@@ -1,6 +1,10 @@
 
 @media screen and (max-width: 480px) {
 
+  .contactCardsAbout img {
+    width: 30px;
+  }
+
   .aboutPostCardContainer {
     width: 100% !important;
     padding: 0px !important;
@@ -122,10 +126,8 @@
     padding-top: 15px !important;
     padding-bottom: 15px !important;
     border-radius: 5px !important;
-  }
-
-  .contactCardsAbout svg {
     font-size: 30px !important;
+
   }
 
   .contactCardsAbout h3, .contactCardsAbout h1 {
