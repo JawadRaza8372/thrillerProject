@@ -238,8 +238,8 @@ const Header = ({
                 Styles
               </Link>
 
-              <Link to="/help" className="navs nav-link centeredBtnsClass">
-                Help
+              <Link to="/about" className="navs nav-link centeredBtnsClass">
+                About
               </Link>
               <Link
                 to="/sell"

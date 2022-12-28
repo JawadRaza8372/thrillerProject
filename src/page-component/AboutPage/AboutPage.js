@@ -244,7 +244,7 @@ const AboutPage = () => {
         </div>
       </div>
       <div className="row w-100 pb-5 mx-auto overflow-hidden">
-        <div className="col-md-1 col-sm-12">
+        {/* <div className="col-md-1 col-sm-12">
         </div>
         <div className="col-md-10 col-sm-12">
           <div className="row w-100 pb-5 overflow-hidden">
@@ -275,11 +275,35 @@ const AboutPage = () => {
               </div>
             ))}
           </div>
-        </div>
-        {/* <div className="col-md-9 col-sm-10 mx-auto">
-          <Slider {...settings}>
-          </Slider>
         </div> */}
+        <div className="col-md-9 col-sm-10 mx-auto">
+          <Slider {...settings}>
+            {postArray.map((dat, index) => (
+                <a href={dat.url} target="_blank">
+                  <div className="aboutPostCardContainer mx-3" >
+                    <div className="aboutPost" >
+                      <div className="aboutPostHeader" >
+                        <img src={dat.avatar} className='aboutPostHeaderAvatar' />
+                        <div className="aboutPostHeaderDetails" >
+                          <h3>{dat.name} <img src={aboutPostVerifiedIcon} /> </h3>
+                          <p>21.5M Followers</p>
+                        </div>
+                        <button>
+                          View Profile
+                        </button>
+                      </div>
+                      <div className="aboutPostBody" >
+                        <img src={dat.imgUrl} />
+                      </div>
+                      <div className="aboutPostFooter" >
+                        View more on Instagram
+                      </div>
+                    </div>
+                  </div>  
+                </a>
+            ))}
+          </Slider>
+        </div>
       </div>
       <div
         className="row py-4 w-100 mx-auto overflow-hidden"
