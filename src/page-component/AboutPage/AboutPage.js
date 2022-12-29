@@ -53,18 +53,21 @@ const AboutPage = () => {
       imgUrl: aboutUsPostImg1,
       avatar: aboutUsPostImg1Avatar,
       name: 'Jasonderulo',
+      followers: '21.5M',
       url: 'https://instagram.com/jasonderulo?igshid=YWJhMjlhZTc='
     },
     { 
       imgUrl: aboutUsPostImg2,
       avatar: aboutUsPostImg2Avatar,
       name: 'Swaelee',
+      followers: '10.9M',
       url: 'https://instagram.com/swaelee?igshid=YWJhMjlhZTc='
     },
     { 
       imgUrl: aboutUsPostImg3,
       avatar: aboutUsPostImg3Avatar,
-      name: 'Rsd89',
+      name: 'Sanjay Kapoor 2500',
+      followers: '779K',
       url: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTMzNTIwMTcyNjQxNjQ3?story_media_id=2656083454456222494&igshid=YWJhMjlhZTc='
     }
   ];
@@ -288,7 +291,7 @@ const AboutPage = () => {
                         <img src={dat.avatar} className='aboutPostHeaderAvatar' />
                         <div className="aboutPostHeaderDetails" >
                           <h3>{dat.name} <img src={aboutPostVerifiedIcon} /> </h3>
-                          <p>21.5M Followers</p>
+                          <p>{dat.followers} Followers</p>
                         </div>
                         <button>
                           View Profile
