@@ -44,6 +44,8 @@ import aboutUsContactDMUS from '../../assets/aboutUs/aboutUsContactDMUS.svg';
 import aboutUsContactEmail from '../../assets/aboutUs/aboutUsContactEmail.svg';
 import aboutUsContactWhatsapp from '../../assets/aboutUs/aboutUsContactWhatsapp.svg';
 
+import CarouselCard from "../../components/review-carousel/reviewCard";
+
 
 const AboutPage = () => {
   const postArray = [
@@ -302,6 +304,18 @@ const AboutPage = () => {
                   </div>  
                 </a>
             ))}
+            <CarouselCard
+              content="Amazing service , Great communication from start to end. Fast and efficient delivery to door."
+              userName="Yazeed"
+            />
+            <CarouselCard
+              content="I purchased yeezy breds and Air Jordan 1 University blues. Very happy with my purchase and shoes were legit."
+              userName="Ali Al Ameez"
+            />
+            <CarouselCard
+              content="Professional and authentic marketplace for buying and selling hype items. My experience was smooth and simple!."
+              userName="Adnan Lakdawala"
+            />
           </Slider>
         </div>
       </div>

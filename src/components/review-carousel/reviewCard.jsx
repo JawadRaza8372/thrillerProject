@@ -8,7 +8,7 @@ const CarouselCard = (props) => {
       target="_blank"
       style={{ color: "#000" }}
     >
-      <div className="carousel-card">
+      <div className="carousel-card" style={{boxShadow: '0px 4px 8px 0px #00000040'}} >
         <div className="icon-div" style={{ textAlign: "center" }}>
           <img
             src={TrustPilotIcon}
