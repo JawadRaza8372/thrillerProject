@@ -58,9 +58,10 @@ import {
   AddBoxRounded,
   AddCircleOutline,
   ArrowDownward,
-  FavoriteBorder,
+  Favorite,
   KeyboardArrowDown,
   ShareOutlined,
+  ArrowUpward
 } from "@material-ui/icons";
 import Bolt from "../../assets/bolt.png";
 import ShareModal from "../../components/product-page-pills/ShareModal";
@@ -93,6 +94,10 @@ const Product = ({ allProducts }) => {
   const [galleryImages, setGalleryImages] = useState(null);
   const [toasterData, settoasterData] = useState([]);
   const [shareShow, setshareShow] = useState(false);
+
+  const [shippingDetailsOpen, setShippingDetailsOpen] = useState(false);
+
+
   const closeMobileChart = () => {
     setSizeChart(false);
   };
@@ -398,10 +403,14 @@ const Product = ({ allProducts }) => {
             top: "10vh",
             background: "white",
             zIndex: 999,
+            width: '100% !important',
+            margin: '0px 0px 0px 0px !important',
+            border: 'none'
           }}
         >
           <button
             className="btn btn-outline-dark w-100 my-2"
+            style={{ borderRadius: '0px' }}
             onClick={() => setSizeChart(true)}
           >
             <div className="fill_size">
@@ -415,34 +424,51 @@ const Product = ({ allProducts }) => {
           <div className="d-flex w-100 align-items-center justify-content-between p-0 flex-row mb-2 mx-auto">
             <button
               className="btn btn-outline-dark"
-              style={{ width: "48%" }}
+              style={{ borderRadius: '0px',width: "48%" }}
               onClick={GoToBuy}
             >
               Place Bid
             </button>
             <button
               className="btn btn-danger"
-              style={{ width: "48%" }}
+              style={{ borderRadius: '0px', width: "48%" }}
               onClick={GoToBuy}
             >
               Buy
             </button>
           </div>
 
-          <hr />
-
           <button
-            className="btn btn-outline-light w-100 removeBorder my-2"
-            style={{ color: "green" }}
+            className="btn btn-outline-light w-100 removeBorder mt-2"
+            style={{ color: "black" }}
             onClick={() => console.log("sell for")}
           >
-            Sell for -- or Ask for More
+            <b style={{ color: "red" }} >Buy Now</b> Starting at AED--/mo with Tabby.
           </button>
+          <button
+            className="btn btn-outline-light w-100 removeBorder mb-2"
+            style={{ color: "red" }}
+            onClick={() => console.log("sell for")}
+          >
+            Sell for -- or Ask for More <i className="" ></i>
+          </button>
+          <hr />
         </div>
 
         <div className="row mt-2">
-          <h1 className="productName" >{product?.name ? product?.name : "---"}</h1>
-          <span>{product?.colorway ? product?.colorway : "---"}</span>
+          <h1 className="productName" 
+            style={{
+              fontFamily: 'SuisseIntlM',
+              fontSize: '16px',
+              marginBottom: '-1px'
+            }}
+           >{product?.name ? product?.name : "---"}</h1>
+          <span
+            style={{
+              fontSize: '14px',
+              fontFamily: 'SuisseIntlM'
+            }}
+          >{product?.colorway ? product?.colorway : "---"}</span>
         </div>
         <div className="row d-flex flex-row">
           <div className="smallBtnsContainer">
@@ -450,7 +476,7 @@ const Product = ({ allProducts }) => {
               className="btn smallBtns float-left float-lg-right float-xl-right"
               onClick={addtoFavorite}
             >
-              <FavoriteBorder />
+              <Favorite />
             </button>
             <button
               className="btn smallBtns float-left float-lg-right float-xl-right"
@@ -473,7 +499,7 @@ const Product = ({ allProducts }) => {
           open={shareShow}
           onCloseModal={() => setshareShow(!shareShow)}
         />
-        <div className="row d-flex mt-4 flex-row">
+        <div className="row d-flex flex-row">
           <div className="col-lg-6 col-md-12">
             <div className="row d-none d-lg-flex d-xl-flex flex-row">
               <div className="col-6">
@@ -501,6 +527,7 @@ const Product = ({ allProducts }) => {
               <SwiperSlide>
                 <img
                   className="img-fluid"
+                  style={{ margin: '0px auto 0px 5%', width: '90%' }}  
                   src={product.cover_image}
                   alt={product.sku_number}
                 />
@@ -508,7 +535,13 @@ const Product = ({ allProducts }) => {
               {pimagesTotal.map((name, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <img className="img-fluid" src={name} alt={name}></img>
+                    <img 
+                        className="img-fluid" 
+                        style={{ margin: '0px auto 0px 5%', width: '90%' }}  
+                        src={name} 
+                        alt={name}
+                    >
+                    </img>
                   </SwiperSlide>
                 );
               })}
@@ -605,51 +638,124 @@ const Product = ({ allProducts }) => {
         />
 
         <div className="row">
-          <h2 style={{fontSize: 25}} >Product Details</h2>
+          <h2 style={{ fontSize: 20, fontFamily: 'SuisseIntlM' }} className="productDetails" >Product Details</h2>
         </div>
         <div className="row d-flex flex-row">
           <div className="col-lg-6 col-md-12 mt-2">
-            <div className="row d-flex flex-row">
+            <div className="row d-flex flex-row mb-2">
               <div className="col-6">Style</div>
-              <div className="col-6">
+              <div className="col-6 text-right">
                 <span>
                   <b>{product?.sku_number ? product?.sku_number : "---"}</b>
                 </span>
               </div>
             </div>
-            <div className="row d-flex flex-row">
+            <div className="row d-flex flex-row mb-2">
               <div className="col-6">Colorway</div>
-              <div className="col-6">
+              <div className="col-6 text-right">
                 <span>
                   <b>{product?.colorway ? product?.colorway : "---"}</b>
                 </span>
               </div>
             </div>
-            <div className="row d-flex flex-row">
+            <div className="row d-flex flex-row mb-2">
               <div className="col-6">Retail Price</div>
-              <div className="col-6">
+              <div className="col-6 text-right">
                 <span>
                   <b>{product?.price ? product?.price : "---"}</b>
                 </span>
               </div>
             </div>
-            <div className="row d-flex flex-row">
+            <div className="row d-flex flex-row mb-3">
               <div className="col-6">Release Date</div>
-              <div className="col-6">
+              <div className="col-6 text-right">
                 <span>
                   <b>{product?.release_date ? product?.release_date : "---"}</b>
                 </span>
               </div>
             </div>
+            <hr />
           </div>
-          <div className="col-lg-6 col-md-12 d-flex flex-column mt-3">
+          <div className="col-lg-6 col-md-12 d-flex flex-column mt-3 mb-3">
             <span>
               <b>Product Description</b>
             </span>
-            <span>{product?.summary ? product?.summary : "---"}</span>
+            <span className="text-justify" >{product?.summary ? product?.summary : "---"}</span>
           </div>
+          <hr />
+          <div className="col-lg-12 col-md-12 d-flex flex-column mt-3">
+            <button className="btn" 
+              style={{ 
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between'                
+               }} 
+               onClick={
+                () => setShippingDetailsOpen(!shippingDetailsOpen )
+               }
+            >
+              <div>SHIPPING & RETURNS</div>
+              <div>
+                {
+                  shippingDetailsOpen && (
+                    <ArrowUpward />
+                  )
+                }
+                {
+                  !shippingDetailsOpen && (
+                    <ArrowDownward />
+                  )
+                }
+              </div>
+            </button>
+            
+            {
+              shippingDetailsOpen && (
+                <div>
+                  <div>
+                    <div className="mt-3">
+                      Cancelations
+                    </div>
+                    <div className="mt-3" >
+                      For sneakers, you may cancel your order within 3 hours of placing it or before it is confirmed by the seller - whichever comes first. If 3 hours have passed from when you placed the order and/or the seller has already confirmed the order, then the order cannot be canceled. If neither have occurred, you can cancel your order first by accessing it via “Track My Order” or “My Account,” clicking “Cancel Order” and following the instructions.
+                    </div>
+                    <div className="mt-3" >
+                      If you checked out as a guest, you will need to create a Flight Club account.
+                    </div>
+                  </div>
+                  <div>
+                    <div className="mt-3">
+                      Delivery
+                    </div>
+                    <div className="mt-3" >
+                      Delivery and processing speeds vary by pricing options. The following shipping estimates apply only to the contiguous US and exclude deliveries to PO boxes and military bases. All delivery times are estimates and are not guaranteed. Shipments may be affected by weather-related delays, carrier limitations or other events outside of our control.
+                    </div>
+                    <div className="mt-3" >
+                      "Lowest Price" orders may ship to Flight Club first for verification and typically take 7-10 business days (M-F, excluding holidays) to reach you. It will typically take 3-5 business days (M-F, excluding holidays) for a "Fastest To You" item, ordered before 2 PM ET with standard shipping, to be delivered.
+                    </div>
+                    <div className="mt-3" >
+                      Estimated delivery times do not apply to international orders. International customers are responsible for any additional fees or taxes after an item ships.
+                    </div>
+                  </div>
+                  <div>
+                    <div className="mt-3">
+                      Returns
+                    </div>
+                    <div className="mt-3" >
+                      All sales with Flight Club are final.
+                    </div>
+                    <div className="mt-3" >
+                      If you have any questions or concerns with regard to sizing or condition of a specific product on our site, please contact us before purchasing.
+                    </div>
+                  </div>  
+                </div>  
+              )
+            }
+
+
+          </div>
+          <hr className="mb-4 mt-3" />
         </div>
-        <hr className="my-4" />
         <div className="row">
           <h3 className="text-center">Thriller Verified Sneakers</h3>
           <p className="text-center">We Verify Every Item. Every Time.</p>
