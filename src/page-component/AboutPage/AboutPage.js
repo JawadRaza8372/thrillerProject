@@ -321,10 +321,10 @@ const AboutPage = () => {
       </div>
       <div
         className="row py-4 w-100 mx-auto overflow-hidden"
-        style={{ background: "#F4F3F1" }}
+        style={{ background: "black" }}
       >
         <div className="col-md-9 col-sm-10 my-5 mx-auto">
-          <h1 className="text-center mt-5">Contact Customer Care</h1>
+          <h1 className="text-center mt-5 text-white">Contact Customer Care</h1>
           <div className="row py-5">
             <div className="col-md-2 mb-2" ></div>
             <div className="col-md-8 col-sm-12 mb-2">
