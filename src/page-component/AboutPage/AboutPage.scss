@@ -1,14 +1,62 @@
 
 @media screen and (max-width: 480px) {
 
+  .footerHeading {
+    font-size: 27px !important;
+  }
+  .aboutPageSlider .slick-next::before, .slick-prev::before {
+    padding: 0px 10px 0px 10px !important;
+    border-radius: 30px !important;
+  }
+
+  .aboutPageSlider .slick-prev::before {
+    margin-left: 0px !important;
+
+  }
+  
+  .aboutPageSlider .slick-next::before {
+    margin-right: 0px !important;
+  }
+
   .contactCardsAbout img {
     width: 30px;
   }
 
   .aboutPostCardContainer {
-    width: 90% !important;
+    width: 75% !important;
     padding: 0px !important;
-    margin: 15px 0px 15px 4% !important;
+    margin: 15px 0px 15px 12.5% !important;
+  }
+
+  .aboutPostHeader {  
+    padding: 5px !important;
+  }
+  
+  
+  .aboutPostHeaderDetails h3 {
+    font-size: 13px !important;
+  }
+  
+  .aboutPostHeaderDetails h3 img {
+    width: 15px !important;
+  }
+  
+  .aboutPostHeaderDetails p {
+    font-size: 10px;
+  }
+  
+  
+  .aboutPostHeader button {
+    font-size: 10px;
+  }
+  
+  .aboutPostFooter {
+    padding: 10px !important;
+    font-size: 16px !important;
+  }
+  
+  .aboutPostHeaderAvatar {
+    width: 30px !important;
   }
 
   .stepsSection .step2, .stepsSection .step3 {
@@ -137,11 +185,41 @@
   }
 }
 
+.footerHeading {
+
+}
+
+.aboutPageSlider .slick-next::before, .slick-prev::before {
+  font-size: 35px !important;
+  background: white;
+  color: black !important;
+  font-family: monospace !important;
+  box-shadow: 0px 2px 8px 1px #00000040 !important;
+  padding: 3px 15px 5px 15px;
+  border-radius: 30px;
+}
+
+.aboutPageSlider .slick-prev::before {
+  content: '<' !important;
+  margin-left: -100px;
+}
+
+.aboutPageSlider .slick-next::before {
+  content: '>' !important;
+  margin-right: -100px;
+}
+
+.aboutPageSlider .slick-next {
+}
+
+.aboutPageSlider .slick-prev {
+
+}
+
 .aboutPostCardContainer {
-  width: 450px;
+  width: 93%;  
   box-shadow: 0px 4px 8px 0px #00000040;
   padding: 40px;
-  
   margin: 20px 20px 20px 20px;
 }
 

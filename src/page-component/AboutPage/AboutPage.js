@@ -281,7 +281,7 @@ const AboutPage = () => {
             ))}
           </div>
         </div> */}
-        <div className="col-md-9 col-sm-10 mx-auto">
+        <div className="col-md-9 col-sm-10 mx-auto aboutPageSlider">
           <Slider {...settings}>
             {postArray.map((dat, index) => (
                 <a href={dat.url} target="_blank">
@@ -327,11 +327,11 @@ const AboutPage = () => {
         style={{ background: "black" }}
       >
         <div className="col-md-9 col-sm-10 my-5 mx-auto">
-          <h1 className="text-center mt-5 text-white">Contact Customer Care</h1>
-          <div className="row py-5">
+          <h1 className="text-center mt-3 text-white footerHeading">Contact Customer Care</h1>
+          <div className="row">
             <div className="col-md-2 mb-2" ></div>
             <div className="col-md-8 col-sm-12 mb-2">
-              <div className="row py-5">
+              <div className="row py-3">
                 <div className="col-4 mx-auto mb-2">
                     <div className="contactCardsAbout">
                       <img src={aboutUsContactDMUS} />

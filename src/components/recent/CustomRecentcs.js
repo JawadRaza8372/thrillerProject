@@ -16,7 +16,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { makingValidName } from "../../Constants/Functions";
 
-function CustomRecentcs({ tag, brands }) {
+function CustomRecentcs({ tag, brands, from, to}) {
   const history = useHistory();
   const responsive = {
     superLargeDesktop: {
@@ -46,7 +46,7 @@ function CustomRecentcs({ tag, brands }) {
       </div>
       <div className="row">
         <div className="productShowDivBrnadsWala">
-          {brands?.slice(0, 5).map((elem, index) => {
+          {brands?.slice(from, to).map((elem, index) => {
             return (
               <>
                 <Link to={`/browse/${elem.collection_id}/`} key={index}>

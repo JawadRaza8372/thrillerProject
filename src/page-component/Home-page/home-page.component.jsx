@@ -9,9 +9,8 @@ import localStorage from "redux-persist/es/storage";
 import SlideShow from "../../components/slideshow/Slideshow";
 import MultiBrandsRecentcs from "../../components/recent/MultiBrandsRecentcs";
 import HomeBanner from "../../components/home-banner/Banner";
-import banner1 from '../../assets/Home/banners/BelowRetailAAFocus_Primary_Desktop.webp'
-import banner2 from '../../assets/Home/banners/OuterwearGiftGuide_Primary_Desktop.webp'
-import banner3 from '../../assets/Home/banners/Popular_Gaming_Controllers_BannersPrimary_Desktop.webp'
+import banner1 from '../../assets/Home/banners/banner3.png';
+import banner2 from '../../assets/Home/banners/banner2.png';
 
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
@@ -65,21 +64,30 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <NewCustomRecentcs
             name={"Just Dropped"}
             tag={"Recommended For You"}
-            toolTip={"These products are inspired by your previous browsing history."}
+            toolTip={"The latest drops from retailers across the globe"}
             productData={allProducts}
           />
-          <CustomRecentcs tag="Popular Brands" brands={allBrands} />
+          <CustomRecentcs tag="Popular Brands" brands={allBrands} from={0} to={5} />
+
+          <NewCustomRecentcs
+            toolTip={"'Trending Sneakers' products are a curated collection of our best selling items"}
+            name={"Most Popular"}
+            tag={"Trending Sneakers"}
+            productData={allProducts}
+          />
 
           <div>
             <img src={banner1} style={{width: '100%', marginTop: 40}} />
           </div>
 
-          <NewCustomRecentcs
+          <CustomRecentcs tag="Seasonal Favourite" brands={allBrands} from={5} to={10} />
+
+          {/* <NewCustomRecentcs
             toolTip={"'Seasonal Favourite' products are a curated collection of our best selling items"}
             name={"Most Popular"}
             tag={"Seasonal Favourite"}
             productData={allProducts}
-          />
+          /> */}
           <NewCustomRecentcs
             name={"Yeezy"}
             tag={"Adidas Yeezy"}

@@ -6,8 +6,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
-import img1 from "../../assets/1st.png";
-import img2 from "../../assets/2nd.png";
+import img1 from '../../assets/Home/banners/banner1.png';
+import img2 from '../../assets/Home/banners/banner2.png';
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
