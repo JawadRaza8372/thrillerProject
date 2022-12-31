@@ -105,12 +105,16 @@ export const HomePage = ({ allBrands, allProducts }) => {
             <img src={banner2} style={{width: '100%', marginTop: 40}} />
           </div>
 
-          <NewCustomRecentcs
+          {/* <NewCustomRecentcs
             toolTip={"'Designer Collection' products are a curated collection of our best selling items"}
             name={"Favorites"}
             tag={"Designer Collection"}
             productData={allProducts}
-          />
+          /> */}
+
+          <CustomRecentcs tag="Designer Collection" brands={allBrands} from={10} to={15} />
+
+
           <NewCustomRecentcs
             toolTip={"'Travis Scott' products are a curated collection of our best selling items"}
             name={"Travis Scot"}
