@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="footerMain">
       {/* <hr />   */}
-      <Row justify="center" align="middle" className="centerr footer">
+      <Row justify="center" align="middle" className="centerr footer mt-2" style={{ background: 'white' }} >
         <Col xs={12} sm={12} md={12} lg={12} xl={10} className="footerLogos">
           <a href="https://www.facebook.com/ThrillerMiddleEast/?__tn__=-UC*F">
             {/* <i className="fab fa-facebook-square fa-2x mx-3 logos"></i> */}

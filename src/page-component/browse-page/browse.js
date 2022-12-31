@@ -19,6 +19,7 @@ import {
 import Footer from "../../components/footer/Footer";
 import Links from "../../components/links/Links";
 import { Fragment } from "react";
+import { BASE_URL } from "../../Constants/Global";
 
 const Browse = (props) => {
   const [dataLoad, setDataLoad] = useState(false);
@@ -27,7 +28,7 @@ const Browse = (props) => {
   var id = useParams().id;
   var keyword = useParams().keyword;
   var sizee = useParams().sizee;
-  console.log("###### size ########", sizee);
+  console.log("###### size ########", sizee, id, keyword);
 
   window.localStorage.setItem("myCollectionID", id);
 
@@ -79,208 +80,209 @@ const Browse = (props) => {
   var check = false;
 
   useEffect(() => {
-    async function load() {
-      setProducts([]);
-      if (isNaN(id) && keyword !== undefined) {
-        console.log("################# 001 ################");
-        //console.log("Search by keyword:", keyword);
-        setCollectionData({
-          ...collectionData,
-          title: '"' + keyword + '"',
-        });
-        //Load Products
-        var urlProducts = `https://api.thrillerme.com/shoes/getByName/${keyword}`;
-        var encodedURLProducts = encodeURI(urlProducts);
-        await axios.get(encodedURLProducts).then((res) => {
-          setProducts([]);
-          console.log(res);
-          setProducts(res.data);
-          window.localStorage.setItem("nav", `Collection/Shop All`);
-        });
-        // if (!filterComponent) {
-        //   var filterDataCol = JSON.parse(window.localStorage.getItem("filter"));
-        //   if (filterDataCol === null) {
-        //     console.log("filtercheck");
-        //   } else {
-        //     setProducts([]);
-        //     console.log("loadingfilterdata");
-        //     console.log(filterDataCol);
-        //     setProducts(filterDataCol);
-        //   }
-        // }
-      } else if (id > 0) {
-        console.log("################# 002 ################");
+    Load();
+    // async function load() {
+    //   setProducts([]);
+    //   if (isNaN(id) && keyword !== undefined) {
+    //     console.log("################# 001 ################");
+    //     //console.log("Search by keyword:", keyword);
+    //     setCollectionData({
+    //       ...collectionData,
+    //       title: '"' + keyword + '"',
+    //     });
+    //     //Load Products
+    //     var urlProducts = BASE_URL+`shoes/getByName/${keyword}`;
+    //     var encodedURLProducts = encodeURI(urlProducts);
+    //     await axios.get(encodedURLProducts).then((res) => {
+    //       setProducts([]);
+    //       console.log(res);
+    //       setProducts(res.data);
+    //       window.localStorage.setItem("nav", `Collection/Shop All`);
+    //     });
+    //     // if (!filterComponent) {
+    //     //   var filterDataCol = JSON.parse(window.localStorage.getItem("filter"));
+    //     //   if (filterDataCol === null) {
+    //     //     console.log("filtercheck");
+    //     //   } else {
+    //     //     setProducts([]);
+    //     //     console.log("loadingfilterdata");
+    //     //     console.log(filterDataCol);
+    //     //     setProducts(filterDataCol);
+    //     //   }
+    //     // }
+    //   } else if (id > 0) {
+    //     console.log("################# 002 ################");
 
-        if (sizee !== undefined) {
-          //Load Products
-          var urlProducts = `https://api.thrillerme.com/shoes/collections/${id}/size/${sizee}`;
-          console.log(urlProducts);
-          var encodedURLProducts = encodeURI(urlProducts);
-          await axios
-            .get(encodedURLProducts)
-            .then((res) => {
-              //console.log(res.data);
-              setProducts(res.data);
-            })
-            .catch((e) => {
-              console.error(e);
-            });
-        } else if (!filterComponent) {
-          //console.log("Filtered.....");
-          var url = `https://api.thrillerme.com/collections/${id}`;
-          var encodedURL = encodeURI(url);
-          await axios.get(encodedURL).then((res) => {
-            //console.log(res);
-            setCollectionData(res.data);
-            window.localStorage.setItem(
-              "nav",
-              `Collection/${collectionData.title}`
-            );
-          });
+    //     if (sizee !== undefined) {
+    //       //Load Products
+    //       var urlProducts = BASE_URL+`collections/${id}/size/${sizee}`;
+    //       console.log(urlProducts);
+    //       var encodedURLProducts = encodeURI(urlProducts);
+    //       await axios
+    //         .get(encodedURLProducts)
+    //         .then((res) => {
+    //           //console.log(res.data);
+    //           setProducts(res.data);
+    //         })
+    //         .catch((e) => {
+    //           console.error(e);
+    //         });
+    //     } else if (!filterComponent) {
+    //       //console.log("Filtered.....");
+    //       var url = BASE_URL+`collections/${id}`;
+    //       var encodedURL = encodeURI(url);
+    //       await axios.get(encodedURL).then((res) => {
+    //         //console.log(res);
+    //         setCollectionData(res.data);
+    //         window.localStorage.setItem(
+    //           "nav",
+    //           `Collection/${collectionData.title}`
+    //         );
+    //       });
 
-          //Load Products
-          var urlProducts = `https://api.thrillerme.com/shoes/collections/${id}`;
-          var encodedURLProducts = encodeURI(urlProducts);
-          await axios(encodedURLProducts).then((res) => {
-            //console.log("Res", res.data);
-            setProducts(res.data);
-          });
+    //       //Load Products
+    //       var urlProducts = BASE_URL+`shoes/collections/${id}`;
+    //       var encodedURLProducts = encodeURI(urlProducts);
+    //       await axios(encodedURLProducts).then((res) => {
+    //         //console.log("Res", res.data);
+    //         setProducts(res.data);
+    //       });
 
-          // var filterDataId = JSON.parse(window.localStorage.getItem("filter"));
-          // if (filterDataId === null) {
-          //   console.log("filtercheck");
-          // } else {
-          //   setProducts([]);
-          //   console.log("loadingfilterdata");
-          //   console.log(filterDataId);
-          //   setProducts(filterDataId);
-          // }
+    //       // var filterDataId = JSON.parse(window.localStorage.getItem("filter"));
+    //       // if (filterDataId === null) {
+    //       //   console.log("filtercheck");
+    //       // } else {
+    //       //   setProducts([]);
+    //       //   console.log("loadingfilterdata");
+    //       //   console.log(filterDataId);
+    //       //   setProducts(filterDataId);
+    //       // }
 
-          // axios
-          //   .get(encodedURLProducts)
-          //   .then((res) => {
-          //     //console.log("Data", res.data);
-          //     ////setProducts([]);
-          //   })
-          //   .catch((e) => {
-          //     console.error(e);
-          //   });
-        } else {
-          //console.log("Un Filtered.....");
-          var url = `https://api.thrillerme.com/collections/${id}`;
-          var encodedURL = encodeURI(url);
-          await axios.get(encodedURL).then((res) => {
-            setCollectionData(res.data);
-            window.localStorage.setItem(
-              "nav",
-              `Collection/${collectionData.title}`
-            );
-          });
+    //       // axios
+    //       //   .get(encodedURLProducts)
+    //       //   .then((res) => {
+    //       //     //console.log("Data", res.data);
+    //       //     ////setProducts([]);
+    //       //   })
+    //       //   .catch((e) => {
+    //       //     console.error(e);
+    //       //   });
+    //     } else {
+    //       //console.log("Un Filtered.....");
+    //       var url = BASE_URL+`collections/${id}`;
+    //       var encodedURL = encodeURI(url);
+    //       await axios.get(encodedURL).then((res) => {
+    //         setCollectionData(res.data);
+    //         window.localStorage.setItem(
+    //           "nav",
+    //           `Collection/${collectionData.title}`
+    //         );
+    //       });
 
-          if (sizee !== undefined) {
-            //Load Products
-            var urlProducts = `https://api.thrillerme.com/shoes/collections/${id}/size/${sizee}`;
-            var encodedURLProducts = encodeURI(urlProducts);
-            await axios
-              .get(encodedURLProducts)
-              .then((res) => {
-                //console.log(res.data);
-                setProducts(res.data);
-              })
-              .catch((e) => {
-                console.error(e);
-              });
-          } else {
-            //Load Products
-            var urlProducts = `https://api.thrillerme.com/shoes/collections/${id}`;
-            var encodedURLProducts = encodeURI(urlProducts);
-            await axios
-              .get(encodedURLProducts)
-              .then((res) => {
-                //console.log(res.data);
-                setProducts(res.data);
-              })
-              .catch((e) => {
-                console.error(e);
-              });
-          }
+    //       if (sizee !== undefined) {
+    //         //Load Products
+    //         var urlProducts = BASE_URL+`shoes/collections/${id}/size/${sizee}`;
+    //         var encodedURLProducts = encodeURI(urlProducts);
+    //         await axios
+    //           .get(encodedURLProducts)
+    //           .then((res) => {
+    //             //console.log(res.data);
+    //             setProducts(res.data);
+    //           })
+    //           .catch((e) => {
+    //             console.error(e);
+    //           });
+    //       } else {
+    //         //Load Products
+    //         var urlProducts = BASE_URL+`shoes/collections/${id}`;
+    //         var encodedURLProducts = encodeURI(urlProducts);
+    //         await axios
+    //           .get(encodedURLProducts)
+    //           .then((res) => {
+    //             //console.log(res.data);
+    //             setProducts(res.data);
+    //           })
+    //           .catch((e) => {
+    //             console.error(e);
+    //           });
+    //       }
 
-          // var filterData = JSON.parse(window.localStorage.getItem("filter"));
-          // if (filterData === null) {
-          //   console.log("filtercheck");
-          // } else {
-          //   setProducts([]);
-          //   console.log("loadingfilterdata");
-          //   console.log(filterData);
-          //   setProducts(filterData);
-          // }
-        }
-      } else {
-        console.log("################# 003 ################", sizee);
+    //       // var filterData = JSON.parse(window.localStorage.getItem("filter"));
+    //       // if (filterData === null) {
+    //       //   console.log("filtercheck");
+    //       // } else {
+    //       //   setProducts([]);
+    //       //   console.log("loadingfilterdata");
+    //       //   console.log(filterData);
+    //       //   setProducts(filterData);
+    //       // }
+    //     }
+    //   } else {
+    //     console.log("################# 003 ################", sizee);
 
-        if (sizee !== undefined) {
-          //Load by size
-          const { data } = await axios.get(
-            `https://api.thrillerme.com/shoes/getBySize/${sizee}`
-          );
-          if (data.length === 0) {
-            setProducts([]);
-          } else {
-            setProducts([]);
-            window.localStorage.setItem("filter", JSON.stringify(data));
-            setProducts(data);
-          }
-        } else {
-          console.log(
-            "################# filter ################",
-            filterComponent
-          );
+    //     if (sizee !== undefined) {
+    //       //Load by size
+    //       const { data } = await axios.get(
+    //         `https://api.thrillerme.com/shoes/getBySize/${sizee}`
+    //       );
+    //       if (data.length === 0) {
+    //         setProducts([]);
+    //       } else {
+    //         setProducts([]);
+    //         window.localStorage.setItem("filter", JSON.stringify(data));
+    //         setProducts(data);
+    //       }
+    //     } else {
+    //       console.log(
+    //         "################# filter ################",
+    //         filterComponent
+    //       );
 
-          //Load Products
-          var urlProducts = `https://api.thrillerme.com/shoes/priceDesc`;
-          var encodedURLProducts = encodeURI(urlProducts);
-          await axios.get(encodedURLProducts).then((res) => {
-            setProducts(res.data);
+    //       //Load Products
+    //       var urlProducts = `https://api.thrillerme.com/shoes/priceDesc`;
+    //       var encodedURLProducts = encodeURI(urlProducts);
+    //       await axios.get(encodedURLProducts).then((res) => {
+    //         setProducts(res.data);
 
-            window.localStorage.setItem("nav", `Collection/Shop All`);
-          });
+    //         window.localStorage.setItem("nav", `Collection/Shop All`);
+    //       });
 
-          // if (!filterComponent) {
-          //   //Load Products
-          //   var urlProducts = `https://api.thrillerme.com/shoes/priceDesc`;
-          //   var encodedURLProducts = encodeURI(urlProducts);
-          //   await axios.get(encodedURLProducts).then((res) => {
-          //     setProducts(res.data);
+    //       // if (!filterComponent) {
+    //       //   //Load Products
+    //       //   var urlProducts = `https://api.thrillerme.com/shoes/priceDesc`;
+    //       //   var encodedURLProducts = encodeURI(urlProducts);
+    //       //   await axios.get(encodedURLProducts).then((res) => {
+    //       //     setProducts(res.data);
 
-          //     window.localStorage.setItem("nav", `Collection/Shop All`);
-          //   });
-          //   var filterDataAll = JSON.parse(window.localStorage.getItem("filter"));
-          //   if (filterDataAll === null) {
-          //     console.log("filtercheck");
-          //   } else {
-          //     setProducts([]);
-          //     console.log("loadingfilterdata");
-          //     console.log(filterDataAll);
-          //     setProducts(filterDataAll);
-          //   }
-          // }
-        }
-      }
-      if (products.length === 0) {
-        check = true;
-      }
-      //console.log("Found: ", products.length);
-      //console.log("Check: ", check);
+    //       //     window.localStorage.setItem("nav", `Collection/Shop All`);
+    //       //   });
+    //       //   var filterDataAll = JSON.parse(window.localStorage.getItem("filter"));
+    //       //   if (filterDataAll === null) {
+    //       //     console.log("filtercheck");
+    //       //   } else {
+    //       //     setProducts([]);
+    //       //     console.log("loadingfilterdata");
+    //       //     console.log(filterDataAll);
+    //       //     setProducts(filterDataAll);
+    //       //   }
+    //       // }
+    //     }
+    //   }
+    //   if (products.length === 0) {
+    //     check = true;
+    //   }
+    //   //console.log("Found: ", products.length);
+    //   //console.log("Check: ", check);
 
-      setFooter();
-    }
+    //   setFooter();
+    // }
     ////console.log("Rendered...");
     const localStorageSet = window.localStorage.getItem("selectedSection");
     if (localStorageSet !== null) {
       checkSelectedSection();
     } else {
       // Load();
-      load();
+      Load();
 
       ////console.log("load items");
       // setLoaded(true);
@@ -288,110 +290,110 @@ const Browse = (props) => {
     setLoaded(true);
   }, [keyword, id, sizee]);
   // Load, id, keyword, filterComponent
-  // useEffect(() => {
-  //   // Load()
-  //   ////console.log("new data");
-  //   ////console.log(check);
-  //   ////console.log(products);
-  //   // setLoaded(true);
-  //   // setDataLoad(true)
-  // }, [filterComponent]);
+  useEffect(() => {
+    // Load()
+    ////console.log("new data");
+    ////console.log(check);
+    ////console.log(products);
+    // setLoaded(true);
+    // setDataLoad(true)
+  }, [filterComponent]);
   // testing clgs
 
   // setProducts(tempAray)
   // Similar to componentDidMount and componentDidUpdate:
 
-  // async function Load() {
-  //   ////console.log("collection_id: ", id);
+  async function Load() {
+    ////console.log("collection_id: ", id);
 
-  //   if (keyword) {
-  //     //console.log("################# 001 ################");
-  //     if (!filterComponent) {
-  //       //console.log("Search by keyword:", keyword);
-  //       setCollectionData({
-  //         ...collectionData,
-  //         title: '"' + keyword + '"',
-  //       });
-  //       //Load Products
-  //       var urlProducts = `https://api.thrillerme.com/shoes/getByName/${keyword}`;
-  //       var encodedURLProducts = encodeURI(urlProducts);
-  //       axios.get(encodedURLProducts).then((res) => {
-  //         //console.log(res);
-  //         setProducts(res.data);
-  //         window.localStorage.setItem("nav", `Collection/Shop All`);
-  //       });
-  //     }
-  //   } else if (id > 0) {
-  //     //console.log("################# 002 ################");
-  //     if (!filterComponent) {
-  //       //console.log("Filtered.....");
-  //       var url = `https://api.thrillerme.com/collections/${id}`;
-  //       var encodedURL = encodeURI(url);
-  //       axios.get(encodedURL).then((res) => {
-  //         setCollectionData(res.data);
-  //         window.localStorage.setItem("nav", `Collection/${collectionData.title}`);
-  //       });
+    if (keyword) {
+      //console.log("################# 001 ################");
+      if (!filterComponent) {
+        //console.log("Search by keyword:", keyword);
+        setCollectionData({
+          ...collectionData,
+          title: '"' + keyword + '"',
+        });
+        //Load Products
+        var urlProducts = BASE_URL+`shoes/getByName/${keyword}`;
+        var encodedURLProducts = encodeURI(urlProducts);
+        axios.get(encodedURLProducts).then((res) => {
+          //console.log(res);
+          setProducts(res.data);
+          window.localStorage.setItem("nav", `Collection/Shop All`);
+        });
+      }
+    } else if (id > 0) {
+      //console.log("################# 002 ################");
+      if (!filterComponent) {
+        //console.log("Filtered.....");
+        var url = BASE_URL+`collections/${id}`;
+        var encodedURL = encodeURI(url);
+        axios.get(encodedURL).then((res) => {
+          setCollectionData(res.data);
+          window.localStorage.setItem("nav", `Collection/${collectionData.title}`);
+        });
 
-  //       //Load Products
-  //       var urlProducts = `https://api.thrillerme.com/shoes/collections/${id}`;
-  //       var encodedURLProducts = encodeURI(urlProducts);
-  //       const res = await axios(encodedURLProducts);
-  //       //console.log("Res", res.data);
-  //       setProducts(res.data);
+        //Load Products
+        var urlProducts = BASE_URL+`shoes/collections/${id}`;
+        var encodedURLProducts = encodeURI(urlProducts);
+        const res = await axios(encodedURLProducts);
+        //console.log("Res", res.data);
+        setProducts(res.data);
 
-  //       // axios
-  //       //   .get(encodedURLProducts)
-  //       //   .then((res) => {
-  //       //     //console.log("Data", res.data);
-  //       //     ////setProducts([]);
-  //       //   })
-  //       //   .catch((e) => {
-  //       //     console.error(e);
-  //       //   });
-  //     } else {
-  //       //console.log("Un Filtered.....");
-  //       var url = `https://api.thrillerme.com/collections/${id}`;
-  //       var encodedURL = encodeURI(url);
-  //       axios.get(encodedURL).then((res) => {
-  //         setCollectionData(res.data);
-  //         window.localStorage.setItem("nav", `Collection/${collectionData.title}`);
-  //       });
+        // axios
+        //   .get(encodedURLProducts)
+        //   .then((res) => {
+        //     //console.log("Data", res.data);
+        //     ////setProducts([]);
+        //   })
+        //   .catch((e) => {
+        //     console.error(e);
+        //   });
+      } else {
+        //console.log("Un Filtered.....");
+        var url = BASE_URL+`collections/${id}`;
+        var encodedURL = encodeURI(url);
+        axios.get(encodedURL).then((res) => {
+          setCollectionData(res.data);
+          window.localStorage.setItem("nav", `Collection/${collectionData.title}`);
+        });
 
-  //       //Load Products
-  //       var urlProducts = `https://api.thrillerme.com/shoes/collections/${id}`;
-  //       var encodedURLProducts = encodeURI(urlProducts);
-  //       axios
-  //         .get(encodedURLProducts)
-  //         .then((res) => {
-  //           //console.log(res.data);
-  //           ////setProducts([]);
-  //           setProducts(res.data);
-  //         })
-  //         .catch((e) => {
-  //           console.error(e);
-  //         });
-  //     }
-  //   } else {
-  //     //console.log("################# 003 ################");
-  //     if (!filterComponent) {
-  //       //Load Products
-  //       var urlProducts = `https://api.thrillerme.com/shoes/`;
-  //       var encodedURLProducts = encodeURI(urlProducts);
-  //       axios.get(encodedURLProducts).then((res) => {
-  //         //setProducts([]);
-  //         setProducts(res.data);
-  //         window.localStorage.setItem("nav", `Collection/Shop All`);
-  //       });
-  //     }
-  //   }
-  //   if (products.length === 0) {
-  //     check = true;
-  //   }
-  //   //console.log("Found: ", products.length);
-  //   //console.log("Check: ", check);
+        //Load Products
+        var urlProducts = BASE_URL+`shoes/collections/${id}`;
+        var encodedURLProducts = encodeURI(urlProducts);
+        axios
+          .get(encodedURLProducts)
+          .then((res) => {
+            //console.log(res.data);
+            ////setProducts([]);
+            setProducts(res.data);
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      }
+    } else {
+      //console.log("################# 003 ################");
+      if (!filterComponent) {
+        //Load Products
+        var urlProducts = BASE_URL+`shoes/`;
+        var encodedURLProducts = encodeURI(urlProducts);
+        axios.get(encodedURLProducts).then((res) => {
+          //setProducts([]);
+          setProducts(res.data);
+          window.localStorage.setItem("nav", `Collection/Shop All`);
+        });
+      }
+    }
+    if (products.length === 0) {
+      check = true;
+    }
+    //console.log("Found: ", products.length);
+    //console.log("Check: ", check);
 
-  //   setFooter();
-  // }
+    setFooter();
+  }
 
   return (
     <div>
