@@ -214,20 +214,35 @@ const Searchbar = ({ searchbar, setSearchbar, allProducts, allBrands }) => {
                   // verticalAlign: 'center',
                   fontWeight: "1000",
                   fontSize: "18px",
-                  // textTransform: "uppercase",
-                  width: '60%',
-                  marginRight: '10px'
+                  textTransform: "uppercase",
+                  // width: '60%',
+                  // marginRight: '10px'
                 }}
                 name="input"
                 onChange={handlechange}
                 value={inputValue}
-                placeholder="Search.."
+                placeholder="TYPE TO SEARCH"
               />
-              {/* <i className="fas fa-search"></i> */}
-              <img src={searchIcon} />
+              <i className="fa fa-search"></i>
+              {/* <img src={searchIcon} /> */}
             </form>
           </div>
         </div>
+{/* 
+        <div class="searchBox">
+          <div class="search-container">
+            <form>
+              <input 
+                name="input" 
+                placeholder="TYPE TO SEARCH" 
+                value="" 
+                style="font-weight: 1000; font-size: 18px; text-transform: uppercase;"
+              >
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </form>
+          </div>
+        </div> */}
+
         {isSearching ? (
           <i
             className="fas fa-circle-notch fa-spin"
