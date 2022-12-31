@@ -15,12 +15,12 @@ import banner2NewYear from '../../assets/Home/banners/banner4NewYear.png';
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
   const topGreyNavugation = [
-    { to: "/", title: "Nike" },
-    { to: "/", title: "Jordan" },
-    { to: "/", title: "Adidas" },
-    { to: "/", title: "Supreme" },
-    { to: "/", title: "Yeezy Slides" },
-    { to: "/", title: "Travis Scott" }
+    { to: "#", title: "Nike" },
+    { to: "browse/20/", title: "Jordan" },
+    { to: "#", title: "Adidas" },
+    { to: "browse/29/", title: "Supreme" },
+    { to: "browse/22/", title: "Yeezy Slides" },
+    { to: "browse/24/", title: "Travis Scott" }
   ];
   const setLocalStorage = (name) => {
     window.localStorage.setItem("selectedSection", JSON.stringify(name));
