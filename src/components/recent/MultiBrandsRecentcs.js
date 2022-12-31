@@ -102,7 +102,7 @@ const MultiBrandsRecentcs = ({ allProducts, allBrands, tagsArry }) => {
         <div className="productShowDivBrands">
           {finalArray.map((dat, index) => (
             <div className="columnProductContainer" key={index}>
-              <h5 className="my-3 mx-1 text-center slidersHeading">{dat.brandName}</h5>
+              <h5 className="my-3 mx-1 text-center slidersHeading">{dat.brandName == "Travis Scot" ? "Travis Scott" : dat.brandName}</h5>
               <div className="cardContainers">
                 {dat?.data?.map((dam, ind) => {
                   const newname = makingValidName(`${dam.name}`);

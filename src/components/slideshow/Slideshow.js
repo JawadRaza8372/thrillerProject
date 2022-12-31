@@ -60,7 +60,7 @@ const Slideshow = () => {
     >
       {slideshowdata.map((dat, index) => (
         <Carousel.Item>
-          <Link to={dar.link} key={index}>
+          <Link to={dat.link} key={index}>
             <img
               className="img-fluid"
               src={dat.source}

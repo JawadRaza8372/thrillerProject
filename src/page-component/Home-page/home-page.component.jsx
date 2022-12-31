@@ -93,7 +93,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <NewCustomRecentcs
             name={"Yeezy"}
             tag={"Adidas Yeezy"}
-            toolTip={nukk}
+            toolTip={null}
             productData={allProducts}
           />
           <NewCustomRecentcs
