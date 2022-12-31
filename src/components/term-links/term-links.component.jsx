@@ -4,8 +4,8 @@ import "./term-links.styles.scss";
 export const TermLinks = () => {
   return (
     <div className="term-links-container">
-      <a className="term_link_a" href="/help">
-        HELP
+      <a className="term_link_a" href="/about">
+        ABOUT
       </a>
       <p className="term_link_p">|</p>
       <a className="term_link_a" href="/privacy">

@@ -3,12 +3,13 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./List.css";
 import { makingValidName } from "../../Constants/Functions";
+import { BASE_URL } from "../../Constants/Global";
 const List = ({ title, collection_id }) => {
   const [items, setItems] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
-    var url = `https://api.thrillerme.com/shoes/footerItem/${collection_id}/7`;
+    var url = BASE_URL+`shoes/footerItem/${collection_id}/7`;
     axios
       .get(url)
       .then((res) => {
