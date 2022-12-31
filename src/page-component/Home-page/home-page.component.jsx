@@ -10,7 +10,7 @@ import SlideShow from "../../components/slideshow/Slideshow";
 import MultiBrandsRecentcs from "../../components/recent/MultiBrandsRecentcs";
 import HomeBanner from "../../components/home-banner/Banner";
 import banner1 from '../../assets/Home/banners/banner3.png';
-import banner2 from '../../assets/Home/banners/banner2.png';
+import banner2NewYear from '../../assets/Home/banners/banner4NewYear.png';
 
 export const HomePage = ({ allBrands, allProducts }) => {
   const newhistory = useHistory();
@@ -63,7 +63,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
         
           <NewCustomRecentcs
             name={"Just Dropped"}
-            tag={"Recommended For You"}
+            tag={"Just Dropped"}
             toolTip={"The latest drops from retailers across the globe"}
             productData={allProducts}
           />
@@ -77,7 +77,9 @@ export const HomePage = ({ allBrands, allProducts }) => {
           />
 
           <div>
-            <img src={banner1} style={{width: '100%', marginTop: 40}} />
+            <Link to={'/browse/65/'}>
+              <img src={banner1} style={{width: '100%', marginTop: 40}} />
+            </Link>
           </div>
 
           <CustomRecentcs tag="Seasonal Favourite" brands={allBrands} from={5} to={10} />
@@ -91,18 +93,18 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <NewCustomRecentcs
             name={"Yeezy"}
             tag={"Adidas Yeezy"}
-            toolTip={"'Adidas Yeezy' products are a curated collection of our best selling items"}
+            toolTip={nukk}
             productData={allProducts}
           />
           <NewCustomRecentcs
-            toolTip={"'Nike Dunk' products are a curated collection of our best selling items"}
+            toolTip={null}
             name={"Dunks"}
             tag={"Nike Dunk"}
             productData={allProducts}
           />
 
           <div>
-            <img src={banner2} style={{width: '100%', marginTop: 40}} />
+              <img src={banner2NewYear} style={{width: '100%', marginTop: 40}} />
           </div>
 
           {/* <NewCustomRecentcs
@@ -116,7 +118,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
 
 
           <NewCustomRecentcs
-            toolTip={"'Travis Scott' products are a curated collection of our best selling items"}
+            toolTip={null}
             name={"Travis Scot"}
             tag={"Travis Scott"}
             productData={allProducts}
@@ -124,7 +126,7 @@ export const HomePage = ({ allBrands, allProducts }) => {
           <NewCustomRecentcs
             name={"Jordon 1"}
             toolTip={"'Brought Back From Collection' products are a curated collection of our best selling items"}
-            tag={"Brought Back From Collection"}
+            tag={"Brought Back From Time"}
             productData={allProducts}
           />
           <MultiBrandsRecentcs

@@ -46,7 +46,7 @@ const Slideshow = () => {
       //console.log(banner);
     });
   }
-  const slideshowdata = [{ source: img1 }, { source: img2 }];
+  const slideshowdata = [{ source: img1, link: 'browse/80/' }, { source: img2, link: 'browse/65/' }];
   return (
     <Carousel
       interval={7000}
@@ -60,11 +60,13 @@ const Slideshow = () => {
     >
       {slideshowdata.map((dat, index) => (
         <Carousel.Item>
-          <img
-            className="img-fluid"
-            src={dat.source}
-            alt={`image number ${index}`}
-          />
+          <Link to={dar.link} key={index}>
+            <img
+              className="img-fluid"
+              src={dat.source}
+              alt={`image number ${index}`}
+            />
+          </Link>
         </Carousel.Item>
       ))}
     </Carousel>
