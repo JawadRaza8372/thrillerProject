@@ -105,7 +105,7 @@
   }
   .footerMain {
     margin-top: auto;
-    background-color: black;
+    /* background-color: black; */
     color: gray;
     height: 60px;
     z-index: 950;
