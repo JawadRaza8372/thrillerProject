@@ -1,4 +1,4 @@
-import thrillerVerified from "../../assets/thrillverf.png";
+import thrillerVerified from "../../assets/thrillverf.svg";
 import React, { useEffect, useState } from "react";
 import PillContainer from "../../components/product-page-pills/PillContainer";
 import Recentcs from "../../components/suggestions/Suggestion";
@@ -59,13 +59,21 @@ import {
   AddCircleOutline,
   ArrowDownward,
   Favorite,
-  KeyboardArrowDown,
   ShareOutlined,
-  ArrowUpward
+  ArrowUpward,
+  KeyboardArrowDown,
+  KeyboardArrowUp,
 } from "@material-ui/icons";
 import Bolt from "../../assets/bolt.png";
 import ShareModal from "../../components/product-page-pills/ShareModal";
 import ThreeBannerResponsive from "../../components/ThreeBannerResponsive/ThreeBannerResponsive";
+import thrillerVerifiedIcon from '../../assets/product/thrillerVerifiedIcon.svg';
+import startSellingAsab from '../../assets/product/startSellingAsab.svg';
+import globalAccessIcon from '../../assets/product/globalAccessIcon.svg';
+import aboutUsContactDMUS from '../../assets/aboutUs/aboutUsContactDMUS.svg';
+import aboutUsContactEmail from '../../assets/aboutUs/aboutUsContactEmail.svg';
+import aboutUsContactWhatsapp from '../../assets/aboutUs/aboutUsContactWhatsapp.svg';
+import shareIcon from '../../assets/product/shareIcon.svg';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -96,7 +104,8 @@ const Product = ({ allProducts }) => {
   const [shareShow, setshareShow] = useState(false);
 
   const [shippingDetailsOpen, setShippingDetailsOpen] = useState(false);
-
+  const [priceGaurantyDetailsOpen, setPriceGaurantyDetailsOpen] = useState(false);
+  const [authenticityDetailsOpen, setAuthenticityDetailsOpen] = useState(false);
 
   const closeMobileChart = () => {
     setSizeChart(false);
@@ -409,7 +418,7 @@ const Product = ({ allProducts }) => {
           }}
         >
           <button
-            className="btn btn-outline-dark w-100 my-2"
+            className="btn btn-outline-dark w-100 my-2 sizeSlctbtn"
             style={{ borderRadius: '0px' }}
             onClick={() => setSizeChart(true)}
           >
@@ -423,15 +432,13 @@ const Product = ({ allProducts }) => {
           </button>
           <div className="d-flex w-100 align-items-center justify-content-between p-0 flex-row mb-2 mx-auto">
             <button
-              className="btn btn-outline-dark"
-              style={{ borderRadius: '0px',width: "48%" }}
+              className="btn btn-outline-dark placeBidBtn"
               onClick={GoToBuy}
             >
               Place Bid
             </button>
             <button
-              className="btn btn-danger"
-              style={{ borderRadius: '0px', width: "48%" }}
+              className="btn btn-danger buyNowBtn"
               onClick={GoToBuy}
             >
               Buy
@@ -439,38 +446,45 @@ const Product = ({ allProducts }) => {
           </div>
 
           <button
-            className="btn btn-outline-light w-100 removeBorder mt-2"
+            className="btn btn-outline-light w-100 removeBorder mt-4 fM"
             style={{ color: "black" }}
             onClick={() => console.log("sell for")}
           >
-            <b style={{ color: "red" }} >Buy Now</b> Starting at AED--/mo with Tabby.
+            <span style={{ color: "#01633F" }} className="bold900" >Buy Now</span> Starting at AED--/mo with Tabby.
           </button>
           <button
-            className="btn btn-outline-light w-100 removeBorder mb-2"
-            style={{ color: "red" }}
+            className="btn btn-outline-light w-100 removeBorder mb-4 fM bold900"
+            style={{ color:  "#01633F" }}
             onClick={() => console.log("sell for")}
           >
             Sell for -- or Ask for More <i className="" ></i>
           </button>
-          <hr />
+          <hr className="hr" />
         </div>
 
-        <div className="row mt-2">
+        <div className="row mt-2 noExtraMargins">
           <h1 className="productName" 
-            style={{
-              fontFamily: 'SuisseIntlM',
-              fontSize: '16px',
-              marginBottom: '-1px'
-            }}
            >{product?.name ? product?.name : "---"}</h1>
           <span
-            style={{
-              fontSize: '14px',
-              fontFamily: 'SuisseIntlM'
-            }}
+          className="productsSubName"
           >{product?.colorway ? product?.colorway : "---"}</span>
         </div>
-        <div className="row d-flex flex-row">
+        <div className="row flex-row noExtraMargins pt-3" >
+          <div className="col-5 mobileConTextContainer1 " >
+            <div className="mobileConText">
+              <span>Verified Authentic</span>
+            </div>
+          </div>
+
+          <div className="col-5 mobileConTextContainer2">
+            <div className="mobileConText blink">
+              <span>
+                Condition:<span style={{ color: "#01633F" }}> New</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="row d-flex flex-row noExtraMargins pt-2">
           <div className="smallBtnsContainer">
             <button
               className="btn smallBtns float-left float-lg-right float-xl-right"
@@ -482,7 +496,8 @@ const Product = ({ allProducts }) => {
               className="btn smallBtns float-left float-lg-right float-xl-right"
               onClick={() => setshareShow(!shareShow)}
             >
-              <ShareOutlined />
+              {/* <ShareOutlined /> */}
+              <img src={shareIcon} />
             </button>
           </div>
         </div>
@@ -527,7 +542,7 @@ const Product = ({ allProducts }) => {
               <SwiperSlide>
                 <img
                   className="img-fluid"
-                  style={{ margin: '0px auto 0px 5%', width: '90%' }}  
+                  style={{ margin: '0px auto 0px 12.5%', width: '70%' }}  
                   src={product.cover_image}
                   alt={product.sku_number}
                 />
@@ -589,14 +604,19 @@ const Product = ({ allProducts }) => {
                 Sell for -- or Ask for More
               </button>
             </div>
-            <div className="row w-100 d-flex flex-row mx-0 my-3">
-              <div className="col-lg-4 col-md-12 py-2 h-100 d-flex align-items-center justify-content-start">
-                <span>
+            <div className="row w-100 d-flex flex-row mx-0">
+              <div className="col-lg-4 col-md-12 d-flex align-items-center justify-content-start" style={{ padding: 0 }} >
+                <span 
+                  className="fM p-0 m-0"
+                  style={{
+                    fontSize: '20px'
+                  }}
+                >
                   Last Sale:
                   <b>---</b>
                 </span>
               </div>
-              <div className="col-lg-8 col-md-12">
+              {/* <div className="col-lg-8 col-md-12">
                 <div className="row d-flex flex-row">
                   <div className="col-6 d-flex align-items-center justify-content-center">
                     <button className="btn btn-outline-dark smallBtns">
@@ -609,9 +629,9 @@ const Product = ({ allProducts }) => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="col-12">
+            {/* <div className="col-12">
               <div className="row d-flex d-lg-none d-xl-none flex-row">
                 <div className="col-6">
                   <div className="conText">
@@ -626,10 +646,10 @@ const Product = ({ allProducts }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
-        <hr className="my-4" />
+        <hr className="my-4 hr" />
         <Suggestion
           allProducts={allProducts}
           collection_id={product?.collection_id ? product?.collection_id : id}
@@ -666,7 +686,7 @@ const Product = ({ allProducts }) => {
                 </span>
               </div>
             </div>
-            <div className="row d-flex flex-row mb-3">
+            <div className="row d-flex flex-row mb-2">
               <div className="col-6">Release Date</div>
               <div className="col-6 text-right">
                 <span>
@@ -674,15 +694,14 @@ const Product = ({ allProducts }) => {
                 </span>
               </div>
             </div>
-            <hr />
           </div>
           <div className="col-lg-6 col-md-12 d-flex flex-column mt-3 mb-3">
-            <span>
+            <span className="mb-3" >
               <b>Product Description</b>
             </span>
             <span className="text-justify" >{product?.summary ? product?.summary : "---"}</span>
           </div>
-          <hr />
+          <hr className="hrThick" />
           <div className="col-lg-12 col-md-12 d-flex flex-column mt-3">
             <button className="btn" 
               style={{ 
@@ -694,21 +713,20 @@ const Product = ({ allProducts }) => {
                 () => setShippingDetailsOpen(!shippingDetailsOpen )
                }
             >
-              <div>SHIPPING & RETURNS</div>
+              <div className="fM2" >SHIPPING & RETURNS</div>
               <div>
                 {
                   shippingDetailsOpen && (
-                    <ArrowUpward />
+                    <KeyboardArrowUp />
                   )
                 }
                 {
                   !shippingDetailsOpen && (
-                    <ArrowDownward />
+                    <KeyboardArrowDown />
                   )
                 }
               </div>
             </button>
-            
             {
               shippingDetailsOpen && (
                 <div>
@@ -751,13 +769,11 @@ const Product = ({ allProducts }) => {
                 </div>  
               )
             }
-
-
           </div>
           <hr className="mb-4 mt-3" />
         </div>
-        <div className="row">
-          <h3 className="text-center">Thriller Verified Sneakers</h3>
+        <div className="row productVerify">
+          <h3 className="text-center py-2">Thriller Verified Sneakers</h3>
           <p className="text-center">We Verify Every Item. Every Time.</p>
           <img
             onClick={() => {
@@ -769,7 +785,188 @@ const Product = ({ allProducts }) => {
             alt="thrillerVerified"
           />
         </div>
+
+        <div className="row d-flex flex-row">
+          <hr className="hrThick" />
+          <div className="col-lg-12 col-md-12 d-flex flex-column mt-3">
+              <button className="btn" 
+                style={{ 
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'                
+                }} 
+                onClick={
+                  () => setPriceGaurantyDetailsOpen(!priceGaurantyDetailsOpen )
+                }
+              >
+                <div className="fM2" >PRICE GUARANTEE</div>
+                <div>
+                  {
+                    priceGaurantyDetailsOpen && (
+                      <KeyboardArrowUp />
+                    )
+                  }
+                  {
+                    !priceGaurantyDetailsOpen && (
+                      <KeyboardArrowDown />
+                    )
+                  }
+                </div>
+              </button>
+              {
+                priceGaurantyDetailsOpen && (
+                  <div>
+                    <div>
+                      <div className="mt-3">
+                        Price
+                      </div>
+                      <div className="mt-3" >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque mi sit amet porta vulputate. Etiam vel orci sit amet diam aliquet hendrerit a a quam. Donec ex orci, tristique vel ante id, finibus cursus massa. Nunc consectetur tincidunt augue, eget sagittis quam vulputate eu. Maecenas tempus nec odio sed malesuada. Donec consectetur ante in urna tempor, cursus laoreet ligula sagittis. Pellentesque quis nisi dictum, elementum metus et, venenatis arcu. Nulla condimentum molestie commodo. Proin non neque ac lacus hendrerit porta. Duis sit amet felis lacus.
+                      </div>
+                      <div className="mt-3" >
+                        Proin id lectus ligula. Pellentesque sodales libero ac magna malesuada, et venenatis sem scelerisque. Etiam dolor nisl, euismod eu orci sit amet, dapibus feugiat erat. Nullam eget est quis lorem ultrices hendrerit. Aliquam eleifend lorem et odio posuere volutpat. Nullam viverra massa nec dolor laoreet fringilla. Ut blandit eget nibh vitae interdum. Morbi tempus mattis congue. Vestibulum gravida mauris arcu, nec dictum orci commodo eget. Sed pharetra id eros ac efficitur. Pellentesque facilisis semper elit. Praesent faucibus sem vulputate, consectetur dolor at, feugiat libero.
+                      </div>
+                      <div className="mt-3" >
+                        Cras sapien purus, aliquet nec est nec, egestas dignissim erat. Morbi convallis bibendum felis, ac suscipit nisl. Nulla pellentesque lectus eu convallis congue. Ut sit amet turpis luctus, aliquam lorem non, ultricies dolor. Proin pharetra lorem massa, sit amet lobortis tellus malesuada ac. Donec fermentum neque et porta suscipit. Nunc eget lorem nisl. Maecenas sagittis ex quis neque pellentesque, quis posuere erat lacinia. Morbi nec orci lectus. Etiam accumsan ultricies diam quis lobortis. Maecenas congue mauris quis ante consectetur condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin varius blandit ipsum, ut suscipit enim congue in. Nullam imperdiet iaculis posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                      </div>
+                    </div>
+                  </div>  
+                )
+              }
+          </div>
+          <hr className="hrThick" />
+          <div className="col-lg-12 col-md-12 d-flex flex-column mt-3">
+              <button className="btn" 
+                style={{ 
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'                
+                }} 
+                onClick={
+                  () => setAuthenticityDetailsOpen(!authenticityDetailsOpen )
+                }
+              >
+                <div className="fM2" >AUTHENTICITY GUARANTEE</div>
+                <div>
+                  {
+                    authenticityDetailsOpen && (
+                      <KeyboardArrowUp />
+                    )
+                  }
+                  {
+                    !authenticityDetailsOpen && (
+                      <KeyboardArrowDown />
+                    )
+                  }
+                </div>
+              </button>
+              {
+                authenticityDetailsOpen && (
+                  <div>
+                    <div>
+                      <div className="mt-3" >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque mi sit amet porta vulputate. Etiam vel orci sit amet diam aliquet hendrerit a a quam. Donec ex orci, tristique vel ante id, finibus cursus massa. Nunc consectetur tincidunt augue, eget sagittis quam vulputate eu. Maecenas tempus nec odio sed malesuada. Donec consectetur ante in urna tempor, cursus laoreet ligula sagittis. Pellentesque quis nisi dictum, elementum metus et, venenatis arcu. Nulla condimentum molestie commodo. Proin non neque ac lacus hendrerit porta. Duis sit amet felis lacus.
+                      </div>
+                      <div className="mt-3" >
+                        Proin id lectus ligula. Pellentesque sodales libero ac magna malesuada, et venenatis sem scelerisque. Etiam dolor nisl, euismod eu orci sit amet, dapibus feugiat erat. Nullam eget est quis lorem ultrices hendrerit. Aliquam eleifend lorem et odio posuere volutpat. Nullam viverra massa nec dolor laoreet fringilla. Ut blandit eget nibh vitae interdum. Morbi tempus mattis congue. Vestibulum gravida mauris arcu, nec dictum orci commodo eget. Sed pharetra id eros ac efficitur. Pellentesque facilisis semper elit. Praesent faucibus sem vulputate, consectetur dolor at, feugiat libero.
+                      </div>
+                      <div className="mt-3" >
+                        Cras sapien purus, aliquet nec est nec, egestas dignissim erat. Morbi convallis bibendum felis, ac suscipit nisl. Nulla pellentesque lectus eu convallis congue. Ut sit amet turpis luctus, aliquam lorem non, ultricies dolor. Proin pharetra lorem massa, sit amet lobortis tellus malesuada ac. Donec fermentum neque et porta suscipit. Nunc eget lorem nisl. Maecenas sagittis ex quis neque pellentesque, quis posuere erat lacinia. Morbi nec orci lectus. Etiam accumsan ultricies diam quis lobortis. Maecenas congue mauris quis ante consectetur condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin varius blandit ipsum, ut suscipit enim congue in. Nullam imperdiet iaculis posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                      </div>
+                    </div>
+                  </div>  
+                )
+              }
+          </div>
+          <hr className="hrThick" />
+        </div>
+
+        <div className="row d-flex flex-row">
+          <div className="col-lg-6 col-md-12 mt-5 pt-3">
+            <div className="productEndBox" >
+              <div>
+                <img src={thrillerVerifiedIcon} />
+              </div>
+              <div className="pl-3" >
+                <div className="productEndBoxHeading" >Thriller Verified</div>
+                <div className="productEndBoxDescription mt-1" >
+                  Thriller Verified is our own designation and means that we inspect every item, every time.
+                </div>
+                <div className="productEndBoxLearnMore mt-1" >
+                  Learn More
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 mt-2">
+            <div className="productEndBox" >
+              <div>
+                <img src={globalAccessIcon} />
+              </div>
+              <div className="pl-3" >
+                <div className="productEndBoxHeading" >Global Access</div>
+                <div className="productEndBoxDescription mt-1" >
+                  Our millions of customers from over 200 countries allow you to easily secure those hard-to-find items.
+                </div>
+                <div className="productEndBoxLearnMore mt-1" >
+                  Learn More
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 mt-2">
+            <div className="productEndBox" >
+              <div>
+                <img src={startSellingAsab} />
+              </div>
+              <div className="pl-3" >
+                <div className="productEndBoxHeading" >Start Selling ASAP</div>
+                <div className="productEndBoxDescription mt-1" >
+                  You can start selling on Thriller in just a few clicks, no application process necessary.
+                </div>
+                <div className="productEndBoxLearnMore mt-1" >
+                  Learn More
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div
+        className="row py-4 w-100 mx-auto overflow-hidden mt-3"
+        style={{ background: '#0C0C0C' }}
+      >
+        <div className="col-md-9 col-sm-10 my-5 mx-auto">
+          <h1 className="text-center mt-3 text-white footerHeading">Contact Customer Care</h1>
+          <div className="row">
+            <div className="col-md-2 mb-2" ></div>
+            <div className="col-md-8 col-sm-12">
+              <div className="row pt-3 px-2">
+                <div className="col-4 mb-2 px-1">
+                    <div className="contactCardsAbout">
+                      <img src={aboutUsContactDMUS} />
+                      <h1 className="text-center text-white">DM US</h1>
+                    </div>
+                  </div>
+                  <div className="col-4 mb-2 px-1">
+                    <div className="contactCardsAbout">
+                      <img src={aboutUsContactWhatsapp} />
+                      <h3 className="text-center">WHATSAPP</h3>
+                    </div>
+                  </div>
+                  <div className="col-4 mb-2 px-1">
+                    <div className="contactCardsAbout p13"  >
+                      <img src={aboutUsContactEmail} />
+                      <h3 className="text-center">EMAIL</h3>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr className="hr" />
       <Links />
       <Footer />
     </div>

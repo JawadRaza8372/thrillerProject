@@ -12,7 +12,7 @@ const ThreeBannerResponsive = () => {
   }, []);
   return (
     <>
-      <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass" style={{ border: 'solid 1px orange', background: 'white' }} >
+      <div className="row d-flex w-100 flex-row mx-0 my-3 customerBuyClass" style={{ border: 'solid 1px orange', borderRadius: 7 }} >
         <div className="col-2 h-100 d-flex align-items-center justify-content-center">
           {showChartNum === 1 && (
             <img

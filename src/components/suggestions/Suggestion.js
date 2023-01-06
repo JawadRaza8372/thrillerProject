@@ -134,7 +134,13 @@ const Suggestion = (props) => {
       {similarProducts.length > 0 && (
         <>
           <div style={{ marginBottom: "20px" }} className="suggestions">
-            <h1>{props.name}</h1>
+            <h1
+              className="fM py-3"
+              style={{
+                fontSize: '20px',
+                fontWeight: 550
+              }}
+            >{props.name}</h1>
             <div>
               {/* <Carousel
                 renderButtonGroupOutside={true}
