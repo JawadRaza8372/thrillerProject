@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
 
-const BuyPage = ({ history, match, userDetails, buyer }) => {
+const BuyPage = ({ history, match, userDetails, buyer, isBuy = true }) => {
   const id = useParams().id;
   const size = useParams().size;
   var _lowestAsk = 0;
@@ -62,7 +62,7 @@ const BuyPage = ({ history, match, userDetails, buyer }) => {
     setOfferAmount(val);
   }
 
-  const [selectedButton, toggleButton] = useState(true);
+  const [selectedButton, toggleButton] = useState(isBuy);
 
   const Load = useCallback(() => {
     if (product.sku_number === undefined) {

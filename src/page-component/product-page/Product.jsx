@@ -74,6 +74,8 @@ import aboutUsContactDMUS from '../../assets/aboutUs/aboutUsContactDMUS.svg';
 import aboutUsContactEmail from '../../assets/aboutUs/aboutUsContactEmail.svg';
 import aboutUsContactWhatsapp from '../../assets/aboutUs/aboutUsContactWhatsapp.svg';
 import shareIcon from '../../assets/product/shareIcon.svg';
+import tabbyIcon from '../../assets/product/tabbyIcon.svg';
+import { BASE_URL } from "../../Constants/Global";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -106,6 +108,8 @@ const Product = ({ allProducts }) => {
   const [shippingDetailsOpen, setShippingDetailsOpen] = useState(false);
   const [priceGaurantyDetailsOpen, setPriceGaurantyDetailsOpen] = useState(false);
   const [authenticityDetailsOpen, setAuthenticityDetailsOpen] = useState(false);
+
+  const [readMoreOpen, setReadMoreOpen] = useState(false);
 
   const closeMobileChart = () => {
     setSizeChart(false);
@@ -238,7 +242,7 @@ const Product = ({ allProducts }) => {
     // });
 
     await axios
-      .get(`https://api.thrillerme.com/shoesImages/${id}`)
+      .get(BASE_URL+`shoesImages/${id}`)
       .then((res) => {
         setcurrentimg(res.data[0].imgURL);
         res.data.map((dat) => {
@@ -309,6 +313,10 @@ const Product = ({ allProducts }) => {
   console.log(product);
   function GoToBuy() {
     history.push(`/buy/${id}/${defaultSize}/0`);
+    window.localStorage.setItem("price", lowestAsk);
+  }
+  function GoToBid() {
+    history.push(`/bid/${id}/${defaultSize}/0`);
     window.localStorage.setItem("price", lowestAsk);
   }
   function GetLowsetAsk(sizz) {
@@ -409,7 +417,7 @@ const Product = ({ allProducts }) => {
           className="borderedDiv px-2 py-1 row m-0 w-100 d-flex d-lg-none d-xl-none flex-row"
           style={{
             position: "sticky",
-            top: "10vh",
+            top: "7vh",
             background: "white",
             zIndex: 999,
             width: '100% !important',
@@ -433,7 +441,7 @@ const Product = ({ allProducts }) => {
           <div className="d-flex w-100 align-items-center justify-content-between p-0 flex-row mb-2 mx-auto">
             <button
               className="btn btn-outline-dark placeBidBtn"
-              onClick={GoToBuy}
+              onClick={GoToBid}
             >
               Place Bid
             </button>
@@ -450,7 +458,7 @@ const Product = ({ allProducts }) => {
             style={{ color: "black" }}
             onClick={() => console.log("sell for")}
           >
-            <span style={{ color: "#01633F" }} className="bold900" >Buy Now</span> Starting at AED--/mo with Tabby.
+            <span style={{ color: "#01633F" }} className="bold900" >Buy Now</span> Starting at AED--/mo with <img src={tabbyIcon} style={{ display: 'inline' }} />.
           </button>
           <button
             className="btn btn-outline-light w-100 removeBorder mb-4 fM bold900"
@@ -551,8 +559,8 @@ const Product = ({ allProducts }) => {
                 return (
                   <SwiperSlide key={index}>
                     <img 
-                        className="img-fluid" 
-                        style={{ margin: '0px auto 0px 5%', width: '90%' }}  
+                        className="img-fluid"
+                        style={{ margin: '0px auto 0px 12.5%', width: '70%' }}  
                         src={name} 
                         alt={name}
                     >
@@ -699,7 +707,16 @@ const Product = ({ allProducts }) => {
             <span className="mb-3" >
               <b>Product Description</b>
             </span>
-            <span className="text-justify" >{product?.summary ? product?.summary : "---"}</span>
+            <span className={`text-justify ${ !readMoreOpen ? 'productDescriptionTextLimiter' : ''}`} >{product?.summary ? product?.summary : "---"}</span>
+            
+            {
+              !readMoreOpen && (
+                <span>
+                  <b style={{ color: '#01633F', cursor: 'pointer', fontSize: 14 }} onClick={() => setReadMoreOpen(true)} >READ MORE</b>
+                </span>
+              )
+            }
+            
           </div>
           <hr className="hrThick" />
           <div className="col-lg-12 col-md-12 d-flex flex-column mt-3">
