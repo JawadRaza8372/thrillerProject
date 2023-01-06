@@ -316,7 +316,7 @@ const Product = ({ allProducts }) => {
     window.localStorage.setItem("price", lowestAsk);
   }
   function GoToBid() {
-    history.push(`/bid/${id}/${defaultSize}/0`);
+    history.push(`/bid/${id}/${defaultSize}/0/bid`);
     window.localStorage.setItem("price", lowestAsk);
   }
   function GetLowsetAsk(sizz) {
@@ -749,40 +749,21 @@ const Product = ({ allProducts }) => {
                 <div>
                   <div>
                     <div className="mt-3">
-                      Cancelations
+                      You may return your order on all sneakers marked as Return Applicable. You will be able to see if you your sneaker is applicable for return on the Final Checkout Page.
                     </div>
                     <div className="mt-3" >
-                      For sneakers, you may cancel your order within 3 hours of placing it or before it is confirmed by the seller - whichever comes first. If 3 hours have passed from when you placed the order and/or the seller has already confirmed the order, then the order cannot be canceled. If neither have occurred, you can cancel your order first by accessing it via “Track My Order” or “My Account,” clicking “Cancel Order” and following the instructions.
+                      Delivery and processing speeds are of utmost importance to us. Orders ship to Thriller first for verification and typically take 2-4 days to reach to you.  All orders are shipped with expedited shipping to you.
                     </div>
                     <div className="mt-3" >
-                      If you checked out as a guest, you will need to create a Flight Club account.
+                      If you have any questions or concerns with regard to sizing or condition of a specific product on our site, please contact us before purchasing.
+                    </div>
+                    <div className="" >
+                      Estimated delivery times for international orders can be found under our ‘List of Countries (link)’ on the FAQ page. International customers do NOT pay any additional fees or taxes upon arrival. What you see is what you pay. 
+                    </div>
+                    <div className="mt-3">
+                      If your country is not on our list, reach out to our logistics team here (link) for support. 
                     </div>
                   </div>
-                  <div>
-                    <div className="mt-3">
-                      Delivery
-                    </div>
-                    <div className="mt-3" >
-                      Delivery and processing speeds vary by pricing options. The following shipping estimates apply only to the contiguous US and exclude deliveries to PO boxes and military bases. All delivery times are estimates and are not guaranteed. Shipments may be affected by weather-related delays, carrier limitations or other events outside of our control.
-                    </div>
-                    <div className="mt-3" >
-                      "Lowest Price" orders may ship to Flight Club first for verification and typically take 7-10 business days (M-F, excluding holidays) to reach you. It will typically take 3-5 business days (M-F, excluding holidays) for a "Fastest To You" item, ordered before 2 PM ET with standard shipping, to be delivered.
-                    </div>
-                    <div className="mt-3" >
-                      Estimated delivery times do not apply to international orders. International customers are responsible for any additional fees or taxes after an item ships.
-                    </div>
-                  </div>
-                  <div>
-                    <div className="mt-3">
-                      Returns
-                    </div>
-                    <div className="mt-3" >
-                      All sales with Flight Club are final.
-                    </div>
-                    <div className="mt-3" >
-                      If you have any questions or concerns with regard to sizing or condition of a specific product on our site, please contact us before purchasing.
-                    </div>
-                  </div>  
                 </div>  
               )
             }
@@ -835,16 +816,16 @@ const Product = ({ allProducts }) => {
                   <div>
                     <div>
                       <div className="mt-3">
-                        Price
+                        We guarantee your Best Buy, every time. 
                       </div>
                       <div className="mt-3" >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque mi sit amet porta vulputate. Etiam vel orci sit amet diam aliquet hendrerit a a quam. Donec ex orci, tristique vel ante id, finibus cursus massa. Nunc consectetur tincidunt augue, eget sagittis quam vulputate eu. Maecenas tempus nec odio sed malesuada. Donec consectetur ante in urna tempor, cursus laoreet ligula sagittis. Pellentesque quis nisi dictum, elementum metus et, venenatis arcu. Nulla condimentum molestie commodo. Proin non neque ac lacus hendrerit porta. Duis sit amet felis lacus.
+                        Due to our unique bidding system and marketplace platform, as well as our Authenticity Guarantee, we’re giving you access to the most limited sneakers in the world at a regulated price, decided by the only fair regulator-you. Choose a price that you’re willing to pay, or Buy Now.
                       </div>
                       <div className="mt-3" >
-                        Proin id lectus ligula. Pellentesque sodales libero ac magna malesuada, et venenatis sem scelerisque. Etiam dolor nisl, euismod eu orci sit amet, dapibus feugiat erat. Nullam eget est quis lorem ultrices hendrerit. Aliquam eleifend lorem et odio posuere volutpat. Nullam viverra massa nec dolor laoreet fringilla. Ut blandit eget nibh vitae interdum. Morbi tempus mattis congue. Vestibulum gravida mauris arcu, nec dictum orci commodo eget. Sed pharetra id eros ac efficitur. Pellentesque facilisis semper elit. Praesent faucibus sem vulputate, consectetur dolor at, feugiat libero.
+                        But rest assured that whatever you choose, you’re getting the sneaker you want at the fairest price out there. That is our Guarantee.
                       </div>
                       <div className="mt-3" >
-                        Cras sapien purus, aliquet nec est nec, egestas dignissim erat. Morbi convallis bibendum felis, ac suscipit nisl. Nulla pellentesque lectus eu convallis congue. Ut sit amet turpis luctus, aliquam lorem non, ultricies dolor. Proin pharetra lorem massa, sit amet lobortis tellus malesuada ac. Donec fermentum neque et porta suscipit. Nunc eget lorem nisl. Maecenas sagittis ex quis neque pellentesque, quis posuere erat lacinia. Morbi nec orci lectus. Etiam accumsan ultricies diam quis lobortis. Maecenas congue mauris quis ante consectetur condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin varius blandit ipsum, ut suscipit enim congue in. Nullam imperdiet iaculis posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                        Already made your purchase and are not satisfied? Don’t worry! Our customer service team will ensure that we make it up to you. Check out these 1000’s of customers (link) that trust us already.
                       </div>
                     </div>
                   </div>  
@@ -882,13 +863,13 @@ const Product = ({ allProducts }) => {
                   <div>
                     <div>
                       <div className="mt-3" >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque mi sit amet porta vulputate. Etiam vel orci sit amet diam aliquet hendrerit a a quam. Donec ex orci, tristique vel ante id, finibus cursus massa. Nunc consectetur tincidunt augue, eget sagittis quam vulputate eu. Maecenas tempus nec odio sed malesuada. Donec consectetur ante in urna tempor, cursus laoreet ligula sagittis. Pellentesque quis nisi dictum, elementum metus et, venenatis arcu. Nulla condimentum molestie commodo. Proin non neque ac lacus hendrerit porta. Duis sit amet felis lacus.
+                        Shop on Thriller with confidence knowing every purchase is Thriller Verified. Thriller Verified is our own designation using data points and industry experts, as well as machine learning, to Guarantee Authenticity every single time.                         
                       </div>
                       <div className="mt-3" >
-                        Proin id lectus ligula. Pellentesque sodales libero ac magna malesuada, et venenatis sem scelerisque. Etiam dolor nisl, euismod eu orci sit amet, dapibus feugiat erat. Nullam eget est quis lorem ultrices hendrerit. Aliquam eleifend lorem et odio posuere volutpat. Nullam viverra massa nec dolor laoreet fringilla. Ut blandit eget nibh vitae interdum. Morbi tempus mattis congue. Vestibulum gravida mauris arcu, nec dictum orci commodo eget. Sed pharetra id eros ac efficitur. Pellentesque facilisis semper elit. Praesent faucibus sem vulputate, consectetur dolor at, feugiat libero.
+                        Our team of experts uses a rigorous, multi-step verification process to ensure 100% Authenticity. We only allow deadstock on our marketplace. That means every item, bought or sold must be brand new and never worn. 
                       </div>
                       <div className="mt-3" >
-                        Cras sapien purus, aliquet nec est nec, egestas dignissim erat. Morbi convallis bibendum felis, ac suscipit nisl. Nulla pellentesque lectus eu convallis congue. Ut sit amet turpis luctus, aliquam lorem non, ultricies dolor. Proin pharetra lorem massa, sit amet lobortis tellus malesuada ac. Donec fermentum neque et porta suscipit. Nunc eget lorem nisl. Maecenas sagittis ex quis neque pellentesque, quis posuere erat lacinia. Morbi nec orci lectus. Etiam accumsan ultricies diam quis lobortis. Maecenas congue mauris quis ante consectetur condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin varius blandit ipsum, ut suscipit enim congue in. Nullam imperdiet iaculis posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                        We believe there's no substitute for experience. Since inception, we've inspected over AED 2 million worth of items on behalf of our customers. As a final check in our verification process, our QA experts ensure the product meets our high standards.
                       </div>
                     </div>
                   </div>  

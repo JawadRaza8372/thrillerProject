@@ -234,7 +234,7 @@ const App = ({ location }) => {
         <Route exact path="/help" component={HelpPage} />
         <Route exact path="/buy/:id" component={BuyPage} />
         <Route exact path="/buy/:id/:size/:lowestAsk" component={BuyPage} />
-        <Route exact path="/bid/:id/:size/:lowestAsk" component={function ({...etc}) { return <BuyPage {...etc} isBuy={false} />} } />
+        <Route exact path="/bid/:id/:size/:lowestAsk/:isBid" component={BuyPage} />
         <Route exact path="/faq" component={FAQPage} />
         <Route exact path="/faqSeller" component={FaqSeller} />
         <Route exact path="/about" component={AboutPage} />
