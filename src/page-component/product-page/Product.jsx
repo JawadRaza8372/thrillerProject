@@ -1,4 +1,4 @@
-import thrillerVerified from "../../assets/thrillverf.svg";
+import thrillerVerified from "../../assets/thrillverf.jpeg";
 import React, { useEffect, useState } from "react";
 import PillContainer from "../../components/product-page-pills/PillContainer";
 import Recentcs from "../../components/suggestions/Suggestion";
