@@ -13,8 +13,9 @@ import "./NewCustomRecentcs.scss";
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import questionIcon from '../../assets/Home/questionIcon.svg';
 
-function QuestionSign({toolTip}) {
+export function QuestionSign({toolTip}) {
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       {toolTip}
@@ -26,8 +27,9 @@ function QuestionSign({toolTip}) {
       delay={{ show: 250, hide: 400 }}
       overlay={renderTooltip}
     >
-      <button type="button" class="infoQuestionBtn">
-        ?
+      {/* class="infoQuestionBtn" */}
+      <button type="button" style={{ background: 'none', border: 'none' }} >
+        <img src={questionIcon} />
       </button>
     </OverlayTrigger>
   )

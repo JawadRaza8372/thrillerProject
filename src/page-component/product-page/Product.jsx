@@ -1,4 +1,4 @@
-import thrillerVerified from "../../assets/thrillverf.jpeg";
+import thrillerVerified from "../../assets/thrillverf.jpg";
 import React, { useEffect, useState } from "react";
 import PillContainer from "../../components/product-page-pills/PillContainer";
 import Recentcs from "../../components/suggestions/Suggestion";
@@ -76,6 +76,7 @@ import aboutUsContactWhatsapp from '../../assets/aboutUs/aboutUsContactWhatsapp.
 import shareIcon from '../../assets/product/shareIcon.svg';
 import tabbyIcon from '../../assets/product/tabbyIcon.svg';
 import { BASE_URL } from "../../Constants/Global";
+import { QuestionSign } from "../../components/recent/NewCustomRecentcs";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -458,7 +459,7 @@ const Product = ({ allProducts }) => {
             style={{ color: "black" }}
             onClick={() => console.log("sell for")}
           >
-            <span style={{ color: "#01633F" }} className="bold900" >Buy Now</span> Starting at AED--/mo with <img src={tabbyIcon} style={{ display: 'inline' }} />.
+            <span style={{ color: "#01633F" }} className="bold900" >Buy Now</span> Starting at AED--/mo with <img src={tabbyIcon} style={{ display: 'inline' }} />. <QuestionSign  />
           </button>
           <button
             className="btn btn-outline-light w-100 removeBorder mb-4 fM bold900"
@@ -477,7 +478,7 @@ const Product = ({ allProducts }) => {
           className="productsSubName"
           >{product?.colorway ? product?.colorway : "---"}</span>
         </div>
-        <div className="row flex-row noExtraMargins pt-3 showOnMobile" >
+        <div className="row flex-row noExtraMargins pt-3 showOnMobile showOnMobileFlex" >
           <div className="col-5 mobileConTextContainer1 " >
             <div className="mobileConText">
               <span>Verified Authentic</span>
