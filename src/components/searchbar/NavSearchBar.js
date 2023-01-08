@@ -73,10 +73,10 @@ export const NavSearchBar = ({ allProducts, allBrands }) => {
         <NavDropdown
           title=""
           id="basic-nav-dropdown"
-          className="navs"
+          className="navs bg-white"
           show={searchbar}
         >
-          <div className="fixedHeightDiv">
+          <div className="fixedHeightDiv bg-white" style={{ margin: '-10px 0px -10px 0px' }} >
             {filterProducts.map((dat, index) => {
               const newname = makingValidName(`${dat.name}`);
               const newshoeid = makingValidName(`${dat.shoe_id}`);

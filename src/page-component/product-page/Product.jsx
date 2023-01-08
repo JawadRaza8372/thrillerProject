@@ -477,7 +477,7 @@ const Product = ({ allProducts }) => {
           className="productsSubName"
           >{product?.colorway ? product?.colorway : "---"}</span>
         </div>
-        <div className="row flex-row noExtraMargins pt-3" >
+        <div className="row flex-row noExtraMargins pt-3 showOnMobile" >
           <div className="col-5 mobileConTextContainer1 " >
             <div className="mobileConText">
               <span>Verified Authentic</span>
@@ -589,7 +589,7 @@ const Product = ({ allProducts }) => {
                 <button
                   className="btn btn-outline-dark"
                   style={{ width: "48%" }}
-                  onClick={GoToBuy}
+                  onClick={GoToBid}
                 >
                   Place Bid
                 </button>
@@ -665,11 +665,9 @@ const Product = ({ allProducts }) => {
           name="Related Products"
         />
 
-        <div className="row">
-          <h2 style={{ fontSize: 20, fontFamily: 'SuisseIntlM' }} className="productDetails" >Product Details</h2>
-        </div>
         <div className="row d-flex flex-row">
           <div className="col-lg-6 col-md-12 mt-2">
+            <h2 style={{ fontSize: 20, fontFamily: 'SuisseIntlM' }} className="productDetails" >Product Details</h2>
             <div className="row d-flex flex-row mb-2">
               <div className="col-6">Style</div>
               <div className="col-6 text-right">
@@ -718,6 +716,7 @@ const Product = ({ allProducts }) => {
             }
             
           </div>
+
           <hr className="hrThick" />
           <div className="col-lg-12 col-md-12 d-flex flex-column mt-3">
             <button className="btn" 
@@ -758,10 +757,10 @@ const Product = ({ allProducts }) => {
                       If you have any questions or concerns with regard to sizing or condition of a specific product on our site, please contact us before purchasing.
                     </div>
                     <div className="" >
-                      Estimated delivery times for international orders can be found under our ‘List of Countries (link)’ on the FAQ page. International customers do NOT pay any additional fees or taxes upon arrival. What you see is what you pay. 
+                      Estimated delivery times for international orders can be found under our <a href="https://thrillerme.com/faq">‘List of Countries’</a> on the FAQ page. International customers do NOT pay any additional fees or taxes upon arrival. What you see is what you pay. 
                     </div>
                     <div className="mt-3">
-                      If your country is not on our list, reach out to our logistics team here (link) for support. 
+                      If your country is not on our list, reach out to our logistics team <a href="https://thrillerme.com/contact">here</a> for support. 
                     </div>
                   </div>
                 </div>  
@@ -825,7 +824,7 @@ const Product = ({ allProducts }) => {
                         But rest assured that whatever you choose, you’re getting the sneaker you want at the fairest price out there. That is our Guarantee.
                       </div>
                       <div className="mt-3" >
-                        Already made your purchase and are not satisfied? Don’t worry! Our customer service team will ensure that we make it up to you. Check out these 1000’s of customers (link) that trust us already.
+                        Already made your purchase and are not satisfied? Don’t worry! Our customer service team will ensure that we make it up to you. Check out these <a href="https://uk.trustpilot.com/review/thrillerme.com?languages=all">1000’s of customers</a> that trust us already.
                       </div>
                     </div>
                   </div>  
@@ -869,7 +868,7 @@ const Product = ({ allProducts }) => {
                         Our team of experts uses a rigorous, multi-step verification process to ensure 100% Authenticity. We only allow deadstock on our marketplace. That means every item, bought or sold must be brand new and never worn. 
                       </div>
                       <div className="mt-3" >
-                        We believe there's no substitute for experience. Since inception, we've inspected over AED 2 million worth of items on behalf of our customers. As a final check in our verification process, our QA experts ensure the product meets our high standards.
+                        We believe there's no substitute for experience. Since inception, we've inspected over AED 2 million worth of items on behalf of our customers. As a final check in our verification process, our QA experts ensure the product meets <a href="https://thrillerme.com/contact">our high standards</a>.
                       </div>
                     </div>
                   </div>  
@@ -879,8 +878,8 @@ const Product = ({ allProducts }) => {
           <hr className="hrThick" />
         </div>
 
-        <div className="row d-flex flex-row">
-          <div className="col-lg-6 col-md-12 mt-5 pt-3">
+        <div className="row d-flex flex-row mt-3 pt-3">
+          <div className="col-lg-6 col-md-12 mt-2">
             <div className="productEndBox" >
               <div>
                 <img src={thrillerVerifiedIcon} />
@@ -912,7 +911,7 @@ const Product = ({ allProducts }) => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 mt-2">
+          <div className="col-lg-12 col-md-12 mt-2">
             <div className="productEndBox" >
               <div>
                 <img src={startSellingAsab} />

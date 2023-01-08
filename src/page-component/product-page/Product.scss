@@ -98,7 +98,19 @@
   margin: 0px 0px 0px -7px !important;
 }
 
+.showOnMobile {
+  display: none;
+}
+
 @media screen and (max-width: 480px) {
+  .showOnMobile {
+    display: block !important;
+  }
+
+  .product-page-container {  
+    margin-top: 12vh !important;
+  }  
+
   .product-page-container .productName {
     margin-top: 5px !important;
     font-family: 'SuisseIntlM' !important;
@@ -157,7 +169,7 @@
   // position: absolute;
   // top: 12vh;
 
-  margin-top: 7vh;
+  margin-top: 12vh;
   // height: 100%;
   width: 100%;
   display: flex;
