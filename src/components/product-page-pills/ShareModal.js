@@ -1,4 +1,4 @@
-import { CloseSharp, Facebook, Twitter, WhatsApp } from "@material-ui/icons";
+import { CloseSharp, Facebook, Twitter, WhatsApp, Pinterest } from "@material-ui/icons";
 import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
@@ -29,6 +29,15 @@ const ShareModal = ({ open, onCloseModal }) => {
     );
     onCloseModal();
   }
+
+  function openTabPintrest() {
+    var location = window.location.href;
+    window.open(
+      `https://www.pinterest.com/pin/create/button/?description=${location}`
+    );
+    onCloseModal();
+  }
+
   const handleChange = (e) => {
     setContect(e.target.value);
   };
@@ -80,6 +89,10 @@ const ShareModal = ({ open, onCloseModal }) => {
                 <div onClick={openTabTwt} className="newSocialBtn">
                   <Twitter />
                   <span>Twitter</span>
+                </div>
+                <div onClick={openTabPintrest} className="newSocialBtn">
+                  <Pinterest />
+                  <span>Pinterest</span>
                 </div>
               </div>
             </div>

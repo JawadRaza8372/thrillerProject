@@ -35,11 +35,11 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
   var user = window.localStorage.getItem("user");
   var rawuserid = window.localStorage.getItem("user");
 
-  // var userData = JSON.parse(user);
-  user.then((res) => {
-    user = JSON.parse(res);
-    userData = JSON.parse(res);
-  });
+  var userData = JSON.parse(user);
+  // user.then((res) => {
+  //   user = JSON.parse(res);
+  //   userData = JSON.parse(res);
+  // });
   useEffect(async () => {
     var newuserdata = await JSON.parse(rawuserid);
     if (!newuserdata) {

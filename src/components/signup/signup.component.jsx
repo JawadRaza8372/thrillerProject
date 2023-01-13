@@ -23,6 +23,10 @@ import {
 import * as Actions from "../../Redux/Actions";
 import { connect } from "react-redux";
 import swal from "sweetalert";
+import facebook from '../../assets/Home/facebook.jpg';
+import insta from '../../assets/Home/insta.png';
+import twitter from '../../assets/Home/twitter.png';
+
 
 const Signup = ({ setSignIn }) => {
   let history = useHistory();
@@ -394,13 +398,16 @@ const Signup = ({ setSignIn }) => {
           <Row align="middle">
             <Col span={12}>
               <a href="https://www.facebook.com/ThrillerMiddleEast/?__tn__=-UC*F">
-                <i className="fab fa-facebook-square fa-2x mx-3 logos"></i>
+                {/* <i className="fab fa-facebook-square fa-2x mx-3 logos"></i> */}
+                <img src={facebook} style={{ width: 40 }} />
               </a>
               <a href="https://twitter.com/THRILLER_ME">
-                <i className="fab fa-twitter fa-2x mx-3 logos"></i>
+                {/* <i className="fab fa-twitter fa-2x mx-3 logos"></i> */}
+                <img src={twitter} style={{ width: 40 }} />
               </a>
               <a href="https://www.instagram.com/thrillerme/?hl=en">
-                <i className="fab fa-instagram-square fa-2x mx-3 logos"></i>
+                {/* <i className="fab fa-instagram-square fa-2x mx-3 logos"></i> */}
+                <img src={insta} style={{ width: 33 }} />
               </a>
             </Col>
           </Row>

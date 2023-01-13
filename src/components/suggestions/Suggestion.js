@@ -16,6 +16,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 import { makingValidName } from "../../Constants/Functions";
+import { useHistory } from "react-router-dom";
 
 const responsive = {
   superLargeDesktop: {
@@ -101,8 +102,15 @@ const CustomRightArrow = ({ onClick }) => {
 };
 
 const Suggestion = (props) => {
+
   const [similarProducts, setSimilarProducts] = useState([]);
   var mainURL = "https://appick.io/u/thriller/imgs/";
+  let history = useHistory();
+  function changeLocation(placeToGo){
+      // navigate(placeToGo, { replace: true });
+      // history.push(placeToGo);
+      window.location.replace(placeToGo);
+  }
 
   const redirect = (id) => {
     window.open(`https://thrillerme.com/${id}`, "_self");
@@ -154,7 +162,7 @@ const Suggestion = (props) => {
                   const newshoeid = makingValidName(`${elem.shoe_id}`);
 
                   return (
-                    <Link to={`/${newname}_id_${newshoeid}`} key={index}>
+                    <Link to={`/${newname}_id_${newshoeid}`} onClick={() => { changeLocation(`/${newname}_id_${newshoeid}`) }} key={index}>
                       <div className="CustomcardDiv">
                         <img
                           className="cardImg"

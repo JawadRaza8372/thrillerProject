@@ -335,6 +335,12 @@ const Product = ({ allProducts }) => {
   const newshoeid = makingValidName(`${product?.shoe_id}`);
   let maintag = product?.tag ? product?.tag?.split(",") : ["---"];
   let productUrl = `${maintag[0]} / ${product?.name ? product?.name : "---"}`;
+
+  function sellOrAskForMore() {
+    window.localStorage.setItem("sellShoe", JSON.stringify(foundProduct));
+    history.push("/shoe");
+  }
+
   return (
     <div className="product-page-container">
       {/* <CustomToast
@@ -464,7 +470,7 @@ const Product = ({ allProducts }) => {
           <button
             className="btn btn-outline-light w-100 removeBorder mb-4 fM bold900"
             style={{ color:  "#01633F" }}
-            onClick={() => console.log("sell for")}
+            onClick={() => sellOrAskForMore()}
           >
             Sell for -- or Ask for More <i className="" ></i>
           </button>
@@ -608,7 +614,9 @@ const Product = ({ allProducts }) => {
               <button
                 className="btn btn-outline-light w-100 removeBorder my-2"
                 style={{ color: "green" }}
-                onClick={() => console.log("sell for")}
+                onClick={() => {
+                  sellOrAskForMore();
+                }}
               >
                 Sell for -- or Ask for More
               </button>
