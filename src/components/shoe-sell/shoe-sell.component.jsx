@@ -6,6 +6,7 @@ import axios from "axios";
 import LocalStorage from "redux-persist/es/storage";
 
 import PriceCalculator from "../price-calculator/price-calculator.component";
+import { BASE_URL } from "../../Constants/Global";
 
 export const ShoeSell = ({
   displayShoeSize,
@@ -16,10 +17,10 @@ export const ShoeSell = ({
   user_id,
 }) => {
   var user = window.localStorage.getItem("user");
-  // var userData = JSON.parse(user);
-  user.then((res) => {
-    user = JSON.parse(res);
-  });
+  var userData = JSON.parse(user);
+  // user.then((res) => {
+  //   user = JSON.parse(res);
+  // });
 
   const payout = useRef("");
 
@@ -31,7 +32,7 @@ export const ShoeSell = ({
 
   useEffect(() => {
     //console.log(user_id);
-    var url = `https://api.thrillerme.com/payout/${user.user_id}`;
+    var url = `${BASE_URL}payout/${user.user_id}`;
     //console.log(url);
     axios
       .get(url)
