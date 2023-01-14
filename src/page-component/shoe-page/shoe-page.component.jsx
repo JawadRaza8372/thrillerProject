@@ -8,7 +8,7 @@ import { ShoeSell } from "../../components/shoe-sell/shoe-sell.component";
 
 import { connect } from "react-redux";
 import axios from "axios";
-import { LISTING } from "../../Constants/Global";
+import { BASE_URL, LISTING } from "../../Constants/Global";
 
 import LocalStorage from "redux-persist/es/storage";
 import Footer from "../../components/footer/Footer";
@@ -35,7 +35,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
   var user = window.localStorage.getItem("user");
   var rawuserid = window.localStorage.getItem("user");
 
-  var userData = JSON.parse(user);
+  user = JSON.parse(user);
   // user.then((res) => {
   //   user = JSON.parse(res);
   //   userData = JSON.parse(res);
@@ -60,7 +60,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
       });
       try {
         const res1 = await axios.get(
-          `https://api.thrillerme.com/payout/${newuserdata.user_id}`
+          `${BASE_URL}payout/${newuserdata.user_id}`
         );
         if (
           res1.data === null ||
@@ -78,7 +78,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
         } else {
           try {
             const restt = await axios.get(
-              `https://api.thrillerme.com/sellers/${newuserdata.user_id}`
+              `${BASE_URL}sellers/${newuserdata.user_id}`
             );
             if (
               restt.data === null ||
@@ -115,7 +115,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
     } catch (e) {}
 
     if (shoeSize !== null) {
-      var url = `https://api.thrillerme.com/listing/highest/${shoe.shoe_id}/${shoeSize}`;
+      var url = `${BASE_URL}listing/highest/${shoe.shoe_id}/${shoeSize}`;
       var encodedURL = encodeURI(url);
       axios.get(encodedURL).then((res) => {
         if (res.data.highest !== null) {
@@ -131,7 +131,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
         }
       });
 
-      var urlL = `https://api.thrillerme.com/listing/lowest/${shoe.shoe_id}/${shoeSize}`;
+      var urlL = `${BASE_URL}listing/lowest/${shoe.shoe_id}/${shoeSize}`;
       var encodedURLL = encodeURI(urlL);
       axios.get(encodedURLL).then((res) => {
         if (res.data.lowest !== null) {
@@ -180,7 +180,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
   //   }
 
   //   var data = await axios.get(
-  //     `https://api.thrillerme.com/sellers/${user.user_id}`
+  //     `${BASE_URL}sellers/${user.user_id}`
   //   );
 
   //   //console.log("### SHIPPING ###", data);
@@ -190,7 +190,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
 
   //   try {
   //     var payData = axios.get(
-  //       `https://api.thrillerme.com/payout/${user.user_id}`
+  //       `${BASE_URL}payout/${user.user_id}`
   //     );
 
   //     if (payData.data !== "") {
@@ -270,7 +270,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
             //listing.post here
             onClick={() => {
               if (buttonCheck) {
-                var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
+                var url = `${BASE_URL}registrations/${user.user_id}`;
                 axios.get(url).then((res) => {
                   if (!res.data.isApproved) {
                     alert(
@@ -295,12 +295,12 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                     var l_shipping, l_trans, l_processing, l_payout;
 
                     axios
-                      .get(`https://api.thrillerme.com/settings`)
+                      .get(`${BASE_URL}settings`)
                       .then((res) => {
                         var settings = res.data.result[0];
                         axios
                           .get(
-                            "https://api.thrillerme.com/sellers/" + user.user_id
+                            "${BASE_URL}sellers/" + user.user_id
                           )
                           .then((res) => {
                             if (res.data.city !== undefined) {
@@ -371,7 +371,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                                   console.log(resListing.data.insertId);
 
                                   //Accept Offer
-                                  var url = `https://api.thrillerme.com/offers/getOffer/${data.shoe_id}/${data.size}/${offer.highest}`;
+                                  var url = `${BASE_URL}offers/getOffer/${data.shoe_id}/${data.size}/${offer.highest}`;
 
                                   console.log(url);
                                   axios
@@ -403,7 +403,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                                           "#### accepting ####",
                                           res.data.intentID
                                         );
-                                        var url = `https://api.thrillerme.com/stripe/capture`;
+                                        var url = `${BASE_URL}stripe/capture`;
                                         axios
                                           .post(url, {
                                             intentID: res.data.intentID,
@@ -415,7 +415,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                                                 response
                                               );
                                               //Make Order
-                                              var urlOrders = `https://api.thrillerme.com/orders`;
+                                              var urlOrders = `${BASE_URL}orders`;
 
                                               axios
                                                 .post(urlOrders, {
@@ -511,7 +511,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                 // if (user === null || user === undefined) {
                 //   history.push("/login");
                 // } else {
-                var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
+                var url = `${BASE_URL}registrations/${user.user_id}`;
 
                 axios.get(url).then((res) => {
                   ////console.log(res);
@@ -541,7 +541,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                   //   });
                   // }
                   // else {
-                  var url = `https://api.thrillerme.com/registrations/${user.user_id}`;
+                  var url = `${BASE_URL}registrations/${user.user_id}`;
                   //console.log(url);
                   // //console.log(hasPayout);
                   axios.get(url).then((res) => {
@@ -561,12 +561,12 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                       var l_shipping, l_trans, l_processing, l_payout;
 
                       axios
-                        .get(`https://api.thrillerme.com/settings`)
+                        .get(`${BASE_URL}settings`)
                         .then((res) => {
                           var settings = res.data.result[0];
                           axios
                             .get(
-                              "https://api.thrillerme.com/sellers/" +
+                              "${BASE_URL}sellers/" +
                                 user.user_id
                             )
                             .then((res) => {
@@ -638,7 +638,7 @@ const ShoePage = ({ match, location, userData, orderDetail }) => {
                                     //console.log(data.askingPrice);
                                     axios
                                       .post(
-                                        "https://api.thrillerme.com/fav/email",
+                                        "${BASE_URL}fav/email",
                                         {
                                           shoe_id: data.shoe_id,
                                           size: data.size,
